@@ -1,0 +1,1294 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>III. 八大分布 | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="## III. 八大分布 一、离散 （1）伯努利(Bernoulli)试验 ① 0-1 分布 设 X 为一次伯努利试验中事件 A 发生的次数，称 X 服从 0 − 1 分布，记作 X ∼ B(1, p). 其概率分布为 $$ \begin{array}{c|cc} X &amp; 0 &amp; 1\\ \hline P &amp; 1-p &amp; p \end{array} \nonumbe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="III. 八大分布">
+<meta property="og:url" content="http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/2.%20%E4%B8%80%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/III.%20%E5%85%AB%E5%A4%A7%E5%88%86%E5%B8%83/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="## III. 八大分布 一、离散 （1）伯努利(Bernoulli)试验 ① 0-1 分布 设 X 为一次伯努利试验中事件 A 发生的次数，称 X 服从 0 − 1 分布，记作 X ∼ B(1, p). 其概率分布为 $$ \begin{array}{c|cc} X &amp; 0 &amp; 1\\ \hline P &amp; 1-p &amp; p \end{array} \nonumbe">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
+<meta property="article:published_time" content="2026-07-04T20:26:49.000Z">
+<meta property="article:modified_time" content="2026-07-11T11:56:36.138Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "III. 八大分布",
+  "url": "http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/2.%20%E4%B8%80%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/III.%20%E5%85%AB%E5%A4%A7%E5%88%86%E5%B8%83/",
+  "image": "http://example.com/img/butterfly-icon.png",
+  "datePublished": "2026-07-04T20:26:49.000Z",
+  "dateModified": "2026-07-11T11:56:36.138Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "John Doe",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/2.%20%E4%B8%80%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/III.%20%E5%85%AB%E5%A4%A7%E5%88%86%E5%B8%83/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'III. 八大分布',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hexo</span></a><a class="nav-page-title" href="/"><span class="site-name">III. 八大分布</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">III. 八大分布</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-07-04T20:26:49.000Z" title="Created 2026-07-05 04:26:49">2026-07-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-07-11T11:56:36.138Z" title="Updated 2026-07-11 19:56:36">2026-07-11</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>## <span class="math inline"><em>I</em><em>I</em><em>I</em>.</span>
+八大分布</p>
+<h3 id="一离散">一、离散</h3>
+<h4 id="伯努利bernoulli试验">（1）伯努利(Bernoulli)试验</h4>
+<h5 id="分布">① 0-1 分布</h5>
+<p>设 <span class="math inline"><em>X</em></span>
+为<strong>一次伯努利试验中事件 <span
+class="math inline"><em>A</em></span> 发生的次数</strong>，称 <span
+class="math inline"><em>X</em></span> 服从 <span
+class="math inline">0 − 1</span> 分布，记作</p>
+<p><span
+class="math display"><em>X</em> ∼ <em>B</em>(1, <em>p</em>).</span></p>
+<p>其概率分布为</p>
+<p><span class="math display">$$
+\begin{array}{c|cc}
+X &amp; 0 &amp; 1\\
+\hline
+P &amp; 1-p &amp; p
+\end{array}
+\nonumber
+$$</span></p>
+<h5 id="二项分布">② 二项分布</h5>
+<p>设 <span class="math inline"><em>X</em></span> 为 <strong><span
+class="math inline"><em>n</em></span> 重伯努利试验中事件 <span
+class="math inline"><em>A</em></span> 发生的次数</strong>，称 <span
+class="math inline"><em>X</em></span> 服从二项分布，记作</p>
+<p><span
+class="math display"><em>X</em> ∼ <em>B</em>(<em>n</em>, <em>p</em>).</span></p>
+<p>其概率分布为</p>
+<p><span class="math display">$$
+P\{X=k\}=\binom{n}{k}p^k(1-p)^{n-k},
+\qquad k=0,1,\cdots,n. \nonumber
+$$</span></p>
+<p>当 <span class="math inline"><em>n</em> = 1</span> 时，<span
+class="math inline"><em>X</em> ∼ <em>B</em>(1, <em>p</em>)</span>，所以
+<span class="math inline">0 − 1</span> 分布为二项分布的特例。</p>
+<p>二项分布的性质：若</p>
+<p><span
+class="math display"><em>X</em> ∼ <em>B</em>(<em>n</em>, <em>p</em>),</span></p>
+<p>则</p>
+<p><span
+class="math display"><em>Y</em> = <em>n</em> − <em>X</em> ∼ <em>B</em>(<em>n</em>, 1 − <em>p</em>).</span></p>
+<p>其中 <span class="math inline"><em>Y</em></span> 表示试验中事件 <span
+class="math inline"><em>A</em></span> 不发生的次数。</p>
+<h5 id="几何分布">③ 几何分布</h5>
+<p>设 <span class="math inline"><em>X</em></span> 为伯努利试验中事件
+<span class="math inline"><em>A</em></span>
+<strong>首次发生所需的试验次数</strong>，称 <span
+class="math inline"><em>X</em></span> 服从参数为 <span
+class="math inline"><em>p</em></span> 的几何分布，记作</p>
+<p><span
+class="math display"><em>X</em> ∼ <em>G</em>(<em>p</em>).</span></p>
+<p>其概率分布为</p>
+<p><span
+class="math display"><em>P</em>{<em>X</em> = <em>k</em>} = <em>p</em>(1 − <em>p</em>)<sup><em>k</em> − 1</sup>,  <em>k</em> = 1, 2, ⋯.</span></p>
+<h4 id="泊松possion分布自然数">（2）泊松(Possion)分布（自然数）</h4>
+<p>设随机变量 <span class="math inline"><em>X</em></span>
+的概率分布为</p>
+<p><span class="math display">$$
+P\{X=k\}=\frac{\lambda^k}{k!}e^{-\lambda},
+\quad (k \in \mathbb{N},\quad \lambda&gt;0).
+\nonumber
+$$</span></p>
+<p>称 <span class="math inline"><em>X</em></span> 服从参数为 <span
+class="math inline"><em>λ</em></span> 的泊松分布，记作</p>
+<p><span
+class="math display"><em>X</em> ∼ <em>P</em>(<em>λ</em>).</span></p>
+<h5 id="泊松定理若">泊松定理：若</h5>
+<p><span
+class="math display">lim<sub><em>n</em> → ∞</sub><em>n</em><em>p</em><sub><em>n</em></sub> = <em>λ</em>,   <em>λ</em> &gt; 0,</span></p>
+<p>则对任意非负整数 <span class="math inline"><em>k</em></span>，有</p>
+<p><span class="math display">$$
+\lim_{n\to\infty}\binom{n}{k}p_n^k(1-p_n)^{n-k}
+=
+\frac{\lambda^k}{k!}e^{-\lambda}. \nonumber
+$$</span></p>
+<p>实际应用中，当 <span class="math inline"><em>n</em></span>
+很大、<span class="math inline"><em>p</em></span>
+很小时，可以用泊松分布近似二项分布：</p>
+<p><span class="math display">$$
+\binom{n}{k}p^k(1-p)^{n-k}
+\approx
+\frac{\lambda^k}{k!}e^{-\lambda},
+\qquad \lambda=np. \nonumber
+$$</span></p>
+<h4
+id="超几何hypergeometric分布古典概型">（3）超几何(hypergeometric)分布（古典概型）</h4>
+<p>设 <span class="math inline"><em>N</em></span> 件产品中有 <span
+class="math inline"><em>M</em></span> 件次品，从中任取 <span
+class="math inline"><em>n</em></span> 件，令 <span
+class="math inline"><em>X</em></span> 表示取出的次品数，则 <span
+class="math inline"><em>X</em></span> 服从参数为 <span
+class="math inline"><em>N</em>, <em>M</em>, <em>n</em></span>
+的超几何分布，记作</p>
+<p><span
+class="math display"><em>X</em> ∼ <em>H</em>(<em>N</em>, <em>M</em>, <em>n</em>).</span></p>
+<p>其概率分布为</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X=k\}
+=
+\frac{\binom{M}{k}\binom{N-M}{n-k}}{\binom{N}{n}},\\
+k
+\in
+\{\,m\in\mathbb N \mid m\le \min(n,M)\,\}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h3 id="二连续3">二、连续（3）</h3>
+<h4 id="均匀uniform分布">（1）均匀(uniform)分布</h4>
+<p>设随机变量 <span class="math inline"><em>X</em></span>
+的概率密度为</p>
+<p><span class="math display">$$
+f(x)=
+\begin{cases}
+\dfrac{1}{b-a},&amp; a\le x\le b,\\[6pt]
+0,&amp; \text{else}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>称 <span class="math inline"><em>X</em></span> 服从区间 <span
+class="math inline">[<em>a</em>, <em>b</em>]</span>
+上的均匀分布，记作</p>
+<p><span
+class="math display"><em>X</em> ∼ <em>U</em>(<em>a</em>, <em>b</em>).</span></p>
+<p>其分布函数为</p>
+<p><span class="math display">$$
+F(x)=
+\begin{cases}
+0,&amp; x&lt;a,\\[4pt]
+\dfrac{x-a}{b-a},&amp; a\le x&lt;b,\\[6pt]
+1,&amp; x\ge b.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>若密度设为常数 <span
+class="math inline"><em>c</em></span>，由规范性可得</p>
+<p><span
+class="math display">∫<sub><em>a</em></sub><sup><em>b</em></sup><em>c</em> <em>d</em><em>x</em> = <em>c</em>(<em>b</em> − <em>a</em>) = 1,</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+c=\frac{1}{b-a}. \nonumber
+$$</span></p>
+<p>（概率 = 区间长度 <span class="math inline">×</span> 密度）</p>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="943" height="896">
+<defs><clipPath id="vszzzniURnMn"><path fill="none" stroke="none" d=" M 0 0 L 943 0 L 943 896 L 0 896 L 0 0 Z"/></clipPath></defs><g transform="scale(1,1)" clip-path="url(#vszzzniURnMn)"><g><rect fill="rgb(255,255,255)" stroke="none" x="0" y="0" width="943" height="896" fill-opacity="1"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 135.5 2.5 L 135.5 896.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 135.5 1.5 L 131.5 5.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 135.5 1.5 L 139.5 5.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 0.5 562.5 L 941.5 562.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 942.5 562.5 L 938.5 558.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 942.5 562.5 L 938.5 566.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="19" y="578" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–0.4</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 30.5 562.5 L 30.5 565.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="71" y="578" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–0.2</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 82.5 562.5 L 82.5 565.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 135.5 562.5 L 135.5 565.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="179" y="578" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.2</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 187.5 562.5 L 187.5 565.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="231" y="578" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.4</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 239.5 562.5 L 239.5 565.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="284" y="578" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.6</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 292.5 562.5 L 292.5 565.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="336" y="578" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.8</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 344.5 562.5 L 344.5 565.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="394" y="578" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 396.5 562.5 L 396.5 565.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="441" y="578" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1.2</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 449.5 562.5 L 449.5 565.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="493" y="578" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1.4</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 501.5 562.5 L 501.5 565.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="545" y="578" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1.6</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 553.5 562.5 L 553.5 565.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="597" y="578" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1.8</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 605.5 562.5 L 605.5 565.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="656" y="578" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">2</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 658.5 562.5 L 658.5 565.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="702" y="578" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">2.2</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 710.5 562.5 L 710.5 565.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="754" y="578" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">2.4</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 762.5 562.5 L 762.5 565.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="807" y="578" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">2.6</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 815.5 562.5 L 815.5 565.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="859" y="578" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">2.8</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 867.5 562.5 L 867.5 565.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="917" y="578" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">3</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 919.5 562.5 L 919.5 565.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 132.5 876.5 L 135.5 876.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 132.5 824.5 L 135.5 824.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 132.5 771.5 L 135.5 771.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 132.5 719.5 L 135.5 719.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 132.5 667.5 L 135.5 667.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 132.5 614.5 L 135.5 614.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 132.5 510.5 L 135.5 510.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 132.5 457.5 L 135.5 457.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 132.5 405.5 L 135.5 405.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 132.5 353.5 L 135.5 353.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 132.5 301.5 L 135.5 301.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 132.5 248.5 L 135.5 248.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 132.5 196.5 L 135.5 196.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 132.5 144.5 L 135.5 144.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 132.5 91.5 L 135.5 91.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 132.5 39.5 L 135.5 39.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="105" y="881" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–1.2</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="115" y="829" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–1</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="105" y="776" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–0.8</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="105" y="724" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–0.6</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="105" y="672" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–0.4</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="105" y="619" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–0.2</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="111" y="515" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.2</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="111" y="462" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.4</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="111" y="410" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.6</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="111" y="358" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.8</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="121" y="306" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="111" y="253" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1.2</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="111" y="201" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1.4</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="111" y="149" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1.6</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="111" y="96" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1.8</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="121" y="44" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">2</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="121" y="578" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0</text><path fill="none" stroke="rgb(0,0,0)" paint-order="fill stroke markers" d=" M 0 562.5825031062213 L 3.68359375 562.5825031062213 L 7.367187500000014 562.5825031062213 L 11.05078125 562.5825031062213 L 14.734375000000014 562.5825031062213 L 18.41796875 562.5825031062213 L 22.101562500000014 562.5825031062213 L 25.78515625 562.5825031062213 L 29.468750000000014 562.5825031062213 L 33.15234375 562.5825031062213 L 36.8359375 562.5825031062213 L 40.51953125 562.5825031062213 L 44.203125000000014 562.5825031062213 L 47.886718750000014 562.5825031062213 L 51.5703125 562.5825031062213 L 55.253906250000014 562.5825031062213 L 58.937500000000014 562.5825031062213 L 62.621093750000014 562.5825031062213 L 66.3046875 562.5825031062213 L 69.98828125000001 562.5825031062213 L 73.671875 562.5825031062213 L 77.35546875000001 562.5825031062213 L 81.0390625 562.5825031062213 L 84.72265625000001 562.5825031062213 L 88.40625 562.5825031062213 L 92.08984375000001 562.5825031062213 L 95.7734375 562.5825031062213 L 99.45703125000003 562.5825031062213 L 103.14062500000001 562.5825031062213 L 106.82421875000001 562.5825031062213 L 110.50781250000001 562.5825031062213 L 114.19140625000003 562.5825031062213 L 117.87500000000001 562.5825031062213 L 121.55859375 562.5825031062213 L 125.24218750000001 562.5825031062213 L 128.92578125 562.5825031062213 L 132.609375 562.5825031062213 L 136.29296875 562.5825031062213 L 139.97656250000003 562.5825031062213 L 143.66015625000003 562.5825031062213 L 147.34375 562.5825031062213 L 151.02734375 562.5825031062213 L 154.71093750000003 562.5825031062213 L 158.39453125000003 562.5825031062213 L 162.078125 562.5825031062213 L 165.76171875000003 562.5825031062213 L 169.44531250000003 562.5825031062213 L 173.12890625000003 562.5825031062213 L 176.8125 562.5825031062213 L 180.49609375000003 562.5825031062213 L 184.17968750000003 562.5825031062213 L 187.86328125 562.5825031062213 L 191.546875 562.5825031062213 L 195.23046875000003 562.5825031062213 L 198.91406250000003 562.5825031062213 L 202.59765625 562.5825031062213 L 206.28125 562.5825031062213 L 209.96484375000003 562.5825031062213 L 213.64843750000003 562.5825031062213 L 217.33203125 562.5825031062213 L 221.015625 562.5825031062213 L 224.69921875000003 562.5825031062213 L 228.38281250000006 562.5825031062213 L 232.06640625 562.5825031062213 L 235.75000000000003 562.5825031062213 L 239.43359375000003 562.5825031062213 L 243.1171875 562.5825031062213 L 246.80078125 562.5825031062213 L 250.48437500000003 562.5825031062213 L 254.16796875000003 562.5825031062213 L 257.8515625 562.5825031062213 L 261.53515625000006 562.5825031062213 L 265.21875 562.5825031062213 L 268.90234375 562.5825031062213 L 272.5859375 562.5825031062213 L 276.26953125 562.5825031062213 L 279.953125 562.5825031062213 L 283.63671875 562.5825031062213 L 287.32031250000006 562.5825031062213 L 291.00390625000006 562.5825031062213 L 294.6875 562.5825031062213 L 298.37109375 562.5825031062213 L 302.0546875 562.5825031062213 L 305.73828125 562.5825031062213 L 309.421875 562.5825031062213 L 313.10546875000006 562.5825031062213 L 316.78906250000006 562.5825031062213 L 320.47265625 562.5825031062213 L 324.15625 562.5825031062213 L 327.83984375 562.5825031062213 L 331.5234375 562.5825031062213 L 335.20703125 562.5825031062213 L 338.89062500000006 562.5825031062213 L 342.57421875000006 562.5825031062213 L 346.25781250000006 562.5825031062213 L 349.94140625 562.5825031062213 L 353.625 562.5825031062213 L 357.30859375 562.5825031062213 L 360.9921875 562.5825031062213 L 364.67578125 562.5825031062213 L 368.35937500000006 562.5825031062213 L 372.04296875000006 562.5825031062213 L 375.7265625 562.5825031062213 L 379.41015625 562.5825031062213 L 383.09375 562.5825031062213 L 386.77734375 562.5825031062213 L 390.4609375 562.5825031062213 L 394.14453125000006 562.5825031062213 L 395.98632812500006 562.5825031062213 L 396.677001953125 562.5825031062213 M 396.79211425781256 301.06249710670073 L 396.8496704101563 301.06249710670073 L 397.82812500000006 301.06249710670073 L 401.5117187500001 301.06249710670073 L 405.1953125 301.06249710670073 L 408.87890625 301.06249710670073 L 412.5625 301.06249710670073 L 416.24609375 301.06249710670073 L 419.9296875 301.06249710670073 L 423.61328125 301.06249710670073 L 427.29687500000006 301.06249710670073 L 430.98046875000006 301.06249710670073 L 434.66406250000006 301.06249710670073 L 438.34765625000006 301.06249710670073 L 442.03125000000006 301.06249710670073 L 445.71484375000006 301.06249710670073 L 449.39843750000006 301.06249710670073 L 453.0820312500001 301.06249710670073 L 456.7656250000001 301.06249710670073 L 460.44921875 301.06249710670073 L 464.1328125 301.06249710670073 L 467.81640625 301.06249710670073 L 471.5 301.06249710670073 L 475.18359375 301.06249710670073 L 478.8671875 301.06249710670073 L 482.55078125000006 301.06249710670073 L 486.23437500000006 301.06249710670073 L 489.91796875000006 301.06249710670073 L 493.60156250000006 301.06249710670073 L 497.28515625000006 301.06249710670073 L 500.96875000000006 301.06249710670073 L 504.65234375000006 301.06249710670073 L 508.3359375000001 301.06249710670073 L 512.0195312500001 301.06249710670073 L 515.703125 301.06249710670073 L 519.38671875 301.06249710670073 L 523.0703125000001 301.06249710670073 L 526.7539062500001 301.06249710670073 L 530.4375 301.06249710670073 L 534.12109375 301.06249710670073 L 537.8046875 301.06249710670073 L 541.48828125 301.06249710670073 L 545.171875 301.06249710670073 L 548.85546875 301.06249710670073 L 552.5390625 301.06249710670073 L 556.22265625 301.06249710670073 L 559.9062500000001 301.06249710670073 L 563.5898437500001 301.06249710670073 L 567.2734375000001 301.06249710670073 L 570.9570312500001 301.06249710670073 L 574.6406250000001 301.06249710670073 L 578.3242187500001 301.06249710670073 L 582.0078125000001 301.06249710670073 L 585.69140625 301.06249710670073 L 589.375 301.06249710670073 L 593.05859375 301.06249710670073 L 596.7421875 301.06249710670073 L 600.42578125 301.06249710670073 L 604.109375 301.06249710670073 L 607.79296875 301.06249710670073 L 611.4765625 301.06249710670073 L 615.1601562500001 301.06249710670073 L 618.8437500000001 301.06249710670073 L 622.5273437500001 301.06249710670073 L 626.2109375000001 301.06249710670073 L 629.8945312500001 301.06249710670073 L 633.5781250000001 301.06249710670073 L 637.2617187500001 301.06249710670073 L 640.9453125 301.06249710670073 L 644.62890625 301.06249710670073 L 648.3125 301.06249710670073 L 651.99609375 301.06249710670073 L 655.6796875000001 301.06249710670073 L 657.5214843750001 301.06249710670073 L 658.2121582031251 301.06249710670073 M 658.3272705078126 562.5825031062213 L 658.3848266601562 562.5825031062213 L 659.3632812500001 562.5825031062213 L 663.0468750000001 562.5825031062213 L 666.7304687500001 562.5825031062213 L 670.4140625000001 562.5825031062213 L 674.0976562500001 562.5825031062213 L 677.7812500000001 562.5825031062213 L 681.4648437500001 562.5825031062213 L 685.1484375000001 562.5825031062213 L 688.8320312500001 562.5825031062213 L 692.5156250000001 562.5825031062213 L 696.19921875 562.5825031062213 L 699.8828125 562.5825031062213 L 703.56640625 562.5825031062213 L 707.25 562.5825031062213 L 710.9335937500001 562.5825031062213 L 714.6171875000001 562.5825031062213 L 718.3007812500001 562.5825031062213 L 721.9843750000001 562.5825031062213 L 725.6679687500001 562.5825031062213 L 729.3515625000001 562.5825031062213 L 733.0351562500001 562.5825031062213 L 736.7187500000001 562.5825031062213 L 740.4023437500001 562.5825031062213 L 744.0859375000001 562.5825031062213 L 747.7695312500001 562.5825031062213 L 751.453125 562.5825031062213 L 755.13671875 562.5825031062213 L 758.8203125 562.5825031062213 L 762.5039062500001 562.5825031062213 L 766.1875000000001 562.5825031062213 L 769.8710937500001 562.5825031062213 L 773.5546875000001 562.5825031062213 L 777.2382812500001 562.5825031062213 L 780.9218750000001 562.5825031062213 L 784.6054687500001 562.5825031062213 L 788.2890625000001 562.5825031062213 L 791.9726562500001 562.5825031062213 L 795.6562500000001 562.5825031062213 L 799.3398437500001 562.5825031062213 L 803.0234375000001 562.5825031062213 L 806.70703125 562.5825031062213 L 810.390625 562.5825031062213 L 814.07421875 562.5825031062213 L 817.7578125000001 562.5825031062213 L 821.4414062500001 562.5825031062213 L 825.1250000000001 562.5825031062213 L 828.8085937500001 562.5825031062213 L 832.4921875000001 562.5825031062213 L 836.1757812500001 562.5825031062213 L 839.8593750000001 562.5825031062213 L 843.5429687500001 562.5825031062213 L 847.2265625000001 562.5825031062213 L 850.9101562500001 562.5825031062213 L 854.5937500000001 562.5825031062213 L 858.2773437500001 562.5825031062213 L 861.9609375 562.5825031062213 L 865.64453125 562.5825031062213 L 869.3281250000001 562.5825031062213 L 873.0117187500001 562.5825031062213 L 876.6953125000001 562.5825031062213 L 880.3789062500001 562.5825031062213 L 884.0625000000001 562.5825031062213 L 887.7460937500001 562.5825031062213 L 891.4296875000001 562.5825031062213 L 895.1132812500001 562.5825031062213 L 898.7968750000001 562.5825031062213 L 902.4804687500001 562.5825031062213 L 906.1640625000001 562.5825031062213 L 909.8476562500001 562.5825031062213 L 913.5312500000001 562.5825031062213 L 917.21484375 562.5825031062213 L 920.8984375 562.5825031062213 L 924.5820312500001 562.5825031062213 L 928.2656250000001 562.5825031062213 L 931.9492187500001 562.5825031062213 L 935.6328125000001 562.5825031062213 L 939.3164062500001 562.5825031062213 L 943.0000000000001 562.5825031062213" stroke-opacity="0.6980392156862745" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/><text fill="rgb(0,0,0)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="16px" font-style="normal" font-weight="normal" text-decoration="normal" x="8" y="562" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">f</text><path fill="none" stroke="rgb(0,0,0)" paint-order="fill stroke markers" d=" M 396.76422509899135 301.06249710670073 L 396.76422509899135 562.5825031062213" stroke-opacity="0.6980392156862745" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" stroke-dasharray="10.5,8"/><path fill="none" stroke="rgb(0,0,0)" paint-order="fill stroke markers" d=" M 658.284231098512 562.5825031062213 L 658.284231098512 301.06249710670073" stroke-opacity="0.6980392156862745" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" stroke-dasharray="10.5,8"/><path fill="none" stroke="rgb(0,0,0)" paint-order="fill stroke markers" d=" M 396.76422509899135 301.06249710670073 L 135.24421909947068 301.06249710670073" stroke-opacity="0.6980392156862745" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" stroke-dasharray="10.5,8"/><path fill="rgb(125,125,255)" stroke="none" paint-order="stroke fill markers" d=" M 663.284231098512 562.5825031062213 C 663.284231098512 565.3439268553753 661.045654847666 567.5825031062213 658.284231098512 567.5825031062213 C 655.522807349358 567.5825031062213 653.284231098512 565.3439268553753 653.284231098512 562.5825031062213 C 653.284231098512 559.8210793570673 655.522807349358 557.5825031062213 658.284231098512 557.5825031062213 C 661.045654847666 557.5825031062213 663.284231098512 559.8210793570673 663.284231098512 562.5825031062213 Z" fill-opacity="1"/><path fill="none" stroke="rgb(0,0,0)" paint-order="fill stroke markers" d=" M 663.284231098512 562.5825031062213 C 663.284231098512 565.3439268553753 661.045654847666 567.5825031062213 658.284231098512 567.5825031062213 C 655.522807349358 567.5825031062213 653.284231098512 565.3439268553753 653.284231098512 562.5825031062213 C 653.284231098512 559.8210793570673 655.522807349358 557.5825031062213 658.284231098512 557.5825031062213 C 661.045654847666 557.5825031062213 663.284231098512 559.8210793570673 663.284231098512 562.5825031062213 Z" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"/><text fill="rgb(125,125,255)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="16px" font-style="normal" font-weight="normal" text-decoration="normal" x="662" y="553" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">b</text><path fill="rgb(77,77,255)" stroke="none" paint-order="stroke fill markers" d=" M 401.76422509899135 562.5825031062213 C 401.76422509899135 565.3439268553753 399.5256488481453 567.5825031062213 396.76422509899135 567.5825031062213 C 394.0028013498374 567.5825031062213 391.76422509899135 565.3439268553753 391.76422509899135 562.5825031062213 C 391.76422509899135 559.8210793570673 394.0028013498374 557.5825031062213 396.76422509899135 557.5825031062213 C 399.5256488481453 557.5825031062213 401.76422509899135 559.8210793570673 401.76422509899135 562.5825031062213 Z" fill-opacity="1"/><path fill="none" stroke="rgb(0,0,0)" paint-order="fill stroke markers" d=" M 401.76422509899135 562.5825031062213 C 401.76422509899135 565.3439268553753 399.5256488481453 567.5825031062213 396.76422509899135 567.5825031062213 C 394.0028013498374 567.5825031062213 391.76422509899135 565.3439268553753 391.76422509899135 562.5825031062213 C 391.76422509899135 559.8210793570673 394.0028013498374 557.5825031062213 396.76422509899135 557.5825031062213 C 399.5256488481453 557.5825031062213 401.76422509899135 559.8210793570673 401.76422509899135 562.5825031062213 Z" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"/><text fill="rgb(77,77,255)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="16px" font-style="normal" font-weight="normal" text-decoration="normal" x="401" y="553" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">a</text><path fill="rgb(125,125,255)" stroke="none" paint-order="stroke fill markers" d=" M 140.24421909947068 301.06249710670073 C 140.24421909947068 303.8239208558547 138.00564284862466 306.06249710670073 135.24421909947068 306.06249710670073 C 132.4827953503167 306.06249710670073 130.24421909947068 303.8239208558547 130.24421909947068 301.06249710670073 C 130.24421909947068 298.3010733575468 132.4827953503167 296.06249710670073 135.24421909947068 296.06249710670073 C 138.00564284862466 296.06249710670073 140.24421909947068 298.3010733575468 140.24421909947068 301.06249710670073 Z" fill-opacity="1"/><path fill="none" stroke="rgb(0,0,0)" paint-order="fill stroke markers" d=" M 140.24421909947068 301.06249710670073 C 140.24421909947068 303.8239208558547 138.00564284862466 306.06249710670073 135.24421909947068 306.06249710670073 C 132.4827953503167 306.06249710670073 130.24421909947068 303.8239208558547 130.24421909947068 301.06249710670073 C 130.24421909947068 298.3010733575468 132.4827953503167 296.06249710670073 135.24421909947068 296.06249710670073 C 138.00564284862466 296.06249710670073 140.24421909947068 298.3010733575468 140.24421909947068 301.06249710670073 Z" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"/><text fill="rgb(125,125,255)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="16px" font-style="normal" font-weight="normal" text-decoration="normal" x="139" y="291" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">密度
+c</text></g></g>
+</svg>
+<p>其分布函数为</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x)
+&amp;=
+\displaystyle\int_{-\infty}^{x} f(t)\,dt\\
+&amp;=
+\begin{cases}
+0, &amp; x&lt;a,\\[4pt]
+\dfrac{x-a}{b-a}, &amp; a\le x&lt;b,\\[6pt]
+1, &amp; x\ge b.
+\end{cases}
+\end{aligned}
+\nonumber
+$$</span></p>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="943" height="896">
+<defs><clipPath id="EcEIzSOMkadB"><path fill="none" stroke="none" d=" M 0 0 L 943 0 L 943 896 L 0 896 L 0 0 Z"/></clipPath><pattern id="XsXphWFdpZyW" width="35" height="35" patternUnits="userSpaceOnUse" viewBox="35 35 35 35"><g><rect fill="rgb(255,255,255)" stroke="none" x="0" y="0" width="105" height="105" fill-opacity="0.24705882352941178"/><path fill="none" stroke="rgb(0,0,255)" paint-order="fill stroke markers" d=" M 105 0 L 0 105 Z" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/><path fill="none" stroke="rgb(0,0,255)" paint-order="fill stroke markers" d=" M 105 35 L 35 105 Z" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/><path fill="none" stroke="rgb(0,0,255)" paint-order="fill stroke markers" d=" M 70 0 L 0 70 Z" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/></g></pattern></defs><g transform="scale(1,1)" clip-path="url(#EcEIzSOMkadB)"><g><rect fill="rgb(255,255,255)" stroke="none" x="0" y="0" width="943" height="896" fill-opacity="1"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 295.5 2.5 L 295.5 896.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 295.5 1.5 L 291.5 5.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 295.5 1.5 L 299.5 5.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 0.5 573.5 L 941.5 573.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 942.5 573.5 L 938.5 569.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 942.5 573.5 L 938.5 577.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="25" y="589" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–0.8</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 36.5 573.5 L 36.5 576.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="90" y="589" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–0.6</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 101.5 573.5 L 101.5 576.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="155" y="589" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–0.4</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 166.5 573.5 L 166.5 576.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="219" y="589" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–0.2</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 230.5 573.5 L 230.5 576.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 295.5 573.5 L 295.5 576.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="352" y="589" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.2</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 360.5 573.5 L 360.5 576.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="417" y="589" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.4</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 425.5 573.5 L 425.5 576.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="482" y="589" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.6</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 490.5 573.5 L 490.5 576.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="547" y="589" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.8</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 555.5 573.5 L 555.5 576.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="618" y="589" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 620.5 573.5 L 620.5 576.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="677" y="589" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1.2</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 685.5 573.5 L 685.5 576.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="742" y="589" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1.4</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 750.5 573.5 L 750.5 576.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="807" y="589" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1.6</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 815.5 573.5 L 815.5 576.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="871" y="589" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1.8</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 879.5 573.5 L 879.5 576.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 292.5 832.5 L 295.5 832.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 292.5 768.5 L 295.5 768.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 292.5 703.5 L 295.5 703.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 292.5 638.5 L 295.5 638.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 292.5 508.5 L 295.5 508.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 292.5 443.5 L 295.5 443.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 292.5 378.5 L 295.5 378.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 292.5 313.5 L 295.5 313.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 292.5 248.5 L 295.5 248.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 292.5 183.5 L 295.5 183.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 292.5 119.5 L 295.5 119.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 292.5 54.5 L 295.5 54.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="265" y="837" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–0.8</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="265" y="773" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–0.6</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="265" y="708" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–0.4</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="265" y="643" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–0.2</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="271" y="513" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.2</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="271" y="448" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.4</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="271" y="383" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.6</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="271" y="318" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.8</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="281" y="253" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="271" y="188" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1.2</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="271" y="124" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1.4</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="271" y="59" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1.6</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="281" y="589" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0</text><path fill="none" stroke="rgb(153,51,0)" paint-order="fill stroke markers" d=" M 0 573.326023719726 L 3.68359375 573.326023719726 L 7.3671875 573.326023719726 L 11.05078125 573.326023719726 L 14.734375 573.326023719726 L 18.417968749999943 573.326023719726 L 22.101562499999943 573.326023719726 L 25.78515625 573.326023719726 L 29.46875 573.326023719726 L 33.15234375 573.326023719726 L 36.8359375 573.326023719726 L 40.51953125 573.326023719726 L 44.203125 573.326023719726 L 47.88671875 573.326023719726 L 51.57031249999997 573.326023719726 L 55.25390624999997 573.326023719726 L 58.93749999999997 573.326023719726 L 62.62109374999997 573.326023719726 L 66.30468749999997 573.326023719726 L 69.98828125 573.326023719726 L 73.671875 573.326023719726 L 77.35546875 573.326023719726 L 81.0390625 573.326023719726 L 84.72265624999997 573.326023719726 L 88.40625 573.326023719726 L 92.08984374999997 573.326023719726 L 95.77343749999997 573.326023719726 L 99.45703125 573.326023719726 L 103.140625 573.326023719726 L 106.82421875 573.326023719726 L 110.50781249999997 573.326023719726 L 114.19140625 573.326023719726 L 117.87499999999997 573.326023719726 L 121.55859375 573.326023719726 L 125.24218749999997 573.326023719726 L 128.92578124999997 573.326023719726 L 132.609375 573.326023719726 L 136.29296875 573.326023719726 L 139.9765625 573.326023719726 L 143.66015624999997 573.326023719726 L 147.34375 573.326023719726 L 151.02734375 573.326023719726 L 154.7109375 573.326023719726 L 158.39453125 573.326023719726 L 162.078125 573.326023719726 L 165.76171875 573.326023719726 L 169.4453125 573.326023719726 L 173.12890625 573.326023719726 L 176.8125 573.326023719726 L 180.49609375 573.326023719726 L 184.1796875 573.326023719726 L 187.86328125 573.326023719726 L 191.546875 573.326023719726 L 195.23046875 573.326023719726 L 198.9140625 573.326023719726 L 202.59765625 573.326023719726 L 206.28125 573.326023719726 L 209.96484375 573.326023719726 L 213.6484375 573.326023719726 L 217.33203125 573.326023719726 L 221.015625 573.326023719726 L 224.69921875 573.326023719726 L 228.3828125 573.326023719726 L 232.06640625 573.326023719726 L 235.75 573.326023719726 L 239.43359375 573.326023719726 L 243.1171875 573.326023719726 L 246.80078125 573.326023719726 L 250.484375 573.326023719726 L 254.16796875 573.326023719726 L 257.8515625 573.326023719726 L 261.53515625 573.326023719726 L 265.21875 573.326023719726 L 268.90234375 573.326023719726 L 272.5859375 573.326023719726 L 276.26953125 573.326023719726 L 279.953125 573.326023719726 L 283.63671875 573.326023719726 L 287.3203125 573.326023719726 L 291.00390625 573.326023719726 L 294.6875 573.326023719726 L 295.6083984375 573.326023719726 M 295.838623046875 248.836259138176 L 295.89617919921875 248.836259138176 L 296.529296875 248.836259138176 L 298.37109375 248.836259138176 L 302.0546875 248.836259138176 L 305.73828125 248.836259138176 L 309.421875 248.836259138176 L 313.10546875 248.836259138176 L 316.7890625 248.836259138176 L 320.47265625 248.836259138176 L 324.15625 248.836259138176 L 327.83984375000006 248.836259138176 L 331.5234375 248.836259138176 L 335.20703125000006 248.836259138176 L 338.890625 248.836259138176 L 342.57421875 248.836259138176 L 346.2578125 248.836259138176 L 349.94140625 248.836259138176 L 353.625 248.836259138176 L 357.30859375 248.836259138176 L 360.99218750000006 248.836259138176 L 364.67578125 248.836259138176 L 368.35937500000006 248.836259138176 L 372.04296875 248.836259138176 L 375.7265625 248.836259138176 L 379.41015625 248.836259138176 L 383.09375 248.836259138176 L 386.77734375 248.836259138176 L 390.4609375 248.836259138176 L 394.14453125000006 248.836259138176 L 397.828125 248.836259138176 L 401.51171875000006 248.836259138176 L 405.1953125 248.836259138176 L 408.87890625 248.836259138176 L 412.5625 248.836259138176 L 416.24609375 248.836259138176 L 419.9296875 248.836259138176 L 423.61328125 248.836259138176 L 427.296875 248.836259138176 L 430.98046875 248.836259138176 L 434.66406250000006 248.836259138176 L 438.34765625 248.836259138176 L 442.03125 248.836259138176 L 445.71484375 248.836259138176 L 449.3984375 248.836259138176 L 453.08203125 248.836259138176 L 456.765625 248.836259138176 L 460.44921875000006 248.836259138176 L 464.1328125 248.836259138176 L 467.81640625000006 248.836259138176 L 471.5 248.836259138176 L 475.18359375 248.836259138176 L 478.8671875 248.836259138176 L 482.55078125 248.836259138176 L 486.234375 248.836259138176 L 489.91796875 248.836259138176 L 493.60156250000006 248.836259138176 L 497.28515625 248.836259138176 L 500.96875000000006 248.836259138176 L 504.65234375 248.836259138176 L 508.3359375 248.836259138176 L 512.01953125 248.836259138176 L 515.703125 248.836259138176 L 519.38671875 248.836259138176 L 523.0703125 248.836259138176 L 526.75390625 248.836259138176 L 530.4375 248.836259138176 L 534.12109375 248.836259138176 L 537.8046875 248.836259138176 L 541.48828125 248.836259138176 L 545.171875 248.836259138176 L 548.85546875 248.836259138176 L 552.5390625 248.836259138176 L 556.22265625 248.836259138176 L 559.90625 248.836259138176 L 563.58984375 248.836259138176 L 567.2734375 248.836259138176 L 570.95703125 248.836259138176 L 574.640625 248.836259138176 L 578.32421875 248.836259138176 L 582.0078125 248.836259138176 L 585.69140625 248.836259138176 L 589.375 248.836259138176 L 593.05859375 248.836259138176 L 596.7421875 248.836259138176 L 600.42578125 248.836259138176 L 604.109375 248.836259138176 L 607.79296875 248.836259138176 L 611.4765625 248.836259138176 L 615.16015625 248.836259138176 L 618.84375 248.836259138176 L 619.7646484375 248.836259138176 L 620.2826538085938 248.836259138176 M 620.3402099609375 573.326023719726 L 620.3977661132812 573.326023719726 L 622.52734375 573.326023719726 L 626.2109375 573.326023719726 L 629.89453125 573.326023719726 L 633.578125 573.326023719726 L 637.26171875 573.326023719726 L 640.9453125 573.326023719726 L 644.62890625 573.326023719726 L 648.3125 573.326023719726 L 651.99609375 573.326023719726 L 655.6796875000001 573.326023719726 L 659.36328125 573.326023719726 L 663.046875 573.326023719726 L 666.73046875 573.326023719726 L 670.4140625000001 573.326023719726 L 674.09765625 573.326023719726 L 677.78125 573.326023719726 L 681.46484375 573.326023719726 L 685.1484375 573.326023719726 L 688.8320312500001 573.326023719726 L 692.515625 573.326023719726 L 696.19921875 573.326023719726 L 699.8828125 573.326023719726 L 703.5664062500001 573.326023719726 L 707.25 573.326023719726 L 710.93359375 573.326023719726 L 714.6171875 573.326023719726 L 718.30078125 573.326023719726 L 721.9843750000001 573.326023719726 L 725.66796875 573.326023719726 L 729.3515625 573.326023719726 L 733.03515625 573.326023719726 L 736.7187500000001 573.326023719726 L 740.40234375 573.326023719726 L 744.0859375 573.326023719726 L 747.76953125 573.326023719726 L 751.453125 573.326023719726 L 755.1367187500001 573.326023719726 L 758.8203125 573.326023719726 L 762.50390625 573.326023719726 L 766.1875 573.326023719726 L 769.8710937500001 573.326023719726 L 773.5546875 573.326023719726 L 777.23828125 573.326023719726 L 780.921875 573.326023719726 L 784.60546875 573.326023719726 L 788.2890625000001 573.326023719726 L 791.97265625 573.326023719726 L 795.65625 573.326023719726 L 799.33984375 573.326023719726 L 803.0234375000001 573.326023719726 L 806.70703125 573.326023719726 L 810.390625 573.326023719726 L 814.07421875 573.326023719726 L 817.7578125 573.326023719726 L 821.4414062500001 573.326023719726 L 825.1250000000001 573.326023719726 L 828.80859375 573.326023719726 L 832.4921875 573.326023719726 L 836.1757812500001 573.326023719726 L 839.8593750000001 573.326023719726 L 843.54296875 573.326023719726 L 847.2265625 573.326023719726 L 850.91015625 573.326023719726 L 854.5937500000001 573.326023719726 L 858.2773437500001 573.326023719726 L 861.9609375 573.326023719726 L 865.64453125 573.326023719726 L 869.3281250000001 573.326023719726 L 873.0117187500001 573.326023719726 L 876.6953125 573.326023719726 L 880.37890625 573.326023719726 L 884.0625 573.326023719726 L 887.7460937500001 573.326023719726 L 891.4296875000001 573.326023719726 L 895.11328125 573.326023719726 L 898.796875 573.326023719726 L 902.4804687500001 573.326023719726 L 906.1640625000001 573.326023719726 L 909.8476562500001 573.326023719726 L 913.53125 573.326023719726 L 917.21484375 573.326023719726 L 920.8984375000001 573.326023719726 L 924.5820312500001 573.326023719726 L 928.265625 573.326023719726 L 931.94921875 573.326023719726 L 935.6328125000001 573.326023719726 L 939.3164062500001 573.326023719726 L 943.0000000000001 573.326023719726" stroke-opacity="0.6980392156862745" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/><text fill="rgb(153,51,0)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="16px" font-style="normal" font-weight="normal" text-decoration="normal" x="8" y="573" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">f</text><path fill="none" stroke="rgb(0,0,255)" paint-order="fill stroke markers" d=" M 295.83454959573214 901 L 295.83454959573214 -5" stroke-opacity="1" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" stroke-dasharray="6.5,4"/><path fill="none" stroke="rgb(0,0,255)" paint-order="fill stroke markers" d=" M 620.3243141772823 901 L 620.3243141772823 -5" stroke-opacity="1" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" stroke-dasharray="6.5,4"/><path fill="none" stroke="rgb(0,0,255)" paint-order="fill stroke markers" d=" M -5 573.326023719726 L 948 573.326023719726" stroke-opacity="1" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" stroke-dasharray="6.5,4"/><path fill="none" stroke="rgb(0,0,255)" paint-order="fill stroke markers" d=" M -5 248.836259138176 L 948 248.836259138176" stroke-opacity="1" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" stroke-dasharray="6.5,4"/><path fill="url(#XsXphWFdpZyW)" stroke="none" paint-order="stroke fill markers" d=" M 295.83454959573214 248.836259138176 L 295.83454959573214 573.326023719726 L 620.3243141772823 573.326023719726 L 620.3243141772823 248.836259138176 Z"/></g></g>
+</svg>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X &amp;\sim U(0,1),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{0&lt;X&lt;1\}
+&amp;=1,\\
+P\left\{0&lt;X&lt;\frac12\right\}
+&amp;=\frac12,\\
+P\left\{\frac13&lt;X&lt;1\right\}
+&amp;=\frac23.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>均匀分布求概率时，本质上是在求区间长度占总长度的比例。</p>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="943" height="896">
+<defs><clipPath id="rPefvTnBkNhR"><path fill="none" stroke="none" d=" M 0 0 L 943 0 L 943 896 L 0 896 L 0 0 Z"/></clipPath><pattern id="LyyVhyQCTvrL" width="35" height="35" patternUnits="userSpaceOnUse" viewBox="35 35 35 35"><g><rect fill="rgb(255,255,255)" stroke="none" x="0" y="0" width="105" height="105" fill-opacity="0.24705882352941178"/><path fill="none" stroke="rgb(0,0,255)" paint-order="fill stroke markers" d=" M 105 0 L 0 105 Z" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/><path fill="none" stroke="rgb(0,0,255)" paint-order="fill stroke markers" d=" M 105 35 L 35 105 Z" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/><path fill="none" stroke="rgb(0,0,255)" paint-order="fill stroke markers" d=" M 70 0 L 0 70 Z" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/></g></pattern></defs><g transform="scale(1,1)" clip-path="url(#rPefvTnBkNhR)"><g><rect fill="rgb(255,255,255)" stroke="none" x="0" y="0" width="943" height="896" fill-opacity="1"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 146.5 2.5 L 146.5 896.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 146.5 1.5 L 142.5 5.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 146.5 1.5 L 150.5 5.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 0.5 492.5 L 941.5 492.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 942.5 492.5 L 938.5 488.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 942.5 492.5 L 938.5 496.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="6" y="508" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–0.4</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 17.5 492.5 L 17.5 495.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="70" y="508" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–0.2</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 81.5 492.5 L 81.5 495.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 146.5 492.5 L 146.5 495.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="203" y="508" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.2</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 211.5 492.5 L 211.5 495.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="268" y="508" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.4</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 276.5 492.5 L 276.5 495.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="333" y="508" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.6</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 341.5 492.5 L 341.5 495.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="398" y="508" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.8</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 406.5 492.5 L 406.5 495.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="469" y="508" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 471.5 492.5 L 471.5 495.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="528" y="508" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1.2</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 536.5 492.5 L 536.5 495.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="593" y="508" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1.4</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 601.5 492.5 L 601.5 495.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="658" y="508" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1.6</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 666.5 492.5 L 666.5 495.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="722" y="508" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1.8</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 730.5 492.5 L 730.5 495.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="793" y="508" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">2</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 795.5 492.5 L 795.5 495.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="852" y="508" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">2.2</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 860.5 492.5 L 860.5 495.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="917" y="508" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">2.4</text><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 925.5 492.5 L 925.5 495.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 143.5 881.5 L 146.5 881.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 143.5 816.5 L 146.5 816.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 143.5 751.5 L 146.5 751.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 143.5 687.5 L 146.5 687.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 143.5 622.5 L 146.5 622.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 143.5 557.5 L 146.5 557.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 143.5 427.5 L 146.5 427.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 143.5 362.5 L 146.5 362.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 143.5 297.5 L 146.5 297.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 143.5 232.5 L 146.5 232.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 143.5 167.5 L 146.5 167.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 143.5 102.5 L 146.5 102.5" stroke-opacity="1" stroke-miterlimit="10"/><path fill="none" stroke="rgb(28,28,31)" paint-order="fill stroke markers" d=" M 143.5 38.5 L 146.5 38.5" stroke-opacity="1" stroke-miterlimit="10"/><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="116" y="886" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–1.2</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="126" y="821" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–1</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="116" y="756" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–0.8</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="116" y="692" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–0.6</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="116" y="627" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–0.4</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="116" y="562" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">–0.2</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="122" y="432" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.2</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="122" y="367" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.4</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="122" y="302" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.6</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="122" y="237" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0.8</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="132" y="172" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="122" y="107" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1.2</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="122" y="43" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">1.4</text><text fill="rgb(28,28,31)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="12px" font-style="normal" font-weight="normal" text-decoration="normal" x="132" y="508" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">0</text><path fill="none" stroke="rgb(153,51,0)" paint-order="fill stroke markers" d=" M 0 492.326023719726 L 3.68359375 492.326023719726 L 7.3671875 492.326023719726 L 11.05078125 492.326023719726 L 14.734375 492.326023719726 L 18.41796875 492.326023719726 L 22.1015625 492.326023719726 L 25.78515625 492.326023719726 L 29.468749999999986 492.326023719726 L 33.15234375 492.326023719726 L 36.8359375 492.326023719726 L 40.519531249999986 492.326023719726 L 44.203124999999986 492.326023719726 L 47.88671875 492.326023719726 L 51.5703125 492.326023719726 L 55.25390625 492.326023719726 L 58.9375 492.326023719726 L 62.621093750000014 492.326023719726 L 66.3046875 492.326023719726 L 69.98828125 492.326023719726 L 73.671875 492.326023719726 L 77.35546875 492.326023719726 L 81.0390625 492.326023719726 L 84.72265625 492.326023719726 L 88.40625 492.326023719726 L 92.08984375 492.326023719726 L 95.7734375 492.326023719726 L 99.45703125 492.326023719726 L 103.140625 492.326023719726 L 106.82421875 492.326023719726 L 110.5078125 492.326023719726 L 114.19140625 492.326023719726 L 117.875 492.326023719726 L 121.55859375 492.326023719726 L 125.24218750000001 492.326023719726 L 128.92578125 492.326023719726 L 132.609375 492.326023719726 L 136.29296875 492.326023719726 L 139.9765625 492.326023719726 L 143.66015625 492.326023719726 L 145.501953125 492.326023719726 L 146.4228515625 492.326023719726 M 146.88330078125 330.081141428951 L 146.94085693359375 330.081141428951 L 151.02734375 330.081141428951 L 154.7109375 330.081141428951 L 158.39453125 330.081141428951 L 162.078125 330.081141428951 L 165.76171875 330.081141428951 L 169.4453125 330.081141428951 L 173.12890625 330.081141428951 L 176.81250000000003 330.081141428951 L 180.49609375000003 330.081141428951 L 184.17968750000003 330.081141428951 L 187.86328125 330.081141428951 L 191.546875 330.081141428951 L 195.23046875 330.081141428951 L 198.9140625 330.081141428951 L 202.59765625 330.081141428951 L 206.28125 330.081141428951 L 209.96484375000003 330.081141428951 L 213.64843750000003 330.081141428951 L 217.33203125000003 330.081141428951 L 221.015625 330.081141428951 L 224.69921875 330.081141428951 L 228.3828125 330.081141428951 L 232.06640625 330.081141428951 L 235.75 330.081141428951 L 239.43359375 330.081141428951 L 243.11718750000003 330.081141428951 L 246.80078125000003 330.081141428951 L 250.48437500000003 330.081141428951 L 254.16796875 330.081141428951 L 257.8515625 330.081141428951 L 261.53515625 330.081141428951 L 265.21875 330.081141428951 L 268.90234375 330.081141428951 L 272.5859375 330.081141428951 L 276.26953125 330.081141428951 L 279.953125 330.081141428951 L 283.63671875 330.081141428951 L 287.3203125 330.081141428951 L 291.00390625 330.081141428951 L 294.6875 330.081141428951 L 298.37109375 330.081141428951 L 302.0546875 330.081141428951 L 305.73828125 330.081141428951 L 309.421875 330.081141428951 L 313.10546875000006 330.081141428951 L 316.7890625 330.081141428951 L 320.47265625 330.081141428951 L 324.15625 330.081141428951 L 327.83984375000006 330.081141428951 L 331.5234375 330.081141428951 L 335.2070312500001 330.081141428951 L 338.890625 330.081141428951 L 342.57421875 330.081141428951 L 346.25781250000006 330.081141428951 L 349.94140625 330.081141428951 L 353.62500000000006 330.081141428951 L 357.30859375 330.081141428951 L 360.99218750000006 330.081141428951 L 364.67578125 330.081141428951 L 368.3593750000001 330.081141428951 L 372.04296875000006 330.081141428951 L 375.7265625 330.081141428951 L 379.41015625000006 330.081141428951 L 383.09375 330.081141428951 L 386.77734375000006 330.081141428951 L 390.4609375 330.081141428951 L 394.14453125000006 330.081141428951 L 397.828125 330.081141428951 L 401.5117187500001 330.081141428951 L 405.19531250000006 330.081141428951 L 408.87890625 330.081141428951 L 412.56250000000006 330.081141428951 L 416.24609375 330.081141428951 L 419.92968750000006 330.081141428951 L 423.61328125000006 330.081141428951 L 427.29687500000006 330.081141428951 L 430.98046875000006 330.081141428951 L 434.66406250000006 330.081141428951 L 438.34765625000006 330.081141428951 L 442.03125 330.081141428951 L 445.71484375000006 330.081141428951 L 449.3984375 330.081141428951 L 453.08203125000006 330.081141428951 L 456.76562500000006 330.081141428951 L 460.44921875000006 330.081141428951 L 464.13281250000006 330.081141428951 L 467.81640625000006 330.081141428951 L 469.65820312500006 330.081141428951 L 470.5791015625 330.081141428951 L 471.26977539062506 330.081141428951 M 471.32733154296875 492.326023719726 L 471.38488769531256 492.326023719726 L 475.18359375 492.326023719726 L 478.86718750000006 492.326023719726 L 482.55078125 492.326023719726 L 486.23437500000006 492.326023719726 L 489.91796875000006 492.326023719726 L 493.60156250000006 492.326023719726 L 497.28515625000006 492.326023719726 L 500.9687500000001 492.326023719726 L 504.65234375000006 492.326023719726 L 508.3359375 492.326023719726 L 512.01953125 492.326023719726 L 515.703125 492.326023719726 L 519.38671875 492.326023719726 L 523.0703125 492.326023719726 L 526.75390625 492.326023719726 L 530.4375 492.326023719726 L 534.1210937500001 492.326023719726 L 537.8046875 492.326023719726 L 541.48828125 492.326023719726 L 545.171875 492.326023719726 L 548.85546875 492.326023719726 L 552.5390625 492.326023719726 L 556.22265625 492.326023719726 L 559.90625 492.326023719726 L 563.58984375 492.326023719726 L 567.2734375000001 492.326023719726 L 570.95703125 492.326023719726 L 574.640625 492.326023719726 L 578.32421875 492.326023719726 L 582.0078125 492.326023719726 L 585.69140625 492.326023719726 L 589.375 492.326023719726 L 593.05859375 492.326023719726 L 596.7421875 492.326023719726 L 600.4257812500001 492.326023719726 L 604.109375 492.326023719726 L 607.79296875 492.326023719726 L 611.4765625 492.326023719726 L 615.16015625 492.326023719726 L 618.84375 492.326023719726 L 622.52734375 492.326023719726 L 626.2109375000001 492.326023719726 L 629.89453125 492.326023719726 L 633.5781250000001 492.326023719726 L 637.26171875 492.326023719726 L 640.9453125 492.326023719726 L 644.62890625 492.326023719726 L 648.3125 492.326023719726 L 651.99609375 492.326023719726 L 655.6796875000001 492.326023719726 L 659.3632812500001 492.326023719726 L 663.046875 492.326023719726 L 666.73046875 492.326023719726 L 670.4140625000001 492.326023719726 L 674.0976562500001 492.326023719726 L 677.7812500000001 492.326023719726 L 681.46484375 492.326023719726 L 685.1484375 492.326023719726 L 688.8320312500001 492.326023719726 L 692.5156250000001 492.326023719726 L 696.1992187500001 492.326023719726 L 699.8828125 492.326023719726 L 703.5664062500001 492.326023719726 L 707.2500000000001 492.326023719726 L 710.9335937500001 492.326023719726 L 714.6171875 492.326023719726 L 718.30078125 492.326023719726 L 721.9843750000001 492.326023719726 L 725.6679687500001 492.326023719726 L 729.3515625000001 492.326023719726 L 733.03515625 492.326023719726 L 736.7187500000001 492.326023719726 L 740.4023437500001 492.326023719726 L 744.0859375000001 492.326023719726 L 747.76953125 492.326023719726 L 751.453125 492.326023719726 L 755.1367187500001 492.326023719726 L 758.8203125000001 492.326023719726 L 762.5039062500001 492.326023719726 L 766.1875 492.326023719726 L 769.8710937500001 492.326023719726 L 773.5546875000001 492.326023719726 L 777.2382812500001 492.326023719726 L 780.921875 492.326023719726 L 784.60546875 492.326023719726 L 788.2890625000001 492.326023719726 L 791.9726562500001 492.326023719726 L 795.6562500000001 492.326023719726 L 799.33984375 492.326023719726 L 803.0234375000001 492.326023719726 L 806.7070312500001 492.326023719726 L 810.3906250000001 492.326023719726 L 814.07421875 492.326023719726 L 817.7578125 492.326023719726 L 821.4414062500001 492.326023719726 L 825.1250000000001 492.326023719726 L 828.8085937500001 492.326023719726 L 832.4921875 492.326023719726 L 836.1757812500001 492.326023719726 L 839.8593750000001 492.326023719726 L 843.5429687500001 492.326023719726 L 847.2265625 492.326023719726 L 850.91015625 492.326023719726 L 854.5937500000001 492.326023719726 L 858.2773437500001 492.326023719726 L 861.9609375000001 492.326023719726 L 865.64453125 492.326023719726 L 869.3281250000001 492.326023719726 L 873.0117187500001 492.326023719726 L 876.6953125000001 492.326023719726 L 880.37890625 492.326023719726 L 884.0625 492.326023719726 L 887.7460937500001 492.326023719726 L 891.4296875000001 492.326023719726 L 895.1132812500001 492.326023719726 L 898.796875 492.326023719726 L 902.4804687500001 492.326023719726 L 906.1640625000001 492.326023719726 L 909.8476562500001 492.326023719726 L 913.5312500000001 492.326023719726 L 917.21484375 492.326023719726 L 920.8984375000001 492.326023719726 L 924.5820312500001 492.326023719726 L 928.2656250000001 492.326023719726 L 931.94921875 492.326023719726 L 935.6328125000001 492.326023719726 L 939.3164062500001 492.326023719726 L 943.0000000000001 492.326023719726" stroke-opacity="0.6980392156862745" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/><text fill="rgb(153,51,0)" stroke="none" font-family="geogebra-sans-serif, sans-serif" font-size="16px" font-style="normal" font-weight="normal" text-decoration="normal" x="8" y="492" text-anchor="start" dominant-baseline="alphabetic" fill-opacity="1">f</text><path fill="none" stroke="rgb(0,0,255)" paint-order="fill stroke markers" d=" M 146.83454959573214 901 L 146.83454959573214 -5" stroke-opacity="1" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" stroke-dasharray="6.5,4"/><path fill="none" stroke="rgb(0,0,255)" paint-order="fill stroke markers" d=" M 795.8140787588324 901 L 795.8140787588324 -5" stroke-opacity="1" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" stroke-dasharray="6.5,4"/><path fill="none" stroke="rgb(0,0,255)" paint-order="fill stroke markers" d=" M -5 492.326023719726 L 948 492.326023719726" stroke-opacity="1" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" stroke-dasharray="6.5,4"/><path fill="none" stroke="rgb(0,0,255)" paint-order="fill stroke markers" d=" M -5 330.081141428951 L 948 330.081141428951" stroke-opacity="1" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" stroke-dasharray="6.5,4"/><path fill="url(#LyyVhyQCTvrL)" stroke="none" paint-order="stroke fill markers" d=" M 146.83454959573214 330.081141428951 L 146.83454959573214 492.326023719726 L 795.8140787588324 492.326023719726 L 795.8140787588324 330.081141428951 Z"/></g></g>
+</svg>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X &amp;\sim U(0,2),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则</p>
+<p><span class="math display">$$
+\begin{aligned}
+f(x)
+&amp;=
+\begin{cases}
+\dfrac12, &amp; 0\le x\le 2,\\[4pt]
+0, &amp; \text{其他}.
+\end{cases}
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\left\{0&lt;X&lt;\frac32\right\}
+&amp;=
+\frac32\cdot\frac12\\
+&amp;=
+\frac34.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4
+id="指数exponent分布使用寿命">（2）指数(exponent)分布（使用寿命）</h4>
+<p>设随机变量 <span class="math inline"><em>X</em></span>
+的概率密度为</p>
+<p><span class="math display">$$
+f(x)=
+\begin{cases}
+\lambda e^{-\lambda x},&amp; x&gt;0,\\
+0,&amp; x\le 0,
+\end{cases}
+\qquad \lambda&gt;0.
+\nonumber
+$$</span></p>
+<blockquote>
+<p>若 <span class="math inline"><em>λ</em> &lt; 0</span> 则不满足非负,
+若 <span class="math inline"><em>λ</em> = 0</span> 则不满足规范</p>
+</blockquote>
+<p>称 <span class="math inline"><em>X</em></span> 服从参数为 <span
+class="math inline"><em>λ</em></span> 的指数分布，记作</p>
+<p><span
+class="math display"><em>X</em> ∼ <em>E</em>(<em>λ</em>).</span></p>
+<p>其分布函数为</p>
+<p><span class="math display">$$
+F(x)=
+\begin{cases}
+1-e^{-\lambda x},&amp; x&gt;0,\\
+0,&amp; x\le 0.
+\end{cases}
+\nonumber
+$$</span></p>
+<h5 id="指数分布的性质">指数分布的性质</h5>
+<p>指数分布具有无记忆性。设 <span
+class="math inline"><em>X</em> ∼ <em>E</em>(<em>λ</em>)</span>，则对任意
+<span
+class="math inline"><em>s</em> &gt; 0, <em>t</em> &gt; 0</span>，有</p>
+<p><span
+class="math display"><em>P</em>{<em>X</em> &gt; <em>s</em> + <em>t</em> ∣ <em>X</em> &gt; <em>s</em>} = <em>P</em>{<em>X</em> &gt; <em>t</em>}.</span></p>
+<p>等价地，</p>
+<p><span
+class="math display"><em>P</em>{<em>X</em> ≤ <em>s</em> + <em>t</em> ∣ <em>X</em> &gt; <em>s</em>} = <em>P</em>{0 &lt; <em>X</em> ≤ <em>t</em>}.</span></p>
+<blockquote>
+<p>[!important] Gamma 函数 PS: 计算过程中大家应该熟练掌握 <span
+class="math inline"><em>Γ</em></span> 积分。<br />
+伽马函数定义为</p>
+<p><span class="math display">$$
+\begin{aligned}
+\Gamma(s)
+&amp;=
+\displaystyle\int_0^{+\infty}x^{s-1}e^{-x}\,dx,
+\qquad s&gt;0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>并且有递推公式</p>
+<p><span class="math display">$$
+\begin{aligned}
+\Gamma(s+1)
+&amp;=s\Gamma(s).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>特别地，</p>
+<p><span class="math display">$$
+\begin{aligned}
+\Gamma\left(\frac12\right)
+&amp;=\sqrt{\pi},\\
+\Gamma(1)
+&amp;=
+\displaystyle\int_0^{+\infty}e^{-x}\,dx\\
+&amp;=1,\\
+\Gamma(n+1)
+&amp;=
+\displaystyle\int_0^{+\infty}x^n e^{-x}\,dx\\
+&amp;=n!
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>
+<hr />
+<blockquote>
+<p>[!question] 题目 【例 2.20】试证明指数分布具有“无记忆性”，即若 <span
+class="math inline"><em>X</em></span> 服从参数为 <span
+class="math inline"><em>λ</em></span> 的指数分布，则对任意 <span
+class="math inline"><em>s</em>, <em>t</em> &gt; 0</span>，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X&gt;s+t\mid X&gt;s\}
+&amp;=
+P\{X&gt;t\}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p><strong>题解：</strong></p>
+<p>因为 <span
+class="math inline"><em>X</em> ∼ <em>E</em>(<em>λ</em>)</span>，所以当
+<span class="math inline"><em>x</em> &gt; 0</span> 时，</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X&gt;x\}
+&amp;=
+\int_x^{+\infty}\lambda e^{-\lambda u}\,du\\
+&amp;=
+e^{-\lambda x}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>于是</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X&gt;s+t\mid X&gt;s\}
+&amp;=
+\frac{P\{X&gt;s+t,\ X&gt;s\}}{P\{X&gt;s\}}\\
+&amp;=
+\frac{P\{X&gt;s+t\}}{P\{X&gt;s\}}\\
+&amp;=
+\frac{e^{-\lambda(s+t)}}{e^{-\lambda s}}\\
+&amp;=
+e^{-\lambda t}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>又因为</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X&gt;t\}
+&amp;=
+e^{-\lambda t},
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>所以</p>
+<p><span class="math display">$$
+\boxed{
+\begin{aligned}
+P\{X&gt;s+t\mid X&gt;s\}
+&amp;=
+P\{X&gt;t\}.
+\end{aligned}
+}
+\nonumber
+$$</span></p>
+</blockquote>
+<h4 id="正态normal分布gauss-分布">（3）正态(normal)分布（Gauss
+分布）</h4>
+<p>设随机变量 <span class="math inline"><em>X</em></span>
+的<strong>概率密度</strong>为</p>
+<p><span class="math display">$$
+f(x)=
+\frac{1}{\sqrt{2\pi}\sigma}
+e^{-\frac{(x-\mu)^2}{2\sigma^2}},
+\qquad -\infty&lt;x&lt;+\infty. \nonumber
+$$</span></p>
+<p>其中 <span class="math inline"><em>μ</em>, <em>σ</em></span>
+为常数，且 <span class="math inline"><em>σ</em> &gt; 0</span>。称 <span
+class="math inline"><em>X</em></span> 服从参数为 <span
+class="math inline"><em>μ</em>, <em>σ</em><sup>2</sup></span>
+的正态分布，记作</p>
+<p><span
+class="math display"><em>X</em> ∼ <em>N</em>(<em>μ</em>, <em>σ</em><sup>2</sup>).</span></p>
+<p>当 <span
+class="math inline"><em>μ</em> = 0, <em>σ</em><sup>2</sup> = 1</span>
+时，称 <span class="math inline"><em>X</em></span>
+服从标准正态分布，记作</p>
+<p><span class="math display"><em>X</em> ∼ <em>N</em>(0, 1).</span></p>
+<p>其概率密度为</p>
+<p><span class="math display">$$
+\varphi(x)=\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}},
+\quad -\infty&lt;x&lt;+\infty. \nonumber
+$$</span></p>
+<p>分布函数为</p>
+<p><span class="math display">$$
+\Phi(x)
+=
+\displaystyle\int_{-\infty}^{x}
+\frac{1}{\sqrt{2\pi}}e^{-\frac{t^2}{2}}\,dt,
+\quad -\infty&lt;x&lt;+\infty. \nonumber
+$$</span></p>
+<p><span class="math inline">3<em>σ</em></span> 原则(了解即可)：</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{\mu-\sigma\le X\le \mu+\sigma\}
+&amp;=
+0.6827,\\
+P\{\mu-2\sigma\le X\le \mu+2\sigma\}
+&amp;=
+0.9545,\\
+P\{\mu-3\sigma\le X\le \mu+3\sigma\}
+&amp;=
+0.9973.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>若 <span class="math inline"><em>a</em> ≠ 0</span>，则</p>
+<p><span class="math display">$$
+\begin{aligned}
+Y=aX+b
+&amp;\sim
+N(a\mu+b,a^2\sigma^2).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>即正态随机变量的一次函数仍服从正态分布。</p>
+<blockquote>
+<p>[!question] 题目 【例 2.22】设随机变量 <span
+class="math inline"><em>X</em> ∼ <em>N</em>(2, <em>σ</em><sup>2</sup>)</span>，且
+<span
+class="math inline"><em>P</em>{2 &lt; <em>X</em> &lt; 4} = 0.3</span>，则
+<span
+class="math inline"><em>P</em>{0 &lt; <em>X</em> &lt; 2}=</span>。</p>
+<p><strong>题解：</strong></p>
+<p>正态分布关于 <span class="math inline"><em>x</em> = 2</span>
+对称，区间 <span class="math inline">(0, 2)</span> 与 <span
+class="math inline">(2, 4)</span> 关于 <span
+class="math inline"><em>x</em> = 2</span> 对称，故 <span
+class="math inline"><em>P</em>{0 &lt; <em>X</em> &lt; 2} = <em>P</em>{2 &lt; <em>X</em> &lt; 4} = 0.3</span>。</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>[!question] 题目 【例 2.23】设随机变量 <span
+class="math inline"><em>X</em> ∼ <em>N</em>(<em>μ</em>, <em>σ</em><sup>2</sup>)</span>，<span
+class="math inline"><em>σ</em> &gt; 0</span>，且二次方程 <span
+class="math inline"><em>y</em><sup>2</sup> + 4<em>y</em> + <em>X</em> = 0</span>
+有实根的概率为 <span class="math inline">0.5</span>，则 <span
+class="math inline"><em>μ</em>=</span>。</p>
+<p><strong>题解：</strong></p>
+<p>方程有实根当且仅当 <span
+class="math inline"><em>Δ</em> = 16 − 4<em>X</em> ≥ 0</span>，即 <span
+class="math inline"><em>X</em> ≤ 4</span>。</p>
+<p>因为 <span
+class="math inline"><em>P</em>{<em>X</em> ≤ 4} = 0.5</span>，且正态分布关于
+<span class="math inline"><em>x</em> = <em>μ</em></span> 对称，所以
+<span class="math inline"><em>μ</em> = 4</span>。</p>
+</blockquote>
+<h5 id="正态分布的标准化">① 正态分布的标准化</h5>
+<p>设</p>
+<p><span
+class="math display"><em>X</em> ∼ <em>N</em>(<em>μ</em>, <em>σ</em><sup>2</sup>),</span></p>
+<p>则</p>
+<p><span class="math display">$$
+\frac{X-\mu}{\sigma}\sim N(0,1). \nonumber
+$$</span></p>
+<p>于是</p>
+<p><span class="math display">$$
+F(x)=\Phi\left(\frac{x-\mu}{\sigma}\right). \nonumber
+$$</span></p>
+<p>并且</p>
+<p><span class="math display">$$
+P\{a&lt;X\le b\}
+=
+\Phi\left(\frac{b-\mu}{\sigma}\right)
+-
+\Phi\left(\frac{a-\mu}{\sigma}\right). \nonumber
+$$</span></p>
+<h5 id="正态定参">② 正态定参</h5>
+<p>若题目给出形如</p>
+<p><span
+class="math display"><em>f</em>(<em>x</em>) = <em>A</em><em>e</em><sup>−<em>a</em><em>x</em><sup>2</sup> + <em>b</em><em>x</em> + <em>c</em></sup></span></p>
+<p>的正态型密度，并含有未知参数，则通常通过两类条件定参：</p>
+<p><span
+class="math display">∫<sub>−∞</sub><sup>+∞</sup><em>f</em>(<em>x</em>) <em>d</em><em>x</em> = 1,</span></p>
+<p>以及与标准正态密度形式</p>
+<p><span class="math display">$$
+\frac{1}{\sqrt{2\pi}\sigma}
+e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+\nonumber
+$$</span></p>
+<p>进行配方比较。</p>
+<p>若概率密度函数可写为</p>
+<p><span class="math display">$$
+\begin{aligned}
+f(x)
+&amp;=
+A e^{ax^2+bx+c},
+\qquad
+x\in\mathbb R,
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>其中 <span class="math inline"><em>a</em> &lt; 0</span>，<span
+class="math inline"><em>A</em> ≠ 0</span>，则它仍对应某个正态分布的密度形式。</p>
+<p>核心原因是二次项可以配方：</p>
+<p><span class="math display">$$
+\begin{aligned}
+ax^2+bx+c
+&amp;=
+a\left(x+\frac{b}{2a}\right)^2
++
+c-\frac{b^2}{4a}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由于 <span
+class="math inline"><em>a</em> &lt; 0</span>，配方后指数部分具有正态密度中的平方衰减形式。</p>
+<blockquote>
+<p>[!question] 题目 已知随机变量 <span
+class="math inline"><em>X</em></span> 的概率密度函数为</p>
+<p><span class="math display">$$
+\begin{aligned}
+f(x)
+&amp;=
+ae^{-\frac{1}{4}x^2+x},
+\qquad x\in\mathbb R.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>用 <span class="math inline"><em>Φ</em>(<em>x</em>)</span> 表示</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{2-2\sqrt2&lt;X&lt;2+2\sqrt2\}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p><strong>题解：</strong></p>
+<p>先配方：</p>
+<p><span class="math display">$$
+\begin{aligned}
+-\frac{1}{4}x^2+x
+&amp;=
+-\frac{(x-2)^2}{4}+1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+f(x)
+&amp;=
+ae\cdot e^{-\frac{(x-2)^2}{4}}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>与正态密度对比可得 <span
+class="math inline"><em>X</em> ∼ <em>N</em>(2, 2)</span>，于是</p>
+<p><span class="math display">$$
+\begin{aligned}
+Z
+&amp;=
+\frac{X-2}{\sqrt2}
+\sim N(0,1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{2-2\sqrt2&lt;X&lt;2+2\sqrt2\}
+&amp;=
+P\{-2&lt;Z&lt;2\}\\
+&amp;=
+\Phi(2)-\Phi(-2)\\
+&amp;=
+2\Phi(2)-1.
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>
+<h5 id="正态分布函数相加">③ 正态分布函数相加</h5>
+<p>对标准正态分布函数，有</p>
+<p><span class="math display">$$
+\Phi(a)+\Phi(b)
+\begin{cases}
+&gt;1,&amp; a+b&gt;0,\\
+=1,&amp; a+b=0,\\
+&lt;1,&amp; a+b&lt;0.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>原因是</p>
+<p><span
+class="math display"><em>Φ</em>(−<em>x</em>) = 1 − <em>Φ</em>(<em>x</em>).</span></p>
+<p>若 <span
+class="math inline"><em>X</em> ∼ <em>N</em>(<em>μ</em>, <em>σ</em><sup>2</sup>)</span>，其分布函数为
+<span class="math inline"><em>F</em>(<em>x</em>)</span>，则</p>
+<p><span class="math display">$$
+F(a)+F(b)
+=
+\Phi\left(\frac{a-\mu}{\sigma}\right)
++
+\Phi\left(\frac{b-\mu}{\sigma}\right). \nonumber
+$$</span></p>
+<p>由于</p>
+<p><span class="math display">$$
+\frac{a-\mu}{\sigma}+\frac{b-\mu}{\sigma}
+=
+\frac{a+b-2\mu}{\sigma},
+\nonumber
+$$</span></p>
+<p>所以</p>
+<p><span class="math display">$$
+F(a)+F(b)
+\begin{cases}
+&gt;1,&amp; a+b&gt;2\mu,\\
+=1,&amp; a+b=2\mu,\\
+&lt;1,&amp; a+b&lt;2\mu.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>特别地，</p>
+<p><span
+class="math display"><em>F</em>(<em>μ</em> + <em>a</em>) + <em>F</em>(<em>μ</em> − <em>a</em>) = 1.</span></p>
+<h3 id="三总结">三、总结</h3>
+<h4 id="分布-1">（1）<span class="math inline">0 − 1</span> 分布</h4>
+<p><span class="math inline">0 − 1</span> 分布对应一次伯努利试验。</p>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X &amp;\sim B(1,p),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则其概率分布为</p>
+<p><span class="math display">$$
+\begin{array}{c|cc}
+X &amp; 0 &amp; 1\\
+\hline
+P &amp; 1-p &amp; p
+\end{array}
+\nonumber
+$$</span></p>
+<p>并且</p>
+<p><span class="math display">$$
+\begin{aligned}
+EX &amp;= p,\\
+DX &amp;= p(1-p).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="二项分布-1">（2）二项分布</h4>
+<p>二项分布对应 <span class="math inline"><em>n</em></span>
+次伯努利试验。</p>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X &amp;\sim B(n,p),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X=k\}
+&amp;=
+\binom{n}{k}p^k(1-p)^{n-k},\\
+k
+&amp;\in
+\{\,m\in\mathbb N\mid m\le n\,\}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>并且</p>
+<p><span class="math display">$$
+\begin{aligned}
+EX &amp;= np,\\
+DX &amp;= np(1-p).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="泊松分布">（3）泊松分布</h4>
+<p>泊松分布常用于描述自然数型计数变量。</p>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X &amp;\sim P(\lambda),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X=k\}
+&amp;=
+\frac{\lambda^k}{k!}e^{-\lambda},
+\qquad \lambda&gt;0,\\
+k
+&amp;\in \mathbb N.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>并且</p>
+<p><span class="math display">$$
+\begin{aligned}
+EX &amp;= \lambda,\\
+DX &amp;= \lambda.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="几何分布-1">（4）几何分布</h4>
+<p>几何分布对应伯努利试验中事件首次发生所需的试验次数。</p>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X &amp;\sim G(p),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X=k\}
+&amp;=
+p(1-p)^{k-1},\\
+k
+&amp;\in \mathbb N^*.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>并且</p>
+<p><span class="math display">$$
+\begin{aligned}
+EX &amp;= \frac{1}{p},\\
+DX &amp;= \frac{1-p}{p^2}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="超几何分布">（5）超几何分布</h4>
+<p>超几何分布常用于“不放回抽取”问题，例如产品抽检问题。</p>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X &amp;\sim H(N,M,n),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X=k\}
+&amp;=
+\frac{\binom{M}{k}\binom{N-M}{n-k}}{\binom{N}{n}},\\
+k
+&amp;\in
+\{\,m\in\mathbb N
+\mid
+\max(0,n-N+M)\le m\le \min(n,M)
+\,\}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>并且</p>
+<p><span class="math display">$$
+\begin{aligned}
+EX &amp;= \frac{nM}{N},\\
+DX
+&amp;=
+\frac{nM}{N}
+\left(1-\frac{M}{N}\right)
+\frac{N-n}{N-1}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="均匀分布">（6）均匀分布</h4>
+<p>均匀分布表示在区间 <span
+class="math inline">[<em>a</em>, <em>b</em>]</span> 上等概率取值。</p>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X &amp;\sim U(a,b),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则概率密度为</p>
+<p><span class="math display">$$
+\begin{aligned}
+f(x)
+&amp;=
+\begin{cases}
+\dfrac{1}{b-a},&amp; a\le x\le b,\\[6pt]
+0,&amp; \text{其他}.
+\end{cases}
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>分布函数为</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x)
+&amp;=
+\begin{cases}
+0,&amp; x&lt;a,\\[4pt]
+\dfrac{x-a}{b-a},&amp; a\le x&lt;b,\\[6pt]
+1,&amp; x\ge b.
+\end{cases}
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>并且</p>
+<p><span class="math display">$$
+\begin{aligned}
+EX &amp;= \frac{a+b}{2},\\
+DX &amp;= \frac{(b-a)^2}{12}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<blockquote>
+<p>[!question] 题目 设随机变量 <span
+class="math inline"><em>X</em></span> 在 <span
+class="math inline">[1, 6]</span> 上服从均匀分布，则 <span
+class="math inline"><em>X</em></span> 的概率密度为
+__________，分布函数为 __________，方程 <span
+class="math inline"><em>t</em><sup>2</sup> + <em>X</em><em>t</em> + 1 = 0</span>
+有实根的概率为 __________。</p>
+<p><strong>题解：</strong></p>
+<p>因为 <span
+class="math inline"><em>X</em> ∼ <em>U</em>(1, 6)</span>，所以概率密度为</p>
+<p><span class="math display">$$
+f(x)
+=
+\begin{cases}
+\dfrac{1}{5}, &amp; 1\le x\le 6,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>分布函数为</p>
+<p><span class="math display">$$
+F(x)
+=
+\begin{cases}
+0, &amp; x&lt;1,\\[6pt]
+\dfrac{x-1}{5}, &amp; 1\le x&lt;6,\\[8pt]
+1, &amp; x\ge 6.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>方程 <span
+class="math inline"><em>t</em><sup>2</sup> + <em>X</em><em>t</em> + 1 = 0</span>
+有实根，当且仅当判别式非负：</p>
+<p><span class="math display">$$
+\begin{aligned}
+\Delta
+&amp;=
+X^2-4\\
+&amp;\ge 0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由于 <span class="math inline"><em>X</em> ∈ [1, 6]</span>，所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+X^2-4\ge 0
+&amp;\Longleftrightarrow
+X\ge 2.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{t^2+Xt+1=0\text{ 有实根}\}
+&amp;=
+P\{X\ge 2\}\\
+&amp;=
+\int_{2}^{6}\frac{1}{5}\,dx\\
+&amp;=
+\frac{4}{5}.
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>
+<h4 id="指数分布">（7）指数分布</h4>
+<p>指数分布常用于描述寿命、等待时间等问题。</p>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X &amp;\sim E(\lambda),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则概率密度为</p>
+<p><span class="math display">$$
+\begin{aligned}
+f(x)
+&amp;=
+\begin{cases}
+\lambda e^{-\lambda x},&amp; x&gt;0,\quad \lambda&gt;0,\\
+0,&amp; x\le 0.
+\end{cases}
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>分布函数为</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x)
+&amp;=
+\begin{cases}
+1-e^{-\lambda x},&amp; x&gt;0,\\
+0,&amp; x\le 0.
+\end{cases}
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>并且</p>
+<p><span class="math display">$$
+\begin{aligned}
+EX &amp;= \frac{1}{\lambda},\\
+DX &amp;= \frac{1}{\lambda^2}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="一般正态分布">（8）一般正态分布</h4>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X &amp;\sim N(\mu,\sigma^2),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则概率密度为</p>
+<p><span class="math display">$$
+\begin{aligned}
+f(x)
+&amp;=
+\frac{1}{\sqrt{2\pi}\sigma}
+e^{-\frac{(x-\mu)^2}{2\sigma^2}},
+\qquad -\infty&lt;x&lt;+\infty.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>其分布函数满足</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(\mu) &amp;= \frac{1}{2},\\
+F(x)
+&amp;=
+\Phi\left(\frac{x-\mu}{\sigma}\right).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>并且</p>
+<p><span class="math display">$$
+\begin{aligned}
+EX &amp;= \mu,\\
+DX &amp;= \sigma^2.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="标准正态分布">标准正态分布</h4>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X &amp;\sim N(0,1),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则概率密度为</p>
+<p><span class="math display">$$
+\begin{aligned}
+\varphi(x)
+&amp;=
+\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>分布函数满足</p>
+<p><span class="math display">$$
+\begin{aligned}
+\Phi(0) &amp;= \frac{1}{2},\\
+\Phi(-x) &amp;= 1-\Phi(x).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>并且</p>
+<p><span class="math display">$$
+\begin{aligned}
+EX &amp;= 0,\\
+DX &amp;= 1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="正态分布的标准化-1">正态分布的标准化</h4>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X &amp;\sim N(\mu,\sigma^2),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{X-\mu}{\sigma}
+&amp;\sim N(0,1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h3 id="四无记忆性">四、无记忆性</h3>
+<h4 id="指数分布-看波动">（1）指数分布 (看波动)</h4>
+<p>若</p>
+<p><span
+class="math display"><em>X</em> ∼ <em>E</em>(<em>λ</em>),   <em>s</em>, <em>t</em> &gt; 0,</span></p>
+<p>则</p>
+<p><span
+class="math display"><em>P</em>{<em>X</em> &gt; <em>s</em> + <em>t</em> ∣ <em>X</em> &gt; <em>s</em>} = <em>P</em>{<em>X</em> &gt; <em>t</em>}.</span></p>
+<p>并且</p>
+<p><span
+class="math display"><em>P</em>{<em>X</em> ≤ <em>s</em> + <em>t</em> ∣ <em>X</em> &gt; <em>s</em>} = <em>P</em>{0 &lt; <em>X</em> ≤ <em>t</em>}.</span></p>
+<h4 id="几何分布-2">（2）几何分布</h4>
+<p>若</p>
+<p><span
+class="math display"><em>X</em> ∼ <em>G</em>(<em>p</em>),</span></p>
+<p>则对任意正整数 <span
+class="math inline"><em>m</em>, <em>n</em></span>，有</p>
+<p><span
+class="math display"><em>P</em>{<em>X</em> &gt; <em>m</em> + <em>n</em> ∣ <em>X</em> &gt; <em>m</em>} = <em>P</em>{<em>X</em> &gt; <em>n</em>}.</span></p>
+<p>并且</p>
+<p><span
+class="math display"><em>P</em>{<em>X</em> = <em>m</em> + <em>n</em> ∣ <em>X</em> &gt; <em>m</em>} = <em>P</em>{<em>X</em> = <em>n</em>} = (1 − <em>p</em>)<sup><em>n</em> − 1</sup><em>p</em>.</span></p>
+<h3
+id="五参数可加性同一分布族加到一起">五、参数可加性（同一分布族加到一起）</h3>
+<p>若 <span class="math inline"><em>X</em>, <em>Y</em></span>
+相互独立，则有以下参数可加性。</p>
+<h4 id="二项分布-2">（1）二项分布</h4>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X &amp;\sim B(m,p),\\
+Y &amp;\sim B(n,p),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则</p>
+<p><span class="math display">$$
+\begin{aligned}
+X+Y
+&amp;\sim B(m+n,p).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="泊松分布-1">（2）泊松分布</h4>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X &amp;\sim P(\lambda_1),\\
+Y &amp;\sim P(\lambda_2),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则</p>
+<p><span class="math display">$$
+\begin{aligned}
+X+Y
+&amp;\sim P(\lambda_1+\lambda_2).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="正态分布">（3）正态分布</h4>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X &amp;\sim N(\mu_1,\sigma_1^2),\\
+Y &amp;\sim N(\mu_2,\sigma_2^2),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则</p>
+<p><span class="math display">$$
+\begin{aligned}
+X+Y
+&amp;\sim
+N\left(
+\mu_1+\mu_2,\,
+\sigma_1^2+\sigma_2^2
+\right).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="卡方分布">（4）卡方分布</h4>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X &amp;\sim \chi^2(m),\\
+Y &amp;\sim \chi^2(n),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则</p>
+<p><span class="math display">$$
+\begin{aligned}
+X+Y
+&amp;\sim \chi^2(m+n).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="指数分布的最小值">（5）指数分布的最小值</h4>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X &amp;\sim E(\lambda),\\
+Y &amp;\sim E(\lambda),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>且 <span class="math inline"><em>X</em>, <em>Y</em></span>
+相互独立，则</p>
+<p><span class="math display">$$
+\begin{aligned}
+\min\{X,Y\}
+&amp;\sim E(2\lambda).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因为对 <span class="math inline"><em>x</em> &gt; 0</span>，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{\min(X,Y)&gt;x\}
+&amp;= P\{X&gt;x,\ Y&gt;x\}\\
+&amp;= P\{X&gt;x\}P\{Y&gt;x\}\\
+&amp;= e^{-\lambda x}e^{-\lambda x}\\
+&amp;= e^{-2\lambda x}.
+\end{aligned}
+\nonumber
+$$</span></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/2.%20%E4%B8%80%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/III.%20%E5%85%AB%E5%A4%A7%E5%88%86%E5%B8%83/">http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/2.%20%E4%B8%80%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/III.%20%E5%85%AB%E5%A4%A7%E5%88%86%E5%B8%83/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/2.%20%E4%B8%80%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/I.%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0%E5%92%8C%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6/2-2%20%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/" title="2-2 分布函数"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">2-2 分布函数</div></div><div class="info-2"><div class="info-item-1">（1）分布函数定义 设 X 为随机变量，对任意实数 x，称 F(x) = P{X ≤ x} 为 X 的分布函数。 （2）分布函数性质 ① 有界性与极限 $$ \begin{aligned} 0 &amp;\le F(x)\le 1,\\ -\infty &amp;&lt; x &lt;+\infty. \end{aligned} \nonumber $$ 并且 $$ \begin{aligned} F(-\infty) &amp;= 0,\\ F(+\infty) &amp;= 1. \end{aligned} \nonumber $$ ② 单调不减 当 x1 &lt; x2 时， $$ \begin{aligned} F(x_1) &amp;\le F(x_2). \end{aligned} \nonumber $$ ③ 右连续（等号跟着大于走） $$ \begin{aligned} F(x+0) &amp;= F(x). \end{aligned} \nonumber $$ ④ 左开右闭区间概率 $$ \begin{aligned} P\{a&lt;X\le b\} &amp...</div></div></div></a><a class="pagination-related" href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/2.%20%E4%B8%80%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/IV.%20%E4%B8%80%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%87%BD%E6%95%B0%E7%9A%84%E5%88%86%E5%B8%83/" title="IV. 一维随机变量函数的分布"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">IV. 一维随机变量函数的分布</div></div><div class="info-2"><div class="info-item-1">IV. 一维随机变量函数的分布 一、连续型随机变量函数的分布  [!question] 题目 【例 2.28】设随机变量 X 的概率分布为 $$ \begin{array}{c|cccc} X &amp; -1 &amp; 0 &amp; 1 &amp; 2\\ \hline P &amp; \dfrac{1}{4} &amp; \dfrac{1}{3} &amp; \dfrac{1}{6} &amp; \dfrac{1}{4} \end{array} \nonumber $$ 求 Y = X2 的概率分布。 题解： Y = X2 的可能取值为 0, 1, 4。 $$ \begin{aligned} P\{Y=0\} &amp;= P\{X=0\} = \frac{1}{3},\\ P\{Y=1\} &amp;= P\{X=-1\}+P\{X=1\}\\ &amp;= \frac{1}{4}+\frac{1}{6} = \frac{5}{12},\\ P\{Y=4\} &amp;= P\{X=2\} = \frac{1}{4}. \end{aligned} \nonumber $...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">John Doe</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E7%A6%BB%E6%95%A3"><span class="toc-number">1.</span> <span class="toc-text">一、离散</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%AF%E5%8A%AA%E5%88%A9bernoulli%E8%AF%95%E9%AA%8C"><span class="toc-number">1.1.</span> <span class="toc-text">（1）伯努利(Bernoulli)试验</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%86%E5%B8%83"><span class="toc-number">1.1.1.</span> <span class="toc-text">① 0-1 分布</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83"><span class="toc-number">1.1.2.</span> <span class="toc-text">② 二项分布</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%87%A0%E4%BD%95%E5%88%86%E5%B8%83"><span class="toc-number">1.1.3.</span> <span class="toc-text">③ 几何分布</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%8A%E6%9D%BEpossion%E5%88%86%E5%B8%83%E8%87%AA%E7%84%B6%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">（2）泊松(Possion)分布（自然数）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%8A%E6%9D%BE%E5%AE%9A%E7%90%86%E8%8B%A5"><span class="toc-number">1.2.1.</span> <span class="toc-text">泊松定理：若</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B6%85%E5%87%A0%E4%BD%95hypergeometric%E5%88%86%E5%B8%83%E5%8F%A4%E5%85%B8%E6%A6%82%E5%9E%8B"><span class="toc-number">1.3.</span> <span class="toc-text">（3）超几何(hypergeometric)分布（古典概型）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9E%E7%BB%AD3"><span class="toc-number">2.</span> <span class="toc-text">二、连续（3）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9D%87%E5%8C%80uniform%E5%88%86%E5%B8%83"><span class="toc-number">2.1.</span> <span class="toc-text">（1）均匀(uniform)分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E6%95%B0exponent%E5%88%86%E5%B8%83%E4%BD%BF%E7%94%A8%E5%AF%BF%E5%91%BD"><span class="toc-number">2.2.</span> <span class="toc-text">（2）指数(exponent)分布（使用寿命）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="toc-number">2.2.1.</span> <span class="toc-text">指数分布的性质</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E6%80%81normal%E5%88%86%E5%B8%83gauss-%E5%88%86%E5%B8%83"><span class="toc-number">2.3.</span> <span class="toc-text">（3）正态(normal)分布（Gauss
+分布）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84%E6%A0%87%E5%87%86%E5%8C%96"><span class="toc-number">2.3.1.</span> <span class="toc-text">① 正态分布的标准化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A3%E6%80%81%E5%AE%9A%E5%8F%82"><span class="toc-number">2.3.2.</span> <span class="toc-text">② 正态定参</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0%E7%9B%B8%E5%8A%A0"><span class="toc-number">2.3.3.</span> <span class="toc-text">③ 正态分布函数相加</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E6%80%BB%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">三、总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%B8%83-1"><span class="toc-number">3.1.</span> <span class="toc-text">（1）0 − 1 分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83-1"><span class="toc-number">3.2.</span> <span class="toc-text">（2）二项分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%8A%E6%9D%BE%E5%88%86%E5%B8%83"><span class="toc-number">3.3.</span> <span class="toc-text">（3）泊松分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%A0%E4%BD%95%E5%88%86%E5%B8%83-1"><span class="toc-number">3.4.</span> <span class="toc-text">（4）几何分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B6%85%E5%87%A0%E4%BD%95%E5%88%86%E5%B8%83"><span class="toc-number">3.5.</span> <span class="toc-text">（5）超几何分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83"><span class="toc-number">3.6.</span> <span class="toc-text">（6）均匀分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83"><span class="toc-number">3.7.</span> <span class="toc-text">（7）指数分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83"><span class="toc-number">3.8.</span> <span class="toc-text">（8）一般正态分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83"><span class="toc-number">3.9.</span> <span class="toc-text">标准正态分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84%E6%A0%87%E5%87%86%E5%8C%96-1"><span class="toc-number">3.10.</span> <span class="toc-text">正态分布的标准化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E6%97%A0%E8%AE%B0%E5%BF%86%E6%80%A7"><span class="toc-number">4.</span> <span class="toc-text">四、无记忆性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83-%E7%9C%8B%E6%B3%A2%E5%8A%A8"><span class="toc-number">4.1.</span> <span class="toc-text">（1）指数分布 (看波动)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%A0%E4%BD%95%E5%88%86%E5%B8%83-2"><span class="toc-number">4.2.</span> <span class="toc-text">（2）几何分布</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E5%8F%82%E6%95%B0%E5%8F%AF%E5%8A%A0%E6%80%A7%E5%90%8C%E4%B8%80%E5%88%86%E5%B8%83%E6%97%8F%E5%8A%A0%E5%88%B0%E4%B8%80%E8%B5%B7"><span class="toc-number">5.</span> <span class="toc-text">五、参数可加性（同一分布族加到一起）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83-2"><span class="toc-number">5.1.</span> <span class="toc-text">（1）二项分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%8A%E6%9D%BE%E5%88%86%E5%B8%83-1"><span class="toc-number">5.2.</span> <span class="toc-text">（2）泊松分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83"><span class="toc-number">5.3.</span> <span class="toc-text">（3）正态分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%A1%E6%96%B9%E5%88%86%E5%B8%83"><span class="toc-number">5.4.</span> <span class="toc-text">（4）卡方分布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC"><span class="toc-number">5.5.</span> <span class="toc-text">（5）指数分布的最小值</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1Part/" title="概率论与数理统计Part">概率论与数理统计Part</a><time datetime="2026-07-04T23:06:47.000Z" title="Created 2026-07-05 07:06:47">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/5.%20%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/V.%20%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/" title="V. 相关系数">V. 相关系数</a><time datetime="2026-07-04T23:00:26.000Z" title="Created 2026-07-05 07:00:26">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/5.%20%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/IV.%20%E5%8D%8F%E6%96%B9%E5%B7%AE/" title="IV. 协方差">IV. 协方差</a><time datetime="2026-07-04T22:49:45.000Z" title="Created 2026-07-05 06:49:45">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/5.%20%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/II.%20%E6%96%B9%E5%B7%AE/" title="II. 方差">II. 方差</a><time datetime="2026-07-04T22:41:18.000Z" title="Created 2026-07-05 06:41:18">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/5.%20%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/I.%20%E6%9C%9F%E6%9C%9B/" title="I. 期望">I. 期望</a><time datetime="2026-07-04T22:39:47.000Z" title="Created 2026-07-05 06:39:47">2026-07-05</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By John Doe</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

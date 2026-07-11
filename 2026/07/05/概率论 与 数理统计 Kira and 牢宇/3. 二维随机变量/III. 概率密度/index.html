@@ -1,0 +1,1211 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>III. 概率密度 | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="III. 概率密度 一、联合概率密度 联合概率密度的定义 设二维随机变量 (X, Y) 的联合分布函数为 F(x, y)。若存在非负可积函数 f(x, y)，对任意实数 x, y，有 $$ \begin{aligned} F(x,y) &amp;&#x3D; \displaystyle\int_{-\infty}^{x} \displaystyle\int_{-\infty}^{y} f(u,v)\,dv\">
+<meta property="og:type" content="article">
+<meta property="og:title" content="III. 概率密度">
+<meta property="og:url" content="http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/3.%20%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/III.%20%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="III. 概率密度 一、联合概率密度 联合概率密度的定义 设二维随机变量 (X, Y) 的联合分布函数为 F(x, y)。若存在非负可积函数 f(x, y)，对任意实数 x, y，有 $$ \begin{aligned} F(x,y) &amp;&#x3D; \displaystyle\int_{-\infty}^{x} \displaystyle\int_{-\infty}^{y} f(u,v)\,dv\">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
+<meta property="article:published_time" content="2026-07-04T21:25:23.000Z">
+<meta property="article:modified_time" content="2026-07-11T11:56:35.999Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "III. 概率密度",
+  "url": "http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/3.%20%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/III.%20%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6/",
+  "image": "http://example.com/img/butterfly-icon.png",
+  "datePublished": "2026-07-04T21:25:23.000Z",
+  "dateModified": "2026-07-11T11:56:35.999Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "John Doe",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/3.%20%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/III.%20%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.5"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'III. 概率密度',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.2"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Hexo</span></a><a class="nav-page-title" href="/"><span class="site-name">III. 概率密度</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">III. 概率密度</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-07-04T21:25:23.000Z" title="Created 2026-07-05 05:25:23">2026-07-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-07-11T11:56:35.999Z" title="Updated 2026-07-11 19:56:35">2026-07-11</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="iii.-概率密度"><span
+class="math inline"><em>I</em><em>I</em><em>I</em>.</span> 概率密度</h2>
+<h3 id="一联合概率密度">一、联合概率密度</h3>
+<h4 id="联合概率密度的定义">联合概率密度的定义</h4>
+<p>设二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的联合分布函数为
+<span
+class="math inline"><em>F</em>(<em>x</em>, <em>y</em>)</span>。若存在非负可积函数
+<span
+class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span>，对任意实数
+<span class="math inline"><em>x</em>, <em>y</em></span>，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x,y)
+&amp;=
+\displaystyle\int_{-\infty}^{x}
+\displaystyle\int_{-\infty}^{y}
+f(u,v)\,dv\,du,
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则称 <span class="math inline">(<em>X</em>, <em>Y</em>)</span>
+为二维连续型随机变量，称 <span
+class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span> 为 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span>
+的联合概率密度，简称概率密度。</p>
+<p>若 <span
+class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span>
+连续，则有</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{\partial^2 F(x,y)}{\partial x\partial y}
+&amp;=
+f(x,y).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>联合概率密度可以看成联合分布函数的二阶混合偏导。</p>
+<blockquote>
+<p>[!question] 题目 【例 3.7】设二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的分布函数为</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x,y)
+&amp;=
+A\left(B+\arctan\frac{x}{2}\right)
+\left(C+\arctan\frac{y}{3}\right).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>求 <span class="math inline">(<em>X</em>, <em>Y</em>)</span>
+的概率密度。</p>
+<p><strong>题解：</strong></p>
+<p>由分布函数边界条件，</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(+\infty,+\infty)
+&amp;=
+A\left(B+\frac{\pi}{2}\right)
+\left(C+\frac{\pi}{2}\right)
+=
+1,\\
+F(x,-\infty)
+&amp;=
+A\left(B+\arctan\frac{x}{2}\right)
+\left(C-\frac{\pi}{2}\right)
+=
+0,\\
+F(-\infty,y)
+&amp;=
+A\left(B-\frac{\pi}{2}\right)
+\left(C+\arctan\frac{y}{3}\right)
+=
+0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>故 <span class="math inline">$B=C=\dfrac{\pi}{2}$</span>，再由 <span
+class="math inline"><em>F</em>(+∞, +∞) = 1</span> 得 <span
+class="math inline">$A=\dfrac{1}{\pi^2}$</span>。</p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x,y)
+&amp;=
+\frac{1}{\pi^2}
+\left(\frac{\pi}{2}+\arctan\frac{x}{2}\right)
+\left(\frac{\pi}{2}+\arctan\frac{y}{3}\right).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>概率密度为</p>
+<p><span class="math display">$$
+\begin{aligned}
+f(x,y)
+&amp;=
+\frac{\partial^2 F(x,y)}{\partial x\partial y}\\
+&amp;=
+\frac{1}{\pi^2}
+\cdot
+\frac{2}{4+x^2}
+\cdot
+\frac{3}{9+y^2}\\
+&amp;=
+\frac{6}{\pi^2(4+x^2)(9+y^2)}.
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>
+<h4 id="联合概率密度的性质">联合概率密度的性质</h4>
+<p>联合概率密度满足非负性：</p>
+<p><span class="math display">$$
+\begin{aligned}
+f(x,y) &amp;\ge 0,\\
+x&amp;\in\mathbb R,\\
+y&amp;\in\mathbb R.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>满足规范性：</p>
+<p><span class="math display">$$
+\begin{aligned}
+\displaystyle\int_{-\infty}^{+\infty}
+\displaystyle\int_{-\infty}^{+\infty}
+f(x,y)\,dx\,dy
+&amp;=1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>若 <span class="math inline"><em>D</em></span> 为平面区域，则</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{(X,Y)\in D\}
+&amp;=
+\displaystyle\iint_D f(x,y)\,dx\,dy.
+\end{aligned}
+\nonumber
+$$</span></p>
+<blockquote>
+<p>PS:
+<strong>非负性与规范性</strong>是判断联合概率密度的<strong>充要条件</strong>；区域积分用于计算二维随机变量落入某个区域内的概率。</p>
+</blockquote>
+<h4 id="常用套路">常用套路</h4>
+<p>求 <span class="math inline">(<em>X</em>, <em>Y</em>)</span>
+取值落在区域 <span class="math inline"><em>D</em></span> 内的概率时，将
+<span class="math inline"><em>X</em>, <em>Y</em></span> 分别改写为 <span
+class="math inline"><em>x</em>, <em>y</em></span>，对联合概率密度作二重积分：</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{(X,Y)\in D\}
+&amp;=
+\displaystyle\iint_D f(x,y)\,dx\,dy.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>实际计算时，核心步骤为：</p>
+<ol type="1">
+<li>先确定区域 <span class="math inline"><em>D</em></span>；</li>
+<li>再根据区域 <span class="math inline"><em>D</em></span>
+写出积分上下限；</li>
+<li>最后对联合概率密度 <span
+class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span>
+作二重积分。</li>
+</ol>
+<p><span class="math display">$$
+\boxed{\begin{aligned}
+\text{求 }(X,Y)\text{ 取值概率}
+&amp;\Longrightarrow
+\text{对联合概率密度作二重积分}.
+\end{aligned}}
+\nonumber
+$$</span></p>
+<blockquote>
+<p>[!question] 题目 设二维连续型随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的概率密度为</p>
+<p><span class="math display">$$
+f(x,y)
+=
+\begin{cases}
+Cxy, &amp; 0\le x\le 1,\ 0\le y\le 1,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>求：</p>
+<p>（1）常数 <span class="math inline"><em>C</em></span>；</p>
+<p>（2）<span
+class="math inline"><em>P</em>{<em>X</em> + <em>Y</em> &lt; 1}</span>；</p>
+<p>（3）分布函数 <span
+class="math inline"><em>F</em>(<em>x</em>, <em>y</em>)</span>。</p>
+<p><strong>题解：</strong></p>
+<p>由规范性可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\int_0^1\int_0^1 Cxy\,dy\,dx
+&amp;=
+1,\\
+C\int_0^1x\,dx\int_0^1y\,dy
+&amp;=
+1,\\
+C\cdot\frac{1}{2}\cdot\frac{1}{2}
+&amp;=
+1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>故 <span class="math inline"><em>C</em> = 4</span>，于是</p>
+<p><span class="math display">$$
+f(x,y)
+=
+\begin{cases}
+4xy, &amp; 0\le x\le 1,\ 0\le y\le 1,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>计算 <span
+class="math inline"><em>P</em>{<em>X</em> + <em>Y</em> &lt; 1}</span>
+时，积分区域为单位正方形内直线 <span
+class="math inline"><em>x</em> + <em>y</em> = 1</span>
+下方的三角形区域，因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X+Y&lt;1\}
+&amp;=
+\int_0^1\int_0^{1-x}4xy\,dy\,dx\\
+&amp;=
+\int_0^1
+4x\cdot\frac{(1-x)^2}{2}\,dx\\
+&amp;=
+2\int_0^1x(1-x)^2\,dx\\
+&amp;=
+2\int_0^1(x-2x^2+x^3)\,dx\\
+&amp;=
+2\left(
+\frac{1}{2}
+-
+\frac{2}{3}
++
+\frac{1}{4}
+\right)\\
+&amp;=
+\frac{1}{6}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>下面求分布函数。由定义，</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x,y)
+&amp;=
+P\{X\le x,\ Y\le y\}\\
+&amp;=
+\int_{-\infty}^{x}
+\int_{-\infty}^{y}
+f(u,v)\,dv\,du.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由于 <span
+class="math inline"><em>f</em>(<em>u</em>, <em>v</em>)</span>
+只在正方形区域 <span
+class="math inline">0 ≤ <em>u</em> ≤ 1, 0 ≤ <em>v</em> ≤ 1</span>
+内非零，因此需要根据点 <span
+class="math inline">(<em>x</em>, <em>y</em>)</span>
+相对于该正方形的位置分类。</p>
+<p>若 <span class="math inline"><em>x</em> &lt; 0</span> 或 <span
+class="math inline"><em>y</em> &lt; 0</span>，积分区域与密度非零区域没有交集，所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x,y)
+&amp;=
+0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>若 <span
+class="math inline">0 ≤ <em>x</em> &lt; 1, 0 ≤ <em>y</em> &lt; 1</span>，积分区域为矩形
+<span
+class="math inline">[0, <em>x</em>] × [0, <em>y</em>]</span>，所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x,y)
+&amp;=
+\int_0^x\int_0^y4uv\,dv\,du\\
+&amp;=
+4\int_0^xu\,du\int_0^yv\,dv\\
+&amp;=
+4\cdot\frac{x^2}{2}\cdot\frac{y^2}{2}\\
+&amp;=
+x^2y^2.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>若 <span
+class="math inline">0 ≤ <em>x</em> &lt; 1, <em>y</em> ≥ 1</span>，纵向已经覆盖完整区间
+<span class="math inline">0 ≤ <em>v</em> ≤ 1</span>，横向只覆盖到 <span
+class="math inline"><em>x</em></span>，所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x,y)
+&amp;=
+\int_0^x\int_0^14uv\,dv\,du\\
+&amp;=
+4\int_0^xu\,du\int_0^1v\,dv\\
+&amp;=
+4\cdot\frac{x^2}{2}\cdot\frac{1}{2}\\
+&amp;=
+x^2.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>若 <span
+class="math inline"><em>x</em> ≥ 1, 0 ≤ <em>y</em> &lt; 1</span>，横向已经覆盖完整区间
+<span class="math inline">0 ≤ <em>u</em> ≤ 1</span>，纵向只覆盖到 <span
+class="math inline"><em>y</em></span>，所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x,y)
+&amp;=
+\int_0^1\int_0^y4uv\,dv\,du\\
+&amp;=
+4\int_0^1u\,du\int_0^yv\,dv\\
+&amp;=
+4\cdot\frac{1}{2}\cdot\frac{y^2}{2}\\
+&amp;=
+y^2.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>若 <span
+class="math inline"><em>x</em> ≥ 1, <em>y</em> ≥ 1</span>，积分区域已经覆盖整个密度非零区域，所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x,y)
+&amp;=
+\int_0^1\int_0^14uv\,dv\,du\\
+&amp;=
+1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>综上，</p>
+<p><span class="math display">$$
+F(x,y)
+=
+\begin{cases}
+0, &amp; x&lt;0\text{ 或 }y&lt;0,\\[6pt]
+x^2y^2, &amp; 0\le x&lt;1,\ 0\le y&lt;1,\\[6pt]
+x^2, &amp; 0\le x&lt;1,\ y\ge 1,\\[6pt]
+y^2, &amp; x\ge 1,\ 0\le y&lt;1,\\[6pt]
+1, &amp; x\ge 1,\ y\ge 1.
+\end{cases}
+\nonumber
+$$</span></p>
+</blockquote>
+<h3 id="二边缘概率密度">二、边缘概率密度</h3>
+<h4 id="边缘概率密度的定义">边缘概率密度的定义</h4>
+<p>设二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的联合概率密度为
+<span
+class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span>，分别称</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)
+&amp;=
+\displaystyle\int_{-\infty}^{+\infty}
+f(x,y)\,dy
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>和</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_Y(y)
+&amp;=
+\displaystyle\int_{-\infty}^{+\infty}
+f(x,y)\,dx
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>为 <span class="math inline">(<em>X</em>, <em>Y</em>)</span> 关于
+<span class="math inline"><em>X</em></span> 和 <span
+class="math inline"><em>Y</em></span> 的边缘概率密度。</p>
+<p><span class="math display">$$
+\boxed{\begin{aligned}
+\text{求 }X\text{ 的边缘密度}
+&amp;\Longrightarrow
+\text{联合概率密度对 }y\text{ 积分},\\
+\text{求 }Y\text{ 的边缘密度}
+&amp;\Longrightarrow
+\text{联合概率密度对 }x\text{ 积分}.
+\end{aligned}}
+\nonumber
+$$</span></p>
+<h4 id="边缘概率密度的理解">边缘概率密度的理解</h4>
+<p>联合概率密度 <span
+class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span>
+描述的是二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span>
+在平面区域中的分布情况。</p>
+<p>求边缘概率密度，本质上是把二维密度压缩成一维密度。</p>
+<p>因此：</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)
+&amp;=
+\text{固定 }x\text{ 后，对所有可能的 }y\text{ 求和},\\
+f_Y(y)
+&amp;=
+\text{固定 }y\text{ 后，对所有可能的 }x\text{ 求和}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>连续型随机变量中，“求和”对应积分，所以有</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)
+&amp;=
+\displaystyle\int f(x,y)\,dy,\\
+f_Y(y)
+&amp;=
+\displaystyle\int f(x,y)\,dx.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="求边缘概率密度的步骤">求边缘概率密度的步骤</h4>
+<p>求 <span class="math inline"><em>X</em></span> 的边缘概率密度时：</p>
+<ol type="1">
+<li>先确定 <span class="math inline"><em>x</em></span> 的取值范围；</li>
+<li>固定一个 <span class="math inline"><em>x</em></span>；</li>
+<li>沿 <span class="math inline"><em>y</em></span>
+轴方向穿过联合密度的正区域；</li>
+<li>根据穿过区域确定 <span class="math inline"><em>y</em></span>
+的积分范围；</li>
+<li>对 <span class="math inline"><em>y</em></span> 积分。</li>
+</ol>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)
+&amp;=
+\displaystyle\int_{\text{对应的 }y\text{ 范围}}
+f(x,y)\,dy.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>求 <span class="math inline"><em>Y</em></span> 的边缘概率密度时：</p>
+<ol type="1">
+<li>先确定 <span class="math inline"><em>y</em></span> 的取值范围；</li>
+<li>固定一个 <span class="math inline"><em>y</em></span>；</li>
+<li>沿 <span class="math inline"><em>x</em></span>
+轴方向穿过联合密度的正区域；</li>
+<li>根据穿过区域确定 <span class="math inline"><em>x</em></span>
+的积分范围；</li>
+<li>对 <span class="math inline"><em>x</em></span> 积分。</li>
+</ol>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_Y(y)
+&amp;=
+\displaystyle\int_{\text{对应的 }x\text{ 范围}}
+f(x,y)\,dx.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>thus</p>
+<p><span class="math display">$$
+\begin{aligned}
+\text{联合概率密度}
+&amp;\Longrightarrow
+\text{边缘概率密度},\\
+\text{二维积分}
+&amp;\Longrightarrow
+\text{一维积分}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p><span class="math display">$$
+\begin{aligned}
+\text{求 }X\text{ 边缘}
+&amp;\Longrightarrow
+\text{对 }y\text{ 积分},\\
+\text{求 }Y\text{ 边缘}
+&amp;\Longrightarrow
+\text{对 }x\text{ 积分}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<blockquote>
+<p>[!question] 题目 【例 3.9】设二维连续型随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的概率密度为</p>
+<p><span class="math display">$$
+f(x,y)
+=
+\begin{cases}
+kxy, &amp; 0\le x\le y\le 1,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>求：</p>
+<p>（1）常数 <span class="math inline"><em>k</em></span>；</p>
+<p>（2）边缘概率密度 <span
+class="math inline"><em>f</em><sub><em>X</em></sub>(<em>x</em>)</span>
+与 <span
+class="math inline"><em>f</em><sub><em>Y</em></sub>(<em>y</em>)</span>。</p>
+<p><strong>题解：</strong></p>
+<p>由规范性可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\int_0^1\int_x^1 kxy\,dy\,dx
+&amp;=
+1,\\
+\frac{k}{2}
+\int_0^1 x(1-x^2)\,dx
+&amp;=
+1,\\
+\frac{k}{8}
+&amp;=
+1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>故 <span class="math inline"><em>k</em> = 8</span>。</p>
+<p>对 <span class="math inline">0 &lt; <em>x</em> &lt; 1</span>，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)
+&amp;=
+\int_x^1 8xy\,dy\\
+&amp;=
+4x(1-x^2).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+f_X(x)
+=
+\begin{cases}
+4x(1-x^2), &amp; 0&lt;x&lt;1,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>对 <span class="math inline">0 &lt; <em>y</em> &lt; 1</span>，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_Y(y)
+&amp;=
+\int_0^y 8xy\,dx\\
+&amp;=
+4y^3.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+f_Y(y)
+=
+\begin{cases}
+4y^3, &amp; 0&lt;y&lt;1,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+</blockquote>
+<hr />
+<blockquote>
+<p>[!question] 题目 【例 3.10】设二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 服从 <span
+class="math inline"><em>G</em></span> 上的均匀分布，其中 <span
+class="math inline"><em>G</em></span> 是由 <span
+class="math inline"><em>x</em> − <em>y</em> = 0</span>、<span
+class="math inline"><em>x</em> + <em>y</em> = 2</span> 与 <span
+class="math inline"><em>y</em> = 0</span>
+围成的三角形区域。求边缘概率密度 <span
+class="math inline"><em>f</em><sub><em>X</em></sub>(<em>x</em>)</span>。</p>
+<p><strong>题解：</strong></p>
+<p>区域 <span class="math inline"><em>G</em></span> 的面积为 <span
+class="math inline">1</span>，所以</p>
+<p><span class="math display">$$
+f(x,y)
+=
+\begin{cases}
+1, &amp; (x,y)\in G,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>由区域 <span class="math inline"><em>G</em></span> 可知，固定 <span
+class="math inline"><em>x</em></span> 时，</p>
+<p><span class="math display">$$
+0&lt;y&lt;
+\begin{cases}
+x, &amp; 0&lt;x&lt;1,\\[4pt]
+2-x, &amp; 1&lt;x&lt;2.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)
+&amp;=
+\int_{-\infty}^{+\infty}f(x,y)\,dy\\
+&amp;=
+\begin{cases}
+\displaystyle\int_0^x 1\,dy, &amp; 0&lt;x&lt;1,\\[8pt]
+\displaystyle\int_0^{2-x}1\,dy, &amp; 1&lt;x&lt;2,\\[8pt]
+0, &amp; \text{其他}
+\end{cases}\\
+&amp;=
+\begin{cases}
+x, &amp; 0&lt;x&lt;1,\\[6pt]
+2-x, &amp; 1&lt;x&lt;2,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>
+<hr />
+<blockquote>
+<p>[!question] 题目 【例 3.14】设二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的概率密度为</p>
+<p><span class="math display">$$
+f(x,y)
+=
+\begin{cases}
+3e^{-(x+3y)}, &amp; x&gt;0,\ y&gt;0,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>分别求 <span class="math inline"><em>X</em></span> 和 <span
+class="math inline"><em>Y</em></span> 的边缘概率密度 <span
+class="math inline"><em>f</em><sub><em>X</em></sub>(<em>x</em>), <em>f</em><sub><em>Y</em></sub>(<em>y</em>)</span>。</p>
+<p><strong>题解：</strong></p>
+<p>对 <span class="math inline"><em>x</em> &gt; 0</span>，</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)
+&amp;=
+\int_0^{+\infty}3e^{-(x+3y)}\,dy\\
+&amp;=
+e^{-x}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+f_X(x)
+=
+\begin{cases}
+e^{-x}, &amp; x&gt;0,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>对 <span class="math inline"><em>y</em> &gt; 0</span>，</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_Y(y)
+&amp;=
+\int_0^{+\infty}3e^{-(x+3y)}\,dx\\
+&amp;=
+3e^{-3y}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+f_Y(y)
+=
+\begin{cases}
+3e^{-3y}, &amp; y&gt;0,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+</blockquote>
+<p>这道题两变量是[[IV.
+随机变量的独立性#随机变量相互独立的定义|独立的]]。 ###
+三、条件概率密度</p>
+<h4 id="条件概率密度的定义">条件概率密度的定义</h4>
+<p>设二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的联合概率密度为
+<span
+class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span>。</p>
+<p>称</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_{X\mid Y}(x\mid y)
+&amp;=
+\frac{f(x,y)}{f_Y(y)}
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>为在 <span class="math inline"><em>Y</em> = <em>y</em></span>
+的条件下，<span class="math inline"><em>X</em></span>
+的条件概率密度。</p>
+<p>称</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_{Y\mid X}(y\mid x)
+&amp;=
+\frac{f(x,y)}{f_X(x)}
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>为在 <span class="math inline"><em>X</em> = <em>x</em></span>
+的条件下，<span class="math inline"><em>Y</em></span>
+的条件概率密度。</p>
+<p>因此，条件概率密度可以理解为：</p>
+<p><span class="math display">$$
+\begin{aligned}
+\text{条件概率密度}
+&amp;=
+\frac{\text{联合概率密度}}{\text{对应边缘概率密度}}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="求条件概率密度的基本流程">求条件概率密度的基本流程</h4>
+<p>求条件概率密度时，通常先求边缘概率密度，再作比值：</p>
+<p><span class="math display">$$
+\begin{aligned}
+\text{联合概率密度}
+&amp;\Longrightarrow
+\text{边缘概率密度}\\
+&amp;\Longrightarrow
+\text{条件概率密度}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_{X\mid Y}(x\mid y)
+&amp;=
+\frac{f(x,y)}{f_Y(y)},\\
+f_{Y\mid X}(y\mid x)
+&amp;=
+\frac{f(x,y)}{f_X(x)}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="两点注意">两点注意</h4>
+<p>求 <span
+class="math inline"><em>f</em><sub><em>X</em> ∣ <em>Y</em></sub>(<em>x</em> ∣ <em>y</em>)</span>
+时，分母是 <span
+class="math inline"><em>f</em><sub><em>Y</em></sub>(<em>y</em>)</span>，因此<strong>必须先保证</strong></p>
+<p><span class="math display">$$
+\begin{aligned}
+f_Y(y)&amp;&gt;0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>这一步用于确定 <span class="math inline"><em>y</em></span>
+的可取范围。</p>
+<p>然后把 <span class="math inline"><em>y</em></span>
+看成常数，在联合密度的正区域内确定 <span
+class="math inline"><em>x</em></span> 的可取范围。</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_{X\mid Y}(x\mid y)
+&amp;=
+\begin{cases}
+\dfrac{f(x,y)}{f_Y(y)},
+&amp; (x,y)\in D,\ f_Y(y)&gt;0,\\[8pt]
+0,
+&amp; \text{其他}.
+\end{cases}
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>求 <span
+class="math inline"><em>f</em><sub><em>Y</em> ∣ <em>X</em></sub>(<em>y</em> ∣ <em>x</em>)</span>
+时，分母是 <span
+class="math inline"><em>f</em><sub><em>X</em></sub>(<em>x</em>)</span>，因此必须先保证</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)&amp;&gt;0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>这一步用于确定 <span class="math inline"><em>x</em></span>
+的可取范围。</p>
+<p>然后把 <span class="math inline"><em>x</em></span>
+看成常数，在联合密度的正区域内确定 <span
+class="math inline"><em>y</em></span> 的可取范围。</p>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_{Y\mid X}(y\mid x)
+&amp;=
+\begin{cases}
+\dfrac{f(x,y)}{f_X(x)},
+&amp; (x,y)\in D,\ f_X(x)&gt;0,\\[8pt]
+0,
+&amp; \text{其他}.
+\end{cases}
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+\text{已知 }Y=y\text{，求 }X\text{ 的条件密度}
+&amp;\Longrightarrow
+\frac{f(x,y)}{f_Y(y)},\\
+\text{已知 }X=x\text{，求 }Y\text{ 的条件密度}
+&amp;\Longrightarrow
+\frac{f(x,y)}{f_X(x)}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<blockquote>
+<p>[!note] 对连续型随机变量，条件为 <span
+class="math inline"><em>X</em> = <em>x</em></span> 时，由于 <span
+class="math inline"><em>P</em>{<em>X</em> = <em>x</em>} = 0</span>，应使用条件概率密度。</p>
+<p>若对固定的 <span class="math inline"><em>x</em></span>，有 <span
+class="math inline"><em>f</em><sub><em>X</em></sub>(<em>x</em>) &gt; 0</span>，则</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_{Y|X}(y|x)
+&amp;=
+\frac{f(x,y)}{f_X(x)}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\left\{Y\le \frac{1}{3}\mid X=\frac{1}{2}\right\}
+&amp;=
+\int_{-\infty}^{1/3}
+f_{Y|X}\left(y\mid \frac{1}{2}\right)\,dy\\
+&amp;=
+\int_{-\infty}^{1/3}
+\frac{f\left(\frac{1}{2},y\right)}
+{f_X\left(\frac{1}{2}\right)}
+\,dy.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>若条件是一个事件，例如 <span class="math inline">$X\ge
+\dfrac{1}{2}$</span>，则使用条件概率公式：</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\left\{Y\le \frac{1}{3}\mid X\ge \frac{1}{2}\right\}
+&amp;=
+\frac{
+P\left\{Y\le \frac{1}{3},\ X\ge \frac{1}{2}\right\}
+}{
+P\left\{X\ge \frac{1}{2}\right\}
+}\\
+&amp;=
+\frac{
+P\left\{Y\le \frac{1}{3},\ X\ge \frac{1}{2}\right\}
+}{
+\displaystyle\int_{1/2}^{+\infty}f_X(x)\,dx
+}.
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>
+<blockquote>
+<p>[!question] 题目 【例 3.11】设二维连续型随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的概率密度为</p>
+<p><span class="math display">$$
+f(x,y)
+=
+\begin{cases}
+6, &amp; 0&lt;x^2&lt;y&lt;x&lt;1,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>求：</p>
+<p>（1）条件概率密度 <span
+class="math inline"><em>f</em><sub><em>Y</em>|<em>X</em></sub>(<em>y</em>|<em>x</em>)</span>；</p>
+<p>（2）<span class="math inline">$P\left\{Y\le\dfrac{1}{3}\mid
+X=\dfrac{1}{2}\right\}$</span>；</p>
+<p>（3）<span class="math inline">$P\left\{Y\le\dfrac{1}{3}\mid
+X&gt;\dfrac{1}{2}\right\}$</span>。</p>
+<p><strong>题解：</strong></p>
+<p>先求 <span class="math inline"><em>X</em></span> 的边缘概率密度。对
+<span class="math inline">0 &lt; <em>x</em> &lt; 1</span>，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)
+&amp;=
+\int_{x^2}^{x}6\,dy\\
+&amp;=
+6(x-x^2)\\
+&amp;=
+6x(1-x).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+f_X(x)
+=
+\begin{cases}
+6x(1-x), &amp; 0&lt;x&lt;1,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>在 <span class="math inline">0 &lt; <em>x</em> &lt; 1</span>
+条件下，</p>
+<p><span class="math display">$$
+f_{Y|X}(y|x)
+=
+\frac{f(x,y)}{f_X(x)}
+=
+\begin{cases}
+\dfrac{1}{x(1-x)}, &amp; x^2&lt;y&lt;x,\\[8pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>当 <span class="math inline">$X=\dfrac{1}{2}$</span> 时，<span
+class="math inline">$\dfrac{1}{4}&lt;Y&lt;\dfrac{1}{2}$</span>，且</p>
+<p><span class="math display">$$
+f_{Y|X}\left(y\mid \frac{1}{2}\right)
+=
+4.
+\nonumber
+$$</span></p>
+<p>所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\left\{Y\le\frac{1}{3}\mid X=\frac{1}{2}\right\}
+&amp;=
+\int_{1/4}^{1/3}4\,dy\\
+&amp;=
+\frac{1}{3}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>对于 <span class="math inline">$P\left\{Y\le\dfrac{1}{3}\mid
+X&gt;\dfrac{1}{2}\right\}$</span>，先算分母：</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\left\{X&gt;\frac{1}{2}\right\}
+&amp;=
+\int_{1/2}^{1}6x(1-x)\,dx\\
+&amp;=
+\frac{1}{2}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>再算分子。由 <span
+class="math inline">$x^2&lt;y\le\dfrac{1}{3}$</span> 得 <span
+class="math inline">$x&lt;\dfrac{1}{\sqrt3}$</span>，所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\left\{Y\le\frac{1}{3},\ X&gt;\frac{1}{2}\right\}
+&amp;=
+\int_{1/2}^{1/\sqrt3}
+\int_{x^2}^{1/3}6\,dy\,dx\\
+&amp;=
+\int_{1/2}^{1/\sqrt3}6\left(\frac{1}{3}-x^2\right)\,dx\\
+&amp;=
+\frac{4}{3\sqrt3}-\frac{3}{4}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\left\{Y\le\frac{1}{3}\mid X&gt;\frac{1}{2}\right\}
+&amp;=
+\frac{
+\dfrac{4}{3\sqrt3}-\dfrac{3}{4}
+}{
+\dfrac{1}{2}
+}\\
+&amp;=
+\frac{8\sqrt3}{9}-\frac{3}{2}.
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>
+<blockquote>
+<p>[!question] 题目 【例 3.12】已知随机变量 <span
+class="math inline"><em>X</em></span> 的概率密度为</p>
+<p><span class="math display">$$
+f_X(x)
+=
+\begin{cases}
+3x^2, &amp; 0&lt;x&lt;1,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>在给定 <span class="math inline"><em>X</em> = <em>x</em></span>，其中
+<span class="math inline">0 &lt; <em>x</em> &lt; 1</span>
+的条件下，<span class="math inline"><em>Y</em></span>
+的条件概率密度为</p>
+<p><span class="math display">$$
+f_{Y|X}(y|x)
+=
+\begin{cases}
+\dfrac{3y^2}{x^3}, &amp; 0&lt;y&lt;x,\\[8pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>求 <span class="math inline">(<em>X</em>, <em>Y</em>)</span>
+的联合概率密度。</p>
+<p><strong>题解：</strong></p>
+<p>由条件密度公式，</p>
+<p><span class="math display">$$
+\begin{aligned}
+f(x,y)
+&amp;=
+f_{Y|X}(y|x)\,f_X(x).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>在 <span
+class="math inline">0 &lt; <em>y</em> &lt; <em>x</em> &lt; 1</span>
+时，</p>
+<p><span class="math display">$$
+\begin{aligned}
+f(x,y)
+&amp;=
+\frac{3y^2}{x^3}\cdot 3x^2\\
+&amp;=
+\frac{9y^2}{x}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+f(x,y)
+=
+\begin{cases}
+\dfrac{9y^2}{x}, &amp; 0&lt;y&lt;x&lt;1,\\[8pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/3.%20%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/III.%20%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6/">http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/3.%20%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/III.%20%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/3.%20%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/I.%20%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/" title="I. 分布函数"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">I. 分布函数</div></div><div class="info-2"><div class="info-item-1">I. 分布函数  对于此章的题目，判定积分范围总是需要多加练习的。  赏综合题一枚： ψ(｀∇´)ψ  [!question] 题目 【例 3.16】设二维连续型随机变量 (X, Y) 的概率密度为 $$ f(x,y) = \begin{cases} Ae^{-(x+y)}, &amp; 0&lt;x&lt;y,\\[6pt] 0, &amp; \text{其他}. \end{cases} \nonumber $$ 求： （1）常数 A； （2）$P\left\{X+Y&gt;1,\ X&lt;\dfrac{1}{2}\right\}$； （3）边缘概率密度 fX(x), fY(y)； （4）条件概率密度 fY|X(y|x)； （5）判断 X, Y 的独立性。 题解： 先看非零区域： $$ \begin{aligned} D &amp;= \{\,(x,y)\mid 0&lt;x&lt;y\,\}. \end{aligned} \nonumber $$ 即 x &gt; 0，且 y 在直线 y = x 的上方，所以对固定的 x，有 y ∈ (x, +∞)。 由规范性可得 $$ \...</div></div></div></a><a class="pagination-related" href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/3.%20%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/IV.%20%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E7%8B%AC%E7%AB%8B%E6%80%A7/" title="IV. 随机变量的独立性"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">IV. 随机变量的独立性</div></div><div class="info-2"><div class="info-item-1">IV. 随机变量的独立性 随机变量相互独立的定义 设二维随机变量 (X, Y) 的联合分布函数为 F(x, y)，边缘分布函数分别为 FX(x) 和 FY(y)。若对任意实数 x, y，有 F(x, y) = FX(x)FY(y), 则称随机变量 X 与 Y 相互独立。 即： X 与 Y 相互独立 ⇔ F(x, y) = FX(x)FY(y). 对于二维离散型随机变量，有 X 与 Y 相互独立 ⇔ pij = pi⋅p⋅j.  [!question] 题目 【例 3.1】设随机变量 (X, Y) 具有分布函数 $$ F(x,y) = \begin{cases} 1-e^{-x}-e^{-y}+e^{-x-y-\lambda xy}, &amp; x\ge 0,\ y\ge 0,\\[6pt] 0, &amp; \text{其他}, \end{cases} \qquad \lambda&gt;0. \nonumber $$ （Ⅰ）求边缘分布函数 FX(x) 和 FY(y)。 （Ⅱ）判断 X 和 Y 的独立性。 题解： $$ F_X(x) = \lim_{y\to+\infty}F(...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">John Doe</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#iii.-%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6"><span class="toc-number">1.</span> <span class="toc-text">III. 概率密度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E8%81%94%E5%90%88%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6"><span class="toc-number">1.1.</span> <span class="toc-text">一、联合概率密度</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%81%94%E5%90%88%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.1.</span> <span class="toc-text">联合概率密度的定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%81%94%E5%90%88%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="toc-number">1.1.2.</span> <span class="toc-text">联合概率密度的性质</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%A5%97%E8%B7%AF"><span class="toc-number">1.1.3.</span> <span class="toc-text">常用套路</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E8%BE%B9%E7%BC%98%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6"><span class="toc-number">1.2.</span> <span class="toc-text">二、边缘概率密度</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%B9%E7%BC%98%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">边缘概率密度的定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%B9%E7%BC%98%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">1.2.2.</span> <span class="toc-text">边缘概率密度的理解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%82%E8%BE%B9%E7%BC%98%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.2.3.</span> <span class="toc-text">求边缘概率密度的步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.2.4.</span> <span class="toc-text">条件概率密度的定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%82%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B"><span class="toc-number">1.2.5.</span> <span class="toc-text">求条件概率密度的基本流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%A4%E7%82%B9%E6%B3%A8%E6%84%8F"><span class="toc-number">1.2.6.</span> <span class="toc-text">两点注意</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1Part/" title="概率论与数理统计Part">概率论与数理统计Part</a><time datetime="2026-07-04T23:06:47.000Z" title="Created 2026-07-05 07:06:47">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/5.%20%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/V.%20%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0/" title="V. 相关系数">V. 相关系数</a><time datetime="2026-07-04T23:00:26.000Z" title="Created 2026-07-05 07:00:26">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/5.%20%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/IV.%20%E5%8D%8F%E6%96%B9%E5%B7%AE/" title="IV. 协方差">IV. 协方差</a><time datetime="2026-07-04T22:49:45.000Z" title="Created 2026-07-05 06:49:45">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/5.%20%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/II.%20%E6%96%B9%E5%B7%AE/" title="II. 方差">II. 方差</a><time datetime="2026-07-04T22:41:18.000Z" title="Created 2026-07-05 06:41:18">2026-07-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/5.%20%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/I.%20%E6%9C%9F%E6%9C%9B/" title="I. 期望">I. 期望</a><time datetime="2026-07-04T22:39:47.000Z" title="Created 2026-07-05 06:39:47">2026-07-05</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By John Doe</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.2</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.5</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.5"></script><script src="/js/main.js?v=5.5.5"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
