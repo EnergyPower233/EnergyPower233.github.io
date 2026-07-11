@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="IV. 参数估计 一、估计量  [!估计量与估计值的定义] 设总体分布函数 F(x; θ) 的形式已知，其中 θ 是待估参数。 设 X1, X2, …, Xn 为总体 X 的一个样本，其样本值为 x1, x2, …, xn。 点估计的思想是：构造一个适当的统计量 θ̂ &#x3D; θ̂(X1, X2, …, Xn)，并用它的观察值 θ̂ &#x3D; θ̂(x1, x2, …, xn) 作为未知参数 θ 的近似值。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2026/06/14/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/6.%20%E7%BB%9F%E8%AE%A1%E5%88%9D%E6%AD%A5/IV.%20%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="IV. 参数估计 一、估计量  [!估计量与估计值的定义] 设总体分布函数 F(x; θ) 的形式已知，其中 θ 是待估参数。 设 X1, X2, …, Xn 为总体 X 的一个样本，其样本值为 x1, x2, …, xn。 点估计的思想是：构造一个适当的统计量 θ̂ &#x3D; θ̂(X1, X2, …, Xn)，并用它的观察值 θ̂ &#x3D; θ̂(x1, x2, …, xn) 作为未知参数 θ 的近似值。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-06-14T14:28:17.000Z">
+<meta property="article:modified_time" content="2026-06-14T14:28:17.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2026/06/14/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/6.%20%E7%BB%9F%E8%AE%A1%E5%88%9D%E6%AD%A5/IV.%20%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/06/14/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/6.%20%E7%BB%9F%E8%AE%A1%E5%88%9D%E6%AD%A5/IV.%20%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2026-06-14 22:28:17" itemprop="dateCreated datePublished" datetime="2026-06-14T22:28:17+08:00">2026-06-14</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="iv.-参数估计"><span
+class="math inline"><em>I</em><em>V</em>.</span> 参数估计</h2>
+<h3 id="一估计量">一、估计量</h3>
+<blockquote>
+<p>[!估计量与估计值的定义]</p>
+<p>设总体分布函数 <span
+class="math inline"><em>F</em>(<em>x</em>; <em>θ</em>)</span>
+的形式已知，其中 <span class="math inline"><em>θ</em></span>
+是待估参数。</p>
+<p>设 <span
+class="math inline"><em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, …, <em>X</em><sub><em>n</em></sub></span>
+为总体 <span class="math inline"><em>X</em></span>
+的一个样本，其样本值为 <span
+class="math inline"><em>x</em><sub>1</sub>, <em>x</em><sub>2</sub>, …, <em>x</em><sub><em>n</em></sub></span>。</p>
+<p>点估计的思想是：构造一个适当的统计量 <span
+class="math inline"><em>θ̂</em> = <em>θ̂</em>(<em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, …, <em>X</em><sub><em>n</em></sub>)</span>，并用它的观察值
+<span
+class="math inline"><em>θ̂</em> = <em>θ̂</em>(<em>x</em><sub>1</sub>, <em>x</em><sub>2</sub>, …, <em>x</em><sub><em>n</em></sub>)</span>
+作为未知参数 <span class="math inline"><em>θ</em></span> 的近似值。</p>
+<p>称 <span
+class="math inline"><em>θ̂</em> = <em>θ̂</em>(<em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, …, <em>X</em><sub><em>n</em></sub>)</span>
+为 <span class="math inline"><em>θ</em></span> 的估计量，称 <span
+class="math inline"><em>θ̂</em> = <em>θ̂</em>(<em>x</em><sub>1</sub>, <em>x</em><sub>2</sub>, …, <em>x</em><sub><em>n</em></sub>)</span>
+为 <span class="math inline"><em>θ</em></span> 的估计值。</p>
+</blockquote>
+<p>构造[[I. 统计基础知识#（3）统计量|统计量]]</p>
+<p><span class="math display">$$
+\begin{aligned}
+\hat\theta
+&amp;=
+\hat\theta(X_1,X_2,\ldots,X_n)
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>来估计[[I. 统计基础知识#（1）|总体]]分布中的未知参数 <span
+class="math inline"><em>θ</em></span>，则称 <span
+class="math inline"><em>θ̂</em>(<em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, …, <em>X</em><sub><em>n</em></sub>)</span>
+为 <span class="math inline"><em>θ</em></span> 的估计量。</p>
+<p>当样本观测值为 <span
+class="math inline"><em>x</em><sub>1</sub>, <em>x</em><sub>2</sub>, …, <em>x</em><sub><em>n</em></sub></span>
+时，<span
+class="math inline"><em>θ̂</em>(<em>x</em><sub>1</sub>, <em>x</em><sub>2</sub>, …, <em>x</em><sub><em>n</em></sub>)</span>
+称为 <span class="math inline"><em>θ</em></span> 的估计值。</p>
+<h3 id="二矩估计">二、矩估计</h3>
+<h4 id="基本思想">基本思想</h4>
+<p>矩估计的思想是：用样本矩去估计总体矩。</p>
+<p>即令总体矩等于样本矩，通过解方程得到未知参数的估计量。</p>
+<h4 id="原点矩">原点矩</h4>
+<p>总体的 <span class="math inline"><em>k</em></span> 阶原点矩为</p>
+<p><span class="math display">$$
+\begin{aligned}
+EX^k.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>[[I. 统计基础知识#（4）样本 k 阶原点矩|样本的 k 阶原点矩]]为</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{1}{n}
+\sum_{i=1}^{n}X_i^k.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>矩估计时可令</p>
+<p><span class="math display">$$
+\begin{aligned}
+EX^k
+&amp;=
+\frac{1}{n}
+\sum_{i=1}^{n}X_i^k,
+\\
+k
+&amp;=
+1,2,\ldots
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由此解出未知参数的矩估计量。</p>
+<h4 id="中心矩">中心矩</h4>
+<p>总体的 <span class="math inline"><em>k</em></span> 阶中心矩为</p>
+<p><span class="math display">$$
+\begin{aligned}
+E(X-EX)^k.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>[[I. 统计基础知识#（5）样本 k 阶中心矩|样本的 k 阶中心矩]]为</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{1}{n}
+\sum_{i=1}^{n}
+(X_i-\overline X)^k.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>矩估计时也可令</p>
+<p><span class="math display">$$
+\begin{aligned}
+E(X-EX)^k
+&amp;=
+\frac{1}{n}
+\sum_{i=1}^{n}
+(X_i-\overline X)^k,
+\\
+k
+&amp;=
+1,2,\ldots
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由此解出未知参数的矩估计量。</p>
+<h4 id="一个未知参数的情形">一个未知参数的情形</h4>
+<p>若总体分布中只有一个未知参数 <span
+class="math inline"><em>θ</em></span>，通常只需要列一个矩方程。</p>
+<p>常用做法是令</p>
+<p><span class="math display">$$
+\begin{aligned}
+EX
+&amp;=
+\overline X.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由该方程解出 <span class="math inline"><em>θ</em></span>，即可得到
+<span class="math inline"><em>θ</em></span> 的矩估计量<span
+class="math inline"><em>θ̂</em>.</span></p>
+<h4 id="两个未知参数的情形">两个未知参数的情形</h4>
+<p>若总体分布中有两个未知参数，例如 <span
+class="math inline"><em>α</em>, <em>θ</em></span>，则通常需要列两个矩方程。</p>
+<p>可令</p>
+<p><span class="math display">$$
+\begin{cases}
+EX=\overline X,\\[6pt]
+EX^2=\dfrac{1}{n}\displaystyle\sum_{i=1}^{n}X_i^2.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>由这两个方程解出 <span
+class="math inline"><em>α</em>, <em>θ</em></span>，即可得到 <span
+class="math inline"><em>α</em>, <em>θ</em></span> 的矩估计量<span
+class="math inline"><em>α̂</em>, <em>θ̂</em>.</span></p>
+<p>也可以根据题目形式选用中心矩方程，例如</p>
+<p><span class="math display">$$
+\begin{cases}
+EX=\overline X,\\[6pt]
+D(X)=\dfrac{1}{n}\displaystyle\sum_{i=1}^{n}(X_i-\overline X)^2.
+\end{cases}
+\nonumber
+$$</span></p>
+<h4 id="矩估计的依据">矩估计的依据</h4>
+<p>矩估计依靠大数定律。</p>
+<p>样本矩会依概率收敛到总体矩，即</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{1}{n}
+\sum_{i=1}^{n}X_i^k
+&amp;\xrightarrow{P}
+EX^k.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此用样本矩代替总体矩是合理的。</p>
+<blockquote>
+<p>注： 1）矩估计使用的前提是有关的总体矩存在；使用中心矩和原点矩均可。
+2）用样本一阶原点矩 <span class="math inline">$\overline X$</span>
+估计期望 <span
+class="math inline"><em>E</em><em>X</em></span>，用样本二阶中心矩 <span
+class="math inline">$\dfrac{1}{n}\sum_{i=1}^{n}(X_i-\overline
+X)^2$</span> 估计方差 <span
+class="math inline"><em>D</em><em>X</em></span>。</p>
+</blockquote>
+<h3 id="三最大似然估计">三、最大似然估计</h3>
+<h4 id="基本思想-1">基本思想</h4>
+<p>最大似然估计的思想是：选择使已经发生的样本值出现概率最大的参数。</p>
+<p>即选取使似然函数取得最大值的参数 <span
+class="math inline"><em>θ</em></span>，作为 <span
+class="math inline"><em>θ</em></span> 的最大似然估计。</p>
+<blockquote>
+<p>[!所见即最大]
+一位猎人与一名学生去野外打猎，突然一只兔子从面前经过，只听一声枪响，兔子应声倒下。</p>
+<p>问：这一枪是谁打中的？</p>
+<p>若只知道兔子被打中，而猎人命中兔子的概率明显大于学生，则更倾向于推测这一枪是猎人打中的。</p>
+</blockquote>
+<h4 id="似然函数">似然函数</h4>
+<p>对样本值 <span
+class="math inline"><em>x</em><sub>1</sub>, <em>x</em><sub>2</sub>, …, <em>x</em><sub><em>n</em></sub></span>
+构造似然函数 <span
+class="math inline"><em>L</em>(<em>θ</em>)</span>。</p>
+<p>若总体为离散型随机变量，则</p>
+<p><span class="math display">$$
+\begin{aligned}
+L(\theta)
+&amp;=
+\prod_{i=1}^{n}p(x_i;\theta).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>若总体为连续型随机变量，则</p>
+<p><span class="math display">$$
+\begin{aligned}
+L(\theta)
+&amp;=
+\prod_{i=1}^{n}f(x_i;\theta).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>其中，<span
+class="math inline"><em>p</em>(<em>x</em><sub><em>i</em></sub>; <em>θ</em>)</span>
+为概率函数，<span
+class="math inline"><em>f</em>(<em>x</em><sub><em>i</em></sub>; <em>θ</em>)</span>
+为概率密度函数。</p>
+<h4 id="多总体写似然函数">多总体写似然函数</h4>
+<p><strong>若样本来自多个总体，或者题目中有多组样本，则似然函数要把所有样本值对应的概率或密度全部乘起来。</strong></p>
+<p>即不管有多少组样本，都应写成</p>
+<p><span class="math display">$$
+\begin{aligned}
+L(\theta)
+&amp;=
+\prod
+\text{每一个样本值对应的概率或密度}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>例如，若第一组样本来自密度 <span
+class="math inline"><em>f</em>(<em>x</em>; <em>θ</em>)</span>，第二组样本来自密度
+<span
+class="math inline"><em>g</em>(<em>y</em>; <em>θ</em>)</span>，则</p>
+<p><span class="math display">$$
+\begin{aligned}
+L(\theta)
+&amp;=
+\prod_{i=1}^{m}f(x_i;\theta)
+\prod_{j=1}^{n}g(y_j;\theta).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="求最大似然估计的一般步骤">求最大似然估计的一般步骤</h4>
+<h5 id="步骤">步骤</h5>
+<h6 id="构造似然函数">① 构造似然函数</h6>
+<p>设样本观测值为 <span
+class="math inline"><em>x</em><sub>1</sub>, <em>x</em><sub>2</sub>, …, <em>x</em><sub><em>n</em></sub></span>，则似然函数为</p>
+<p><span class="math display">$$
+\begin{aligned}
+L(\theta)
+&amp;=
+L(x_1,x_2,\ldots,x_n;\theta)\\
+&amp;=
+\prod_{i=1}^{n}f(x_i;\theta).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h6 id="取对数">② 取对数</h6>
+<p>对似然函数取对数，得对数似然函数</p>
+<p><span class="math display">$$
+\begin{aligned}
+\ln L(\theta)
+&amp;=
+\ln L(x_1,x_2,\ldots,x_n;\theta)\\
+&amp;=
+\sum_{i=1}^{n}\ln f(x_i;\theta).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h6 id="求似然方程">③ 求似然方程</h6>
+<p>若只有一个未知参数 <span
+class="math inline"><em>θ</em></span>，则解似然方程</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{d\ln L(\theta)}{d\theta}
+&amp;=
+0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>若方程有解，则所得解为 <span class="math inline"><em>θ</em></span>
+的最大似然估计量，记作 <span class="math inline"><em>θ̂</em></span>。</p>
+<p>若有两个未知参数 <span
+class="math inline"><em>θ</em><sub>1</sub>, <em>θ</em><sub>2</sub></span>，则解似然方程组</p>
+<p><span class="math display">$$
+\begin{cases}
+\dfrac{\partial\ln L(\theta_1,\theta_2)}{\partial\theta_1}=0,\\[10pt]
+\dfrac{\partial\ln L(\theta_1,\theta_2)}{\partial\theta_2}=0.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>若方程组有解，则所得解为 <span
+class="math inline"><em>θ</em><sub>1</sub>, <em>θ</em><sub>2</sub></span>
+的最大似然估计量，记作 <span
+class="math inline"><em>θ̂</em><sub>1</sub>, <em>θ̂</em><sub>2</sub></span>。</p>
+<h4 id="注意端点问题">注意端点问题</h4>
+<p>若由 <span class="math inline">$\dfrac{d\ln
+L(\theta)}{d\theta}=0$</span>
+无法得到参数，或者参数取值范围有端点限制，则最大值可能出现在区间端点。</p>
+<p>最大似然估计不一定总由驻点给出，也可能由左端点或右端点给出。</p>
+<h3 id="四估计量的评价标准">四、估计量的评价标准</h3>
+<h4 id="无偏性">1. 无偏性</h4>
+<p>设 <span class="math inline"><em>θ̂</em></span> 为 <span
+class="math inline"><em>θ</em></span> 的估计量。若 <span
+class="math inline"><em>E</em><em>θ̂</em> = <em>θ</em></span> , 则称
+<span class="math inline"><em>θ̂</em></span> 为 <span
+class="math inline"><em>θ</em></span> 的无偏估计量。</p>
+<p><strong>判断无偏性就是对估计量取期望，看结果是否等于被估计的参数。</strong></p>
+<h4 id="有效性">2. 有效性</h4>
+<p>设 <span
+class="math inline"><em>θ̂</em><sub>1</sub>, <em>θ̂</em><sub>2</sub></span>
+都是 <span class="math inline"><em>θ</em></span> 的无偏估计量。</p>
+<p>若 <span
+class="math inline"><em>D</em>(<em>θ̂</em><sub>1</sub>) &lt; <em>D</em>(<em>θ̂</em><sub>2</sub>)</span>，则称
+<span class="math inline"><em>θ̂</em><sub>1</sub></span> 比 <span
+class="math inline"><em>θ̂</em><sub>2</sub></span> 有效。</p>
+<p><strong>无偏估计量之间比较有效性就是比较方差，方差越小越有效。</strong></p>
+<h4 id="一致性">3. 一致性</h4>
+<p>设 <span class="math inline"><em>θ̂</em></span> 为 <span
+class="math inline"><em>θ</em></span> 的估计量。</p>
+<p>若 <span
+class="math inline">$\hat\theta\xrightarrow{P}\theta$</span>，则称 <span
+class="math inline"><em>θ̂</em></span> 为 <span
+class="math inline"><em>θ</em></span> 的一致估计量，也称相合估计量。</p>
+<p>即对任意 <span class="math inline"><em>ε</em> &gt; 0</span>，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+\lim_{n\to\infty}
+P\{|\hat\theta-\theta|&lt;\varepsilon\}
+&amp;=
+1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>等价地，</p>
+<p><span class="math display">$$
+\begin{aligned}
+\lim_{n\to\infty}
+P\{|\hat\theta-\theta|\ge \varepsilon\}
+&amp;=
+0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p><strong>样本量越大，估计量越大概率靠近真参数。</strong></p>
+<p>一致性的常用依据是[[III. 大数定律#② 辛钦大数定律|辛钦大数定律]]：</p>
+<p><span class="math display">$$
+\begin{aligned}
+\overline X
+&amp;\xrightarrow{P}
+\mu.
+\end{aligned}
+\nonumber
+$$</span></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2026/06/14/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/6.%20%E7%BB%9F%E8%AE%A1%E5%88%9D%E6%AD%A5/II.%20%E4%B8%89%E5%A4%A7%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2026/07/02/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/1.%20%E4%BA%8B%E4%BB%B6%E4%B8%8E%E6%A6%82%E7%8E%87/I.%20%E4%BA%8B%E4%BB%B6/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#iv.-%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1"><span class="nav-number">1.</span> <span class="nav-text">IV. 参数估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BC%B0%E8%AE%A1%E9%87%8F"><span class="nav-number">1.1.</span> <span class="nav-text">一、估计量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E7%9F%A9%E4%BC%B0%E8%AE%A1"><span class="nav-number">1.2.</span> <span class="nav-text">二、矩估计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="nav-number">1.2.1.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E7%82%B9%E7%9F%A9"><span class="nav-number">1.2.2.</span> <span class="nav-text">原点矩</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%AD%E5%BF%83%E7%9F%A9"><span class="nav-number">1.2.3.</span> <span class="nav-text">中心矩</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E6%9C%AA%E7%9F%A5%E5%8F%82%E6%95%B0%E7%9A%84%E6%83%85%E5%BD%A2"><span class="nav-number">1.2.4.</span> <span class="nav-text">一个未知参数的情形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E6%9C%AA%E7%9F%A5%E5%8F%82%E6%95%B0%E7%9A%84%E6%83%85%E5%BD%A2"><span class="nav-number">1.2.5.</span> <span class="nav-text">两个未知参数的情形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A9%E4%BC%B0%E8%AE%A1%E7%9A%84%E4%BE%9D%E6%8D%AE"><span class="nav-number">1.2.6.</span> <span class="nav-text">矩估计的依据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1"><span class="nav-number">1.3.</span> <span class="nav-text">三、最大似然估计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%BC%E7%84%B6%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.2.</span> <span class="nav-text">似然函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E6%80%BB%E4%BD%93%E5%86%99%E4%BC%BC%E7%84%B6%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.3.</span> <span class="nav-text">多总体写似然函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B1%82%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1%E7%9A%84%E4%B8%80%E8%88%AC%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.3.4.</span> <span class="nav-text">求最大似然估计的一般步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E4%BC%BC%E7%84%B6%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.4.1.1.</span> <span class="nav-text">① 构造似然函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%8F%96%E5%AF%B9%E6%95%B0"><span class="nav-number">1.3.4.1.2.</span> <span class="nav-text">② 取对数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%B1%82%E4%BC%BC%E7%84%B6%E6%96%B9%E7%A8%8B"><span class="nav-number">1.3.4.1.3.</span> <span class="nav-text">③ 求似然方程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%AB%AF%E7%82%B9%E9%97%AE%E9%A2%98"><span class="nav-number">1.3.5.</span> <span class="nav-text">注意端点问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E4%BC%B0%E8%AE%A1%E9%87%8F%E7%9A%84%E8%AF%84%E4%BB%B7%E6%A0%87%E5%87%86"><span class="nav-number">1.4.</span> <span class="nav-text">四、估计量的评价标准</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A0%E5%81%8F%E6%80%A7"><span class="nav-number">1.4.1.</span> <span class="nav-text">1. 无偏性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E6%95%88%E6%80%A7"><span class="nav-number">1.4.2.</span> <span class="nav-text">2. 有效性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-number">1.4.3.</span> <span class="nav-text">3. 一致性</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

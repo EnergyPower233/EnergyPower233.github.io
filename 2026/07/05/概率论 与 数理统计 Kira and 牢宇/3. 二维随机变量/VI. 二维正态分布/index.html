@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="VI. 二维正态分布 一、二维正态分布的定义 设二维随机变量 (X, Y) 的联合概率密度为 $$ f(x,y) &#x3D; \frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}} \exp\left\{ -\frac{1}{2(1-\rho^2)} \left[ \frac{(x-\mu_1)^2}{\sigma_1^2} - \frac{2\rho(x-\mu_1)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/3.%20%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/VI.%20%E4%BA%8C%E7%BB%B4%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="VI. 二维正态分布 一、二维正态分布的定义 设二维随机变量 (X, Y) 的联合概率密度为 $$ f(x,y) &#x3D; \frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}} \exp\left\{ -\frac{1}{2(1-\rho^2)} \left[ \frac{(x-\mu_1)^2}{\sigma_1^2} - \frac{2\rho(x-\mu_1)">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-07-04T21:36:13.000Z">
+<meta property="article:modified_time" content="2026-07-04T21:36:13.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/3.%20%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/VI.%20%E4%BA%8C%E7%BB%B4%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/3.%20%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/VI.%20%E4%BA%8C%E7%BB%B4%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2026-07-05 05:36:13" itemprop="dateCreated datePublished" datetime="2026-07-05T05:36:13+08:00">2026-07-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="vi.-二维正态分布"><span
+class="math inline"><em>V</em><em>I</em>.</span> 二维正态分布</h2>
+<h3 id="一二维正态分布的定义">一、二维正态分布的定义</h3>
+<p>设二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的联合概率密度为</p>
+<p><span class="math display">$$
+f(x,y)
+=
+\frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^2}}
+\exp\left\{
+-\frac{1}{2(1-\rho^2)}
+\left[
+\frac{(x-\mu_1)^2}{\sigma_1^2}
+-
+\frac{2\rho(x-\mu_1)(y-\mu_2)}{\sigma_1\sigma_2}
++
+\frac{(y-\mu_2)^2}{\sigma_2^2}
+\right]
+\right\}.
+\nonumber
+$$</span></p>
+<p>参数满足</p>
+<p><span
+class="math display"><em>σ</em><sub>1</sub> &gt; 0, <em>σ</em><sub>2</sub> &gt; 0, |<em>ρ</em>| &lt; 1.</span></p>
+<p>称 <span class="math inline">(<em>X</em>, <em>Y</em>)</span>
+服从参数为 <span
+class="math inline"><em>μ</em><sub>1</sub>, <em>μ</em><sub>2</sub>, <em>σ</em><sub>1</sub><sup>2</sup>, <em>σ</em><sub>2</sub><sup>2</sup>, <em>ρ</em></span>
+的二维正态分布，记作</p>
+<p><span
+class="math display">(<em>X</em>, <em>Y</em>) ∼ <em>N</em>(<em>μ</em><sub>1</sub>, <em>μ</em><sub>2</sub>; <em>σ</em><sub>1</sub><sup>2</sup>, <em>σ</em><sub>2</sub><sup>2</sup>; <em>ρ</em>).</span></p>
+<h4 id="三步定五参">三步定五参</h4>
+<p>识别二维正态密度时，常用以下步骤确定五个参数：</p>
+<p>第一步，看指数中平方项与一次项，通过配方识别 <span
+class="math inline"><em>μ</em><sub>1</sub>, <em>μ</em><sub>2</sub></span>。</p>
+<p>第二步，看 <span
+class="math inline"><em>x</em><sup>2</sup>, <em>x</em><em>y</em>, <em>y</em><sup>2</sup></span>
+项的系数，判断是否有相关系数 <span
+class="math inline"><em>ρ</em></span>；若无交叉项，通常对应 <span
+class="math inline"><em>ρ</em> = 0</span>。</p>
+<p>第三步，与标准形式</p>
+<p><span class="math display">$$
+-\frac{1}{2(1-\rho^2)}
+\left[
+\frac{(x-\mu_1)^2}{\sigma_1^2}
+-
+\frac{2\rho(x-\mu_1)(y-\mu_2)}{\sigma_1\sigma_2}
++
+\frac{(y-\mu_2)^2}{\sigma_2^2}
+\right]
+\nonumber
+$$</span></p>
+<p>比较，确定 <span
+class="math inline"><em>σ</em><sub>1</sub><sup>2</sup>, <em>σ</em><sub>2</sub><sup>2</sup></span>。</p>
+<h3 id="二二维正态分布的性质">二、二维正态分布的性质</h3>
+<p>设</p>
+<p><span class="math display">$$
+\begin{aligned}
+(X,Y)
+&amp;\sim N(\mu_1,\mu_2;\sigma_1^2,\sigma_2^2;\rho).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="边缘分布">（1）边缘分布</h4>
+<p>二维正态分布的两个边缘分布均为一维正态分布，即</p>
+<p><span class="math display">$$
+\begin{aligned}
+X &amp;\sim N(\mu_1,\sigma_1^2),\\
+Y &amp;\sim N(\mu_2,\sigma_2^2).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)
+&amp;=
+\displaystyle\int_{-\infty}^{+\infty}f(x,y)\,dy\\
+&amp;=
+\frac{1}{\sqrt{2\pi}\sigma_1}
+e^{-\frac{(x-\mu_1)^2}{2\sigma_1^2}},
+\end{aligned}
+\nonumber
+$$</span></p>
+<p><span class="math display">$$
+\begin{aligned}
+f_Y(y)
+&amp;=
+\displaystyle\int_{-\infty}^{+\infty}f(x,y)\,dx\\
+&amp;=
+\frac{1}{\sqrt{2\pi}\sigma_2}
+e^{-\frac{(y-\mu_2)^2}{2\sigma_2^2}}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>注意：二维正态分布可以推出两个边缘分布为一维正态分布，但反之不一定成立。</p>
+<p>若 <span class="math inline"><em>X</em>, <em>Y</em></span>
+相互独立，且</p>
+<p><span class="math display">$$
+\begin{aligned}
+X &amp;\sim N(\mu_1,\sigma_1^2),\\
+Y &amp;\sim N(\mu_2,\sigma_2^2),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则 <span class="math inline">(<em>X</em>, <em>Y</em>)</span>
+服从二维正态分布，<strong>且此时</strong> <span
+class="math inline"><em>ρ</em> = 0</span>. 这是 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span>
+相互独立的充要条件。</p>
+<h4 id="独立性与不相关">（2）独立性与不相关</h4>
+<p>对二维正态分布，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+X\text{ 与 }Y\text{ 相互独立}
+&amp;\Longleftrightarrow
+X\text{ 与 }Y\text{ 不相关}\\
+&amp;\Longleftrightarrow
+\rho=0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>证明如下：</p>
+<p>若 <span class="math inline"><em>X</em>, <em>Y</em></span>
+相互独立，则</p>
+<p><span class="math display">$$
+\begin{aligned}
+f(x,y)
+&amp;=f_X(x)f_Y(y).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由边缘密度可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)f_Y(y)
+&amp;=
+\frac{1}{\sqrt{2\pi}\sigma_1}
+e^{-\frac{(x-\mu_1)^2}{2\sigma_1^2}}
+\cdot
+\frac{1}{\sqrt{2\pi}\sigma_2}
+e^{-\frac{(y-\mu_2)^2}{2\sigma_2^2}}\\
+&amp;=
+\frac{1}{2\pi\sigma_1\sigma_2}
+\exp\left\{
+-\frac12
+\left[
+\frac{(x-\mu_1)^2}{\sigma_1^2}
++
+\frac{(y-\mu_2)^2}{\sigma_2^2}
+\right]
+\right\}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>这正是二维正态密度中 <span class="math inline"><em>ρ</em> = 0</span>
+的形式，因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+f(x,y)=f_X(x)f_Y(y)
+&amp;\Longleftrightarrow
+\rho=0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="线性组合">（3）线性组合</h4>
+<p>对任意常数 <span
+class="math inline"><em>a</em>, <em>b</em></span>，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+aX+bY
+&amp;\sim
+N\left(
+a\mu_1+b\mu_2,\,
+a^2\sigma_1^2+b^2\sigma_2^2+2ab\rho\sigma_1\sigma_2
+\right).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>其期望为</p>
+<p><span class="math display">$$
+\begin{aligned}
+E(aX+bY)
+&amp;=aEX+bEY\\
+&amp;=a\mu_1+b\mu_2.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>其方差为</p>
+<p><span class="math display">$$
+\begin{aligned}
+D(aX+bY)
+&amp;=a^2DX+b^2DY+2ab\operatorname{Cov}(X,Y)\\
+&amp;=a^2\sigma_1^2+b^2\sigma_2^2
++2ab\rho\sigma_1\sigma_2.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>其中</p>
+<p><span class="math display">$$
+\begin{aligned}
+\rho
+&amp;=
+\frac{\operatorname{Cov}(X,Y)}{\sigma_1\sigma_2},
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+\operatorname{Cov}(X,Y)
+&amp;=\rho\sigma_1\sigma_2.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>特别地，若 <span class="math inline"><em>X</em>, <em>Y</em></span>
+相互独立，则 <span class="math inline"><em>ρ</em> = 0</span>，于是</p>
+<p><span class="math display">$$
+\begin{aligned}
+aX+bY
+&amp;\sim
+N\left(
+a\mu_1+b\mu_2,\,
+a^2\sigma_1^2+b^2\sigma_2^2
+\right).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="可逆线性变换">（4）可逆线性变换</h4>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+U&amp;=aX+bY,\\
+V&amp;=cX+dY,
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+\begin{pmatrix}
+U\\
+V
+\end{pmatrix}
+&amp;=
+\begin{pmatrix}
+a&amp;b\\
+c&amp;d
+\end{pmatrix}
+\begin{pmatrix}
+X\\
+Y
+\end{pmatrix},
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>且</p>
+<p><span class="math display">$$
+\begin{aligned}
+\begin{vmatrix}
+a&amp;b\\
+c&amp;d
+\end{vmatrix}
+&amp;\ne 0,
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则 <span class="math inline">(<em>U</em>, <em>V</em>)</span>
+仍服从二维正态分布。</p>
+<p>即二维正态分布经过可逆线性变换后仍为二维正态分布。</p>
+<h4 id="总结">总结</h4>
+<ol type="1">
+<li>二维正态分布的两个边缘分布均为一维正态分布，反之不一定成立。</li>
+<li>对二维正态分布，<span class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span>
+相互独立与不相关互为充要条件。</li>
+<li>二维正态分布中，任意线性组合 <span
+class="math inline"><em>a</em><em>X</em> + <em>b</em><em>Y</em></span>
+仍服从一维正态分布。</li>
+<li>若 <span class="math inline"><em>X</em>, <em>Y</em></span>
+相互独立且分别服从正态分布，则 <span
+class="math inline"><em>a</em><em>X</em> + <em>b</em><em>Y</em></span>
+仍服从正态分布。</li>
+<li>二维正态分布经过可逆线性变换后仍服从二维正态分布。</li>
+</ol>
+<blockquote>
+<p>[!question] 题目 【例 3.28】设随机变量 <span
+class="math inline"><em>X</em></span> 和 <span
+class="math inline"><em>Y</em></span> 相互独立，且分别服从正态分布 <span
+class="math inline"><em>N</em>(1, <em>σ</em><sup>2</sup>)</span> 和
+<span
+class="math inline"><em>N</em>(0, 2<em>σ</em><sup>2</sup>)</span>，其中
+<span class="math inline"><em>σ</em></span> 是未知参数且 <span
+class="math inline"><em>σ</em> &gt; 0</span>。记 <span
+class="math inline"><em>Z</em> = <em>X</em> − <em>Y</em></span>，求
+<span class="math inline"><em>Z</em></span> 的概率密度 <span
+class="math inline"><em>f</em><sub><em>Z</em></sub>(<em>z</em>)</span>。</p>
+<p><strong>题解：</strong></p>
+<p>由正态分布的线性组合性质，</p>
+<p><span class="math display">$$
+\begin{aligned}
+Z
+&amp;=
+X-Y\\
+&amp;\sim
+N(1,3\sigma^2).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+f_Z(z)
+=
+\frac{1}{\sqrt{6\pi}\sigma}
+e^{-\frac{(z-1)^2}{6\sigma^2}},
+\qquad
+-\infty&lt;z&lt;+\infty.
+\nonumber
+$$</span></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/3.%20%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/V.%20%E4%BA%8C%E7%BB%B4%E5%9D%87%E5%8C%80%E5%88%86%E5%B8%83/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/3.%20%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/VII.%20%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%87%BD%E6%95%B0%E7%9A%84%E5%88%86%E5%B8%83(%E6%9C%80%E9%9A%BE)/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vi.-%E4%BA%8C%E7%BB%B4%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83"><span class="nav-number">1.</span> <span class="nav-text">VI. 二维正态分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%8C%E7%BB%B4%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">一、二维正态分布的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E6%AD%A5%E5%AE%9A%E4%BA%94%E5%8F%82"><span class="nav-number">1.1.1.</span> <span class="nav-text">三步定五参</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E4%BA%8C%E7%BB%B4%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="nav-number">1.2.</span> <span class="nav-text">二、二维正态分布的性质</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%B9%E7%BC%98%E5%88%86%E5%B8%83"><span class="nav-number">1.2.1.</span> <span class="nav-text">（1）边缘分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B%E6%80%A7%E4%B8%8E%E4%B8%8D%E7%9B%B8%E5%85%B3"><span class="nav-number">1.2.2.</span> <span class="nav-text">（2）独立性与不相关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E7%BB%84%E5%90%88"><span class="nav-number">1.2.3.</span> <span class="nav-text">（3）线性组合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%AF%E9%80%86%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2"><span class="nav-number">1.2.4.</span> <span class="nav-text">（4）可逆线性变换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.2.5.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

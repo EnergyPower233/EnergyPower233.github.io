@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="II. 概率分布 一、联合概率分布 联合概率分布的定义 设二维随机变量 (X, Y) 的取值为有限个或可列个，称 (X, Y) 为二维离散型随机变量。 设 (X, Y) 的取值为 (xi, yj)，i, j &#x3D; 1, 2, ⋯，称 P{X &#x3D; xi, Y &#x3D; yj} &#x3D; pij,   i, j &#x3D; 1, 2, ⋯ 为 (X, Y) 的联合概率分布，简称概率分布，也可用列表表示为 $$ \begin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/3.%20%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/II.%20%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="II. 概率分布 一、联合概率分布 联合概率分布的定义 设二维随机变量 (X, Y) 的取值为有限个或可列个，称 (X, Y) 为二维离散型随机变量。 设 (X, Y) 的取值为 (xi, yj)，i, j &#x3D; 1, 2, ⋯，称 P{X &#x3D; xi, Y &#x3D; yj} &#x3D; pij,   i, j &#x3D; 1, 2, ⋯ 为 (X, Y) 的联合概率分布，简称概率分布，也可用列表表示为 $$ \begin">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-07-04T21:11:40.000Z">
+<meta property="article:modified_time" content="2026-07-04T21:11:40.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/3.%20%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/II.%20%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/3.%20%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/II.%20%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2026-07-05 05:11:40" itemprop="dateCreated datePublished" datetime="2026-07-05T05:11:40+08:00">2026-07-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="ii.-概率分布"><span
+class="math inline"><em>I</em><em>I</em>.</span> 概率分布</h2>
+<h3 id="一联合概率分布">一、联合概率分布</h3>
+<h4 id="联合概率分布的定义">联合概率分布的定义</h4>
+<p>设二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span>
+的取值为有限个或可列个，称 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span>
+为二维离散型随机变量。</p>
+<p>设 <span class="math inline">(<em>X</em>, <em>Y</em>)</span> 的取值为
+<span
+class="math inline">(<em>x</em><sub><em>i</em></sub>, <em>y</em><sub><em>j</em></sub>)</span>，<span
+class="math inline"><em>i</em>, <em>j</em> = 1, 2, ⋯</span>，称</p>
+<p><span
+class="math display"><em>P</em>{<em>X</em> = <em>x</em><sub><em>i</em></sub>, <em>Y</em> = <em>y</em><sub><em>j</em></sub>} = <em>p</em><sub><em>i</em><em>j</em></sub>,   <em>i</em>, <em>j</em> = 1, 2, ⋯</span></p>
+<p>为 <span class="math inline">(<em>X</em>, <em>Y</em>)</span>
+的联合概率分布，简称概率分布，也可用列表表示为</p>
+<p><span class="math display">$$
+\begin{array}{c|cccc}
+X\backslash Y &amp; y_1 &amp; y_2 &amp; \cdots &amp; y_j\\
+\hline
+x_1 &amp; p_{11} &amp; p_{12} &amp; \cdots &amp; p_{1j}\\
+x_2 &amp; p_{21} &amp; p_{22} &amp; \cdots &amp; p_{2j}\\
+\vdots &amp; \vdots &amp; \vdots &amp; &amp; \vdots
+\end{array}
+\nonumber
+$$</span></p>
+<p>其充要条件为：</p>
+<ol type="1">
+<li>非负</li>
+</ol>
+<p><span
+class="math display"><em>p</em><sub><em>i</em><em>j</em></sub> ≥ 0,   <em>i</em>, <em>j</em> = 1, 2, ⋯;</span></p>
+<ol start="2" type="1">
+<li>规范</li>
+</ol>
+<p><span
+class="math display">∑<sub><em>i</em></sub>∑<sub><em>j</em></sub><em>p</em><sub><em>i</em><em>j</em></sub> = 1.</span></p>
+<blockquote>
+<p>PS: 性质 <span
+class="math inline"><em>p</em><sub><em>i</em><em>j</em></sub> ≥ 0</span>
+与 <span
+class="math inline">∑<sub><em>i</em></sub>∑<sub><em>j</em></sub><em>p</em><sub><em>i</em><em>j</em></sub> = 1</span>
+构成联合概率分布的充要条件。</p>
+</blockquote>
+<blockquote>
+<p>[!question] 题目 【例 3.6】已知随机变量 <span
+class="math inline"><em>X</em></span> 和 <span
+class="math inline"><em>Y</em></span> 的概率分布为</p>
+<p><span class="math display">$$
+X\sim
+\begin{pmatrix}
+-1 &amp; 0 &amp; 1\\
+\dfrac{1}{4} &amp; \dfrac{1}{2} &amp; \dfrac{1}{4}
+\end{pmatrix},
+\qquad
+Y\sim
+\begin{pmatrix}
+0 &amp; 1\\
+\dfrac{1}{2} &amp; \dfrac{1}{2}
+\end{pmatrix},
+\nonumber
+$$</span></p>
+<p>且 <span
+class="math inline"><em>P</em>{<em>X</em><em>Y</em> = 0} = 1</span>，求
+<span class="math inline"><em>X</em></span> 和 <span
+class="math inline"><em>Y</em></span> 的联合分布律。</p>
+<p><strong>题解：</strong></p>
+<p>由 <span
+class="math inline"><em>P</em>{<em>X</em><em>Y</em> = 0} = 1</span>，当
+<span class="math inline"><em>Y</em> = 1</span> 时只能有 <span
+class="math inline"><em>X</em> = 0</span>。</p>
+<p>因此联合分布律为</p>
+<p><span class="math display">$$
+\begin{array}{c|cc}
+X\backslash Y &amp; 0 &amp; 1\\
+\hline
+-1 &amp; \dfrac{1}{4} &amp; 0\\[6pt]
+0 &amp; 0 &amp; \dfrac{1}{2}\\[6pt]
+1 &amp; \dfrac{1}{4} &amp; 0
+\end{array}
+\nonumber
+$$</span></p>
+</blockquote>
+<h3 id="二边缘概率分布">二、边缘概率分布</h3>
+<h4 id="边缘概率分布的定义">边缘概率分布的定义</h4>
+<p>设二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的联合概率分布为</p>
+<p><span
+class="math display"><em>P</em>{<em>X</em> = <em>x</em><sub><em>i</em></sub>, <em>Y</em> = <em>y</em><sub><em>j</em></sub>} = <em>p</em><sub><em>i</em><em>j</em></sub>,   <em>i</em>, <em>j</em> = 1, 2, ⋯.</span></p>
+<p>分别称</p>
+<p><span
+class="math display"><em>p</em><sub><em>i</em>⋅</sub> = <em>P</em>{<em>X</em> = <em>x</em><sub><em>i</em></sub>} = ∑<sub><em>j</em></sub><em>p</em><sub><em>i</em><em>j</em></sub>,   <em>i</em> = 1, 2, ⋯</span></p>
+<p>和</p>
+<p><span
+class="math display"><em>p</em><sub>⋅<em>j</em></sub> = <em>P</em>{<em>Y</em> = <em>y</em><sub><em>j</em></sub>} = ∑<sub><em>i</em></sub><em>p</em><sub><em>i</em><em>j</em></sub>,   <em>j</em> = 1, 2, ⋯</span></p>
+<p>为 <span class="math inline">(<em>X</em>, <em>Y</em>)</span> 关于
+<span class="math inline"><em>X</em></span> 和 <span
+class="math inline"><em>Y</em></span> 的边缘概率分布。</p>
+<p>其中，<span
+class="math inline"><em>p</em><sub><em>i</em>⋅</sub></span> 是第 <span
+class="math inline"><em>i</em></span> 行概率求和，<span
+class="math inline"><em>p</em><sub>⋅<em>j</em></sub></span> 是第 <span
+class="math inline"><em>j</em></span> 列概率求和。</p>
+<p><span class="math display">$$
+\boxed{\text{联合概率分布}\Rightarrow\text{边缘概率分布}.}
+\nonumber
+$$</span></p>
+<blockquote>
+<p>[!question] 题目 【例 3.5】某箱装有 <span
+class="math inline">100</span> 件产品，其中一、二、三等品分别为 <span
+class="math inline">80, 10, 10</span> 件。现从中随机抽取一件，记</p>
+<p><span class="math display">$$
+X_i
+=
+\begin{cases}
+1, &amp; \text{抽到 }i\text{ 等品},\\
+0, &amp; \text{其他},
+\end{cases}
+\qquad i=1,2,3.
+\nonumber
+$$</span></p>
+<p>求：</p>
+<p>（Ⅰ）随机变量 <span class="math inline"><em>X</em><sub>1</sub></span>
+与 <span class="math inline"><em>X</em><sub>2</sub></span>
+的联合分布律和边缘分布律；</p>
+<p>（Ⅱ）判断 <span class="math inline"><em>X</em><sub>1</sub></span> 与
+<span class="math inline"><em>X</em><sub>2</sub></span> 的独立性。</p>
+<p><strong>题解：</strong></p>
+<p>联合分布律为</p>
+<p><span class="math display">$$
+\begin{array}{c|cc}
+X_1\backslash X_2 &amp; 0 &amp; 1\\
+\hline
+0 &amp; 0.1 &amp; 0.1\\
+1 &amp; 0.8 &amp; 0
+\end{array}
+\nonumber
+$$</span></p>
+<p>边缘分布律为</p>
+<p><span class="math display">$$
+\begin{array}{c|cc}
+X_1 &amp; 0 &amp; 1\\
+\hline
+P &amp; 0.2 &amp; 0.8
+\end{array}
+\qquad
+\begin{array}{c|cc}
+X_2 &amp; 0 &amp; 1\\
+\hline
+P &amp; 0.9 &amp; 0.1
+\end{array}
+\nonumber
+$$</span></p>
+<p>因为 <span
+class="math inline"><em>P</em>{<em>X</em><sub>1</sub> = 1, <em>X</em><sub>2</sub> = 1} = 0</span>，但
+<span
+class="math inline"><em>P</em>{<em>X</em><sub>1</sub> = 1}<em>P</em>{<em>X</em><sub>2</sub> = 1} = 0.8 × 0.1 = 0.08</span>，故
+<span class="math inline"><em>X</em><sub>1</sub></span> 与 <span
+class="math inline"><em>X</em><sub>2</sub></span> 不独立。</p>
+</blockquote>
+<h3 id="三条件概率分布">三、条件概率分布</h3>
+<h4 id="条件概率分布的定义">条件概率分布的定义</h4>
+<p>设二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的联合概率分布为</p>
+<p><span
+class="math display"><em>P</em>{<em>X</em> = <em>x</em><sub><em>i</em></sub>, <em>Y</em> = <em>y</em><sub><em>j</em></sub>} = <em>p</em><sub><em>i</em><em>j</em></sub>,   <em>i</em>, <em>j</em> = 1, 2, ⋯.</span></p>
+<p>称</p>
+<p><span class="math display">$$
+P\{X=x_i\mid Y=y_j\}
+=
+\frac{p_{ij}}{p_{\cdot j}}
+\nonumber
+$$</span></p>
+<p>为在 <span
+class="math inline"><em>Y</em> = <em>y</em><sub><em>j</em></sub></span>
+的条件下，<span class="math inline"><em>X</em></span>
+的条件概率分布。</p>
+<p>称</p>
+<p><span class="math display">$$
+P\{Y=y_j\mid X=x_i\}
+=
+\frac{p_{ij}}{p_{i\cdot}}
+\nonumber
+$$</span></p>
+<p>为在 <span
+class="math inline"><em>X</em> = <em>x</em><sub><em>i</em></sub></span>
+的条件下，<span class="math inline"><em>Y</em></span>
+的条件概率分布。</p>
+<p><span class="math display">$$
+\boxed{\text{联合概率分布}+\text{边缘概率分布}
+\Rightarrow
+\text{条件概率分布}.}
+\nonumber
+$$</span></p>
+<blockquote>
+<p>[!question] 题目 【例 3.3】盒子里有 <span
+class="math inline">2</span> 个黑球、<span class="math inline">2</span>
+个红球、<span class="math inline">2</span> 个白球，从其中随机任取 <span
+class="math inline">2</span> 个球，以 <span
+class="math inline"><em>X</em></span> 表示取得的黑球的个数，以 <span
+class="math inline"><em>Y</em></span> 表示取得的红球的个数。</p>
+<p>（1）试写出 <span class="math inline"><em>X</em></span> 和 <span
+class="math inline"><em>Y</em></span> 的联合分布律；</p>
+<p>（2）求概率 <span
+class="math inline"><em>P</em>{<em>X</em> + <em>Y</em> ≤ 1}</span>；</p>
+<p>（3）求 <span class="math inline"><em>X</em></span>
+的边缘分布律；</p>
+<p>（4）求条件概率 <span
+class="math inline"><em>P</em>{<em>Y</em> = 1 ∣ <em>X</em> = 0}</span>；</p>
+<p>（5）判断 <span class="math inline"><em>X</em></span> 和 <span
+class="math inline"><em>Y</em></span> 的独立性。</p>
+<p><strong>题解：</strong></p>
+<p>对 <span
+class="math inline"><em>x</em>, <em>y</em> ∈ {0, 1, 2}</span> 且 <span
+class="math inline"><em>x</em> + <em>y</em> ≤ 2</span>，有</p>
+<p><span class="math display">$$
+P\{X=x,Y=y\}
+=
+\frac{\binom{2}{x}\binom{2}{y}\binom{2}{2-x-y}}{\binom{6}{2}}.
+\nonumber
+$$</span></p>
+<p>联合分布律为</p>
+<p><span class="math display">$$
+\begin{array}{c|ccc}
+X\backslash Y &amp; 0 &amp; 1 &amp; 2\\
+\hline
+0 &amp; \dfrac{1}{15} &amp; \dfrac{4}{15} &amp; \dfrac{1}{15}\\[6pt]
+1 &amp; \dfrac{4}{15} &amp; \dfrac{4}{15} &amp; 0\\[6pt]
+2 &amp; \dfrac{1}{15} &amp; 0 &amp; 0
+\end{array}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X+Y\le 1\}
+&amp;=
+P\{X=0,Y=0\}
++
+P\{X=1,Y=0\}
++
+P\{X=0,Y=1\}\\
+&amp;=
+\frac{1}{15}
++
+\frac{4}{15}
++
+\frac{4}{15}\\
+&amp;=
+\frac{3}{5}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p><span class="math inline"><em>X</em></span> 的边缘分布律为</p>
+<p><span class="math display">$$
+\begin{array}{c|ccc}
+X &amp; 0 &amp; 1 &amp; 2\\
+\hline
+P &amp; \dfrac{2}{5} &amp; \dfrac{8}{15} &amp; \dfrac{1}{15}
+\end{array}
+\nonumber
+$$</span></p>
+<p>条件概率为</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{Y=1\mid X=0\}
+&amp;=
+\frac{P\{X=0,Y=1\}}{P\{X=0\}}\\
+&amp;=
+\frac{\dfrac{4}{15}}{\dfrac{2}{5}}\\
+&amp;=
+\frac{2}{3}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>联合分布矩阵为</p>
+<p><span class="math display">$$
+M
+=
+\frac{1}{15}
+\begin{pmatrix}
+1 &amp; 4 &amp; 1\\
+4 &amp; 4 &amp; 0\\
+1 &amp; 0 &amp; 0
+\end{pmatrix}.
+\nonumber
+$$</span></p>
+<p>由于</p>
+<p><span class="math display">$$
+\begin{aligned}
+\det M
+&amp;=
+\frac{1}{15^3}
+\begin{vmatrix}
+1 &amp; 4 &amp; 1\\
+4 &amp; 4 &amp; 0\\
+1 &amp; 0 &amp; 0
+\end{vmatrix}\\
+&amp;=
+-\frac{4}{15^3}
+\ne 0,
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>故 <span class="math inline"><em>M</em></span> 满秩。若 <span
+class="math inline"><em>X</em>, <em>Y</em></span>
+独立，则联合分布矩阵应为秩 <span class="math inline">1</span> 矩阵，因此
+<span class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> 不独立。 ^tstt2r</p>
+</blockquote>
+<blockquote>
+<p>[!question] 题目 【例 3.4】已知随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的分布律为</p>
+<p><span class="math display">$$
+\begin{array}{c|cc}
+Y\backslash X &amp; 0 &amp; 1\\
+\hline
+0 &amp; 0.15 &amp; 0.15\\
+1 &amp; a &amp; b
+\end{array}
+\nonumber
+$$</span></p>
+<p>且 <span class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> 相互独立，求 <span
+class="math inline"><em>a</em></span> 和 <span
+class="math inline"><em>b</em></span> 的值。</p>
+<p><strong>题解：</strong></p>
+<p>由总概率为 <span class="math inline">1</span>，得 <span
+class="math inline"><em>a</em> + <em>b</em> = 0.7</span>。</p>
+<p>又由独立性，</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X=0,Y=0\}
+&amp;=
+P\{X=0\}P\{Y=0\},
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+0.15
+&amp;=
+(0.15+a)\cdot 0.3.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>解得 <span class="math inline"><em>a</em> = 0.35</span>，故 <span
+class="math inline"><em>b</em> = 0.35</span>。</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/2.%20%E4%B8%80%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/I.%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0%E5%92%8C%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6/2-2%20%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/3.%20%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/IV.%20%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E7%8B%AC%E7%AB%8B%E6%80%A7/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ii.-%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83"><span class="nav-number">1.</span> <span class="nav-text">II. 概率分布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E8%81%94%E5%90%88%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83"><span class="nav-number">1.1.</span> <span class="nav-text">一、联合概率分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%81%94%E5%90%88%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.1.</span> <span class="nav-text">联合概率分布的定义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E8%BE%B9%E7%BC%98%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83"><span class="nav-number">1.2.</span> <span class="nav-text">二、边缘概率分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%B9%E7%BC%98%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.2.1.</span> <span class="nav-text">边缘概率分布的定义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83"><span class="nav-number">1.3.</span> <span class="nav-text">三、条件概率分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.3.1.</span> <span class="nav-text">条件概率分布的定义</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

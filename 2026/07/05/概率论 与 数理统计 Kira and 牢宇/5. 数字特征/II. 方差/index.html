@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="II. 方差 定义 随机变量 X 的方差定义为 DX &#x3D; E(X − EX)2. 常用计算式为 DX &#x3D; EX2 − (EX)2. $$ \boxed{\text{方差}&#x3D;\text{平方的期望}-\text{期望的平方}. \nonumber} $$ 性质 （1）常数平移不改变方差 D(aX + c) &#x3D; a2DX. （2）和差的方差 D(X ± Y) &#x3D; DX + DY ± 2Cov (X,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/5.%20%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/II.%20%E6%96%B9%E5%B7%AE/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="II. 方差 定义 随机变量 X 的方差定义为 DX &#x3D; E(X − EX)2. 常用计算式为 DX &#x3D; EX2 − (EX)2. $$ \boxed{\text{方差}&#x3D;\text{平方的期望}-\text{期望的平方}. \nonumber} $$ 性质 （1）常数平移不改变方差 D(aX + c) &#x3D; a2DX. （2）和差的方差 D(X ± Y) &#x3D; DX + DY ± 2Cov (X,">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-07-04T22:41:18.000Z">
+<meta property="article:modified_time" content="2026-07-04T22:41:18.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/5.%20%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/II.%20%E6%96%B9%E5%B7%AE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/5.%20%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/II.%20%E6%96%B9%E5%B7%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2026-07-05 06:41:18" itemprop="dateCreated datePublished" datetime="2026-07-05T06:41:18+08:00">2026-07-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="ii.-方差"><span class="math inline"><em>I</em><em>I</em>.</span>
+方差</h2>
+<h3 id="定义">定义</h3>
+<p>随机变量 <span class="math inline"><em>X</em></span> 的方差定义为</p>
+<p><span
+class="math display"><em>D</em><em>X</em> = <em>E</em>(<em>X</em> − <em>E</em><em>X</em>)<sup>2</sup>.</span></p>
+<p>常用计算式为</p>
+<p><span
+class="math display"><em>D</em><em>X</em> = <em>E</em><em>X</em><sup>2</sup> − (<em>E</em><em>X</em>)<sup>2</sup>.</span></p>
+<p><span class="math display">$$
+\boxed{\text{方差}=\text{平方的期望}-\text{期望的平方}.
+\nonumber}
+$$</span></p>
+<h3 id="性质">性质</h3>
+<h4 id="常数平移不改变方差">（1）常数平移不改变方差</h4>
+<p><span
+class="math display"><em>D</em>(<em>a</em><em>X</em> + <em>c</em>) = <em>a</em><sup>2</sup><em>D</em><em>X</em>.</span></p>
+<h4 id="和差的方差">（2）和差的方差</h4>
+<p><span
+class="math display"><em>D</em>(<em>X</em> ± <em>Y</em>) = <em>D</em><em>X</em> + <em>D</em><em>Y</em> ± 2Cov (<em>X</em>, <em>Y</em>).</span></p>
+<blockquote>
+<p>Cov(X, Y) 为协方差, 下文会介绍</p>
+</blockquote>
+<p>由此可得</p>
+<p><span
+class="math display"><em>D</em>(<em>X</em> ± <em>Y</em>) = <em>D</em><em>X</em> + <em>D</em><em>Y</em> ⇔ <em>X</em>
+与 <em>Y</em> 不相关.</span></p>
+<p>特别地，若 <span class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> 相互独立，则</p>
+<p><span
+class="math display"><em>D</em>(<em>X</em> ± <em>Y</em>) = <em>D</em><em>X</em> + <em>D</em><em>Y</em>.</span></p>
+<h4 id="乘积的方差">（3）乘积的方差</h4>
+<p>若 <span class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> 相互独立，则</p>
+<p><span
+class="math display"><em>D</em>(<em>X</em><em>Y</em>) = <em>D</em><em>X</em> ⋅ <em>D</em><em>Y</em> + (<em>E</em><em>X</em>)<sup>2</sup><em>D</em><em>Y</em> + (<em>E</em><em>Y</em>)<sup>2</sup><em>D</em><em>X</em>.</span></p>
+<p>线性组合的方差展开时，常数项忽略；组合中有相关项时应写协方差，不相关时协方差为
+<span class="math inline">0</span>，独立一定不相关。</p>
+<blockquote>
+<p>[!note] 常数的方差为0.</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/4.%20%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E4%B8%8E%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/IV.%20%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/5.%20%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/IV.%20%E5%8D%8F%E6%96%B9%E5%B7%AE/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ii.-%E6%96%B9%E5%B7%AE"><span class="nav-number">1.</span> <span class="nav-text">II.
+方差</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%A7%E8%B4%A8"><span class="nav-number">1.2.</span> <span class="nav-text">性质</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E6%95%B0%E5%B9%B3%E7%A7%BB%E4%B8%8D%E6%94%B9%E5%8F%98%E6%96%B9%E5%B7%AE"><span class="nav-number">1.2.1.</span> <span class="nav-text">（1）常数平移不改变方差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%92%8C%E5%B7%AE%E7%9A%84%E6%96%B9%E5%B7%AE"><span class="nav-number">1.2.2.</span> <span class="nav-text">（2）和差的方差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B9%98%E7%A7%AF%E7%9A%84%E6%96%B9%E5%B7%AE"><span class="nav-number">1.2.3.</span> <span class="nav-text">（3）乘积的方差</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="III. 八大分布的期望与方差 $$ \begin{array}{c|c|c|c} \text{分布} &amp; \text{记号} &amp; \text{期望} &amp; \text{方差}\\ \hline 0\text{-}1\text{ 分布} &amp; B(1,p) &amp; p &amp; p(1-p)\\ \text{二项分布} &amp; B(n,p) &amp; np">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/5.%20%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/III.%20%E5%85%AB%E5%A4%A7%E5%88%86%E5%B8%83%E7%9A%84%E6%9C%9F%E6%9C%9B%E4%B8%8E%E6%96%B9%E5%B7%AE/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="III. 八大分布的期望与方差 $$ \begin{array}{c|c|c|c} \text{分布} &amp; \text{记号} &amp; \text{期望} &amp; \text{方差}\\ \hline 0\text{-}1\text{ 分布} &amp; B(1,p) &amp; p &amp; p(1-p)\\ \text{二项分布} &amp; B(n,p) &amp; np">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-07-04T20:14:03.000Z">
+<meta property="article:modified_time" content="2026-07-04T20:14:03.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/5.%20%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/III.%20%E5%85%AB%E5%A4%A7%E5%88%86%E5%B8%83%E7%9A%84%E6%9C%9F%E6%9C%9B%E4%B8%8E%E6%96%B9%E5%B7%AE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/5.%20%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/III.%20%E5%85%AB%E5%A4%A7%E5%88%86%E5%B8%83%E7%9A%84%E6%9C%9F%E6%9C%9B%E4%B8%8E%E6%96%B9%E5%B7%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2026-07-05 04:14:03" itemprop="dateCreated datePublished" datetime="2026-07-05T04:14:03+08:00">2026-07-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="iii.-八大分布的期望与方差"><span
+class="math inline"><em>I</em><em>I</em><em>I</em>.</span>
+八大分布的期望与方差</h2>
+<p><span class="math display">$$
+\begin{array}{c|c|c|c}
+\text{分布} &amp; \text{记号} &amp; \text{期望} &amp; \text{方差}\\
+\hline
+0\text{-}1\text{ 分布} &amp; B(1,p) &amp; p &amp; p(1-p)\\
+\text{二项分布} &amp; B(n,p) &amp; np &amp; np(1-p)\\
+\text{泊松分布} &amp; P(\lambda) &amp; \lambda &amp; \lambda\\
+\text{几何分布} &amp; G(p) &amp; \dfrac{1}{p} &amp; \dfrac{1-p}{p^2}\\
+\text{超几何分布} &amp; H(N,M,n) &amp; \dfrac{nM}{N} &amp;
+\dfrac{nM}{N}\left(1-\dfrac{M}{N}\right)\dfrac{N-n}{N-1}\\
+\text{均匀分布} &amp; U(a,b) &amp; \dfrac{a+b}{2} &amp;
+\dfrac{(b-a)^2}{12}\\
+\text{指数分布} &amp; E(\lambda) &amp; \dfrac{1}{\lambda} &amp;
+\dfrac{1}{\lambda^2}\\
+\text{正态分布} &amp; N(\mu,\sigma^2) &amp; \mu &amp; \sigma^2
+\end{array}
+\nonumber
+$$</span></p>
+<table>
+<colgroup>
+<col style="width: 3%" />
+<col style="width: 8%" />
+<col style="width: 47%" />
+<col style="width: 9%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">分布</th>
+<th style="text-align: left;">记号</th>
+<th style="text-align: left;">概率函数（分布律/密度）</th>
+<th style="text-align: left;">期望</th>
+<th style="text-align: left;">方差</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0‑1 分布</td>
+<td style="text-align: left;"><span
+class="math inline"><em>B</em>(1, <em>p</em>)</span></td>
+<td style="text-align: left;"><span
+class="math inline"><em>P</em>(<em>X</em> = <em>k</em>) = <em>p</em><sup><em>k</em></sup>(1 − <em>p</em>)<sup>1 − <em>k</em></sup>, <em>k</em> = 0, 1</span></td>
+<td style="text-align: left;"><span
+class="math inline"><em>p</em></span></td>
+<td style="text-align: left;"><span
+class="math inline"><em>p</em>(1 − <em>p</em>)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">二项分布</td>
+<td style="text-align: left;"><span
+class="math inline"><em>B</em>(<em>n</em>, <em>p</em>)</span></td>
+<td style="text-align: left;"><span
+class="math inline">$P(X=k)=\binom{n}{k}p^k(1-p)^{n-k},\
+k=0,1,\dots,n$</span></td>
+<td style="text-align: left;"><span
+class="math inline"><em>n</em><em>p</em></span></td>
+<td style="text-align: left;"><span
+class="math inline"><em>n</em><em>p</em>(1 − <em>p</em>)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">泊松分布</td>
+<td style="text-align: left;"><span
+class="math inline"><em>P</em>(<em>λ</em>)</span></td>
+<td style="text-align: left;"><span
+class="math inline">$P(X=k)=\frac{\lambda^k}{k!}e^{-\lambda},\
+k=0,1,2,\dots$</span></td>
+<td style="text-align: left;"><span
+class="math inline"><em>λ</em></span></td>
+<td style="text-align: left;"><span
+class="math inline"><em>λ</em></span></td>
+</tr>
+<tr>
+<td style="text-align: left;">几何分布</td>
+<td style="text-align: left;"><span
+class="math inline"><em>G</em>(<em>p</em>)</span></td>
+<td style="text-align: left;"><span
+class="math inline"><em>P</em>(<em>X</em> = <em>k</em>) = (1 − <em>p</em>)<sup><em>k</em> − 1</sup><em>p</em>, <em>k</em> = 1, 2, …</span></td>
+<td style="text-align: left;"><span
+class="math inline">$\frac{1}{p}$</span></td>
+<td style="text-align: left;"><span
+class="math inline">$\frac{1-p}{p^2}$</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">超几何分布</td>
+<td style="text-align: left;"><span
+class="math inline"><em>H</em>(<em>N</em>, <em>M</em>, <em>n</em>)</span></td>
+<td style="text-align: left;"><span
+class="math inline">$P(X=k)=\frac{\binom{M}{k}\binom{N-M}{n-k}}{\binom{N}{n}},\
+k=\max(0,n-N+M),\dots,\min(n,M)$</span></td>
+<td style="text-align: left;"><span
+class="math inline">$\frac{nM}{N}$</span></td>
+<td style="text-align: left;"><span
+class="math inline">$\frac{nM}{N}\!\left(1-\frac{M}{N}\right)\!\frac{N-n}{N-1}$</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">均匀分布</td>
+<td style="text-align: left;"><span
+class="math inline"><em>U</em>(<em>a</em>, <em>b</em>)</span></td>
+<td style="text-align: left;"><span
+class="math inline">$f(x)=\frac{1}{b-a},\ a&lt;x&lt;b$</span></td>
+<td style="text-align: left;"><span
+class="math inline">$\frac{a+b}{2}$</span></td>
+<td style="text-align: left;"><span
+class="math inline">$\frac{(b-a)^2}{12}$</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">指数分布</td>
+<td style="text-align: left;"><span
+class="math inline"><em>E</em>(<em>λ</em>)</span></td>
+<td style="text-align: left;"><span
+class="math inline"><em>f</em>(<em>x</em>) = <em>λ</em><em>e</em><sup>−<em>λ</em><em>x</em></sup>, <em>x</em> ≥ 0</span></td>
+<td style="text-align: left;"><span
+class="math inline">$\frac{1}{\lambda}$</span></td>
+<td style="text-align: left;"><span
+class="math inline">$\frac{1}{\lambda^2}$</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">正态分布</td>
+<td style="text-align: left;"><span
+class="math inline"><em>N</em>(<em>μ</em>, <em>σ</em><sup>2</sup>)</span></td>
+<td style="text-align: left;"><span
+class="math inline">$f(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}},\
+x\in\mathbb{R}$</span></td>
+<td style="text-align: left;"><span
+class="math inline"><em>μ</em></span></td>
+<td style="text-align: left;"><span
+class="math inline"><em>σ</em><sup>2</sup></span></td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<h4 id="分布推导">0-1 分布推导</h4>
+<p>若</p>
+<p><span
+class="math display"><em>X</em> ∼ <em>B</em>(1, <em>p</em>),</span></p>
+<p>则</p>
+<p><span class="math display">$$
+\begin{array}{c|cc}
+X&amp;0&amp;1\\
+\hline
+P&amp;1-p&amp;p
+\end{array}
+\nonumber
+$$</span></p>
+<p>于是</p>
+<p><span
+class="math display"><em>E</em><em>X</em> = <em>p</em>,</span></p>
+<p>且</p>
+<p><span
+class="math display"><em>E</em><em>X</em><sup>2</sup> = <em>p</em>,</span></p>
+<p>故</p>
+<p><span class="math display">$$
+\begin{align}
+DX&amp;=EX^2-(EX)^2 \\
+&amp;=p-p^2&amp; \\
+&amp;=p(1-p).
+\end{align}
+\nonumber
+$$</span></p>
+<h4 id="二项分布推导">二项分布推导</h4>
+<p>若 <span class="math inline"><em>X</em></span> 表示 <span
+class="math inline"><em>n</em></span> 次独立试验中事件 <span
+class="math inline"><em>A</em></span> 发生的次数，且每次发生概率为 <span
+class="math inline"><em>p</em></span>，则可令</p>
+<p><span class="math display">$$
+\begin{aligned}
+X
+&amp;=
+\sum_{i=1}^{n}X_i.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>其中</p>
+<p><span class="math display">$$
+\begin{aligned}
+X_i &amp;\sim B(1,p),\\
+i
+&amp;\in
+\{\,m\in\mathbb N^*\mid m\le n\,\}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由期望的线性性质可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+EX
+&amp;=
+E\left(\sum_{i=1}^{n}X_i\right)\\
+&amp;=
+\sum_{i=1}^{n}EX_i\\
+&amp;=
+np.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由于 <span
+class="math inline"><em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, ⋯, <em>X</em><sub><em>n</em></sub></span>
+相互独立，故由方差的可加性可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+DX
+&amp;=
+D\left(\sum_{i=1}^{n}X_i\right)\\
+&amp;=
+\sum_{i=1}^{n}DX_i\\
+&amp;=
+np(1-p).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="标准正态分布推导">标准正态分布推导</h4>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+Y
+&amp;\sim N(0,1),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则</p>
+<p><span class="math display">$$
+\begin{aligned}
+EY &amp;= 0,\\
+DY &amp;= 1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X
+&amp;=\sigma Y+\mu,
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则</p>
+<p><span class="math display">$$
+\begin{aligned}
+X
+&amp;\sim N(\mu,\sigma^2).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>于是</p>
+<p><span class="math display">$$
+\begin{aligned}
+EX
+&amp;=E(\sigma Y+\mu)\\
+&amp;=\sigma EY+\mu\\
+&amp;=\mu.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>并且</p>
+<p><span class="math display">$$
+\begin{aligned}
+DX
+&amp;=D(\sigma Y+\mu)\\
+&amp;=\sigma^2DY\\
+&amp;=\sigma^2.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h3 id="一正态分布绝对值的期望方差">一、正态分布绝对值的期望方差</h3>
+<h4 id="标准正态情形">（1）标准正态情形</h4>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X
+&amp;\sim N(0,1),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则</p>
+<p><span class="math display">$$
+\begin{aligned}
+E|X|
+&amp;=
+\sqrt{\frac{2}{\pi}},
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>且</p>
+<p><span class="math display">$$
+\begin{aligned}
+D|X|
+&amp;=
+1-\frac{2}{\pi}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="一般正态且-μ0">（2）一般正态且 μ=0</h4>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X
+&amp;\sim N(0,\sigma^2),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{X}{\sigma}
+&amp;\sim N(0,1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+E|X|
+&amp;=
+E\left|\sigma\cdot\frac{X}{\sigma}\right|\
+&amp;=
+\sigma E\left|\frac{X}{\sigma}\right|\
+&amp;=
+\sqrt{\frac{2}{\pi}}\sigma.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>又因为</p>
+<p><span class="math display">$$
+\begin{aligned}
+D(cX)
+&amp;=
+c^2DX,
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+D|X|
+&amp;=
+\sigma^2D\left|\frac{X}{\sigma}\right|\
+&amp;=
+\left(1-\frac{2}{\pi}\right)\sigma^2.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="一般正态情形">（3）一般正态情形</h4>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X
+&amp;\sim N(\mu,\sigma^2),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{X-\mu}{\sigma}
+&amp;\sim N(0,1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>于是</p>
+<p><span class="math display">$$
+\begin{aligned}
+E|X-\mu|
+&amp;=
+E\left|\sigma\cdot\frac{X-\mu}{\sigma}\right|\\
+&amp;=
+\sigma E\left|\frac{X-\mu}{\sigma}\right|\\
+&amp;=
+\sqrt{\frac{2}{\pi}}\sigma.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>并且</p>
+<p><span class="math display">$$
+\begin{aligned}
+D|X-\mu|
+&amp;=
+\sigma^2D\left|\frac{X-\mu}{\sigma}\right|\\
+&amp;=
+\left(1-\frac{2}{\pi}\right)\sigma^2.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="最大值最小值化为绝对值">最大值、最小值化为绝对值</h4>
+<p>遇到 <span class="math inline">max {<em>X</em>, <em>Y</em>}</span> 或
+<span class="math inline">min {<em>X</em>, <em>Y</em>}</span>
+的期望问题时，可以先转化为 <span
+class="math inline">|<em>X</em> − <em>Y</em>|</span>
+的期望问题。最大值和最小值可以转化为绝对值(平凡恒等式)：</p>
+<p><span class="math display">$$
+\begin{aligned}
+\max\{X,Y\}
+&amp;=
+\frac{X+Y+|X-Y|}{2},\\
+\min\{X,Y\}
+&amp;=
+\frac{X+Y-|X-Y|}{2}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h3 id="二标准正态分布的期望">二、标准正态分布的期望</h3>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X
+&amp;\sim N(0,1),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则</p>
+<p><span class="math display">$$
+\begin{aligned}
+EX
+&amp;=0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>其原因是标准正态密度函数为</p>
+<p><span class="math display">$$
+\begin{aligned}
+\varphi(x)
+&amp;=
+\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}},
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>于是</p>
+<p><span class="math display">$$
+\begin{aligned}
+EX
+&amp;=
+\displaystyle\int_{-\infty}^{+\infty}
+x\varphi(x)\,dx.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由于 <span class="math inline"><em>φ</em>(<em>x</em>)</span>
+为偶函数，<span class="math inline"><em>x</em></span> 为奇函数，故 <span
+class="math inline"><em>x</em><em>φ</em>(<em>x</em>)</span>
+为奇函数。奇函数在对称区间上的积分为 <span
+class="math inline">0</span>，所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+EX
+&amp;=
+\displaystyle\int_{-\infty}^{+\infty}
+x\varphi(x)\,dx\\
+&amp;=0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="标准正态分布的-n-阶矩">标准正态分布的 <span
+class="math inline"><em>n</em></span> 阶矩</h4>
+<p>若</p>
+<p><span class="math display">$$
+\begin{aligned}
+X
+&amp;\sim N(0,1),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则对正整数 <span class="math inline"><em>n</em></span>，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+E(X^n)
+&amp;=
+\int_{-\infty}^{+\infty}x^n\varphi(x)\,dx\\
+&amp;=
+\begin{cases}
+0, &amp; n\text{ 为奇数},\\[4pt]
+(n-1)!!, &amp; n\text{ 为偶数}.
+\end{cases} \\
+&amp;=
+\begin{cases}
+0, &amp; n\text{ 为奇数},\\[6pt]
+\prod_{j=1}^{n/2}(2j-1), &amp; n\text{ 为偶数}.
+\end{cases}
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>其中 <span class="math inline"><em>φ</em>(<em>x</em>)</span>
+为标准正态分布的概率密度函数。</p>
+<h3 id="三pascal-分布">三、Pascal 分布</h3>
+<h4 id="定义">定义</h4>
+<p>若 <span class="math inline"><em>X</em></span> 表示伯努利试验中事件
+<span class="math inline"><em>A</em></span> 第 <span
+class="math inline"><em>n</em></span> 次发生所需的试验次数，则称 <span
+class="math inline"><em>X</em></span> 服从 Pascal 分布。</p>
+<h4 id="随机变量分解">随机变量分解</h4>
+<p>设 <span class="math inline"><em>X</em><sub><em>i</em></sub></span>
+表示从第 <span class="math inline"><em>i</em> − 1</span> 次命中到第
+<span class="math inline"><em>i</em></span> 次命中所需的试验次数，则</p>
+<p><span class="math display">$$
+\begin{aligned}
+X_i
+\sim G(p),\\
+i
+\in
+\{\,m\in\mathbb N^*\mid m\le n\,\}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>并且</p>
+<p><span class="math display">$$
+\begin{aligned}
+X
+&amp;=
+\sum_{i=1}^{n}X_i.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>其中 <span
+class="math inline"><em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, …, <em>X</em><sub><em>n</em></sub></span>
+相互独立，且均服从几何分布 <span
+class="math inline"><em>G</em>(<em>p</em>)</span>。</p>
+<h4 id="期望">期望</h4>
+<p>由期望的线性性质可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+EX
+&amp;=
+E\left(\sum_{i=1}^{n}X_i\right)\\
+&amp;=
+\sum_{i=1}^{n}EX_i\\
+&amp;=
+\sum_{i=1}^{n}\frac{1}{p}\\
+&amp;=
+\frac{n}{p}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="方差">方差</h4>
+<p>由于 <span
+class="math inline"><em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, …, <em>X</em><sub><em>n</em></sub></span>
+相互独立，故方差可加：</p>
+<p><span class="math display">$$
+\begin{aligned}
+DX
+&amp;=
+D\left(\sum_{i=1}^{n}X_i\right)\\
+&amp;=
+\sum_{i=1}^{n}DX_i\\
+&amp;=
+\sum_{i=1}^{n}\frac{1-p}{p^2}\\
+&amp;=
+\frac{n(1-p)}{p^2}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="核心思想">核心思想</h4>
+<p>Pascal 分布可以看作若干个独立几何分布之和：</p>
+<p><span class="math display">$$
+\begin{aligned}
+\text{第 }n\text{ 次命中所需试验次数}
+&amp;=
+\sum_{i=1}^{n}
+\text{相邻两次命中之间所需试验次数}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此求 Pascal 分布的期望和方差时，可以将其分解为几何分布之和。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/2.%20%E4%B8%80%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/I.%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0%E5%92%8C%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6/2-8%20%E8%BF%9E%E7%BB%AD%E6%80%A7%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E6%80%A7%E8%B4%A8/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/2.%20%E4%B8%80%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/I.%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0%E5%92%8C%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6/2-2%20%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#iii.-%E5%85%AB%E5%A4%A7%E5%88%86%E5%B8%83%E7%9A%84%E6%9C%9F%E6%9C%9B%E4%B8%8E%E6%96%B9%E5%B7%AE"><span class="nav-number">1.</span> <span class="nav-text">III.
+八大分布的期望与方差</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E6%8E%A8%E5%AF%BC"><span class="nav-number">1.1.</span> <span class="nav-text">0-1 分布推导</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83%E6%8E%A8%E5%AF%BC"><span class="nav-number">1.2.</span> <span class="nav-text">二项分布推导</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E6%8E%A8%E5%AF%BC"><span class="nav-number">1.3.</span> <span class="nav-text">标准正态分布推导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%BB%9D%E5%AF%B9%E5%80%BC%E7%9A%84%E6%9C%9F%E6%9C%9B%E6%96%B9%E5%B7%AE"><span class="nav-number">1.4.</span> <span class="nav-text">一、正态分布绝对值的期望方差</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E6%AD%A3%E6%80%81%E6%83%85%E5%BD%A2"><span class="nav-number">1.4.1.</span> <span class="nav-text">（1）标准正态情形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E8%88%AC%E6%AD%A3%E6%80%81%E4%B8%94-%CE%BC0"><span class="nav-number">1.4.2.</span> <span class="nav-text">（2）一般正态且 μ&#x3D;0</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E8%88%AC%E6%AD%A3%E6%80%81%E6%83%85%E5%BD%A2"><span class="nav-number">1.4.3.</span> <span class="nav-text">（3）一般正态情形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E5%80%BC%E6%9C%80%E5%B0%8F%E5%80%BC%E5%8C%96%E4%B8%BA%E7%BB%9D%E5%AF%B9%E5%80%BC"><span class="nav-number">1.4.4.</span> <span class="nav-text">最大值、最小值化为绝对值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E6%A0%87%E5%87%86%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84%E6%9C%9F%E6%9C%9B"><span class="nav-number">1.5.</span> <span class="nav-text">二、标准正态分布的期望</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84-n-%E9%98%B6%E7%9F%A9"><span class="nav-number">1.5.1.</span> <span class="nav-text">标准正态分布的 n 阶矩</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89pascal-%E5%88%86%E5%B8%83"><span class="nav-number">1.6.</span> <span class="nav-text">三、Pascal 分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.6.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%88%86%E8%A7%A3"><span class="nav-number">1.6.2.</span> <span class="nav-text">随机变量分解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%9F%E6%9C%9B"><span class="nav-number">1.6.3.</span> <span class="nav-text">期望</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E5%B7%AE"><span class="nav-number">1.6.4.</span> <span class="nav-text">方差</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="nav-number">1.6.5.</span> <span class="nav-text">核心思想</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

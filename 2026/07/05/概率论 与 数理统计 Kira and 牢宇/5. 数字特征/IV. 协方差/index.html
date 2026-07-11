@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="IV. 协方差 一、定义 对于二维随机变量 (X, Y)，若 E[(X − EX)(Y − EY)] 存在，则称其为 (X, Y) 的协方差，记作 Cov (X, Y)。 协方差定义为 Cov (X, Y) &#x3D; E[(X − EX)(Y − EY)]. 常用计算式为 Cov (X, Y) &#x3D; E(XY) − EX ⋅ EY. 协方差 &#x3D; 乘积的期望 − 期望的乘积.  [!important] 推">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/5.%20%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/IV.%20%E5%8D%8F%E6%96%B9%E5%B7%AE/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="IV. 协方差 一、定义 对于二维随机变量 (X, Y)，若 E[(X − EX)(Y − EY)] 存在，则称其为 (X, Y) 的协方差，记作 Cov (X, Y)。 协方差定义为 Cov (X, Y) &#x3D; E[(X − EX)(Y − EY)]. 常用计算式为 Cov (X, Y) &#x3D; E(XY) − EX ⋅ EY. 协方差 &#x3D; 乘积的期望 − 期望的乘积.  [!important] 推">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-07-04T22:49:45.000Z">
+<meta property="article:modified_time" content="2026-07-04T22:49:45.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/5.%20%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/IV.%20%E5%8D%8F%E6%96%B9%E5%B7%AE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/5.%20%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/IV.%20%E5%8D%8F%E6%96%B9%E5%B7%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2026-07-05 06:49:45" itemprop="dateCreated datePublished" datetime="2026-07-05T06:49:45+08:00">2026-07-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="iv.-协方差"><span
+class="math inline"><em>I</em><em>V</em>.</span> 协方差</h2>
+<h3 id="一定义">一、定义</h3>
+<p>对于二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span>，若 <span
+class="math inline"><em>E</em>[(<em>X</em> − <em>E</em><em>X</em>)(<em>Y</em> − <em>E</em><em>Y</em>)]</span>
+存在，则称其为 <span class="math inline">(<em>X</em>, <em>Y</em>)</span>
+的协方差，记作 <span
+class="math inline">Cov (<em>X</em>, <em>Y</em>)</span>。</p>
+<p>协方差定义为</p>
+<p><span
+class="math display">Cov (<em>X</em>, <em>Y</em>) = <em>E</em>[(<em>X</em> − <em>E</em><em>X</em>)(<em>Y</em> − <em>E</em><em>Y</em>)].</span></p>
+<p>常用计算式为</p>
+<p><span
+class="math display">Cov (<em>X</em>, <em>Y</em>) = <em>E</em>(<em>X</em><em>Y</em>) − <em>E</em><em>X</em> ⋅ <em>E</em><em>Y</em>.</span></p>
+<p><span
+class="math display">协方差 = 乘积的期望 − 期望的乘积.</span></p>
+<blockquote>
+<p>[!important] 推导 <span class="math display">$$
+\begin{aligned}
+\operatorname{Cov}(X,Y)
+&amp;=
+E[(X-EX)(Y-EY)]\\
+&amp;=
+E[XY-XEY-YEX+EX\cdot EY]\\
+&amp;=
+E(XY)-EY\cdot EX-EX\cdot EY+EX\cdot EY\\
+&amp;=
+E(XY)-EX\cdot EY.
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>
+<blockquote>
+<p>[!important] 符号含义 若 <span
+class="math inline">Cov (<em>X</em>, <em>Y</em>) &gt; 0</span>，则 <span
+class="math inline"><em>X</em>, <em>Y</em></span> 有同向变化倾向。</p>
+<p>若 <span
+class="math inline">Cov (<em>X</em>, <em>Y</em>) &lt; 0</span>，则 <span
+class="math inline"><em>X</em>, <em>Y</em></span> 有反向变化倾向。</p>
+<p>若 <span
+class="math inline">Cov (<em>X</em>, <em>Y</em>) = 0</span>，则称 <span
+class="math inline"><em>X</em>, <em>Y</em></span> 不相关。</p>
+</blockquote>
+<hr />
+<h3 id="二性质">二、性质</h3>
+<h4 id="交换律">（1）交换律</h4>
+<p><span
+class="math display">Cov (<em>X</em>, <em>Y</em>) = Cov (<em>Y</em>, <em>X</em>).</span></p>
+<p>并且</p>
+<p><span
+class="math display">Cov (<em>X</em>, <em>X</em>) = <em>D</em><em>X</em>.</span></p>
+<h4 id="常数项">（2）常数项</h4>
+<p>若 <span class="math inline"><em>c</em></span> 为常数，则</p>
+<p><span
+class="math display">Cov (<em>X</em>, <em>c</em>) = 0.</span></p>
+<p>因为</p>
+<p><span class="math display">$$
+\begin{aligned}
+\operatorname{Cov}(X,c)
+&amp;=
+E(Xc)-EX\cdot Ec\\
+&amp;=
+cEX-EX\cdot c\\
+&amp;=
+0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="线性性质">（3）线性性质</h4>
+<p><span
+class="math display">Cov (<em>a</em><em>X</em> + <em>b</em><em>Y</em> + <em>c</em>, <em>Z</em>) = <em>a</em>Cov (<em>X</em>, <em>Z</em>) + <em>b</em>Cov (<em>Y</em>, <em>Z</em>).</span></p>
+<p>特别地，</p>
+<p><span
+class="math display">Cov (<em>a</em><em>X</em>, <em>b</em><em>Y</em>) = <em>a</em><em>b</em>Cov (<em>X</em>, <em>Y</em>).</span></p>
+<p>线性组合的协方差展开时，系数可提出，常数项忽略，并使用分配律。</p>
+<p>常用形式：</p>
+<p><span class="math display">$$
+\begin{aligned}
+\operatorname{Cov}(X+Y,Z)
+&amp;=
+\operatorname{Cov}(X,Z)+\operatorname{Cov}(Y,Z),\\
+\operatorname{Cov}(X-Y,Z)
+&amp;=
+\operatorname{Cov}(X,Z)-\operatorname{Cov}(Y,Z).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="独立与不相关">（4）独立与不相关</h4>
+<p>若 <span class="math inline"><em>X</em>, <em>Y</em></span>
+相互独立，则</p>
+<p><span
+class="math display">Cov (<em>X</em>, <em>Y</em>) = 0.</span></p>
+<blockquote>
+<p>[!important] 注意 独立可以推出不相关；不相关一般不能推出独立。</p>
+</blockquote>
+<h4 id="方差展开式">（5）方差展开式</h4>
+<p><span class="math display">$$
+\begin{aligned}
+D(X\pm Y)
+&amp;=
+D(X)+D(Y)\pm 2\operatorname{Cov}(X,Y).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>推导：</p>
+<p><span class="math display">$$
+\begin{aligned}
+D(X\pm Y)
+&amp;=
+E\left\{[(X\pm Y)-E(X\pm Y)]^2\right\}\\
+&amp;=
+E\left\{[X-EX]\pm[Y-EY]\right\}^2\\
+&amp;=
+E(X-EX)^2+E(Y-EY)^2\\
+&amp;\quad\pm 2E[(X-EX)(Y-EY)]\\
+&amp;=
+D(X)+D(Y)\pm 2\operatorname{Cov}(X,Y).
+\end{aligned}
+\nonumber
+$$</span></p>
+<hr />
+<blockquote>
+<p>[!question] 题目 设 <span
+class="math inline"><em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, <em>X</em><sub>3</sub></span>
+独立同分布，且</p>
+<p><span
+class="math display"><em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, <em>X</em><sub>3</sub> ∼ <em>N</em>(0, 9).</span></p>
+<p>求</p>
+<p><span
+class="math display">Cov (<em>X</em><sub>1</sub> + 2<em>X</em><sub>2</sub> − 3<em>X</em><sub>3</sub>, 2<em>X</em><sub>3</sub> + 5).</span></p>
+<p><strong>题解：</strong></p>
+<p>常数项 <span class="math inline">5</span> 对协方差无影响，所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+\operatorname{Cov}(X_1+2X_2-3X_3,\ 2X_3+5)
+&amp;=
+\operatorname{Cov}(X_1+2X_2-3X_3,\ 2X_3)\\
+&amp;=
+\operatorname{Cov}(X_1,2X_3)
++
+\operatorname{Cov}(2X_2,2X_3)\\
+&amp;\quad
+-
+\operatorname{Cov}(3X_3,2X_3).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由于 <span
+class="math inline"><em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, <em>X</em><sub>3</sub></span>
+相互独立，故</p>
+<p><span
+class="math display">Cov (<em>X</em><sub>1</sub>, 2<em>X</em><sub>3</sub>) = 0,   Cov (2<em>X</em><sub>2</sub>, 2<em>X</em><sub>3</sub>) = 0.</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+\operatorname{Cov}(X_1+2X_2-3X_3,\ 2X_3+5)
+&amp;=
+-\operatorname{Cov}(3X_3,2X_3)\\
+&amp;=
+-6D(X_3)\\
+&amp;=
+-6\cdot 9\\
+&amp;=
+-54.
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>
+<hr />
+<blockquote>
+<p>[!question] 题目 【例 4.21】设随机变量 <span
+class="math inline"><em>X</em></span> 和 <span
+class="math inline"><em>Y</em></span> 的联合概率分布为</p>
+<p><span class="math display">$$
+\begin{array}{c|ccc}
+X\backslash Y &amp; -1 &amp; 0 &amp; 1\\
+\hline
+0 &amp; 0.07 &amp; 0.18 &amp; 0.15\\
+1 &amp; 0.08 &amp; 0.32 &amp; 0.20
+\end{array}
+\nonumber
+$$</span></p>
+<p>求 <span class="math inline"><em>X</em><sup>2</sup></span> 和 <span
+class="math inline"><em>Y</em><sup>2</sup></span> 的协方差 <span
+class="math inline">Cov (<em>X</em><sup>2</sup>, <em>Y</em><sup>2</sup>)</span>。</p>
+<p><strong>题解：</strong></p>
+<p><span class="math display">$$
+\begin{aligned}
+\operatorname{Cov}(X^2,Y^2)
+&amp;=
+E(X^2Y^2)-E(X^2)E(Y^2).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因为 <span class="math inline"><em>X</em><sup>2</sup></span> 只在
+<span class="math inline"><em>X</em> = 1</span> 时取 <span
+class="math inline">1</span>，<span
+class="math inline"><em>Y</em><sup>2</sup></span> 只在 <span
+class="math inline"><em>Y</em> = −1</span> 或 <span
+class="math inline"><em>Y</em> = 1</span> 时取 <span
+class="math inline">1</span>，所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+E(X^2Y^2)
+&amp;=
+P\{X=1,Y=-1\}+P\{X=1,Y=1\}\\
+&amp;=
+0.08+0.20\\
+&amp;=
+0.28.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>又</p>
+<p><span class="math display">$$
+\begin{aligned}
+E(X^2)
+&amp;=
+P\{X=1\}\\
+&amp;=
+0.08+0.32+0.20\\
+&amp;=
+0.60,
+\end{aligned}
+\nonumber
+$$</span></p>
+<p><span class="math display">$$
+\begin{aligned}
+E(Y^2)
+&amp;=
+P\{Y=-1\}+P\{Y=1\}\\
+&amp;=
+(0.07+0.08)+(0.15+0.20)\\
+&amp;=
+0.50.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+\operatorname{Cov}(X^2,Y^2)
+&amp;=
+0.28-0.60\cdot 0.50\\
+&amp;=
+-0.02.
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>
+<hr />
+<blockquote>
+<p>[!question] 题目 【例 4.22】设随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的密度函数为</p>
+<p><span class="math display">$$
+f(x,y)
+=
+\begin{cases}
+3, &amp; (x,y)\in G,\\
+0, &amp; \text{其他},
+\end{cases}
+\nonumber
+$$</span></p>
+<p>其中区域 <span class="math inline"><em>G</em></span> 由曲线 <span
+class="math inline"><em>y</em> = <em>x</em><sup>2</sup></span> 与 <span
+class="math inline"><em>x</em> = <em>y</em><sup>2</sup></span> 围成，求
+<span class="math inline">Cov (<em>X</em>, <em>Y</em>)</span>。</p>
+<p><strong>题解：</strong></p>
+<p>区域 <span class="math inline"><em>G</em></span> 位于第一象限，由
+<span class="math inline"><em>y</em> = <em>x</em><sup>2</sup></span> 与
+<span class="math inline">$y=\sqrt{x}$</span> 围成，因此</p>
+<p><span class="math display">$$
+G=\{(x,y)\mid 0\le x\le 1,\ x^2\le y\le \sqrt{x}\}.
+\nonumber
+$$</span></p>
+<p>由</p>
+<p><span class="math display">$$
+\operatorname{Cov}(X,Y)=E(XY)-EX\cdot EY
+\nonumber
+$$</span></p>
+<p>计算各项。</p>
+<p><span class="math display">$$
+\begin{aligned}
+E(XY)
+&amp;=
+\int_0^1\int_{x^2}^{\sqrt{x}}xy\cdot 3\,dy\,dx\\
+&amp;=
+3\int_0^1x\left[\frac{1}{2}y^2\right]_{x^2}^{\sqrt{x}}dx\\
+&amp;=
+\frac{3}{2}\int_0^1x(x-x^4)\,dx\\
+&amp;=
+\frac{3}{2}\int_0^1(x^2-x^5)\,dx\\
+&amp;=
+\frac{3}{2}\left(\frac{1}{3}-\frac{1}{6}\right)\\
+&amp;=
+\frac{1}{4}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p><span class="math display">$$
+\begin{aligned}
+EX
+&amp;=
+\int_0^1\int_{x^2}^{\sqrt{x}}x\cdot 3\,dy\,dx\\
+&amp;=
+3\int_0^1x(\sqrt{x}-x^2)\,dx\\
+&amp;=
+3\int_0^1(x^{3/2}-x^3)\,dx\\
+&amp;=
+3\left(\frac{2}{5}-\frac{1}{4}\right)\\
+&amp;=
+\frac{9}{20}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由区域关于直线 <span
+class="math inline"><em>y</em> = <em>x</em></span> 对称，同理</p>
+<p><span class="math display">$$
+EY=\frac{9}{20}.
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+\operatorname{Cov}(X,Y)
+&amp;=
+E(XY)-EX\cdot EY\\
+&amp;=
+\frac{1}{4}
+-
+\frac{9}{20}\cdot\frac{9}{20}\\
+&amp;=
+\frac{19}{400}.
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>
+<hr />
+<blockquote>
+<p>[!question] 题目 【例 4.23】设 <span
+class="math inline"><em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, ⋯, <em>X</em><sub><em>n</em></sub> (<em>n</em> &gt; 2)</span>
+独立同分布，其方差 <span
+class="math inline"><em>σ</em><sup>2</sup> &gt; 0</span>，令</p>
+<p><span class="math display">$$
+\overline X
+=
+\frac{1}{n}\sum_{i=1}^nX_i,
+\nonumber
+$$</span></p>
+<p>则下列选项正确的是（ ）。</p>
+<p>A. <span class="math inline">$\operatorname{Cov}(X_1,\overline
+X)=\dfrac{\sigma^2}{n}$</span></p>
+<p>B. <span class="math inline">$\operatorname{Cov}(X_n,\overline
+X)=\sigma^2$</span></p>
+<p>C. <span class="math inline">$D(X_1+\overline
+X)=\dfrac{n+1}{n}\sigma^2$</span></p>
+<p>D. <span class="math inline">$D(X_1-\overline
+X)=\dfrac{n+1}{n}\sigma^2$</span></p>
+<p><strong>题解：</strong></p>
+<p>先算</p>
+<p><span class="math display">$$
+\begin{aligned}
+\operatorname{Cov}(X_1,\overline X)
+&amp;=
+\operatorname{Cov}\left(X_1,\frac{1}{n}\sum_{i=1}^nX_i\right)\\
+&amp;=
+\frac{1}{n}\sum_{i=1}^n\operatorname{Cov}(X_1,X_i)\\
+&amp;=
+\frac{1}{n}\operatorname{Cov}(X_1,X_1)\\
+&amp;=
+\frac{\sigma^2}{n}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>所以 A 正确，B 错误。</p>
+<p>又</p>
+<p><span class="math display">$$
+\begin{aligned}
+D(\overline X)
+&amp;=
+D\left(\frac{1}{n}\sum_{i=1}^nX_i\right)\\
+&amp;=
+\frac{1}{n^2}D\left(\sum_{i=1}^nX_i\right)\\
+&amp;=
+\frac{1}{n^2}\sum_{i=1}^nD(X_i)\\
+&amp;=
+\frac{\sigma^2}{n}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+D(X_1+\overline X)
+&amp;=
+D(X_1)+D(\overline X)+2\operatorname{Cov}(X_1,\overline X)\\
+&amp;=
+\sigma^2+\frac{\sigma^2}{n}+2\cdot\frac{\sigma^2}{n}\\
+&amp;=
+\frac{n+3}{n}\sigma^2.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>所以 C 错误。</p>
+<p>同理</p>
+<p><span class="math display">$$
+\begin{aligned}
+D(X_1-\overline X)
+&amp;=
+D(X_1)+D(\overline X)-2\operatorname{Cov}(X_1,\overline X)\\
+&amp;=
+\sigma^2+\frac{\sigma^2}{n}-2\cdot\frac{\sigma^2}{n}\\
+&amp;=
+\frac{n-1}{n}\sigma^2.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>所以 D 错误。</p>
+<p>答案：A。</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/5.%20%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/II.%20%E6%96%B9%E5%B7%AE/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#iv.-%E5%8D%8F%E6%96%B9%E5%B7%AE"><span class="nav-number">1.</span> <span class="nav-text">IV. 协方差</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">一、定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E6%80%A7%E8%B4%A8"><span class="nav-number">1.2.</span> <span class="nav-text">二、性质</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E5%BE%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">（1）交换律</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E6%95%B0%E9%A1%B9"><span class="nav-number">1.2.2.</span> <span class="nav-text">（2）常数项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E6%80%A7%E8%B4%A8"><span class="nav-number">1.2.3.</span> <span class="nav-text">（3）线性性质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B%E4%B8%8E%E4%B8%8D%E7%9B%B8%E5%85%B3"><span class="nav-number">1.2.4.</span> <span class="nav-text">（4）独立与不相关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E5%B7%AE%E5%B1%95%E5%BC%80%E5%BC%8F"><span class="nav-number">1.2.5.</span> <span class="nav-text">（5）方差展开式</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

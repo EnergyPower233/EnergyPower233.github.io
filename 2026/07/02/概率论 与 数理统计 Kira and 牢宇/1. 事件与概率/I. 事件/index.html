@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="I. 事件 一、事件的关系 （1）包含 若事件 A 发生，事件 B 一定发生，则称 B 包含 A，或 A 包含于 B，记作 A ⊂ B. 特别地，若 A⊂B 且 B⊂A，则称 A 与 B 相等，记作 A &#x3D; B.     A B  （2）互不相容（互斥） 若事件 A 与 B 不能同时发生，即 AB &#x3D; ⌀, 则称 A 与 B 互不相容，或称 A 与 B 互斥。     A B  （3）对立（互逆）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2026/07/02/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/1.%20%E4%BA%8B%E4%BB%B6%E4%B8%8E%E6%A6%82%E7%8E%87/I.%20%E4%BA%8B%E4%BB%B6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="I. 事件 一、事件的关系 （1）包含 若事件 A 发生，事件 B 一定发生，则称 B 包含 A，或 A 包含于 B，记作 A ⊂ B. 特别地，若 A⊂B 且 B⊂A，则称 A 与 B 相等，记作 A &#x3D; B.     A B  （2）互不相容（互斥） 若事件 A 与 B 不能同时发生，即 AB &#x3D; ⌀, 则称 A 与 B 互不相容，或称 A 与 B 互斥。     A B  （3）对立（互逆）">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-07-01T16:13:48.000Z">
+<meta property="article:modified_time" content="2026-07-01T16:13:48.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2026/07/02/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/1.%20%E4%BA%8B%E4%BB%B6%E4%B8%8E%E6%A6%82%E7%8E%87/I.%20%E4%BA%8B%E4%BB%B6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/07/02/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/1.%20%E4%BA%8B%E4%BB%B6%E4%B8%8E%E6%A6%82%E7%8E%87/I.%20%E4%BA%8B%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2026-07-02 00:13:48" itemprop="dateCreated datePublished" datetime="2026-07-02T00:13:48+08:00">2026-07-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="i.-事件"><span class="math inline"><em>I</em>.</span> 事件</h2>
+<h3 id="一事件的关系">一、事件的关系</h3>
+<h4 id="包含">（1）包含</h4>
+<p>若事件 A 发生，事件 B <strong>一定</strong>发生，则称 B 包含 A，或 A
+包含于 B，记作</p>
+<p><span class="math display"><em>A</em> ⊂ <em>B</em>.</span></p>
+<p>特别地，若 A⊂B 且 B⊂A，则称 A 与 B 相等，记作</p>
+<p><span class="math display"><em>A</em> = <em>B</em>.</span></p>
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="150" viewBox="0 0 260 150">
+<rect x="35" y="25" width="190" height="95" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<ellipse cx="120" cy="72" rx="78" ry="42" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<ellipse cx="105" cy="70" rx="42" ry="23" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<text x="96" y="78" font-size="28" font-family="Times New Roman, serif" fill="#1f4cff">A</text>
+<text x="160" y="78" font-size="28" font-family="Times New Roman, serif" fill="#1f4cff">B</text>
+</svg>
+<h4 id="互不相容互斥">（2）互不相容（互斥）</h4>
+<p>若事件 A 与 B 不能同时发生，即</p>
+<p><span class="math display"><em>A</em><em>B</em> = ⌀,</span></p>
+<p>则称 A 与 B 互不相容，或称 A 与 B 互斥。</p>
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="150" viewBox="0 0 260 150">
+<rect x="35" y="25" width="190" height="95" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<ellipse cx="85" cy="72" rx="24" ry="26" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<ellipse cx="175" cy="72" rx="24" ry="26" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<text x="75" y="82" font-size="32" font-family="Times New Roman, serif" fill="#1f4cff">A</text>
+<text x="165" y="82" font-size="32" font-family="Times New Roman, serif" fill="#1f4cff">B</text>
+</svg>
+<h4 id="对立互逆">（3）对立（互逆）</h4>
+<p>若事件 <span class="math inline"><em>A</em></span> 与 <span
+class="math inline"><em>B</em></span>
+不能同时发生，但必有一个发生，即</p>
+<p><span
+class="math display"><em>A</em> ∪ <em>B</em> = <em>Ω</em>,   <em>A</em><em>B</em> = ⌀,</span></p>
+<p>则称 <span class="math inline"><em>A</em></span> 与 <span
+class="math inline"><em>B</em></span> 对立，记作</p>
+<p><span class="math display">$$
+B=\overline A. \nonumber
+$$</span></p>
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="150" viewBox="0 0 260 150">
+<rect x="35" y="25" width="190" height="95" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<line x1="125" y1="120" x2="150" y2="25" stroke="#1f4cff" stroke-width="3"/>
+<text x="75" y="82" font-size="32" font-family="Times New Roman, serif" fill="#1f4cff">A</text>
+<text x="155" y="82" font-size="32" font-family="Times New Roman, serif" fill="#1f4cff">A</text>
+<line x1="154" y1="52" x2="177" y2="52" stroke="#1f4cff" stroke-width="2.5"/>
+</svg>
+<h4 id="独立">（4）独立</h4>
+<h5 id="两个事件相互独立">两个事件相互独立</h5>
+<p>事件 <span class="math inline"><em>A</em></span> 与事件 <span
+class="math inline"><em>B</em></span> 相互独立，当且仅当</p>
+<p><span
+class="math display"><em>P</em>(<em>A</em><em>B</em>) = <em>P</em>(<em>A</em>)<em>P</em>(<em>B</em>).</span></p>
+<p>若 <span
+class="math inline">0 &lt; <em>P</em>(<em>B</em>) &lt; 1</span>，（<span
+class="math inline"><em>B</em></span>
+不是必然事件或者不可能事件）则上述条件等价于</p>
+<p><span
+class="math display"><em>P</em>(<em>A</em> ∣ <em>B</em>) = <em>P</em>(<em>A</em>).</span></p>
+<p>于是也有</p>
+<p><span class="math display">$$
+P(A\mid \overline B)=P(A). \nonumber
+$$</span></p>
+<p>即 <span class="math inline"><em>B</em></span> 发不发生不影响 <span
+class="math inline"><em>A</em></span> 是否发生若事件 <span
+class="math inline"><em>A</em></span> 与事件 <span
+class="math inline"><em>B</em></span> 相互独立，则 <span
+class="math inline"><em>A</em></span> 与 <span
+class="math inline">$\overline B$</span>，<span
+class="math inline">$\overline A$</span> 与 <span
+class="math inline"><em>B</em></span>，<span
+class="math inline">$\overline A$</span> 与 <span
+class="math inline">$\overline B$</span> 也分别相互独立。</p>
+<p>并且在 <span
+class="math inline">0 &lt; <em>P</em>(<em>B</em>) &lt; 1</span>
+时，有</p>
+<p><span class="math display">$$
+P(A\mid B)=1 - P(\overline A\mid  B) = 1 - P(\overline A\mid \overline
+B). \nonumber
+$$</span></p>
+<p>上式等价于</p>
+<p><span class="math display">$$
+P(A\mid B)+P(\overline A\mid \overline B)=1. \nonumber
+$$</span></p>
+<blockquote>
+<p>PS:
+零概率事件或一概率事件与任意事件相互独立。因此，不可能事件或必然事件与任意事件相互独立。若事件
+<span class="math inline"><em>A</em></span> 与事件 <span
+class="math inline"><em>B</em></span> 既相互独立又互不相容，则 <span
+class="math inline"><em>A</em></span> 与 <span
+class="math inline"><em>B</em></span> 至少有一个为零概率事件。</p>
+</blockquote>
+<p>因为</p>
+<p><span
+class="math display"><em>A</em><em>B</em> = ⌀ ⇒ <em>P</em>(<em>A</em><em>B</em>) = 0,</span></p>
+<p>又由独立性可得</p>
+<p><span
+class="math display"><em>P</em>(<em>A</em><em>B</em>) = <em>P</em>(<em>A</em>)<em>P</em>(<em>B</em>),</span></p>
+<p>故</p>
+<p><span
+class="math display"><em>P</em>(<em>A</em>)<em>P</em>(<em>B</em>) = 0.</span></p>
+<h5 id="n-个事件相互独立"><span class="math inline"><em>n</em></span>
+个事件相互独立</h5>
+<p>设事件为 <span
+class="math inline"><em>A</em><sub>1</sub>, <em>A</em><sub>2</sub>, ⋯, <em>A</em><sub><em>n</em></sub></span>。若对任意
+<span
+class="math inline">2 ≤ <em>k</em> ≤ <em>n</em></span>，任意不同下标
+<span
+class="math inline"><em>i</em><sub>1</sub>, <em>i</em><sub>2</sub>, ⋯, <em>i</em><sub><em>k</em></sub></span>，均有</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\left(\bigcap_{\ell=1}^{k}A_{i_\ell}\right)
+&amp;=
+\prod_{\ell=1}^{k}P(A_{i_\ell}),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则称 <span
+class="math inline"><em>A</em><sub>1</sub>, <em>A</em><sub>2</sub>, ⋯, <em>A</em><sub><em>n</em></sub></span>
+相互独立。</p>
+<p>（以后会大量使用上式的符号，该式等价于 <span
+class="math inline"><em>P</em>(<em>A</em><sub><em>i</em><sub>1</sub></sub><em>A</em><sub><em>i</em><sub>2</sub></sub>⋯<em>A</em><sub><em>i</em><sub><em>k</em></sub></sub>) = <em>P</em>(<em>A</em><sub><em>i</em><sub>1</sub></sub>)<em>P</em>(<em>A</em><sub><em>i</em><sub>2</sub></sub>)⋯<em>P</em>(<em>A</em><sub><em>i</em><sub><em>k</em></sub></sub>).</span>
+之后不会做过多说明）</p>
+<p>只验证两两独立不一定能推出相互独立；相互独立要求所有阶的交事件概率均可分解为概率乘积。</p>
+<h3 id="二事件的运算">二、事件的运算</h3>
+<h4 id="事件的运算">（1）事件的运算</h4>
+<h5 id="和并">和（并）</h5>
+<p>事件 <span class="math inline"><em>A</em></span> 与事件 <span
+class="math inline"><em>B</em></span> 至少有一个发生，称为事件 <span
+class="math inline"><em>A</em></span> 与事件 <span
+class="math inline"><em>B</em></span> 的和，记作</p>
+<p><span class="math display"><em>A</em> ∪ <em>B</em>.</span></p>
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="150" viewBox="0 0 260 150">
+<rect x="30" y="25" width="200" height="100" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<ellipse cx="100" cy="78" rx="48" ry="34" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<ellipse cx="152" cy="78" rx="48" ry="34" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<text x="68" y="50" font-size="30" font-family="Times New Roman, serif" fill="#1f4cff">A</text>
+<text x="175" y="50" font-size="30" font-family="Times New Roman, serif" fill="#1f4cff">B</text>
+</svg>
+<h5 id="积交">积（交）</h5>
+<p>事件 <span class="math inline"><em>A</em></span> 与事件 <span
+class="math inline"><em>B</em></span> 同时发生，称为事件 <span
+class="math inline"><em>A</em></span> 与事件 <span
+class="math inline"><em>B</em></span> 的积，记作</p>
+<p><span class="math display"><em>A</em><em>B</em>.</span></p>
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="150" viewBox="0 0 260 150">
+<rect x="30" y="25" width="200" height="100" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<path d="
+    M126 49.4
+    A48 34 0 0 1 126 106.6
+    A48 34 0 0 1 126 49.4
+    Z
+  " fill="#1f4cff"/>
+<ellipse cx="100" cy="78" rx="48" ry="34" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<ellipse cx="152" cy="78" rx="48" ry="34" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<text x="64" y="50" font-size="30" font-family="Times New Roman, serif" fill="#1f4cff">A</text>
+<text x="180" y="50" font-size="30" font-family="Times New Roman, serif" fill="#1f4cff">B</text>
+</svg>
+<h5 id="差相对补">差（相对补）</h5>
+<p>事件 <span class="math inline"><em>A</em></span> 发生但事件 <span
+class="math inline"><em>B</em></span> 不发生，称为事件 <span
+class="math inline"><em>A</em></span> 与事件 <span
+class="math inline"><em>B</em></span> 的差，记作</p>
+<p><span class="math display"><em>A</em> − <em>B</em>.</span></p>
+<p>显然</p>
+<p><span class="math display">$$
+A-B=A\overline B. \nonumber
+$$</span></p>
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="150" viewBox="0 0 260 150">
+<rect x="30" y="25" width="200" height="100" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<path d="M126 49.4 A48 34 0 1 0 126 106.6 A48 34 0 0 1 126 49.4 Z" fill="#ff2d2d" opacity="0.22"/>
+<ellipse cx="100" cy="78" rx="48" ry="34" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<ellipse cx="152" cy="78" rx="48" ry="34" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<text x="62" y="50" font-size="30" font-family="Times New Roman, serif" fill="#1f4cff">A</text>
+<text x="178" y="50" font-size="30" font-family="Times New Roman, serif" fill="#1f4cff">B</text>
+</svg>
+<h4 id="事件的运算律">（2）事件的运算律</h4>
+<h5 id="交换律">交换律</h5>
+<p><span class="math display">$$
+\begin{align}
+A\cup B &amp;= B\cup A,\\
+AB &amp;= BA.
+\end{align}
+\nonumber
+$$</span></p>
+<h5 id="结合律">结合律</h5>
+<p><span class="math display">$$
+\begin{align}
+A\cup(B\cup C) &amp;= (A\cup B)\cup C,\\
+A(BC) &amp;= (AB)C.
+\end{align}
+\nonumber
+$$</span></p>
+<h5 id="分配律">分配律</h5>
+<p><span class="math display">$$
+\begin{align}
+A\cup(BC) &amp;= (A\cup B)(A\cup C),\\
+A(B\cup C) &amp;= (AB)\cup(AC).
+\end{align}
+\nonumber
+$$</span></p>
+<h5 id="德摩根律">德·摩根律</h5>
+<p>!(p || q) = !p &amp;&amp; !q</p>
+<p><span class="math display">$$
+\begin{align}
+\overline{A\cup B} &amp;= \overline A\,\overline B,\\
+\overline{AB} &amp;= \overline A\cup\overline B.
+\end{align}
+\nonumber
+$$</span></p>
+<h5 id="吸收律">吸收律</h5>
+<p><span class="math display">$$
+\begin{align}
+A\cup(AB) &amp;= A,\\
+A(A\cup B) &amp;= A.
+\end{align}
+\nonumber
+$$</span></p>
+<p>其直观原因是</p>
+<p><span class="math display">$$
+\begin{align}
+AB &amp;\subset A,\\
+A &amp;\subset A\cup B.
+\end{align}
+\nonumber
+$$</span></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2026/06/14/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/6.%20%E7%BB%9F%E8%AE%A1%E5%88%9D%E6%AD%A5/IV.%20%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2026/07/02/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/1.%20%E4%BA%8B%E4%BB%B6%E4%B8%8E%E6%A6%82%E7%8E%87/II.%20%E6%A6%82%E7%8E%87/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#i.-%E4%BA%8B%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">I. 事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%8B%E4%BB%B6%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.1.</span> <span class="nav-text">一、事件的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85%E5%90%AB"><span class="nav-number">1.1.1.</span> <span class="nav-text">（1）包含</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%92%E4%B8%8D%E7%9B%B8%E5%AE%B9%E4%BA%92%E6%96%A5"><span class="nav-number">1.1.2.</span> <span class="nav-text">（2）互不相容（互斥）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E7%AB%8B%E4%BA%92%E9%80%86"><span class="nav-number">1.1.3.</span> <span class="nav-text">（3）对立（互逆）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B"><span class="nav-number">1.1.4.</span> <span class="nav-text">（4）独立</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E4%BA%8B%E4%BB%B6%E7%9B%B8%E4%BA%92%E7%8B%AC%E7%AB%8B"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">两个事件相互独立</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#n-%E4%B8%AA%E4%BA%8B%E4%BB%B6%E7%9B%B8%E4%BA%92%E7%8B%AC%E7%AB%8B"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">n
+个事件相互独立</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E4%BA%8B%E4%BB%B6%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">1.2.</span> <span class="nav-text">二、事件的运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">1.2.1.</span> <span class="nav-text">（1）事件的运算</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%92%8C%E5%B9%B6"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">和（并）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A7%AF%E4%BA%A4"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">积（交）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B7%AE%E7%9B%B8%E5%AF%B9%E8%A1%A5"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">差（相对补）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E7%9A%84%E8%BF%90%E7%AE%97%E5%BE%8B"><span class="nav-number">1.2.2.</span> <span class="nav-text">（2）事件的运算律</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E5%BE%8B"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">交换律</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E5%90%88%E5%BE%8B"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">结合律</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%86%E9%85%8D%E5%BE%8B"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">分配律</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BE%B7%E6%91%A9%E6%A0%B9%E5%BE%8B"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">德·摩根律</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%90%B8%E6%94%B6%E5%BE%8B"><span class="nav-number">1.2.2.5.</span> <span class="nav-text">吸收律</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

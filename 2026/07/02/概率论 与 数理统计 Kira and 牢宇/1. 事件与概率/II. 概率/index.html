@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="II. 概率 一、基本概率公式 （1）加法公式 P(A ∪ B) &#x3D; P(A) + P(B) − P(AB). 对三个事件，有 $$ \begin{aligned} P(A\cup B\cup C) &amp;&#x3D; P(A)+P(B)+P(C)\\ &amp;\quad -P(AB)-P(AC)-P(BC)\\ &amp;\quad +P(ABC). \end{aligned} \nonumber">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2026/07/02/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/1.%20%E4%BA%8B%E4%BB%B6%E4%B8%8E%E6%A6%82%E7%8E%87/II.%20%E6%A6%82%E7%8E%87/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="II. 概率 一、基本概率公式 （1）加法公式 P(A ∪ B) &#x3D; P(A) + P(B) − P(AB). 对三个事件，有 $$ \begin{aligned} P(A\cup B\cup C) &amp;&#x3D; P(A)+P(B)+P(C)\\ &amp;\quad -P(AB)-P(AC)-P(BC)\\ &amp;\quad +P(ABC). \end{aligned} \nonumber">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-07-01T16:14:48.000Z">
+<meta property="article:modified_time" content="2026-07-01T16:14:48.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2026/07/02/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/1.%20%E4%BA%8B%E4%BB%B6%E4%B8%8E%E6%A6%82%E7%8E%87/II.%20%E6%A6%82%E7%8E%87/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/07/02/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/1.%20%E4%BA%8B%E4%BB%B6%E4%B8%8E%E6%A6%82%E7%8E%87/II.%20%E6%A6%82%E7%8E%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2026-07-02 00:14:48" itemprop="dateCreated datePublished" datetime="2026-07-02T00:14:48+08:00">2026-07-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="ii.-概率"><span class="math inline"><em>I</em><em>I</em>.</span>
+概率</h2>
+<h3 id="一基本概率公式">一、基本概率公式</h3>
+<h4 id="加法公式">（1）加法公式</h4>
+<p><span
+class="math display"><em>P</em>(<em>A</em> ∪ <em>B</em>) = <em>P</em>(<em>A</em>) + <em>P</em>(<em>B</em>) − <em>P</em>(<em>A</em><em>B</em>).</span></p>
+<p>对三个事件，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+P(A\cup B\cup C)
+&amp;= P(A)+P(B)+P(C)\\
+&amp;\quad -P(AB)-P(AC)-P(BC)\\
+&amp;\quad +P(ABC).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>推广到 <span class="math inline"><em>n</em></span> 个事件，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\left(\bigcup_{i=1}^{n}A_i\right)
+&amp;=
+\sum_{k=1}^{n}(-1)^{k+1}
+\sum_{1\le i_1&lt;i_2&lt;\cdots&lt;i_k\le n}
+P\left(\bigcap_{r=1}^{k}A_{i_r}\right).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>（奇正偶负）</p>
+<blockquote>
+<p>PS: 前面写交集的时候 下标为 <span
+class="math inline"><em>i</em></span> ，意为 <span
+class="math inline"><em>A</em><sub>1</sub><em>A</em><sub>2</sub>⋯<em>A</em><sub><em>n</em></sub></span>
+全部并起来。 <span
+class="math inline"><em>i</em><sub><em>r</em></sub></span> 的意思是
+<span class="math inline"><em>A</em></span> 下标为 <span
+class="math inline"><em>r</em></span> 即 <span
+class="math inline"><em>A</em><sub><em>i</em><sub>1</sub></sub> = <em>A</em><sub>1</sub></span></p>
+</blockquote>
+<h4 id="减法公式-相对补">（2）减法公式 (相对补)</h4>
+<p><span
+class="math display"><em>P</em>(<em>A</em> − <em>B</em>) = <em>P</em>(<em>A</em>) − <em>P</em>(<em>A</em><em>B</em>).</span></p>
+<h4 id="求逆公式">（3）求逆公式</h4>
+<p><span class="math display">$$
+P(\overline A)=1-P(A). \nonumber
+$$</span></p>
+<h3 id="二更高阶的概率公式">二、更高阶的概率公式</h3>
+<h4 id="条件概率公式">① 条件概率公式</h4>
+<p>设 <span class="math inline"><em>A</em>, <em>B</em></span>
+为随机事件，且 <span
+class="math inline"><em>P</em>(<em>B</em>) &gt; 0</span>，称</p>
+<p><span class="math display">$$
+P(A\mid B)=\frac{P(AB)}{P(B)} \nonumber
+$$</span></p>
+<p>为在事件 <span class="math inline"><em>B</em></span> 发生条件下事件
+<span class="math inline"><em>A</em></span> 发生的条件概率。</p>
+<p>由条件概率公式可得乘法公式：</p>
+<p><span
+class="math display"><em>P</em>(<em>A</em><em>B</em>) = <em>P</em>(<em>B</em>)<em>P</em>(<em>A</em> ∣ <em>B</em>).</span></p>
+<p>若 <span
+class="math inline"><em>P</em>(<em>A</em>) &gt; 0</span>，也有</p>
+<p><span
+class="math display"><em>P</em>(<em>A</em><em>B</em>) = <em>P</em>(<em>A</em>)<em>P</em>(<em>B</em> ∣ <em>A</em>).</span></p>
+<p>推广到多个事件：</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\left(\bigcap_{i=1}^{n}A_i\right)
+&amp;=
+\prod_{i=1}^{n}
+P\left(
+A_i\mid \bigcap_{j=1}^{i-1}A_j
+\right),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>其中约定</p>
+<p><span class="math display">$$
+\begin{aligned}
+\bigcap_{j=1}^{0}A_j
+&amp;=\Omega.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p><span
+class="math inline"><em>P</em>(<em>A</em><sub>1</sub><em>A</em><sub>2</sub>⋯<em>A</em><sub><em>n</em></sub>) = <em>P</em>(<em>A</em><sub>1</sub>)<em>P</em>(<em>A</em><sub>2</sub> ∣ <em>A</em><sub>1</sub>)<em>P</em>(<em>A</em><sub>3</sub> ∣ <em>A</em><sub>1</sub><em>A</em><sub>2</sub>)⋯<em>P</em>(<em>A</em><sub><em>n</em></sub> ∣ <em>A</em><sub>1</sub><em>A</em><sub>2</sub>⋯<em>A</em><sub><em>n</em> − 1</sub>).</span></p>
+<p>【注】条件概率也是概率，满足概率的所有性质和公式。</p>
+<h4 id="全概率公式">② 全概率公式</h4>
+<p>设 <span
+class="math inline"><em>B</em><sub>1</sub>, <em>B</em><sub>2</sub>, ⋯, <em>B</em><sub><em>n</em></sub></span>
+为完备事件组，即</p>
+<p><span class="math display">$$
+\begin{aligned}
+B_i\cap B_j &amp;= \varnothing,\  (i\ne j),\\
+\bigcup_{i=1}^{n}B_i &amp;= \Omega.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则事件 <span class="math inline"><em>A</em></span> 的概率为</p>
+<p><span class="math display">$$
+\begin{aligned}
+P(A)
+&amp;= \sum_{i=1}^{n}P(A\cap B_i)\\
+&amp;= \sum_{i=1}^{n}P(B_i)P(A\mid B_i).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="贝叶斯公式">③ 贝叶斯公式</h4>
+<p>设 <span
+class="math inline"><em>B</em><sub>1</sub>, <em>B</em><sub>2</sub>, ⋯, <em>B</em><sub><em>n</em></sub></span>
+为完备事件组，且 <span
+class="math inline"><em>P</em>(<em>A</em>) &gt; 0</span>，则</p>
+<p><span class="math display">$$
+P(B_j\mid A)
+=
+\frac{P(A\mid B_j)P(B_j)}
+{\sum_{i=1}^{n}P(A\mid B_i)P(B_i)}. \nonumber
+$$</span></p>
+<p>（不过是把条件概率公式的分子以原发生事件为条件展开为条件概率公式，再把分母用全概率公式展开罢了）</p>
+<p>【注】若试验分为两步，第一步有 <span
+class="math inline"><em>n</em></span> 种情况 <span
+class="math inline"><em>B</em><sub>1</sub>, <em>B</em><sub>2</sub>, ⋯, <em>B</em><sub><em>n</em></sub></span>
+构成完备事件组；若求第二步中事件 <span
+class="math inline"><em>A</em></span> 的概率，用全概率公式。若已知事件
+<span class="math inline"><em>A</em></span>
+发生，求第一步是哪种情况的概率，用贝叶斯公式。</p>
+<h3 id="三高中三大概型">三、高中三大概型</h3>
+<h4 id="古典概型">① 古典概型</h4>
+<p>设试验只有有限个等可能的样本点，称此试验为古典概型。事件 <span
+class="math inline"><em>A</em></span> 的概率为</p>
+<p><span class="math display">$$
+P(A)=\frac{A\text{ 中样本点数}}{\Omega\text{ 中样本点数}}. \nonumber
+$$</span></p>
+<h4 id="几何概型算面积比">② 几何概型（算面积比）</h4>
+<p>设试验的样本空间为某区域，事件发生的可能性与其对应的几何度量成正比，则称此试验为几何概型。事件
+<span class="math inline"><em>A</em></span> 的概率为</p>
+<p><span class="math display">$$
+P(A)=\frac{A\text{ 的几何度量}}{\Omega\text{ 的几何度量}}. \nonumber
+$$</span></p>
+<p>这里的“几何度量”可以是长度、面积或体积。</p>
+<h4 id="bernoulli概型独立重复两个结果">③
+Bernoulli概型（独立重复，两个结果）</h4>
+<p>若试验<strong>只</strong>有两个可能结果 <span
+class="math inline"><em>A</em></span> 和 <span
+class="math inline">$\overline
+A$</span>，则称该试验为伯努利试验或伯努利概型。</p>
+<p>将伯努利试验独立重复 <span class="math inline"><em>n</em></span>
+次，称为 <span class="math inline"><em>n</em></span>
+重伯努利试验。设</p>
+<p><span
+class="math display"><em>P</em>(<em>A</em>) = <em>p</em>,   0 &lt; <em>p</em> &lt; 1,</span></p>
+<p>则 <span class="math inline"><em>n</em></span> 重伯努利试验中事件
+<span class="math inline"><em>A</em></span> 发生 <span
+class="math inline"><em>k</em></span> 次的概率为</p>
+<p><span class="math display">$$
+\binom{n}{k}p^k(1-p)^{n-k},
+\
+k=0,1,\cdots,n. \nonumber
+$$</span></p>
+<h3 id="四必然事件与不可能事件">四、必然事件与不可能事件</h3>
+<p>必然事件发生的概率为 <span class="math inline">1</span>，但概率为
+<span class="math inline">1</span> 的事件不一定是必然事件。</p>
+<p>不可能事件发生的概率为 <span class="math inline">0</span>，但概率为
+<span class="math inline">0</span> 的事件不一定是不可能事件。</p>
+<p>因此事件可以推概率，概率不能推事件。</p>
+<h3 id="五一个重要不等式">五、一个重要不等式</h3>
+<p>由于</p>
+<p><span class="math display">$$
+\begin{aligned}
+AB &amp;\subset A,\\
+AB &amp;\subset B,
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+P(AB) &amp;\le P(A),\\
+P(AB) &amp;\le P(B).
+\end{aligned}
+\nonumber
+$$</span></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2026/07/02/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/1.%20%E4%BA%8B%E4%BB%B6%E4%B8%8E%E6%A6%82%E7%8E%87/I.%20%E4%BA%8B%E4%BB%B6/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2026/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/2.%20%E4%B8%80%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/I.%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0%E5%92%8C%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6/2-8%20%E8%BF%9E%E7%BB%AD%E6%80%A7%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E6%80%A7%E8%B4%A8/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ii.-%E6%A6%82%E7%8E%87"><span class="nav-number">1.</span> <span class="nav-text">II.
+概率</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E5%9F%BA%E6%9C%AC%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">一、基本概率公式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E6%B3%95%E5%85%AC%E5%BC%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">（1）加法公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%8F%E6%B3%95%E5%85%AC%E5%BC%8F-%E7%9B%B8%E5%AF%B9%E8%A1%A5"><span class="nav-number">1.1.2.</span> <span class="nav-text">（2）减法公式 (相对补)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B1%82%E9%80%86%E5%85%AC%E5%BC%8F"><span class="nav-number">1.1.3.</span> <span class="nav-text">（3）求逆公式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E6%9B%B4%E9%AB%98%E9%98%B6%E7%9A%84%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">二、更高阶的概率公式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F"><span class="nav-number">1.2.1.</span> <span class="nav-text">① 条件概率公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%A8%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F"><span class="nav-number">1.2.2.</span> <span class="nav-text">② 全概率公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%85%AC%E5%BC%8F"><span class="nav-number">1.2.3.</span> <span class="nav-text">③ 贝叶斯公式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E9%AB%98%E4%B8%AD%E4%B8%89%E5%A4%A7%E6%A6%82%E5%9E%8B"><span class="nav-number">1.3.</span> <span class="nav-text">三、高中三大概型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%A4%E5%85%B8%E6%A6%82%E5%9E%8B"><span class="nav-number">1.3.1.</span> <span class="nav-text">① 古典概型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%A0%E4%BD%95%E6%A6%82%E5%9E%8B%E7%AE%97%E9%9D%A2%E7%A7%AF%E6%AF%94"><span class="nav-number">1.3.2.</span> <span class="nav-text">② 几何概型（算面积比）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bernoulli%E6%A6%82%E5%9E%8B%E7%8B%AC%E7%AB%8B%E9%87%8D%E5%A4%8D%E4%B8%A4%E4%B8%AA%E7%BB%93%E6%9E%9C"><span class="nav-number">1.3.3.</span> <span class="nav-text">③
+Bernoulli概型（独立重复，两个结果）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E5%BF%85%E7%84%B6%E4%BA%8B%E4%BB%B6%E4%B8%8E%E4%B8%8D%E5%8F%AF%E8%83%BD%E4%BA%8B%E4%BB%B6"><span class="nav-number">1.4.</span> <span class="nav-text">四、必然事件与不可能事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E4%B8%80%E4%B8%AA%E9%87%8D%E8%A6%81%E4%B8%8D%E7%AD%89%E5%BC%8F"><span class="nav-number">1.5.</span> <span class="nav-text">五、一个重要不等式</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

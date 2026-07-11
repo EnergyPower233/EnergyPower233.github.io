@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="III. 六大统计量 一、单正态总体 设 X1, X2, …, Xn 为来自总体 $$ \begin{aligned} X &amp;\sim N(\mu,\sigma^2) \end{aligned} \nonumber $$ 的简单随机样本，$\overline X$ 与 S2 分别为样本均值与样本方差。 （1）样本均值的标准化统计量 由于正态总体的样本均值仍服从正态分布，故 $$ \begi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2026/06/14/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/6.%20%E7%BB%9F%E8%AE%A1%E5%88%9D%E6%AD%A5/III.%20%E5%85%AD%E5%A4%A7%E7%BB%9F%E8%AE%A1%E9%87%8F/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="III. 六大统计量 一、单正态总体 设 X1, X2, …, Xn 为来自总体 $$ \begin{aligned} X &amp;\sim N(\mu,\sigma^2) \end{aligned} \nonumber $$ 的简单随机样本，$\overline X$ 与 S2 分别为样本均值与样本方差。 （1）样本均值的标准化统计量 由于正态总体的样本均值仍服从正态分布，故 $$ \begi">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-06-14T08:08:25.000Z">
+<meta property="article:modified_time" content="2026-06-14T08:08:25.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2026/06/14/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/6.%20%E7%BB%9F%E8%AE%A1%E5%88%9D%E6%AD%A5/III.%20%E5%85%AD%E5%A4%A7%E7%BB%9F%E8%AE%A1%E9%87%8F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/06/14/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/6.%20%E7%BB%9F%E8%AE%A1%E5%88%9D%E6%AD%A5/III.%20%E5%85%AD%E5%A4%A7%E7%BB%9F%E8%AE%A1%E9%87%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2026-06-14 16:08:25" itemprop="dateCreated datePublished" datetime="2026-06-14T16:08:25+08:00">2026-06-14</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="iii.-六大统计量"><span
+class="math inline"><em>I</em><em>I</em><em>I</em>.</span>
+六大统计量</h2>
+<h3 id="一单正态总体">一、单正态总体</h3>
+<p>设 <span
+class="math inline"><em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, …, <em>X</em><sub><em>n</em></sub></span>
+为来自总体</p>
+<p><span class="math display">$$
+\begin{aligned}
+X
+&amp;\sim N(\mu,\sigma^2)
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>的简单随机样本，<span class="math inline">$\overline X$</span> 与
+<span class="math inline"><em>S</em><sup>2</sup></span>
+分别为样本均值与样本方差。</p>
+<h4 id="样本均值的标准化统计量">（1）样本均值的标准化统计量</h4>
+<p>由于正态总体的样本均值仍服从正态分布，故</p>
+<p><span class="math display">$$
+\begin{aligned}
+\overline X
+&amp;\sim
+N\left(\mu,\frac{\sigma^2}{n}\right).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>[[I.
+统计基础知识#三、样本均值与样本方差的数字特征|常用统计量的数字特征]]</p>
+<p>因此标准化可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{\overline X-\mu}
+{\sigma/\sqrt n}
+&amp;\sim N(0,1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+\overline X
+&amp;\sim
+N\left(\mu,\frac{\sigma^2}{n}\right).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>其中，<span class="math inline">$\overline X$</span>
+服从正态分布，标准化后服从标准正态分布。</p>
+<h4 id="样本方差对应的卡方统计量">（2）样本方差对应的卡方统计量</h4>
+<p>有</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{(n-1)S^2}{\sigma^2}
+&amp;\sim
+\chi^2(n-1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由于</p>
+<p><span class="math display">$$
+\begin{aligned}
+(n-1)S^2
+&amp;=
+\sum_{i=1}^{n}(X_i-\overline X)^2,
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>所以也可写成</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{1}{\sigma^2}
+\sum_{i=1}^{n}(X_i-\overline X)^2
+&amp;\sim
+\chi^2(n-1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>并且 <span class="math inline">$\overline X$</span> 与 <span
+class="math inline"><em>S</em><sup>2</sup></span> 相互独立。</p>
+<blockquote>
+<p>注: <span class="math inline"><em>S</em><sup>2</sup></span> 是定值,
+<span class="math inline"><em>X</em><sub><em>i</em></sub></span>
+满足方程 <span class="math inline">$S^2=\sum_{i=1}^{n}(X_i-\overline
+X)^2.$</span> 所以确定 <span class="math inline"><em>n</em> − 1</span>
+个 <span class="math inline"><em>X</em><sub><em>i</em></sub></span>
+就可以确定剩下的一个 <span
+class="math inline"><em>X</em><sub><em>i</em><sub><em>n</em></sub></sub></span>.
+因此自由度为 <span class="math inline"><em>n</em> − 1</span> .</p>
+</blockquote>
+<h4 id="样本均值与样本方差构造的-t-统计量">（3）样本均值与样本方差构造的
+<span class="math inline"><em>t</em></span> 统计量</h4>
+<p>因为</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{\overline X-\mu}
+{\sigma/\sqrt n}
+&amp;\sim N(0,1),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>且</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{(n-1)S^2}{\sigma^2}
+&amp;\sim \chi^2(n-1),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>又因为 <span class="math inline">$\overline X$</span> 与 <span
+class="math inline"><em>S</em><sup>2</sup></span> 相互独立，所以由 <span
+class="math inline"><em>t</em></span> 分布的定义可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{
+\dfrac{\overline X-\mu}
+{\sigma/\sqrt n}
+}{
+\sqrt{
+\dfrac{
+(n-1)S^2/\sigma^2
+}{n-1}
+}
+}
+&amp;\sim t(n-1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>化简得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{\overline X-\mu}
+{S/\sqrt n}
+&amp;\sim t(n-1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h3 id="二双正态总体">二、双正态总体</h3>
+<p>设总体</p>
+<p><span class="math display">$$
+\begin{aligned}
+X &amp;\sim N(\mu_1,\sigma_1^2),\\
+Y &amp;\sim N(\mu_2,\sigma_2^2).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>设 <span
+class="math inline"><em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, …, <em>X</em><sub><em>n</em><sub>1</sub></sub></span>
+来自总体 <span class="math inline"><em>X</em></span>，<span
+class="math inline"><em>Y</em><sub>1</sub>, <em>Y</em><sub>2</sub>, …, <em>Y</em><sub><em>n</em><sub>2</sub></sub></span>
+来自总体 <span
+class="math inline"><em>Y</em></span>，且两组样本相互独立。</p>
+<p>记两组样本均值分别为 <span class="math inline">$\overline X,\overline
+Y$</span>，样本方差分别为 <span
+class="math inline"><em>S</em><sub>1</sub><sup>2</sup>, <em>S</em><sub>2</sub><sup>2</sup></span>。</p>
+<h4
+id="双正态总体样本均值差的标准化统计量">（4）双正态总体样本均值差的标准化统计量</h4>
+<p>由单正态总体样本均值的结论，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+\overline X
+&amp;\sim
+N\left(\mu_1,\frac{\sigma_1^2}{n_1}\right),\\
+\overline Y
+&amp;\sim
+N\left(\mu_2,\frac{\sigma_2^2}{n_2}\right).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由于两组样本相互独立，所以 <span class="math inline">$\overline
+X$</span> 与 <span class="math inline">$\overline Y$</span>
+相互独立。</p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+\overline X-\overline Y
+&amp;\sim
+N\left(
+\mu_1-\mu_2,\,
+\frac{\sigma_1^2}{n_1}
++
+\frac{\sigma_2^2}{n_2}
+\right).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>标准化可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{
+\overline X-\overline Y
+-(\mu_1-\mu_2)
+}{
+\sqrt{
+\dfrac{\sigma_1^2}{n_1}
++
+\dfrac{\sigma_2^2}{n_2}
+}
+}
+&amp;\sim
+N(0,1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>[[I. 期望#线性性质]] [[II. 方差#（2）和差的方差]]</p>
+<h4 id="两个样本方差构造的-f-统计量">（5）两个样本方差构造的 <span
+class="math inline"><em>F</em></span> 统计量</h4>
+<p>由单正态总体样本方差的结论，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{(n_1-1)S_1^2}{\sigma_1^2}
+&amp;\sim
+\chi^2(n_1-1),\\
+\frac{(n_2-1)S_2^2}{\sigma_2^2}
+&amp;\sim
+\chi^2(n_2-1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由于两组样本相互独立，所以这两个卡方变量相互独立。</p>
+<p>由 <span class="math inline"><em>F</em></span> 分布的定义可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{
+\dfrac{
+(n_1-1)S_1^2/\sigma_1^2
+}{n_1-1}
+}{
+\dfrac{
+(n_2-1)S_2^2/\sigma_2^2
+}{n_2-1}
+}
+&amp;\sim
+F(n_1-1,n_2-1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>化简得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{S_1^2/\sigma_1^2}
+{S_2^2/\sigma_2^2}
+&amp;\sim
+F(n_1-1,n_2-1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="方差相等时的双总体-t-统计量">（6）方差相等时的双总体 <span
+class="math inline"><em>t</em></span> 统计量</h4>
+<p>当 <span
+class="math inline"><em>σ</em><sub>1</sub><sup>2</sup> = <em>σ</em><sub>2</sub><sup>2</sup> = <em>σ</em><sup>2</sup></span>
+时，由卡方分布的可加性可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{(n_1-1)S_1^2}{\sigma^2}
++
+\frac{(n_2-1)S_2^2}{\sigma^2}
+&amp;\sim
+\chi^2(n_1+n_2-2).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{
+(n_1-1)S_1^2
++
+(n_2-1)S_2^2
+}{\sigma^2}
+&amp;\sim
+\chi^2(n_1+n_2-2).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>另一方面，由样本均值差的正态统计量可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{
+\overline X-\overline Y
+-(\mu_1-\mu_2)
+}{
+\sqrt{
+\dfrac{\sigma^2}{n_1}
++
+\dfrac{\sigma^2}{n_2}
+}
+}
+&amp;\sim
+N(0,1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>![[I. 期望#^9fsvw2]]</p>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{
+\overline X-\overline Y
+-(\mu_1-\mu_2)
+}{
+\sigma
+\sqrt{
+\dfrac{1}{n_1}
++
+\dfrac{1}{n_2}
+}
+}
+&amp;\sim
+N(0,1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由 <span class="math inline"><em>t</em></span> 分布的定义，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{
+\dfrac{
+\overline X-\overline Y
+-(\mu_1-\mu_2)
+}{
+\sigma
+\sqrt{
+\dfrac{1}{n_1}
++
+\dfrac{1}{n_2}
+}
+}
+}{
+\sqrt{
+\dfrac{
+\left[
+(n_1-1)S_1^2
++
+(n_2-1)S_2^2
+\right]/\sigma^2
+}{
+n_1+n_2-2
+}
+}
+}
+&amp;\sim
+t(n_1+n_2-2).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>令</p>
+<p><span class="math display">$$
+\begin{aligned}
+S_w
+&amp;=
+\sqrt{
+\frac{
+(n_1-1)S_1^2
++
+(n_2-1)S_2^2
+}{
+n_1+n_2-2
+}
+}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则上式化简为</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{
+\overline X-\overline Y
+-(\mu_1-\mu_2)
+}{
+S_w
+\sqrt{
+\dfrac{1}{n_1}
++
+\dfrac{1}{n_2}
+}
+}
+&amp;\sim
+t(n_1+n_2-2).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>其中</p>
+<p><span class="math display">$$
+\begin{aligned}
+S_w^2
+&amp;=
+\frac{
+(n_1-1)S_1^2
++
+(n_2-1)S_2^2
+}{
+n_1+n_2-2
+}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p><span
+class="math inline"><em>S</em><sub><em>w</em></sub><sup>2</sup></span>
+称为合并样本方差，<span
+class="math inline"><em>S</em><sub><em>w</em></sub></span>
+称为合并样本标准差。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2026/06/14/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/2.%20%E4%B8%80%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/II.%20F(x)%20%E5%92%8C%20f(x)%20%E5%88%A4%E5%AE%9A/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2026/06/14/%E6%A6%82%E7%8E%87%E8%AE%BA%20%E4%B8%8E%20%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%20Kira%20and%20%E7%89%A2%E5%AE%87/6.%20%E7%BB%9F%E8%AE%A1%E5%88%9D%E6%AD%A5/I.%20%E7%BB%9F%E8%AE%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#iii.-%E5%85%AD%E5%A4%A7%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="nav-number">1.</span> <span class="nav-text">III.
+六大统计量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E5%8D%95%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93"><span class="nav-number">1.1.</span> <span class="nav-text">一、单正态总体</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B7%E6%9C%AC%E5%9D%87%E5%80%BC%E7%9A%84%E6%A0%87%E5%87%86%E5%8C%96%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">（1）样本均值的标准化统计量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B7%E6%9C%AC%E6%96%B9%E5%B7%AE%E5%AF%B9%E5%BA%94%E7%9A%84%E5%8D%A1%E6%96%B9%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="nav-number">1.1.2.</span> <span class="nav-text">（2）样本方差对应的卡方统计量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B7%E6%9C%AC%E5%9D%87%E5%80%BC%E4%B8%8E%E6%A0%B7%E6%9C%AC%E6%96%B9%E5%B7%AE%E6%9E%84%E9%80%A0%E7%9A%84-t-%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="nav-number">1.1.3.</span> <span class="nav-text">（3）样本均值与样本方差构造的
+t 统计量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%8F%8C%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93"><span class="nav-number">1.2.</span> <span class="nav-text">二、双正态总体</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8C%E6%AD%A3%E6%80%81%E6%80%BB%E4%BD%93%E6%A0%B7%E6%9C%AC%E5%9D%87%E5%80%BC%E5%B7%AE%E7%9A%84%E6%A0%87%E5%87%86%E5%8C%96%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="nav-number">1.2.1.</span> <span class="nav-text">（4）双正态总体样本均值差的标准化统计量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E6%A0%B7%E6%9C%AC%E6%96%B9%E5%B7%AE%E6%9E%84%E9%80%A0%E7%9A%84-f-%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="nav-number">1.2.2.</span> <span class="nav-text">（5）两个样本方差构造的 F 统计量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E5%B7%AE%E7%9B%B8%E7%AD%89%E6%97%B6%E7%9A%84%E5%8F%8C%E6%80%BB%E4%BD%93-t-%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="nav-number">1.2.3.</span> <span class="nav-text">（6）方差相等时的双总体 t 统计量</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
