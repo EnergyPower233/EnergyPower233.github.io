@@ -1,0 +1,338 @@
++++
+title = "III. 大数定律"
+date = "2026-07-04T22:22:26.000Z"
+lastmod = "2026-07-11T11:56:36.194Z"
+url = "/2026/07/05/概率论 与 数理统计 Kira and 牢宇/4. 大数定律与中心极限定理/III. 大数定律/"
+description = "概率论与数理统计学习笔记 · 大数定律与中心极限定理 · III. 大数定律"
+columns = ["大数定律与中心极限定理"]
+tags = ["概率论", "数理统计"]
+draft = false
+math = true
+comments = false
+article_status = "permanent"
+applicable_versions = ["all"]
+legacy_import = true
++++
+<h2 id="iii.-大数定律"><span
+class="math inline"><em>I</em><em>I</em><em>I</em>.</span> 大数定律</h2>
+<h3 id="切比雪夫大数定律">1、切比雪夫大数定律</h3>
+<p>设随机变量序列 <span
+class="math inline"><em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, ⋯, <em>X</em><sub><em>n</em></sub>, ⋯</span>
+满足：</p>
+<ol type="1">
+<li><span
+class="math inline"><em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, ⋯</span>
+两两不相关；</li>
+<li>各个方差存在；</li>
+<li>方差一致有界，即存在常数 <span
+class="math inline"><em>C</em> &gt; 0</span>，使得</li>
+</ol>
+<p><span
+class="math display"><em>D</em>(<em>X</em><sub><em>i</em></sub>) ≤ <em>C</em>,   <em>i</em> = 1, 2, ⋯.</span></p>
+<p>则对任意 <span class="math inline"><em>ε</em> &gt; 0</span>，有</p>
+<p><span class="math display">$$
+\lim_{n\to\infty}
+P\left\{
+\left|
+\frac{1}{n}\sum_{i=1}^nX_i
+-
+\frac{1}{n}\sum_{i=1}^nE(X_i)
+\right|
+&lt;\varepsilon
+\right\}
+=1.
+\nonumber
+$$</span></p>
+<p>也就是</p>
+<p><span class="math display">$$
+\frac{1}{n}\sum_{i=1}^nX_i
+\xrightarrow{P}
+\frac{1}{n}\sum_{i=1}^nE(X_i).
+\nonumber
+$$</span></p>
+<blockquote>
+<p>[!important] 结论含义 算术平均依概率收敛于它自己的期望平均。</p>
+</blockquote>
+<h4 id="证明">证明</h4>
+<p>记</p>
+<p><span class="math display">$$
+\overline X_n=\frac{1}{n}\sum_{i=1}^nX_i.
+\nonumber
+$$</span></p>
+<p>由于 <span
+class="math inline"><em>X</em><sub>1</sub>, ⋯, <em>X</em><sub><em>n</em></sub></span>
+两两不相关，</p>
+<p><span class="math display">$$
+D(\overline X_n)
+=
+D\left(\frac{1}{n}\sum_{i=1}^nX_i\right)
+=
+\frac{1}{n^2}D\left(\sum_{i=1}^nX_i\right)
+=
+\frac{1}{n^2}\sum_{i=1}^nD(X_i).
+\nonumber
+$$</span></p>
+<p>再由 <span
+class="math inline"><em>D</em>(<em>X</em><sub><em>i</em></sub>) ≤ <em>C</em></span>，得</p>
+<p><span class="math display">$$
+D(\overline X_n)
+\le
+\frac{1}{n^2}\sum_{i=1}^nC
+=
+\frac{C}{n}.
+\nonumber
+$$</span></p>
+<p>由切比雪夫不等式，</p>
+<p><span class="math display">$$
+P\left\{
+\left|
+\overline X_n-E(\overline X_n)
+\right|
+&lt;\varepsilon
+\right\}
+\ge
+1-\frac{D(\overline X_n)}{\varepsilon^2}.
+\nonumber
+$$</span></p>
+<p>而</p>
+<p><span class="math display">$$
+E(\overline X_n)
+=
+\frac{1}{n}\sum_{i=1}^nE(X_i),
+\nonumber
+$$</span></p>
+<p>故</p>
+<p><span class="math display">$$
+P\left\{
+\left|
+\frac{1}{n}\sum_{i=1}^nX_i
+-
+\frac{1}{n}\sum_{i=1}^nE(X_i)
+\right|
+&lt;\varepsilon
+\right\}
+\ge
+1-\frac{C}{n\varepsilon^2}.
+\nonumber
+$$</span></p>
+<p>当 <span class="math inline"><em>n</em> → ∞</span> 时，</p>
+<p><span class="math display">$$
+1-\frac{C}{n\varepsilon^2}\to 1.
+\nonumber
+$$</span></p>
+<p>于是</p>
+<p><span class="math display">$$
+\lim_{n\to\infty}
+P\left\{
+\left|
+\frac{1}{n}\sum_{i=1}^nX_i
+-
+\frac{1}{n}\sum_{i=1}^nE(X_i)
+\right|
+&lt;\varepsilon
+\right\}
+=1.
+\nonumber
+$$</span></p>
+<p>证毕。</p>
+<blockquote>
+<p>[!important] 注意 切比雪夫大数定律不要求独立同分布；
+它要求的是“两两不相关 + 方差存在且一致有界”。</p>
+</blockquote>
+<hr />
+<h3 id="辛钦大数定律">2、辛钦大数定律</h3>
+<p>设随机变量序列 <span
+class="math inline"><em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, ⋯, <em>X</em><sub><em>n</em></sub>, ⋯</span>
+<strong>相互独立同分布</strong>，且<strong>数学期望存在</strong>：</p>
+<p><span
+class="math display"><em>E</em>(<em>X</em><sub><em>i</em></sub>) = <em>μ</em>,   <em>i</em> = 1, 2, ⋯,</span></p>
+<p>则对任意 <span class="math inline"><em>ε</em> &gt; 0</span>，有</p>
+<p><span class="math display">$$
+\lim_{n\to\infty}
+P\left\{
+\left|
+\frac{1}{n}\sum_{i=1}^nX_i-\mu
+\right|
+&lt;\varepsilon
+\right\}
+=1.
+\nonumber
+$$</span></p>
+<p>即</p>
+<p><span class="math display">$$
+\frac{1}{n}\sum_{i=1}^nX_i
+\xrightarrow{P}
+\mu.
+\nonumber
+$$</span></p>
+<blockquote>
+<p>[!important] 结论含义
+当随机变量独立同分布时，样本均值依概率收敛于总体期望。</p>
+</blockquote>
+<hr />
+<h3 id="伯努利大数定律">3、伯努利大数定律</h3>
+<p>设随机变量序列 <span
+class="math inline"><em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, ⋯, <em>X</em><sub><em>n</em></sub>, ⋯</span>
+相互独立，且都服从 <span
+class="math inline"><em>B</em>(1, <em>p</em>)</span>$，则</p>
+<p><span class="math display">$$
+\frac{1}{n}\sum_{i=1}^nX_i
+\xrightarrow{P}
+p.
+\nonumber
+$$</span></p>
+<p>伯努利大数定律是辛钦大数定律的特例。</p>
+<p>若 <span class="math inline"><em>X</em><sub><em>i</em></sub></span>
+表示第 <span class="math inline"><em>i</em></span> 次试验中事件 <span
+class="math inline"><em>A</em></span> 是否发生，即</p>
+<ul>
+<li><span
+class="math inline"><em>X</em><sub><em>i</em></sub> = 1</span>：事件
+<span class="math inline"><em>A</em></span> 发生；</li>
+<li><span
+class="math inline"><em>X</em><sub><em>i</em></sub> = 0</span>：事件
+<span class="math inline"><em>A</em></span> 不发生，</li>
+</ul>
+<p>则</p>
+<p><span class="math display">$$
+\frac{1}{n}\sum_{i=1}^nX_i
+\nonumber
+$$</span></p>
+<p>就是事件 <span class="math inline"><em>A</em></span> 在前 <span
+class="math inline"><em>n</em></span>
+次试验中的<strong>频率</strong>。</p>
+<p>于是伯努利大数定律可写成</p>
+<p><span class="math display">$$
+\frac{f_A}{n}\xrightarrow{P}p,
+\nonumber
+$$</span></p>
+<p>其中 <span class="math inline"><em>f</em><sub><em>A</em></sub></span>
+表示事件 <span class="math inline"><em>A</em></span> 发生的次数，<span
+class="math inline"><em>p</em></span> 表示事件 <span
+class="math inline"><em>A</em></span> 在每次试验中发生的概率。</p>
+<blockquote>
+<p>[!important] 结论含义 当试验次数充分大时，频率依概率收敛于概率。</p>
+</blockquote>
+<hr />
+<h3 id="三种大数定律的关系">4、三种大数定律的关系</h3>
+<blockquote>
+<p>[!important] 小结 1.
+<strong>切比雪夫大数定律</strong>：条件较强，结论是 <span
+class="math inline">$\dfrac{1}{n}\sum X_i \xrightarrow{P}
+\dfrac{1}{n}\sum E(X_i)$</span>。</p>
+<ol start="2" type="1">
+<li><p><strong>辛钦大数定律</strong>：要求独立同分布，只需期望存在，结论是
+<span class="math inline">$\dfrac{1}{n}\sum X_i \xrightarrow{P}
+\mu$</span>。</p></li>
+<li><p><strong>伯努利大数定律</strong>：辛钦大数定律在 <span
+class="math inline"><em>B</em>(1, <em>p</em>)</span>
+情形下的特例，说明“频率收敛于概率”。</p></li>
+</ol>
+</blockquote>
+<hr />
+<h2 id="六例题">六、例题</h2>
+<blockquote>
+<p>[!question] 题目 【例 5.1】设 <span
+class="math inline"><em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, ⋯, <em>X</em><sub><em>n</em></sub>, ⋯</span>
+独立同分布，且 <span
+class="math inline"><em>X</em><sub><em>i</em></sub> ∼ <em>E</em>(2)</span>，求</p>
+<p><span class="math display">$$
+\lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^nX_i^2.
+\nonumber
+$$</span></p>
+<p><strong>题解：</strong></p>
+<p>由辛钦大数定律，</p>
+<p><span class="math display">$$
+\frac{1}{n}\sum_{i=1}^nX_i^2
+\xrightarrow{P}
+E(X_i^2).
+\nonumber
+$$</span></p>
+<p>对于 <span
+class="math inline"><em>X</em><sub><em>i</em></sub> ∼ <em>E</em>(2)</span>，有</p>
+<p><span class="math display">$$
+E(X_i)=\frac{1}{2},
+\qquad
+D(X_i)=\frac{1}{4}.
+\nonumber
+$$</span></p>
+<p>因而</p>
+<p><span class="math display">$$
+\begin{aligned}
+E(X_i^2)
+&amp;=
+D(X_i)+[E(X_i)]^2\\
+&amp;=
+\frac{1}{4}+\frac{1}{4}\\
+&amp;=
+\frac{1}{2}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>所以</p>
+<p><span class="math display">$$
+\frac{1}{n}\sum_{i=1}^nX_i^2
+\xrightarrow{P}
+\frac{1}{2}.
+\nonumber
+$$</span></p>
+</blockquote>
+<blockquote>
+<p>[!question] 题目 设 <span
+class="math inline"><em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, ⋯, <em>X</em><sub><em>n</em></sub>, ⋯</span>
+独立同分布，其概率密度为</p>
+<p><span class="math display">$$
+f(x)=
+\begin{cases}
+xe^{-x^2/2}, &amp; x\ge 0,\\
+0, &amp; x&lt;0.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>问是否存在常数 <span
+class="math inline"><em>a</em> ∈ ℝ</span>，使得对任意 <span
+class="math inline"><em>ε</em> &gt; 0</span>，</p>
+<p><span class="math display">$$
+\lim_{n\to\infty}
+P\left\{
+\left|
+\frac{1}{n}\sum_{i=1}^nX_i^2-a
+\right|
+&lt;\varepsilon
+\right\}
+=1?
+\nonumber
+$$</span></p>
+<p><strong>题解：</strong></p>
+<p>只需考察 <span
+class="math inline"><em>E</em>(<em>X</em><sub><em>i</em></sub><sup>2</sup>)</span>
+是否存在。由辛钦大数定律，</p>
+<p><span class="math display">$$
+\frac{1}{n}\sum_{i=1}^nX_i^2
+\xrightarrow{P}
+E(X_i^2).
+\nonumber
+$$</span></p>
+<p>计算</p>
+<p><span class="math display">$$
+\begin{aligned}
+E(X_i^2)
+&amp;=
+\int_0^{+\infty}x^2\cdot xe^{-x^2/2}\,dx\\
+&amp;=
+\int_0^{+\infty}x^3e^{-x^2/2}\,dx\\
+&amp;=
+2.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此所求常数存在，且</p>
+<p><span class="math display"><em>a</em> = 2.</span></p>
+<p>于是</p>
+<p><span class="math display">$$
+\frac{1}{n}\sum_{i=1}^nX_i^2
+\xrightarrow{P}
+2.
+\nonumber
+$$</span></p>
+</blockquote>

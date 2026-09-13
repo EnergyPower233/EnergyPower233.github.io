@@ -1,0 +1,29 @@
+{{- $legacyHeadings := slice -}}
+{{- if .Params.legacy_import -}}
+  {{- $legacyHeadings = findRE `(?s)<h[2-4]\s+id="[^"]+"[^>]*>.*?</h[2-4]>` .Content -}}
+{{- end -}}
+{{- $headings := slice -}}
+{{- with .Fragments -}}{{- $headings = .Headings -}}{{- end -}}
+{{- if and (eq .Kind "page") (.Param "ShowToc") (or (gt (len $headings) 0) (gt (len $legacyHeadings) 0)) -}}
+<aside class="post-toc-sidebar reading-rail" aria-label="文章目录" data-reading-rail="toc">
+  <div class="reading-rail-header">
+    <span class="reading-rail-title">文章目录</span>
+    <button class="post-toc-toggle reading-rail-toggle" type="button" aria-expanded="true" aria-controls="post-toc-body" aria-label="Collapse table of contents">
+      <span class="reading-rail-toggle-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+  <div class="post-toc-body" id="post-toc-body">
+    <div class="toc-progress-shell">
+      {{- if $legacyHeadings -}}
+      <nav id="TableOfContents"><ul>
+        {{- range $legacyHeadings -}}
+        {{- $id := replaceRE `(?s)^<h[2-4]\s+id="([^"]+)".*$` "$1" . -}}
+        <li><a href="#{{ $id }}">{{ . | plainify | htmlUnescape }}</a></li>
+        {{- end -}}
+      </ul></nav>
+      {{- else -}}{{ .TableOfContents }}{{- end -}}
+      <span class="toc-progress-indicator" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></span>
+    </div>
+  </div>
+</aside>
+{{- end -}}

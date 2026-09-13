@@ -1,0 +1,366 @@
++++
+title = "II. 概率分布"
+date = "2026-07-04T21:11:40.000Z"
+lastmod = "2026-07-11T11:56:36.054Z"
+url = "/2026/07/05/概率论 与 数理统计 Kira and 牢宇/3. 二维随机变量/II. 概率分布/"
+description = "概率论与数理统计学习笔记 · 二维随机变量 · II. 概率分布"
+columns = ["二维随机变量"]
+tags = ["概率论", "数理统计"]
+draft = false
+math = true
+comments = false
+article_status = "permanent"
+applicable_versions = ["all"]
+legacy_import = true
++++
+<h2 id="ii.-概率分布"><span
+class="math inline"><em>I</em><em>I</em>.</span> 概率分布</h2>
+<h3 id="一联合概率分布">一、联合概率分布</h3>
+<h4 id="联合概率分布的定义">联合概率分布的定义</h4>
+<p>设二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span>
+的取值为有限个或可列个，称 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span>
+为二维离散型随机变量。</p>
+<p>设 <span class="math inline">(<em>X</em>, <em>Y</em>)</span> 的取值为
+<span
+class="math inline">(<em>x</em><sub><em>i</em></sub>, <em>y</em><sub><em>j</em></sub>)</span>，<span
+class="math inline"><em>i</em>, <em>j</em> = 1, 2, ⋯</span>，称</p>
+<p><span
+class="math display"><em>P</em>{<em>X</em> = <em>x</em><sub><em>i</em></sub>, <em>Y</em> = <em>y</em><sub><em>j</em></sub>} = <em>p</em><sub><em>i</em><em>j</em></sub>,   <em>i</em>, <em>j</em> = 1, 2, ⋯</span></p>
+<p>为 <span class="math inline">(<em>X</em>, <em>Y</em>)</span>
+的联合概率分布，简称概率分布，也可用列表表示为</p>
+<p><span class="math display">$$
+\begin{array}{c|cccc}
+X\backslash Y &amp; y_1 &amp; y_2 &amp; \cdots &amp; y_j\\
+\hline
+x_1 &amp; p_{11} &amp; p_{12} &amp; \cdots &amp; p_{1j}\\
+x_2 &amp; p_{21} &amp; p_{22} &amp; \cdots &amp; p_{2j}\\
+\vdots &amp; \vdots &amp; \vdots &amp; &amp; \vdots
+\end{array}
+\nonumber
+$$</span></p>
+<p>其充要条件为：</p>
+<ol type="1">
+<li>非负</li>
+</ol>
+<p><span
+class="math display"><em>p</em><sub><em>i</em><em>j</em></sub> ≥ 0,   <em>i</em>, <em>j</em> = 1, 2, ⋯;</span></p>
+<ol start="2" type="1">
+<li>规范</li>
+</ol>
+<p><span
+class="math display">∑<sub><em>i</em></sub>∑<sub><em>j</em></sub><em>p</em><sub><em>i</em><em>j</em></sub> = 1.</span></p>
+<blockquote>
+<p>PS: 性质 <span
+class="math inline"><em>p</em><sub><em>i</em><em>j</em></sub> ≥ 0</span>
+与 <span
+class="math inline">∑<sub><em>i</em></sub>∑<sub><em>j</em></sub><em>p</em><sub><em>i</em><em>j</em></sub> = 1</span>
+构成联合概率分布的充要条件。</p>
+</blockquote>
+<blockquote>
+<p>[!question] 题目 【例 3.6】已知随机变量 <span
+class="math inline"><em>X</em></span> 和 <span
+class="math inline"><em>Y</em></span> 的概率分布为</p>
+<p><span class="math display">$$
+X\sim
+\begin{pmatrix}
+-1 &amp; 0 &amp; 1\\
+\dfrac{1}{4} &amp; \dfrac{1}{2} &amp; \dfrac{1}{4}
+\end{pmatrix},
+\qquad
+Y\sim
+\begin{pmatrix}
+0 &amp; 1\\
+\dfrac{1}{2} &amp; \dfrac{1}{2}
+\end{pmatrix},
+\nonumber
+$$</span></p>
+<p>且 <span
+class="math inline"><em>P</em>{<em>X</em><em>Y</em> = 0} = 1</span>，求
+<span class="math inline"><em>X</em></span> 和 <span
+class="math inline"><em>Y</em></span> 的联合分布律。</p>
+<p><strong>题解：</strong></p>
+<p>由 <span
+class="math inline"><em>P</em>{<em>X</em><em>Y</em> = 0} = 1</span>，当
+<span class="math inline"><em>Y</em> = 1</span> 时只能有 <span
+class="math inline"><em>X</em> = 0</span>。</p>
+<p>因此联合分布律为</p>
+<p><span class="math display">$$
+\begin{array}{c|cc}
+X\backslash Y &amp; 0 &amp; 1\\
+\hline
+-1 &amp; \dfrac{1}{4} &amp; 0\\[6pt]
+0 &amp; 0 &amp; \dfrac{1}{2}\\[6pt]
+1 &amp; \dfrac{1}{4} &amp; 0
+\end{array}
+\nonumber
+$$</span></p>
+</blockquote>
+<h3 id="二边缘概率分布">二、边缘概率分布</h3>
+<h4 id="边缘概率分布的定义">边缘概率分布的定义</h4>
+<p>设二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的联合概率分布为</p>
+<p><span
+class="math display"><em>P</em>{<em>X</em> = <em>x</em><sub><em>i</em></sub>, <em>Y</em> = <em>y</em><sub><em>j</em></sub>} = <em>p</em><sub><em>i</em><em>j</em></sub>,   <em>i</em>, <em>j</em> = 1, 2, ⋯.</span></p>
+<p>分别称</p>
+<p><span
+class="math display"><em>p</em><sub><em>i</em>⋅</sub> = <em>P</em>{<em>X</em> = <em>x</em><sub><em>i</em></sub>} = ∑<sub><em>j</em></sub><em>p</em><sub><em>i</em><em>j</em></sub>,   <em>i</em> = 1, 2, ⋯</span></p>
+<p>和</p>
+<p><span
+class="math display"><em>p</em><sub>⋅<em>j</em></sub> = <em>P</em>{<em>Y</em> = <em>y</em><sub><em>j</em></sub>} = ∑<sub><em>i</em></sub><em>p</em><sub><em>i</em><em>j</em></sub>,   <em>j</em> = 1, 2, ⋯</span></p>
+<p>为 <span class="math inline">(<em>X</em>, <em>Y</em>)</span> 关于
+<span class="math inline"><em>X</em></span> 和 <span
+class="math inline"><em>Y</em></span> 的边缘概率分布。</p>
+<p>其中，<span
+class="math inline"><em>p</em><sub><em>i</em>⋅</sub></span> 是第 <span
+class="math inline"><em>i</em></span> 行概率求和，<span
+class="math inline"><em>p</em><sub>⋅<em>j</em></sub></span> 是第 <span
+class="math inline"><em>j</em></span> 列概率求和。</p>
+<p><span class="math display">$$
+\boxed{\text{联合概率分布}\Rightarrow\text{边缘概率分布}.}
+\nonumber
+$$</span></p>
+<blockquote>
+<p>[!question] 题目 【例 3.5】某箱装有 <span
+class="math inline">100</span> 件产品，其中一、二、三等品分别为 <span
+class="math inline">80, 10, 10</span> 件。现从中随机抽取一件，记</p>
+<p><span class="math display">$$
+X_i
+=
+\begin{cases}
+1, &amp; \text{抽到 }i\text{ 等品},\\
+0, &amp; \text{其他},
+\end{cases}
+\qquad i=1,2,3.
+\nonumber
+$$</span></p>
+<p>求：</p>
+<p>（Ⅰ）随机变量 <span class="math inline"><em>X</em><sub>1</sub></span>
+与 <span class="math inline"><em>X</em><sub>2</sub></span>
+的联合分布律和边缘分布律；</p>
+<p>（Ⅱ）判断 <span class="math inline"><em>X</em><sub>1</sub></span> 与
+<span class="math inline"><em>X</em><sub>2</sub></span> 的独立性。</p>
+<p><strong>题解：</strong></p>
+<p>联合分布律为</p>
+<p><span class="math display">$$
+\begin{array}{c|cc}
+X_1\backslash X_2 &amp; 0 &amp; 1\\
+\hline
+0 &amp; 0.1 &amp; 0.1\\
+1 &amp; 0.8 &amp; 0
+\end{array}
+\nonumber
+$$</span></p>
+<p>边缘分布律为</p>
+<p><span class="math display">$$
+\begin{array}{c|cc}
+X_1 &amp; 0 &amp; 1\\
+\hline
+P &amp; 0.2 &amp; 0.8
+\end{array}
+\qquad
+\begin{array}{c|cc}
+X_2 &amp; 0 &amp; 1\\
+\hline
+P &amp; 0.9 &amp; 0.1
+\end{array}
+\nonumber
+$$</span></p>
+<p>因为 <span
+class="math inline"><em>P</em>{<em>X</em><sub>1</sub> = 1, <em>X</em><sub>2</sub> = 1} = 0</span>，但
+<span
+class="math inline"><em>P</em>{<em>X</em><sub>1</sub> = 1}<em>P</em>{<em>X</em><sub>2</sub> = 1} = 0.8 × 0.1 = 0.08</span>，故
+<span class="math inline"><em>X</em><sub>1</sub></span> 与 <span
+class="math inline"><em>X</em><sub>2</sub></span> 不独立。</p>
+</blockquote>
+<h3 id="三条件概率分布">三、条件概率分布</h3>
+<h4 id="条件概率分布的定义">条件概率分布的定义</h4>
+<p>设二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的联合概率分布为</p>
+<p><span
+class="math display"><em>P</em>{<em>X</em> = <em>x</em><sub><em>i</em></sub>, <em>Y</em> = <em>y</em><sub><em>j</em></sub>} = <em>p</em><sub><em>i</em><em>j</em></sub>,   <em>i</em>, <em>j</em> = 1, 2, ⋯.</span></p>
+<p>称</p>
+<p><span class="math display">$$
+P\{X=x_i\mid Y=y_j\}
+=
+\frac{p_{ij}}{p_{\cdot j}}
+\nonumber
+$$</span></p>
+<p>为在 <span
+class="math inline"><em>Y</em> = <em>y</em><sub><em>j</em></sub></span>
+的条件下，<span class="math inline"><em>X</em></span>
+的条件概率分布。</p>
+<p>称</p>
+<p><span class="math display">$$
+P\{Y=y_j\mid X=x_i\}
+=
+\frac{p_{ij}}{p_{i\cdot}}
+\nonumber
+$$</span></p>
+<p>为在 <span
+class="math inline"><em>X</em> = <em>x</em><sub><em>i</em></sub></span>
+的条件下，<span class="math inline"><em>Y</em></span>
+的条件概率分布。</p>
+<p><span class="math display">$$
+\boxed{\text{联合概率分布}+\text{边缘概率分布}
+\Rightarrow
+\text{条件概率分布}.}
+\nonumber
+$$</span></p>
+<blockquote>
+<p>[!question] 题目 【例 3.3】盒子里有 <span
+class="math inline">2</span> 个黑球、<span class="math inline">2</span>
+个红球、<span class="math inline">2</span> 个白球，从其中随机任取 <span
+class="math inline">2</span> 个球，以 <span
+class="math inline"><em>X</em></span> 表示取得的黑球的个数，以 <span
+class="math inline"><em>Y</em></span> 表示取得的红球的个数。</p>
+<p>（1）试写出 <span class="math inline"><em>X</em></span> 和 <span
+class="math inline"><em>Y</em></span> 的联合分布律；</p>
+<p>（2）求概率 <span
+class="math inline"><em>P</em>{<em>X</em> + <em>Y</em> ≤ 1}</span>；</p>
+<p>（3）求 <span class="math inline"><em>X</em></span>
+的边缘分布律；</p>
+<p>（4）求条件概率 <span
+class="math inline"><em>P</em>{<em>Y</em> = 1 ∣ <em>X</em> = 0}</span>；</p>
+<p>（5）判断 <span class="math inline"><em>X</em></span> 和 <span
+class="math inline"><em>Y</em></span> 的独立性。</p>
+<p><strong>题解：</strong></p>
+<p>对 <span
+class="math inline"><em>x</em>, <em>y</em> ∈ {0, 1, 2}</span> 且 <span
+class="math inline"><em>x</em> + <em>y</em> ≤ 2</span>，有</p>
+<p><span class="math display">$$
+P\{X=x,Y=y\}
+=
+\frac{\binom{2}{x}\binom{2}{y}\binom{2}{2-x-y}}{\binom{6}{2}}.
+\nonumber
+$$</span></p>
+<p>联合分布律为</p>
+<p><span class="math display">$$
+\begin{array}{c|ccc}
+X\backslash Y &amp; 0 &amp; 1 &amp; 2\\
+\hline
+0 &amp; \dfrac{1}{15} &amp; \dfrac{4}{15} &amp; \dfrac{1}{15}\\[6pt]
+1 &amp; \dfrac{4}{15} &amp; \dfrac{4}{15} &amp; 0\\[6pt]
+2 &amp; \dfrac{1}{15} &amp; 0 &amp; 0
+\end{array}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X+Y\le 1\}
+&amp;=
+P\{X=0,Y=0\}
++
+P\{X=1,Y=0\}
++
+P\{X=0,Y=1\}\\
+&amp;=
+\frac{1}{15}
++
+\frac{4}{15}
++
+\frac{4}{15}\\
+&amp;=
+\frac{3}{5}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p><span class="math inline"><em>X</em></span> 的边缘分布律为</p>
+<p><span class="math display">$$
+\begin{array}{c|ccc}
+X &amp; 0 &amp; 1 &amp; 2\\
+\hline
+P &amp; \dfrac{2}{5} &amp; \dfrac{8}{15} &amp; \dfrac{1}{15}
+\end{array}
+\nonumber
+$$</span></p>
+<p>条件概率为</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{Y=1\mid X=0\}
+&amp;=
+\frac{P\{X=0,Y=1\}}{P\{X=0\}}\\
+&amp;=
+\frac{\dfrac{4}{15}}{\dfrac{2}{5}}\\
+&amp;=
+\frac{2}{3}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>联合分布矩阵为</p>
+<p><span class="math display">$$
+M
+=
+\frac{1}{15}
+\begin{pmatrix}
+1 &amp; 4 &amp; 1\\
+4 &amp; 4 &amp; 0\\
+1 &amp; 0 &amp; 0
+\end{pmatrix}.
+\nonumber
+$$</span></p>
+<p>由于</p>
+<p><span class="math display">$$
+\begin{aligned}
+\det M
+&amp;=
+\frac{1}{15^3}
+\begin{vmatrix}
+1 &amp; 4 &amp; 1\\
+4 &amp; 4 &amp; 0\\
+1 &amp; 0 &amp; 0
+\end{vmatrix}\\
+&amp;=
+-\frac{4}{15^3}
+\ne 0,
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>故 <span class="math inline"><em>M</em></span> 满秩。若 <span
+class="math inline"><em>X</em>, <em>Y</em></span>
+独立，则联合分布矩阵应为秩 <span class="math inline">1</span> 矩阵，因此
+<span class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> 不独立。 ^tstt2r</p>
+</blockquote>
+<blockquote>
+<p>[!question] 题目 【例 3.4】已知随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的分布律为</p>
+<p><span class="math display">$$
+\begin{array}{c|cc}
+Y\backslash X &amp; 0 &amp; 1\\
+\hline
+0 &amp; 0.15 &amp; 0.15\\
+1 &amp; a &amp; b
+\end{array}
+\nonumber
+$$</span></p>
+<p>且 <span class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> 相互独立，求 <span
+class="math inline"><em>a</em></span> 和 <span
+class="math inline"><em>b</em></span> 的值。</p>
+<p><strong>题解：</strong></p>
+<p>由总概率为 <span class="math inline">1</span>，得 <span
+class="math inline"><em>a</em> + <em>b</em> = 0.7</span>。</p>
+<p>又由独立性，</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X=0,Y=0\}
+&amp;=
+P\{X=0\}P\{Y=0\},
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+0.15
+&amp;=
+(0.15+a)\cdot 0.3.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>解得 <span class="math inline"><em>a</em> = 0.35</span>，故 <span
+class="math inline"><em>b</em> = 0.35</span>。</p>
+</blockquote>

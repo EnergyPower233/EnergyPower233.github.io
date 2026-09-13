@@ -1,0 +1,238 @@
++++
+title = "I. 事件"
+date = "2026-07-01T16:13:48.000Z"
+lastmod = "2026-07-11T11:56:36.079Z"
+url = "/2026/07/02/概率论 与 数理统计 Kira and 牢宇/1. 事件与概率/I. 事件/"
+description = "概率论与数理统计学习笔记 · 事件与概率 · I. 事件"
+columns = ["事件与概率"]
+tags = ["概率论", "数理统计"]
+draft = false
+math = true
+comments = false
+article_status = "permanent"
+applicable_versions = ["all"]
+legacy_import = true
++++
+<h2 id="i.-事件"><span class="math inline"><em>I</em>.</span> 事件</h2>
+<h3 id="一事件的关系">一、事件的关系</h3>
+<h4 id="包含">（1）包含</h4>
+<p>若事件 A 发生，事件 B <strong>一定</strong>发生，则称 B 包含 A，或 A
+包含于 B，记作</p>
+<p><span class="math display"><em>A</em> ⊂ <em>B</em>.</span></p>
+<p>特别地，若 A⊂B 且 B⊂A，则称 A 与 B 相等，记作</p>
+<p><span class="math display"><em>A</em> = <em>B</em>.</span></p>
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="150" viewBox="0 0 260 150">
+<rect x="35" y="25" width="190" height="95" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<ellipse cx="120" cy="72" rx="78" ry="42" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<ellipse cx="105" cy="70" rx="42" ry="23" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<text x="96" y="78" font-size="28" font-family="Times New Roman, serif" fill="#1f4cff">A</text>
+<text x="160" y="78" font-size="28" font-family="Times New Roman, serif" fill="#1f4cff">B</text>
+</svg>
+<h4 id="互不相容互斥">（2）互不相容（互斥）</h4>
+<p>若事件 A 与 B 不能同时发生，即</p>
+<p><span class="math display"><em>A</em><em>B</em> = ⌀,</span></p>
+<p>则称 A 与 B 互不相容，或称 A 与 B 互斥。</p>
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="150" viewBox="0 0 260 150">
+<rect x="35" y="25" width="190" height="95" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<ellipse cx="85" cy="72" rx="24" ry="26" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<ellipse cx="175" cy="72" rx="24" ry="26" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<text x="75" y="82" font-size="32" font-family="Times New Roman, serif" fill="#1f4cff">A</text>
+<text x="165" y="82" font-size="32" font-family="Times New Roman, serif" fill="#1f4cff">B</text>
+</svg>
+<h4 id="对立互逆">（3）对立（互逆）</h4>
+<p>若事件 <span class="math inline"><em>A</em></span> 与 <span
+class="math inline"><em>B</em></span>
+不能同时发生，但必有一个发生，即</p>
+<p><span
+class="math display"><em>A</em> ∪ <em>B</em> = <em>Ω</em>,   <em>A</em><em>B</em> = ⌀,</span></p>
+<p>则称 <span class="math inline"><em>A</em></span> 与 <span
+class="math inline"><em>B</em></span> 对立，记作</p>
+<p><span class="math display">$$
+B=\overline A. \nonumber
+$$</span></p>
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="150" viewBox="0 0 260 150">
+<rect x="35" y="25" width="190" height="95" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<line x1="125" y1="120" x2="150" y2="25" stroke="#1f4cff" stroke-width="3"/>
+<text x="75" y="82" font-size="32" font-family="Times New Roman, serif" fill="#1f4cff">A</text>
+<text x="155" y="82" font-size="32" font-family="Times New Roman, serif" fill="#1f4cff">A</text>
+<line x1="154" y1="52" x2="177" y2="52" stroke="#1f4cff" stroke-width="2.5"/>
+</svg>
+<h4 id="独立">（4）独立</h4>
+<h5 id="两个事件相互独立">两个事件相互独立</h5>
+<p>事件 <span class="math inline"><em>A</em></span> 与事件 <span
+class="math inline"><em>B</em></span> 相互独立，当且仅当</p>
+<p><span
+class="math display"><em>P</em>(<em>A</em><em>B</em>) = <em>P</em>(<em>A</em>)<em>P</em>(<em>B</em>).</span></p>
+<p>若 <span
+class="math inline">0 &lt; <em>P</em>(<em>B</em>) &lt; 1</span>，（<span
+class="math inline"><em>B</em></span>
+不是必然事件或者不可能事件）则上述条件等价于</p>
+<p><span
+class="math display"><em>P</em>(<em>A</em> ∣ <em>B</em>) = <em>P</em>(<em>A</em>).</span></p>
+<p>于是也有</p>
+<p><span class="math display">$$
+P(A\mid \overline B)=P(A). \nonumber
+$$</span></p>
+<p>即 <span class="math inline"><em>B</em></span> 发不发生不影响 <span
+class="math inline"><em>A</em></span> 是否发生若事件 <span
+class="math inline"><em>A</em></span> 与事件 <span
+class="math inline"><em>B</em></span> 相互独立，则 <span
+class="math inline"><em>A</em></span> 与 <span
+class="math inline">$\overline B$</span>，<span
+class="math inline">$\overline A$</span> 与 <span
+class="math inline"><em>B</em></span>，<span
+class="math inline">$\overline A$</span> 与 <span
+class="math inline">$\overline B$</span> 也分别相互独立。</p>
+<p>并且在 <span
+class="math inline">0 &lt; <em>P</em>(<em>B</em>) &lt; 1</span>
+时，有</p>
+<p><span class="math display">$$
+P(A\mid B)=1 - P(\overline A\mid  B) = 1 - P(\overline A\mid \overline
+B). \nonumber
+$$</span></p>
+<p>上式等价于</p>
+<p><span class="math display">$$
+P(A\mid B)+P(\overline A\mid \overline B)=1. \nonumber
+$$</span></p>
+<blockquote>
+<p>PS:
+零概率事件或一概率事件与任意事件相互独立。因此，不可能事件或必然事件与任意事件相互独立。若事件
+<span class="math inline"><em>A</em></span> 与事件 <span
+class="math inline"><em>B</em></span> 既相互独立又互不相容，则 <span
+class="math inline"><em>A</em></span> 与 <span
+class="math inline"><em>B</em></span> 至少有一个为零概率事件。</p>
+</blockquote>
+<p>因为</p>
+<p><span
+class="math display"><em>A</em><em>B</em> = ⌀ ⇒ <em>P</em>(<em>A</em><em>B</em>) = 0,</span></p>
+<p>又由独立性可得</p>
+<p><span
+class="math display"><em>P</em>(<em>A</em><em>B</em>) = <em>P</em>(<em>A</em>)<em>P</em>(<em>B</em>),</span></p>
+<p>故</p>
+<p><span
+class="math display"><em>P</em>(<em>A</em>)<em>P</em>(<em>B</em>) = 0.</span></p>
+<h5 id="n-个事件相互独立"><span class="math inline"><em>n</em></span>
+个事件相互独立</h5>
+<p>设事件为 <span
+class="math inline"><em>A</em><sub>1</sub>, <em>A</em><sub>2</sub>, ⋯, <em>A</em><sub><em>n</em></sub></span>。若对任意
+<span
+class="math inline">2 ≤ <em>k</em> ≤ <em>n</em></span>，任意不同下标
+<span
+class="math inline"><em>i</em><sub>1</sub>, <em>i</em><sub>2</sub>, ⋯, <em>i</em><sub><em>k</em></sub></span>，均有</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\left(\bigcap_{\ell=1}^{k}A_{i_\ell}\right)
+&amp;=
+\prod_{\ell=1}^{k}P(A_{i_\ell}),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则称 <span
+class="math inline"><em>A</em><sub>1</sub>, <em>A</em><sub>2</sub>, ⋯, <em>A</em><sub><em>n</em></sub></span>
+相互独立。</p>
+<p>（以后会大量使用上式的符号，该式等价于 <span
+class="math inline"><em>P</em>(<em>A</em><sub><em>i</em><sub>1</sub></sub><em>A</em><sub><em>i</em><sub>2</sub></sub>⋯<em>A</em><sub><em>i</em><sub><em>k</em></sub></sub>) = <em>P</em>(<em>A</em><sub><em>i</em><sub>1</sub></sub>)<em>P</em>(<em>A</em><sub><em>i</em><sub>2</sub></sub>)⋯<em>P</em>(<em>A</em><sub><em>i</em><sub><em>k</em></sub></sub>).</span>
+之后不会做过多说明）</p>
+<p>只验证两两独立不一定能推出相互独立；相互独立要求所有阶的交事件概率均可分解为概率乘积。</p>
+<h3 id="二事件的运算">二、事件的运算</h3>
+<h4 id="事件的运算">（1）事件的运算</h4>
+<h5 id="和并">和（并）</h5>
+<p>事件 <span class="math inline"><em>A</em></span> 与事件 <span
+class="math inline"><em>B</em></span> 至少有一个发生，称为事件 <span
+class="math inline"><em>A</em></span> 与事件 <span
+class="math inline"><em>B</em></span> 的和，记作</p>
+<p><span class="math display"><em>A</em> ∪ <em>B</em>.</span></p>
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="150" viewBox="0 0 260 150">
+<rect x="30" y="25" width="200" height="100" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<ellipse cx="100" cy="78" rx="48" ry="34" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<ellipse cx="152" cy="78" rx="48" ry="34" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<text x="68" y="50" font-size="30" font-family="Times New Roman, serif" fill="#1f4cff">A</text>
+<text x="175" y="50" font-size="30" font-family="Times New Roman, serif" fill="#1f4cff">B</text>
+</svg>
+<h5 id="积交">积（交）</h5>
+<p>事件 <span class="math inline"><em>A</em></span> 与事件 <span
+class="math inline"><em>B</em></span> 同时发生，称为事件 <span
+class="math inline"><em>A</em></span> 与事件 <span
+class="math inline"><em>B</em></span> 的积，记作</p>
+<p><span class="math display"><em>A</em><em>B</em>.</span></p>
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="150" viewBox="0 0 260 150">
+<rect x="30" y="25" width="200" height="100" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<path d="
+    M126 49.4
+    A48 34 0 0 1 126 106.6
+    A48 34 0 0 1 126 49.4
+    Z
+  " fill="#1f4cff"/>
+<ellipse cx="100" cy="78" rx="48" ry="34" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<ellipse cx="152" cy="78" rx="48" ry="34" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<text x="64" y="50" font-size="30" font-family="Times New Roman, serif" fill="#1f4cff">A</text>
+<text x="180" y="50" font-size="30" font-family="Times New Roman, serif" fill="#1f4cff">B</text>
+</svg>
+<h5 id="差相对补">差（相对补）</h5>
+<p>事件 <span class="math inline"><em>A</em></span> 发生但事件 <span
+class="math inline"><em>B</em></span> 不发生，称为事件 <span
+class="math inline"><em>A</em></span> 与事件 <span
+class="math inline"><em>B</em></span> 的差，记作</p>
+<p><span class="math display"><em>A</em> − <em>B</em>.</span></p>
+<p>显然</p>
+<p><span class="math display">$$
+A-B=A\overline B. \nonumber
+$$</span></p>
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="150" viewBox="0 0 260 150">
+<rect x="30" y="25" width="200" height="100" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<path d="M126 49.4 A48 34 0 1 0 126 106.6 A48 34 0 0 1 126 49.4 Z" fill="#ff2d2d" opacity="0.22"/>
+<ellipse cx="100" cy="78" rx="48" ry="34" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<ellipse cx="152" cy="78" rx="48" ry="34" fill="none" stroke="#1f4cff" stroke-width="3"/>
+<text x="62" y="50" font-size="30" font-family="Times New Roman, serif" fill="#1f4cff">A</text>
+<text x="178" y="50" font-size="30" font-family="Times New Roman, serif" fill="#1f4cff">B</text>
+</svg>
+<h4 id="事件的运算律">（2）事件的运算律</h4>
+<h5 id="交换律">交换律</h5>
+<p><span class="math display">$$
+\begin{align}
+A\cup B &amp;= B\cup A,\\
+AB &amp;= BA.
+\end{align}
+\nonumber
+$$</span></p>
+<h5 id="结合律">结合律</h5>
+<p><span class="math display">$$
+\begin{align}
+A\cup(B\cup C) &amp;= (A\cup B)\cup C,\\
+A(BC) &amp;= (AB)C.
+\end{align}
+\nonumber
+$$</span></p>
+<h5 id="分配律">分配律</h5>
+<p><span class="math display">$$
+\begin{align}
+A\cup(BC) &amp;= (A\cup B)(A\cup C),\\
+A(B\cup C) &amp;= (AB)\cup(AC).
+\end{align}
+\nonumber
+$$</span></p>
+<h5 id="德摩根律">德·摩根律</h5>
+<p>!(p || q) = !p &amp;&amp; !q</p>
+<p><span class="math display">$$
+\begin{align}
+\overline{A\cup B} &amp;= \overline A\,\overline B,\\
+\overline{AB} &amp;= \overline A\cup\overline B.
+\end{align}
+\nonumber
+$$</span></p>
+<h5 id="吸收律">吸收律</h5>
+<p><span class="math display">$$
+\begin{align}
+A\cup(AB) &amp;= A,\\
+A(A\cup B) &amp;= A.
+\end{align}
+\nonumber
+$$</span></p>
+<p>其直观原因是</p>
+<p><span class="math display">$$
+\begin{align}
+AB &amp;\subset A,\\
+A &amp;\subset A\cup B.
+\end{align}
+\nonumber
+$$</span></p>

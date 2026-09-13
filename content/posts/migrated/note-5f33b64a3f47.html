@@ -1,0 +1,406 @@
++++
+title = "I. 分布函数"
+date = "2026-07-04T21:27:33.000Z"
+lastmod = "2026-07-11T11:56:36.018Z"
+url = "/2026/07/05/概率论 与 数理统计 Kira and 牢宇/3. 二维随机变量/I. 分布函数/"
+description = "概率论与数理统计学习笔记 · 二维随机变量 · I. 分布函数"
+columns = ["二维随机变量"]
+tags = ["概率论", "数理统计"]
+draft = false
+math = true
+comments = false
+article_status = "permanent"
+applicable_versions = ["all"]
+legacy_import = true
++++
+<h2 id="i.-分布函数"><span class="math inline"><em>I</em>.</span>
+分布函数</h2>
+<blockquote>
+<p>对于此章的题目，判定积分范围总是需要多加练习的。</p>
+</blockquote>
+<p><strong>赏综合题一枚：</strong> ψ(｀∇´)ψ</p>
+<blockquote>
+<p>[!question] 题目 【例 3.16】设二维连续型随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的概率密度为</p>
+<p><span class="math display">$$
+f(x,y)
+=
+\begin{cases}
+Ae^{-(x+y)}, &amp; 0&lt;x&lt;y,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>求：</p>
+<p>（1）常数 <span class="math inline"><em>A</em></span>；</p>
+<p>（2）<span class="math inline">$P\left\{X+Y&gt;1,\
+X&lt;\dfrac{1}{2}\right\}$</span>；</p>
+<p>（3）边缘概率密度 <span
+class="math inline"><em>f</em><sub><em>X</em></sub>(<em>x</em>), <em>f</em><sub><em>Y</em></sub>(<em>y</em>)</span>；</p>
+<p>（4）条件概率密度 <span
+class="math inline"><em>f</em><sub><em>Y</em>|<em>X</em></sub>(<em>y</em>|<em>x</em>)</span>；</p>
+<p>（5）判断 <span class="math inline"><em>X</em>, <em>Y</em></span>
+的独立性。</p>
+<p><strong>题解：</strong></p>
+<p>先看非零区域：</p>
+<p><span class="math display">$$
+\begin{aligned}
+D
+&amp;=
+\{\,(x,y)\mid 0&lt;x&lt;y\,\}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>即 <span class="math inline"><em>x</em> &gt; 0</span>，且 <span
+class="math inline"><em>y</em></span> 在直线 <span
+class="math inline"><em>y</em> = <em>x</em></span> 的上方，所以对固定的
+<span class="math inline"><em>x</em></span>，有 <span
+class="math inline"><em>y</em> ∈ (<em>x</em>, +∞)</span>。</p>
+<p>由规范性可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\int_0^{+\infty}\int_x^{+\infty}Ae^{-(x+y)}\,dy\,dx
+&amp;=
+1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>计算得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\int_0^{+\infty}\int_x^{+\infty}Ae^{-(x+y)}\,dy\,dx
+&amp;=
+A\int_0^{+\infty}e^{-x}
+\left(
+\int_x^{+\infty}e^{-y}\,dy
+\right)dx\\
+&amp;=
+A\int_0^{+\infty}e^{-x}e^{-x}\,dx\\
+&amp;=
+A\int_0^{+\infty}e^{-2x}\,dx\\
+&amp;=
+\frac{A}{2}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此 <span class="math inline"><em>A</em> = 2</span>。</p>
+<p>于是</p>
+<p><span class="math display">$$
+f(x,y)
+=
+\begin{cases}
+2e^{-(x+y)}, &amp; 0&lt;x&lt;y,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>求 <span class="math inline">$P\left\{X+Y&gt;1,\
+X&lt;\dfrac{1}{2}\right\}$</span> 时，需要同时满足</p>
+<p><span class="math display">$$
+\begin{aligned}
+0&lt;x&lt;y,
+\qquad
+x+y&gt;1,
+\qquad
+0&lt;x&lt;\frac{1}{2}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由 <span class="math inline"><em>x</em> + <em>y</em> &gt; 1</span> 得
+<span class="math inline"><em>y</em> &gt; 1 − <em>x</em></span>。当
+<span class="math inline">$0&lt;x&lt;\dfrac{1}{2}$</span> 时，有 <span
+class="math inline">1 − <em>x</em> &gt; <em>x</em></span>，所以真正的下界是
+<span class="math inline"><em>y</em> = 1 − <em>x</em></span>，而不是
+<span class="math inline"><em>y</em> = <em>x</em></span>。</p>
+<p>因此积分范围为</p>
+<p><span class="math display">$$
+\begin{aligned}
+0&lt;x&lt;\frac{1}{2},
+\qquad
+1-x&lt;y&lt;+\infty.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\left\{X+Y&gt;1,\ X&lt;\frac{1}{2}\right\}
+&amp;=
+\int_0^{1/2}\int_{1-x}^{+\infty}
+2e^{-(x+y)}\,dy\,dx\\
+&amp;=
+2\int_0^{1/2}e^{-x}
+\left(
+\int_{1-x}^{+\infty}e^{-y}\,dy
+\right)dx\\
+&amp;=
+2\int_0^{1/2}e^{-x}e^{-(1-x)}\,dx\\
+&amp;=
+2\int_0^{1/2}e^{-1}\,dx\\
+&amp;=
+\frac{1}{e}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>求 <span
+class="math inline"><em>f</em><sub><em>X</em></sub>(<em>x</em>)</span>
+时，固定 <span class="math inline"><em>x</em></span>，沿竖直方向看区域
+<span class="math inline"><em>D</em></span>。只有当 <span
+class="math inline"><em>x</em> &gt; 0</span> 时才有非零密度，此时 <span
+class="math inline"><em>y</em></span> 的范围为 <span
+class="math inline"><em>x</em> &lt; <em>y</em> &lt; +∞</span>。</p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)
+&amp;=
+\int_{-\infty}^{+\infty}f(x,y)\,dy\\
+&amp;=
+\int_x^{+\infty}2e^{-(x+y)}\,dy\\
+&amp;=
+2e^{-x}\int_x^{+\infty}e^{-y}\,dy\\
+&amp;=
+2e^{-2x},
+\qquad x&gt;0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>所以</p>
+<p><span class="math display">$$
+f_X(x)
+=
+\begin{cases}
+2e^{-2x}, &amp; x&gt;0,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>求 <span
+class="math inline"><em>f</em><sub><em>Y</em></sub>(<em>y</em>)</span>
+时，固定 <span class="math inline"><em>y</em></span>，沿水平方向看区域
+<span class="math inline"><em>D</em></span>。由 <span
+class="math inline">0 &lt; <em>x</em> &lt; <em>y</em></span>
+可知，只有当 <span class="math inline"><em>y</em> &gt; 0</span>
+时才有非零密度，此时 <span class="math inline"><em>x</em></span>
+的范围为 <span
+class="math inline">0 &lt; <em>x</em> &lt; <em>y</em></span>。</p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_Y(y)
+&amp;=
+\int_{-\infty}^{+\infty}f(x,y)\,dx\\
+&amp;=
+\int_0^y2e^{-(x+y)}\,dx\\
+&amp;=
+2e^{-y}\int_0^y e^{-x}\,dx\\
+&amp;=
+2e^{-y}(1-e^{-y})\\
+&amp;=
+2e^{-y}-2e^{-2y},
+\qquad y&gt;0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>所以</p>
+<p><span class="math display">$$
+f_Y(y)
+=
+\begin{cases}
+2e^{-y}-2e^{-2y}, &amp; y&gt;0,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>对于条件概率密度，在给定 <span
+class="math inline"><em>X</em> = <em>x</em></span> 且 <span
+class="math inline"><em>x</em> &gt; 0</span>
+的条件下，仍然需要满足原来的非零范围 <span
+class="math inline"><em>x</em> &lt; <em>y</em></span>，所以 <span
+class="math inline"><em>y</em></span> 的范围为 <span
+class="math inline"><em>y</em> &gt; <em>x</em></span>。</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_{Y|X}(y|x)
+&amp;=
+\frac{f(x,y)}{f_X(x)}\\
+&amp;=
+\frac{2e^{-(x+y)}}{2e^{-2x}}\\
+&amp;=
+e^{x-y}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+f_{Y|X}(y|x)
+=
+\begin{cases}
+e^{x-y}, &amp; x&gt;0,\ y&gt;x,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>最后判断独立性。若 <span
+class="math inline"><em>X</em>, <em>Y</em></span> 相互独立，则应有 <span
+class="math inline"><em>f</em>(<em>x</em>, <em>y</em>) = <em>f</em><sub><em>X</em></sub>(<em>x</em>)<em>f</em><sub><em>Y</em></sub>(<em>y</em>)</span>。</p>
+<p>但在 <span
+class="math inline">0 &lt; <em>x</em> &lt; <em>y</em></span> 上，</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)f_Y(y)
+&amp;=
+2e^{-2x}\left(2e^{-y}-2e^{-2y}\right),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>与 <span
+class="math inline"><em>f</em>(<em>x</em>, <em>y</em>) = 2<em>e</em><sup>−(<em>x</em> + <em>y</em>)</sup></span>
+不相等。因此 <span class="math inline"><em>X</em>, <em>Y</em></span>
+不独立。</p>
+</blockquote>
+<h3 id="一联合分布函数">一、联合分布函数</h3>
+<h4 id="联合分布函数的定义">联合分布函数的定义</h4>
+<p>设 <span class="math inline">(<em>X</em>, <em>Y</em>)</span>
+为二维随机变量，对任意实数 <span
+class="math inline"><em>x</em>, <em>y</em></span>，称</p>
+<p><span
+class="math display"><em>F</em>(<em>x</em>, <em>y</em>) = <em>P</em>{<em>X</em> ≤ <em>x</em>, <em>Y</em> ≤ <em>y</em>}</span></p>
+<p>为 <span class="math inline">(<em>X</em>, <em>Y</em>)</span>
+的联合分布函数，表示 <span
+class="math inline">{<em>X</em> ≤ <em>x</em>, <em>Y</em> ≤ <em>y</em>}</span>
+同时发生的概率。</p>
+<h4 id="联合分布函数的性质">联合分布函数的性质</h4>
+<h5 id="有界性">（1）有界性</h5>
+<p><span class="math display">$$
+\begin{aligned}
+0
+&amp;\le F(x,y)\le 1,\\
+x&amp;\in\mathbb R,\\
+y&amp;\in\mathbb R.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h5 id="边界值">（2）边界值</h5>
+<p><span class="math display">$$
+\begin{aligned}
+F(-\infty,y) &amp;= 0,\\
+F(x,-\infty) &amp;= 0,\\
+F(-\infty,-\infty) &amp;= 0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>并且</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(+\infty,+\infty)
+&amp;= 1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h5 id="关于-xy-单调不减">（3）关于 <span
+class="math inline"><em>x</em>, <em>y</em></span> 单调不减</h5>
+<p>联合分布函数 <span
+class="math inline"><em>F</em>(<em>x</em>, <em>y</em>)</span> 关于 <span
+class="math inline"><em>x</em></span> 单调不减，关于 <span
+class="math inline"><em>y</em></span> 也单调不减。</p>
+<h5 id="关于-xy-右连续">（4）关于 <span
+class="math inline"><em>x</em>, <em>y</em></span> 右连续</h5>
+<p>联合分布函数 <span
+class="math inline"><em>F</em>(<em>x</em>, <em>y</em>)</span> 关于 <span
+class="math inline"><em>x</em>, <em>y</em></span>
+右连续。（等号跟着大于走）</p>
+<h5 id="矩形区域概率">（5）矩形区域概率</h5>
+<p>对矩形区域</p>
+<p><span
+class="math display"><em>a</em> &lt; <em>X</em> ≤ <em>b</em>,   <em>c</em> &lt; <em>Y</em> ≤ <em>d</em>,</span></p>
+<p>有</p>
+<p><span
+class="math display"><em>P</em>{<em>a</em> &lt; <em>X</em> ≤ <em>b</em>, <em>c</em> &lt; <em>Y</em> ≤ <em>d</em>} = <em>F</em>(<em>b</em>, <em>d</em>) − <em>F</em>(<em>b</em>, <em>c</em>) − <em>F</em>(<em>a</em>, <em>d</em>) + <em>F</em>(<em>a</em>, <em>c</em>).</span></p>
+<p><span class="math display">$$
+\boxed
+{
+  \begin{aligned}
+    F(b,d)-F(b,c)-F(a,d)+F(a,c). \nonumber \\
+    \text{大大}-\text{大小}-\text{小大}+\text{小小}.
+  \end{aligned}
+}
+\nonumber
+$$</span></p>
+<p>$$</p>
+<p>$$</p>
+<blockquote>
+<p>PS: 上述 1—5
+条构成联合分布函数的<strong>充要条件</strong>。常见题型是判断一个函数能否构成联合分布函数，以及<strong>求
+<span class="math inline">(<em>X</em>, <em>Y</em>)</span>
+落入矩形区域内的概率</strong>。</p>
+</blockquote>
+<h3 id="二边缘分布函数">二、边缘分布函数</h3>
+<h4 id="x-的边缘分布函数"><span class="math inline"><em>X</em></span>
+的边缘分布函数</h4>
+<p>称</p>
+<p><span
+class="math display"><em>F</em><sub><em>X</em></sub>(<em>x</em>) = <em>P</em>{<em>X</em> ≤ <em>x</em>}</span></p>
+<p>为 <span class="math inline">(<em>X</em>, <em>Y</em>)</span> 关于
+<span class="math inline"><em>X</em></span>
+的边缘分布函数。由联合分布函数可得</p>
+<p><span
+class="math display"><em>F</em><sub><em>X</em></sub>(<em>x</em>) = <em>P</em>{<em>X</em> ≤ <em>x</em>, <em>Y</em> ≤ +∞} = <em>F</em>(<em>x</em>, +∞).</span></p>
+<h4 id="y-的边缘分布函数"><span class="math inline"><em>Y</em></span>
+的边缘分布函数</h4>
+<p>称</p>
+<p><span
+class="math display"><em>F</em><sub><em>Y</em></sub>(<em>y</em>) = <em>P</em>{<em>Y</em> ≤ <em>y</em>}</span></p>
+<p>为 <span class="math inline">(<em>X</em>, <em>Y</em>)</span> 关于
+<span class="math inline"><em>Y</em></span>
+的边缘分布函数。由联合分布函数可得</p>
+<p><span
+class="math display"><em>F</em><sub><em>Y</em></sub>(<em>y</em>) = <em>P</em>{<em>X</em> ≤ +∞, <em>Y</em> ≤ <em>y</em>} = <em>F</em>(+∞, <em>y</em>).</span></p>
+<p><span class="math display">$$
+\boxed{\begin{align}
+X\text{ 边缘：令 }y\to+\infty;\nonumber\\
+Y\text{ 边缘：令 }x\to+\infty.\nonumber
+\end{align}
+\nonumber}
+$$</span></p>
+<blockquote>
+<p>[!question] 题目 【例 3.2】设随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 具有分布函数</p>
+<p><span class="math display">$$
+F(x,y)
+=
+\begin{cases}
+1-2e^{-y}+e^{-2y}, &amp; 0\le y\le x,\\[4pt]
+1-2e^{-y}-e^{-2x}+2e^{-(x+y)}, &amp; 0\le x&lt;y,\\[4pt]
+0, &amp; x&lt;0\text{ 或 }y&lt;0.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>求边缘分布函数 <span
+class="math inline"><em>F</em><sub><em>X</em></sub>(<em>x</em>)</span>
+和 <span
+class="math inline"><em>F</em><sub><em>Y</em></sub>(<em>y</em>)</span>。</p>
+<p><strong>题解：</strong></p>
+<p><span class="math display">$$
+F_X(x)
+=
+\lim_{y\to+\infty}F(x,y)
+=
+\begin{cases}
+1-e^{-2x}, &amp; x\ge 0,\\[4pt]
+0, &amp; x&lt;0.
+\end{cases}
+\nonumber
+$$</span></p>
+<p><span class="math display">$$
+F_Y(y)
+=
+\lim_{x\to+\infty}F(x,y)
+=
+\begin{cases}
+1-2e^{-y}+e^{-2y}, &amp; y\ge 0,\\[4pt]
+0, &amp; y&lt;0.
+\end{cases}
+\nonumber
+$$</span></p>
+</blockquote>

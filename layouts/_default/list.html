@@ -1,0 +1,235 @@
+{{- define "main" }}
+{{- $isHome := or .IsHome .Params.classicHome }}
+
+{{- if (and site.Params.profileMode.enabled $isHome) }}
+{{- partial "index_profile.html" . }}
+{{- else }} {{/* if not profileMode */}}
+
+{{- if not $isHome | and .Title }}
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>
+    {{ .Title }}
+    {{- if and (or (eq .Kind `term`) (eq .Kind `section`)) (.Param "ShowRssButtonInSectionTermList") }}
+    {{- with .OutputFormats.Get "rss" }}
+    <a href="{{ .RelPermalink }}" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+    {{- end }}
+    {{- end }}
+  </h1>
+  {{- if .Description }}
+  <div class="post-description">
+    {{ .Description | markdownify }}
+  </div>
+  {{- end }}
+</header>
+{{- end }}
+
+{{- if and .Content (not $isHome) }}
+<div class="post-content">
+  {{- if not (.Param "disableAnchoredHeadings") }}
+  {{- partial "anchored_headings.html" .Content -}}
+  {{- else }}{{ .Content }}{{ end }}
+</div>
+{{- end }}
+
+{{- $pages := union .RegularPages .Sections }}
+
+{{- if and (eq .Kind "section") (eq .Section "posts") }}
+{{- $pages = .RegularPagesRecursive }}
+{{- end }}
+
+{{- if $isHome }}
+{{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true"  }}
+{{- end }}
+
+{{- $paginator := .Paginate $pages }}
+{{- $allPosts := where site.RegularPages "Type" "in" site.Params.mainSections -}}
+{{- if eq (len $allPosts) 0 -}}
+{{- $allPosts = site.RegularPages -}}
+{{- end -}}
+
+{{- if and $isHome (eq $paginator.PageNumber 1) }}
+{{- $topicScratch := newScratch }}
+{{- $topTopics := slice }}
+{{- range site.Taxonomies.columns.Alphabetical }}
+  {{- $root := index (split .Name "/") 0 }}
+  {{- if and $root (not ($topicScratch.Get $root)) }}
+    {{- $topicScratch.Set $root true }}
+    {{- $topTopics = $topTopics | append $root }}
+  {{- end }}
+{{- end }}
+{{- $topTopics = sort $topTopics }}
+{{- $recentPosts := first 3 (sort $allPosts "Lastmod" "desc") }}
+<section class="home-portal">
+  {{- with site.Params.homeInfoParams }}
+  <section class="home-hero" aria-labelledby="home-title">
+    <div class="home-hero-copy">
+      <p class="home-eyebrow"><span class="home-status-dot" aria-hidden="true"></span> E_Power / Knowledge Archive</p>
+      <h1 id="home-title">{{ .Title }}</h1>
+      <p class="home-lead">{{ .Content }}</p>
+      <p class="home-tech-line">Mathematics · Code · Exploration</p>
+      <div class="home-actions">
+        <a class="home-action home-action-primary" href="{{ "posts/" | relURL }}">浏览全部文章 <span aria-hidden="true">→</span></a>
+        <a class="home-action" href="{{ "search/" | relURL }}">检索知识档案</a>
+      </div>
+    </div>
+    <div class="home-hero-topics">
+      <p class="home-section-label">专栏索引 / 持续更新</p>
+      {{- if gt (len $topTopics) 0 }}
+      <div class="home-topic-list" aria-label="Featured columns">
+        {{- range $topic := $topTopics }}
+        {{- with site.GetPage (printf "/columns/%s" $topic) }}
+        <a class="home-topic-chip" href="{{ .RelPermalink }}">{{ $topic }}</a>
+        {{- else }}
+        <span class="home-topic-chip">{{ $topic }}</span>
+        {{- end }}
+        {{- end }}
+      </div>
+      {{- else }}
+      <p class="home-empty-hint">更多专栏正在整理中。</p>
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
+
+  <section class="home-principles" aria-labelledby="principles-title">
+    <div class="home-principles-heading">
+      <p class="home-section-label">学习方式</p>
+      <h2 id="principles-title">理解，推导，实践。</h2>
+    </div>
+    <div class="home-principle-list">
+      <article class="home-principle">
+        <span aria-hidden="true">01</span>
+        <h3>建立联系</h3>
+        <p>把零散知识串起来，理解概念之间的关系与边界。</p>
+      </article>
+      <article class="home-principle">
+        <span aria-hidden="true">02</span>
+        <h3>理清推导</h3>
+        <p>记录关键步骤与前提，让每一次推导都有迹可循。</p>
+      </article>
+      <article class="home-principle">
+        <span aria-hidden="true">03</span>
+        <h3>在实践中理解</h3>
+        <p>用习题和代码验证理解，把问题与经验一并归档。</p>
+      </article>
+    </div>
+  </section>
+
+  <div class="home-signal-strip" aria-label="Blog overview">
+    <span><strong>{{ len $allPosts }}</strong> 篇文章</span>
+    <span><strong>{{ len site.Taxonomies.columns }}</strong> 个专栏节点</span>
+    <span class="home-signal-live"><i aria-hidden="true"></i> 持续生长的知识档案</span>
+  </div>
+
+  <section class="home-recent-block">
+    <div class="home-section-heading">
+      <div>
+        <p class="home-section-label">档案动态</p>
+        <h2>最近更新</h2>
+      </div>
+      <a href="{{ "posts/" | relURL }}">查看全部 <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="home-recent-list">
+      {{- range $recentPosts }}
+      {{- with . }}
+      <article class="home-recent-item">
+        <p class="home-recent-meta"><time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod | time.Format "2006-01-02" }}</time></p>
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <a class="home-recent-link" href="{{ .RelPermalink }}" aria-label="Read {{ .Title | plainify }}">阅读文章 <span aria-hidden="true">↗</span></a>
+      </article>
+      {{- end }}
+      {{- end }}
+    </div>
+  </section>
+</section>
+{{- end }}
+
+{{- $term := .Data.Term }}
+{{- if not $isHome }}
+{{- range $index, $page := $paginator.Pages }}
+{{- with $page }}
+
+{{- $class := "post-entry" }}
+
+{{- $user_preferred := or site.Params.disableSpecial1stPost site.Params.homeInfoParams }}
+{{- if (and $isHome (eq $paginator.PageNumber 1) (eq $index 0) (not $user_preferred)) }}
+{{- $class = "first-entry" }}
+{{- else if $term }}
+{{- $class = "post-entry tag-entry" }}
+{{- end }}
+
+<article class="{{ $class }}">
+  {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
+  {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden) }}
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">
+      {{- .Title }}
+      {{- if .Draft }}
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+      {{- end }}
+    </h2>
+  </header>
+  {{- if (ne (.Param "hideSummary") true) }}
+  <div class="entry-content">
+    <p>
+      {{- if .IsPage -}}
+        {{- with .Params.summary -}}{{ . }}{{- else -}}
+          {{- with .Description -}}{{ . }}{{- else -}}{{ .Title }}{{- end -}}
+        {{- end -}}
+      {{- else -}}
+        {{- with .Description -}}{{ . }}{{- else -}}{{ .Title }}{{- end -}}
+      {{- end -}}
+    </p>
+  </div>
+  {{- end }}
+  {{- if not (.Param "hideMeta") }}
+  <footer class="entry-footer">
+    {{- partial "post_meta.html" . -}}
+  </footer>
+  {{- end }}
+  <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+</article>
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{- if and (not $isHome) (gt $paginator.TotalPages 1) }}
+<footer class="page-footer">
+  <nav class="pagination">
+    {{- if $paginator.HasPrev }}
+    <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
+      «&nbsp;{{ i18n "prev_page" }}&nbsp;
+      {{- if (.Param "ShowPageNums") }}
+      {{- sub $paginator.PageNumber 1 }}/{{ $paginator.TotalPages }}
+      {{- end }}
+    </a>
+    {{- end }}
+    {{- if $paginator.HasNext }}
+    <a class="next" href="{{ $paginator.Next.URL | absURL }}">
+      {{- i18n "next_page" }}&nbsp;
+      {{- if (.Param "ShowPageNums") }}
+      {{- add 1 $paginator.PageNumber }}/{{ $paginator.TotalPages }}
+      {{- end }}&nbsp;»
+    </a>
+    {{- end }}
+  </nav>
+</footer>
+{{- end }}
+
+{{- end }}{{/* end profileMode */}}
+
+{{- end }}{{- /* end main */ -}}

@@ -1,0 +1,369 @@
++++
+title = "2-8 连续性随机变量的概念与性质"
+date = "2026-07-04T20:08:36.000Z"
+lastmod = "2026-07-11T11:56:36.130Z"
+url = "/2026/07/05/概率论 与 数理统计 Kira and 牢宇/2. 一维随机变量/I.分布函数和概率密度/2-8 连续性随机变量的概念与性质/"
+description = "概率论与数理统计学习笔记 · 一维随机变量 · 2-8 连续性随机变量的概念与性质"
+columns = ["一维随机变量", "一维随机变量/I.分布函数和概率密度"]
+tags = ["概率论", "数理统计"]
+draft = false
+math = true
+comments = false
+article_status = "permanent"
+applicable_versions = ["all"]
+legacy_import = true
++++
+<h3 id="连续型随机变量及其概率密度">1. 连续型随机变量及其概率密度</h3>
+<p>对于随机变量 <span class="math inline"><em>X</em></span> 的分布函数
+<span
+class="math inline"><em>F</em>(<em>x</em>)</span>，如果存在非负可积函数
+<span class="math inline"><em>f</em>(<em>x</em>)</span>，使对任意实数
+<span class="math inline"><em>x</em></span> 有</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x)
+&amp;=
+\int_{-\infty}^{x} f(t)\,dt,
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则称 <span class="math inline"><em>X</em></span>
+为连续型随机变量，其中 <span
+class="math inline"><em>f</em>(<em>x</em>)</span> 称为 <span
+class="math inline"><em>X</em></span> 的概率密度函数，简称概率密度。</p>
+<blockquote>
+<p>[!note] Notes PS: 连续型随机变量的分布函数 <span
+class="math inline"><em>F</em>(<em>x</em>)</span> 为连续函数，从而</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X=x_0\}
+&amp;= F(x_0)-F(x_0-0)\\
+&amp;= 0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>故连续型随机变量取单点值的概率为 <span
+class="math inline">0</span>。</p>
+</blockquote>
+<p>若 <span class="math inline"><em>f</em>(<em>x</em>)</span> 连续，则
+<span class="math inline"><em>F</em>(<em>x</em>)</span> 可导，且</p>
+<p><span class="math display">$$
+\begin{aligned}
+F'(x) &amp;= f(x).
+\end{aligned}
+\nonumber
+$$</span></p>
+<blockquote>
+<p>[!important]</p>
+<p>1）连续型随机变量 <span class="math inline"><em>X</em></span>
+的概率密度 <span class="math inline"><em>f</em>(<em>x</em>)</span>
+包含了 <span class="math inline"><em>X</em></span>
+所有取值概率的信息。</p>
+<p>2）由定义知，改变概率密度 <span
+class="math inline"><em>f</em>(<em>x</em>)</span>
+在有限点的函数值不影响分布函数 <span
+class="math inline"><em>F</em>(<em>x</em>)</span>
+的取值，因此并不在乎概率密度在有限点的值。</p>
+<p>3）若不计高阶无穷小，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{x&lt;X\le x+\Delta x\}
+&amp;=
+F(x+\Delta x)-F(x)\\
+&amp;\approx
+f(x)\Delta x.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此，<span class="math inline"><em>f</em>(<em>x</em>)</span>
+的大小能反映出 <span class="math inline"><em>X</em></span> 在 <span
+class="math inline"><em>x</em></span>
+邻域内取值概率的大小，称为“连续化的分布律”。</p>
+<p>4）当提到一个随机变量 <span class="math inline"><em>X</em></span>
+的概率分布时，指的是它的分布函数；当 <span
+class="math inline"><em>X</em></span>
+是连续型随机变量时，也常指它的概率密度；当 <span
+class="math inline"><em>X</em></span>
+是离散型随机变量时，指的是它的分布律。</p>
+<p>5）<span class="math inline"><em>f</em>(<em>x</em>)</span>
+不一定连续，只需可积。</p>
+</blockquote>
+<h3 id="连续型随机变量-x-的分布函数-fx-的性质">2. 连续型随机变量 <span
+class="math inline"><em>X</em></span> 的分布函数 <span
+class="math inline"><em>F</em>(<em>x</em>)</span> 的性质</h3>
+<p>连续型随机变量 <span class="math inline"><em>X</em></span> 的分布函数
+<span class="math inline"><em>F</em>(<em>x</em>)</span> 是 <span
+class="math inline"><em>x</em></span> 的连续函数。</p>
+<p>因此，对任意 <span class="math inline"><em>a</em> ∈ ℝ</span>，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X=a\}
+&amp;=
+0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>并且端点取不取不影响概率，即</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{a&lt;X\le b\}
+&amp;=
+P\{a\le X&lt;b\}\\
+&amp;=
+P\{a\le X\le b\}\\
+&amp;=
+P\{a&lt;X&lt;b\}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<blockquote>
+<p>注：</p>
+<p>分布函数 <span class="math inline"><em>F</em>(<em>x</em>)</span>
+不连续的随机变量一定不是连续型随机变量。</p>
+</blockquote>
+<h3 id="概率密度-fx-的性质">3. 概率密度 <span
+class="math inline"><em>f</em>(<em>x</em>)</span> 的性质</h3>
+<h4 id="非负性">（1）非负性</h4>
+<p><span class="math display">$$
+\begin{aligned}
+f(x)
+&amp;\ge 0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="规范性">（2）规范性</h4>
+<p><span class="math display">$$
+\begin{aligned}
+\int_{-\infty}^{+\infty}f(x)\,dx
+&amp;=
+1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="区间概率">（3）区间概率</h4>
+<p>对于任意实数 <span
+class="math inline"><em>a</em>, <em>b</em></span>，若 <span
+class="math inline"><em>a</em> ≤ <em>b</em></span>，则</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{a&lt;X\le b\}
+&amp;=
+F(b)-F(a)\\
+&amp;=
+\int_a^b f(x)\,dx.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="密度与分布函数的导数关系">（4）密度与分布函数的导数关系</h4>
+<p>若 <span class="math inline"><em>f</em>(<em>x</em>)</span> 在点 <span
+class="math inline"><em>x</em></span> 连续，则</p>
+<p><span class="math display">$$
+\begin{aligned}
+F'(x)
+&amp;=
+f(x).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>非负性和规范性构成概率密度函数的<strong>充要条件</strong></p>
+<h4 id="例-2.16">例 2.16</h4>
+<blockquote>
+<p>[!question] 题目 已知随机变量 <span
+class="math inline"><em>X</em></span> 的概率密度函数为</p>
+<p><span class="math display">$$
+\begin{aligned}
+f(x)
+&amp;=
+Ae^{-|x|},
+\qquad
+-\infty&lt;x&lt;+\infty.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>求：</p>
+<p>（1）常数 <span class="math inline"><em>A</em></span>；</p>
+<p>（2）<span
+class="math inline"><em>P</em>{0 &lt; <em>x</em> &lt; 1}</span>；</p>
+<p>（3）<span class="math inline"><em>X</em></span> 的概率分布函数 <span
+class="math inline"><em>F</em>(<em>x</em>)</span>。</p>
+<p><strong>题解：</strong></p>
+<p>由规范性可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\int_{-\infty}^{+\infty}f(x)\,dx
+&amp;=
+A\int_{-\infty}^{+\infty}e^{-|x|}\,dx\\
+&amp;=
+A\int_{-\infty}^{0}e^x\,dx
++
+A\int_{0}^{+\infty}e^{-x}\,dx\\
+&amp;=
+2A
+=
+1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+A
+&amp;=
+\frac{1}{2}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>当 <span class="math inline"><em>x</em> &lt; 0</span> 时，</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x)
+&amp;=
+\frac{1}{2}\int_{-\infty}^{x}e^t\,dt\\
+&amp;=
+\frac{1}{2}e^x.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>当 <span class="math inline"><em>x</em> ≥ 0</span> 时，</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x)
+&amp;=
+\frac{1}{2}\int_{-\infty}^{0}e^t\,dt
++
+\frac{1}{2}\int_{0}^{x}e^{-t}\,dt\\
+&amp;=
+\frac{1}{2}
++
+\frac{1}{2}(1-e^{-x})\\
+&amp;=
+1-\frac{1}{2}e^{-x}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x)
+&amp;=
+\begin{cases}
+\dfrac{1}{2}e^x, &amp; x&lt;0,\\[6pt]
+1-\dfrac{1}{2}e^{-x}, &amp; x\ge 0.
+\end{cases}
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>并且</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{0&lt;x&lt;1\}
+&amp;=
+F(1)-F(0)\\
+&amp;=
+1-\frac{1}{2e}-\frac{1}{2}\\
+&amp;=
+\frac{1}{2}\left(1-\frac{1}{e}\right).
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>
+<h4 id="例-2.17">例 2.17</h4>
+<blockquote>
+<p>[!question] 题目 某种灯管的寿命 <span
+class="math inline"><em>X</em></span>，单位为小时，的概率密度函数为</p>
+<p><span class="math display">$$
+f(x)
+=
+\begin{cases}
+\dfrac{1000}{x^2}, &amp; x&gt;1000,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>求：</p>
+<p>（1）<span
+class="math inline"><em>P</em>{<em>X</em> &gt; 1500}</span>；</p>
+<p>（2）任取 <span class="math inline">5</span> 只灯管，求其中至少有
+<span class="math inline">2</span> 只寿命大于 <span
+class="math inline">1500</span> 的概率。</p>
+<p><strong>题解：</strong></p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X&gt;1500\}
+&amp;=
+\int_{1500}^{+\infty}\frac{1000}{x^2}\,dx\\
+&amp;=
+\left[-\frac{1000}{x}\right]_{1500}^{+\infty}\\
+&amp;=
+\frac{2}{3}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X\le 1500\}
+&amp;=
+1-\frac{2}{3}\\
+&amp;=
+\frac{1}{3}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>设 <span class="math inline"><em>Y</em></span> 表示 <span
+class="math inline">5</span> 只灯管中寿命大于 <span
+class="math inline">1500</span> 的只数，则</p>
+<p><span class="math display">$$
+\begin{aligned}
+Y
+&amp;\sim B\left(5,\frac{2}{3}\right).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{Y\ge 2\}
+&amp;=
+1-P\{Y=0\}-P\{Y=1\}\\
+&amp;=
+1-\left(\frac{1}{3}\right)^5
+-
+\binom{5}{1}
+\left(\frac{2}{3}\right)
+\left(\frac{1}{3}\right)^4\\
+&amp;=
+1-\frac{1}{3^5}-\frac{10}{3^5}\\
+&amp;=
+\frac{232}{243}.
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>
+<p>若题目给出含参数的密度函数，例如</p>
+<p><span class="math display">$$
+f(x)=
+\begin{cases}
+c\cdot g(x),&amp; a\le x\le b,\\
+0,&amp; \text{其他},
+\end{cases}
+\nonumber
+$$</span></p>
+<p>则先由规范性求参数：</p>
+<p><span class="math display">$$
+\begin{aligned}
+\displaystyle\int_a^b c\,g(x)\,dx
+&amp;= 1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>求取值概率时：</p>
+<p><span class="math display">$$
+P\{a&lt;X&lt;b\}
+=
+\begin{cases}
+F(b)-F(a),&amp; \text{用分布函数},\\[4pt]
+\displaystyle\int_a^b f(x)\,dx,&amp; \text{用概率密度}.
+\end{cases}
+\nonumber
+$$</span></p>

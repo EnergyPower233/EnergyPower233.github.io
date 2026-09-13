@@ -1,0 +1,39 @@
+{{- if lt hugo.Version "0.146.0" }}
+{{- errorf "=> hugo v0.146.0 or greater is required for hugo-PaperMod to build " }}
+{{- end -}}
+
+<!DOCTYPE html>
+{{- $theme := site.Params.defaultTheme | default "auto" }}
+{{- if eq $theme "dark" }}
+<html lang="{{ site.Language }}" dir="{{ .Language.Direction | default "auto" }}" data-theme="dark">
+{{- else if eq $theme "light" }}
+<html lang="{{ site.Language }}" dir="{{ .Language.Direction | default "auto" }}" data-theme="light">
+{{- else }}
+<html lang="{{ site.Language }}" dir="{{ .Language.Direction | default "auto" }}" data-theme="auto">
+{{- end }}
+
+<head>
+    {{- partial "head.html" . }}
+</head>
+
+{{- $headings := slice -}}
+{{- with .Fragments -}}{{- $headings = .Headings -}}{{- end -}}
+{{- $hasToc := and (eq .Kind "page") (.Param "ShowToc") (or .Params.legacy_import (gt (len $headings) 0)) -}}
+{{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`)) }}
+<body class="list{{ if or .IsHome .Params.classicHome }} home-page{{ end }}" id="top">
+{{- else }}
+<body id="top">
+{{- end }}
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    {{ partialCached "header.html" . .Page -}}
+    <div class="site-shell{{ if not $hasToc }} has-no-toc{{ end }}">
+        {{ partial "post_toc_sidebar.html" . }}
+        {{ partial "left_sidebar_controller.html" . }}
+        <main class="main" id="main-content">
+            {{- block "main" . }}{{ end }}
+        </main>
+    </div>
+    {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") (.Param "ShowCodeCopyButtons") -}}
+</body>
+
+</html>

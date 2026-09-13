@@ -1,0 +1,454 @@
++++
+title = "V. 相关系数"
+date = "2026-07-04T23:00:26.000Z"
+lastmod = "2026-07-11T11:56:36.147Z"
+url = "/2026/07/05/概率论 与 数理统计 Kira and 牢宇/5. 数字特征/V. 相关系数/"
+description = "概率论与数理统计学习笔记 · 数字特征 · V. 相关系数"
+columns = ["数字特征"]
+tags = ["概率论", "数理统计"]
+draft = false
+math = true
+comments = false
+article_status = "permanent"
+applicable_versions = ["all"]
+legacy_import = true
++++
+<h2 id="v.-相关系数"><span class="math inline"><em>V</em>.</span>
+相关系数</h2>
+<h3 id="一定义">一、定义</h3>
+<p>随机变量 <span class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> 的相关系数定义为</p>
+<p><span class="math display">$$
+\begin{aligned}
+\rho_{XY}
+&amp;=
+\frac{\operatorname{Cov}(X,Y)}
+{\sqrt{DX}\sqrt{DY}}\\
+&amp;=
+\frac{E(XY)-EX\cdot EY}
+{\sqrt{DX}\sqrt{DY}}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p><span class="math display">$$
+\begin{aligned}
+\text{相关系数}
+&amp;=
+\frac{\text{协方差}}
+{\text{标准差乘积}}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h3 id="二性质">二、性质</h3>
+<h4 id="有界性">（1）有界性</h4>
+<p><span class="math display">$$
+\begin{aligned}
+|\rho_{XY}|
+&amp;\le 1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="零相关">（2）零相关</h4>
+<p><span class="math display">$$
+\begin{aligned}
+\rho_{XY}=0
+&amp;\Longleftrightarrow
+\operatorname{Cov}(X,Y)=0\\
+&amp;\Longleftrightarrow
+E(XY)=EX\cdot EY\\
+&amp;\Longleftrightarrow
+D(X+Y)=DX+DY.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>即相关系数等于 <span class="math inline">0</span> 表示 <span
+class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> 不相关。</p>
+<h4 id="完全线性相关">（3）完全线性相关</h4>
+<p><span class="math display">$$
+\begin{aligned}
+\rho_{XY}=1
+&amp;\Longleftrightarrow
+P\{Y=aX+b\}=1,\\
+&amp;\quad a&gt;0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p><span class="math display">$$
+\begin{aligned}
+\rho_{XY}=-1
+&amp;\Longleftrightarrow
+P\{Y=aX+b\}=1,\\
+&amp;\quad a&lt;0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>相关系数的几何意义：</p>
+<ol type="1">
+<li><span
+class="math inline">|<em>ρ</em><sub><em>X</em><em>Y</em></sub>| = 1</span>
+表示所有点都在一条直线上。</li>
+<li><span
+class="math inline"><em>ρ</em><sub><em>X</em><em>Y</em></sub> = 1</span>
+表示所有点都在一条斜率为正的直线上。</li>
+<li><span
+class="math inline"><em>ρ</em><sub><em>X</em><em>Y</em></sub> = −1</span>
+表示所有点都在一条斜率为负的直线上。</li>
+</ol>
+<h3 id="三已知-xy-相关系数求-uv-相关系数">三、已知 <span
+class="math inline"><em>X</em><em>Y</em></span> 相关系数，求 <span
+class="math inline"><em>U</em><em>V</em></span> 相关系数</h3>
+<p>若已知</p>
+<p><span
+class="math display"><em>ρ</em><sub><em>X</em><em>Y</em></sub>,</span></p>
+<p>且</p>
+<p><span class="math display">$$
+\begin{align}
+    U=aX+b,\\ V=cY+d,
+\end{align}
+\nonumber
+$$</span></p>
+<p>则</p>
+<p><span class="math display">$$
+\rho_{UV}
+=
+\begin{cases}
+\rho_{XY},&amp; ac&gt;0,\\
+-\rho_{XY},&amp; ac&lt;0.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>即线性变换不改变相关系数的绝对值，只由两个一次项系数乘积的正负决定符号。</p>
+<h3 id="四二项分布-xy-独立求-xy-与-x-y-的相关系数">四、二项分布 <span
+class="math inline"><em>X</em>, <em>Y</em></span> 独立，求 <span
+class="math inline"><em>X</em> + <em>Y</em></span> 与 <span
+class="math inline"><em>X</em> − <em>Y</em></span> 的相关系数</h3>
+<p>设</p>
+<p><span class="math display">$$
+\begin{aligned}
+X &amp;\sim B(m,p),\\
+Y &amp;\sim B(n,p),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>且 <span class="math inline"><em>X</em>, <em>Y</em></span>
+相互独立。</p>
+<p>则</p>
+<p><span class="math display">$$
+\begin{aligned}
+DX &amp;= mp(1-p),\\
+DY &amp;= np(1-p).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>又因为 <span class="math inline"><em>X</em>, <em>Y</em></span>
+相互独立，所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+\operatorname{Cov}(X,Y)
+&amp;=0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>于是</p>
+<p><span class="math display">$$
+\begin{aligned}
+\operatorname{Cov}(X+Y,X-Y)
+&amp;=
+\operatorname{Cov}(X,X)
+-\operatorname{Cov}(X,Y)\\
+&amp;\quad
++\operatorname{Cov}(Y,X)
+-\operatorname{Cov}(Y,Y)\\
+&amp;=
+DX-DY.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>并且</p>
+<p><span class="math display">$$
+\begin{aligned}
+D(X+Y)
+&amp;=DX+DY,\\
+D(X-Y)
+&amp;=DX+DY.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+\rho_{X+Y,\ X-Y}
+&amp;=
+\frac{\operatorname{Cov}(X+Y,X-Y)}
+{\sqrt{D(X+Y)}\sqrt{D(X-Y)}}\\
+&amp;=
+\frac{DX-DY}{DX+DY}\\
+&amp;=
+\frac{mp(1-p)-np(1-p)}
+{mp(1-p)+np(1-p)}\\
+&amp;=
+\frac{m-n}{m+n}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<hr />
+<blockquote>
+<p>[!question] 题目 【例 4.25】设随机变量 <span
+class="math inline"><em>X</em><sub>1</sub>, <em>X</em><sub>2</sub></span>
+的联合分布律为</p>
+<p><span class="math display">$$
+\begin{array}{c|cc}
+X_1\backslash X_2 &amp; 0 &amp; 1\\
+\hline
+0 &amp; 0.1 &amp; 0.1\\
+1 &amp; 0.8 &amp; 0
+\end{array}
+\nonumber
+$$</span></p>
+<p>求 <span class="math inline"><em>X</em><sub>1</sub></span> 与 <span
+class="math inline"><em>X</em><sub>2</sub></span> 的相关系数 <span
+class="math inline"><em>ρ</em><sub><em>X</em><sub>1</sub><em>X</em><sub>2</sub></sub></span>。</p>
+<p><strong>题解：</strong></p>
+<p>先求期望：</p>
+<p><span class="math display">$$
+\begin{aligned}
+E(X_1)
+&amp;=
+0\cdot 0.2+1\cdot 0.8\\
+&amp;=
+0.8,
+\end{aligned}
+\qquad
+\begin{aligned}
+E(X_2)
+&amp;=
+0\cdot 0.9+1\cdot 0.1\\
+&amp;=
+0.1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由于只有 <span
+class="math inline">(<em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>) = (1, 1)</span>
+时 <span
+class="math inline"><em>X</em><sub>1</sub><em>X</em><sub>2</sub> = 1</span>，而
+<span
+class="math inline"><em>P</em>{<em>X</em><sub>1</sub> = 1, <em>X</em><sub>2</sub> = 1} = 0</span>，所以</p>
+<p><span
+class="math display"><em>E</em>(<em>X</em><sub>1</sub><em>X</em><sub>2</sub>) = 0.</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+\operatorname{Cov}(X_1,X_2)
+&amp;=
+E(X_1X_2)-E(X_1)E(X_2)\\
+&amp;=
+0-0.8\cdot 0.1\\
+&amp;=
+-0.08.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>再求方差。由于 <span
+class="math inline"><em>X</em><sub>1</sub>, <em>X</em><sub>2</sub></span>
+均只取 <span class="math inline">0, 1</span>，故 <span
+class="math inline"><em>X</em><sub>1</sub><sup>2</sup> = <em>X</em><sub>1</sub>, <em>X</em><sub>2</sub><sup>2</sup> = <em>X</em><sub>2</sub></span>。</p>
+<p><span class="math display">$$
+\begin{aligned}
+D(X_1)
+&amp;=
+E(X_1^2)-[E(X_1)]^2\\
+&amp;=
+0.8-0.8^2\\
+&amp;=
+0.16,
+\end{aligned}
+\qquad
+\begin{aligned}
+D(X_2)
+&amp;=
+E(X_2^2)-[E(X_2)]^2\\
+&amp;=
+0.1-0.1^2\\
+&amp;=
+0.09.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+\rho_{X_1X_2}
+&amp;=
+\frac{\operatorname{Cov}(X_1,X_2)}
+{\sqrt{D(X_1)}\sqrt{D(X_2)}}\\
+&amp;=
+\frac{-0.08}{\sqrt{0.16}\sqrt{0.09}}\\
+&amp;=
+\frac{-0.08}{0.4\cdot 0.3}\\
+&amp;=
+-\frac{2}{3}.
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>
+<hr />
+<blockquote>
+<p>[!question] 题目 【例 4.26】设随机变量 <span
+class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> 的期望和方差存在，且</p>
+<p><span
+class="math display"><em>D</em>(<em>X</em> − <em>Y</em>) = <em>D</em><em>X</em> + <em>D</em><em>Y</em>.</span></p>
+<p>则下列说法错误的是（ ）。</p>
+<p>A. <span
+class="math inline"><em>D</em>(<em>X</em> + <em>Y</em>) = <em>D</em><em>X</em> + <em>D</em><em>Y</em></span></p>
+<p>B. <span
+class="math inline"><em>E</em><em>X</em><em>Y</em> = <em>E</em><em>X</em><em>E</em><em>Y</em></span></p>
+<p>C. <span class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> 不相关</p>
+<p>D. <span class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> 相互独立</p>
+<p><strong>题解：</strong></p>
+<p>由方差公式，</p>
+<p><span class="math display">$$
+\begin{aligned}
+D(X-Y)
+&amp;=
+DX+DY-2\operatorname{Cov}(X,Y).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>又因为 <span
+class="math inline"><em>D</em>(<em>X</em> − <em>Y</em>) = <em>D</em><em>X</em> + <em>D</em><em>Y</em></span>，所以</p>
+<p><span
+class="math display">Cov (<em>X</em>, <em>Y</em>) = 0.</span></p>
+<p>因此 <span class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> 不相关，且</p>
+<p><span
+class="math display"><em>E</em><em>X</em><em>Y</em> = <em>E</em><em>X</em><em>E</em><em>Y</em>.</span></p>
+<p>并且</p>
+<p><span class="math display">$$
+\begin{aligned}
+D(X+Y)
+&amp;=
+DX+DY+2\operatorname{Cov}(X,Y)\\
+&amp;=
+DX+DY.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>不相关不能推出相互独立，故错误的是 D。</p>
+<p>答案：D。</p>
+</blockquote>
+<blockquote>
+<p>[!question] 题目 【例 4.27】设随机变量 <span
+class="math inline"><em>X</em>, <em>Y</em></span>
+不相关，其概率分布分别为</p>
+<p><span class="math display">$$
+X\sim
+\begin{pmatrix}
+0 &amp; 3\\
+0.6 &amp; 0.4
+\end{pmatrix},
+\qquad
+Y\sim
+\begin{pmatrix}
+-1 &amp; 0\\
+0.7 &amp; 0.3
+\end{pmatrix}.
+\nonumber
+$$</span></p>
+<p>则随机事件 <span class="math inline">{<em>X</em> = 0}</span> 与 <span
+class="math inline">{<em>Y</em> = 0}</span>（ ）。</p>
+<p>A. 互不相容</p>
+<p>B. 相互独立</p>
+<p>C. 相互对立</p>
+<p>D. 不独立</p>
+<p><strong>题解：</strong></p>
+<p>因为 <span class="math inline"><em>X</em>, <em>Y</em></span>
+不相关，所以</p>
+<p><span
+class="math display"><em>E</em>(<em>X</em><em>Y</em>) = <em>E</em><em>X</em><em>E</em><em>Y</em>.</span></p>
+<p>先求</p>
+<p><span
+class="math display"><em>E</em><em>X</em> = 0 ⋅ 0.6 + 3 ⋅ 0.4 = 1.2,   <em>E</em><em>Y</em> = (−1) ⋅ 0.7 + 0 ⋅ 0.3 = −0.7.</span></p>
+<p>因此</p>
+<p><span
+class="math display"><em>E</em>(<em>X</em><em>Y</em>) = 1.2 × (−0.7) = −0.84.</span></p>
+<p>由于 <span class="math inline"><em>X</em><em>Y</em></span> 只可能取
+<span class="math inline">0</span> 或 <span
+class="math inline">−3</span>，所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+E(XY)
+&amp;=
+-3P\{X=3,Y=-1\}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>故</p>
+<p><span
+class="math display"><em>P</em>{<em>X</em> = 3, <em>Y</em> = −1} = 0.28.</span></p>
+<p>由边缘分布可得联合分布律：</p>
+<p><span class="math display">$$
+\begin{array}{c|cc}
+X\backslash Y &amp; -1 &amp; 0\\
+\hline
+0 &amp; 0.42 &amp; 0.18\\
+3 &amp; 0.28 &amp; 0.12
+\end{array}
+\nonumber
+$$</span></p>
+<p>于是</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X=0,Y=0\}
+&amp;=
+0.18,\\
+P\{X=0\}P\{Y=0\}
+&amp;=
+0.6\times0.3\\
+&amp;=
+0.18.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>所以事件 <span class="math inline">{<em>X</em> = 0}</span> 与 <span
+class="math inline">{<em>Y</em> = 0}</span> 相互独立。</p>
+<p>答案：B。</p>
+</blockquote>
+<blockquote>
+<p>[!question] 题目 【例 4.28】设二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> [[VI.
+二维正态分布|服从]]</p>
+<p><span
+class="math display"><em>N</em>(<em>μ</em>, <em>μ</em>; <em>σ</em><sup>2</sup>, <em>σ</em><sup>2</sup>; 0),</span></p>
+<p>求 <span
+class="math inline"><em>E</em>(<em>X</em><em>Y</em><sup>2</sup>)</span>.</p>
+<p><strong>题解：</strong></p>
+<p>因为 <span class="math inline">(<em>X</em>, <em>Y</em>)</span>
+服从二维正态分布，且相关系数为 <span class="math inline">0</span>，所以
+<span class="math inline"><em>X</em>, <em>Y</em></span> 相互独立。</p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+E(XY^2)
+&amp;=
+E(X)E(Y^2).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>又因为</p>
+<p><span
+class="math display"><em>E</em>(<em>X</em>) = <em>μ</em>,   <em>E</em>(<em>Y</em><sup>2</sup>) = <em>D</em>(<em>Y</em>) + [<em>E</em>(<em>Y</em>)]<sup>2</sup> = <em>σ</em><sup>2</sup> + <em>μ</em><sup>2</sup>,</span></p>
+<p>所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+E(XY^2)
+&amp;=
+\mu(\sigma^2+\mu^2).
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>

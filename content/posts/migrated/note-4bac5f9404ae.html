@@ -1,0 +1,209 @@
++++
+title = "I. 切比雪夫不等式"
+date = "2026-07-04T22:12:38.000Z"
+lastmod = "2026-07-11T11:56:36.221Z"
+url = "/2026/07/05/概率论 与 数理统计 Kira and 牢宇/4. 大数定律与中心极限定理/I. 切比雪夫不等式/"
+description = "概率论与数理统计学习笔记 · 大数定律与中心极限定理 · I. 切比雪夫不等式"
+columns = ["大数定律与中心极限定理"]
+tags = ["概率论", "数理统计"]
+draft = false
+math = true
+comments = false
+article_status = "permanent"
+applicable_versions = ["all"]
+legacy_import = true
++++
+<h2 id="i.-切比雪夫不等式"><span class="math inline"><em>I</em>.</span>
+切比雪夫不等式</h2>
+<p>设随机变量 <span class="math inline"><em>X</em></span>
+的期望与方差均存在，则对任意 <span
+class="math inline"><em>ε</em> &gt; 0</span>，有</p>
+<p><span class="math display">$$
+P\{|X-EX|\ge \varepsilon\}\le \frac{DX}{\varepsilon^2}.
+\nonumber
+$$</span></p>
+<p>等价地，</p>
+<p><span class="math display">$$
+P\{|X-EX|&lt; \varepsilon\}\ge 1-\frac{DX}{\varepsilon^2}.
+\nonumber
+$$</span></p>
+<p>直观理解：</p>
+<p><span class="math inline"><em>X</em></span> 落在 <span
+class="math inline"><em>E</em><em>X</em></span> 附近的概率至少为 <span
+class="math inline">$1-\dfrac{DX}{\varepsilon^2}$</span>。</p>
+<p><span class="math inline"><em>X</em></span> 距离 <span
+class="math inline"><em>E</em><em>X</em></span> 比较远的概率至多为 <span
+class="math inline">$\dfrac{DX}{\varepsilon^2}$</span>。</p>
+<p>因此，当方差越小，随机变量越集中在期望附近。</p>
+<p>若记</p>
+<p><span
+class="math display"><em>A</em> = {|<em>X</em> − <em>E</em><em>X</em>| &lt; <em>ε</em>},</span></p>
+<p>则</p>
+<p><span class="math display">$$
+P(A)\ge 1-\frac{DX}{\varepsilon^2}.
+\nonumber
+$$</span></p>
+<p>这里 <span class="math inline"><em>ε</em></span>
+可以任意选取正数。</p>
+<blockquote>
+<p>[!important]
+使用切比雪夫不等式时，随机变量必须先减去它自己的期望：</p>
+<p><span class="math display">$$
+\begin{aligned}
+|X-\mu|
+&amp;=
+|X-E(X)|.
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>
+<h3 id="证明">证明</h3>
+<p>以连续型随机变量为例，设 <span class="math inline"><em>X</em></span>
+的概率密度为 <span
+class="math inline"><em>f</em>(<em>x</em>)</span>。由定义，</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{|X-E(X)|\ge \varepsilon\}
+&amp;=
+\int_{|x-E(X)|\ge\varepsilon} f(x)\,dx.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>当 <span
+class="math inline">|<em>x</em> − <em>E</em>(<em>X</em>)| ≥ <em>ε</em></span>
+时，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{|x-E(X)|}{\varepsilon}
+&amp;\ge
+1,
+\\
+\frac{(x-E(X))^2}{\varepsilon^2}
+&amp;\ge
+1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{|X-E(X)|\ge \varepsilon\}
+&amp;=
+\int_{|x-E(X)|\ge\varepsilon} f(x)\,dx\\
+&amp;\le
+\int_{|x-E(X)|\ge\varepsilon}
+\frac{(x-E(X))^2}{\varepsilon^2}f(x)\,dx\\
+&amp;\le
+\frac{1}{\varepsilon^2}
+\int_{-\infty}^{+\infty}
+(x-E(X))^2f(x)\,dx\\
+&amp;=
+\frac{D(X)}{\varepsilon^2}\\
+&amp;=
+\frac{\sigma^2}{\varepsilon^2}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<hr />
+<blockquote>
+<p>[!question] 题目 【例 4.19】设随机变量 <span
+class="math inline"><em>X</em></span> 的方差为 <span
+class="math inline">2</span>，则根据切比雪夫不等式有估计</p>
+<p><span
+class="math display"><em>P</em>{|<em>X</em> − <em>E</em><em>X</em>| ≥ 2}≤ ?</span></p>
+<p><strong>题解：</strong></p>
+<p>由切比雪夫不等式，</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{|X-EX|\ge 2\}
+&amp;\le
+\frac{D(X)}{2^2}\\
+&amp;=
+\frac{2}{4}\\
+&amp;=
+\frac{1}{2}.
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>
+<blockquote>
+<p>[!question] 题目 【例 4.20】设随机变量 <span
+class="math inline"><em>X</em>, <em>Y</em></span> 的数学期望都是 <span
+class="math inline">2</span>，方差分别为 <span
+class="math inline">1</span> 和 <span
+class="math inline">4</span>，而相关系数为 <span
+class="math inline">0.5</span>，则根据切比雪夫不等式</p>
+<p><span
+class="math display"><em>P</em>{|<em>X</em> − <em>Y</em>| ≥ 6}≤ ?</span></p>
+<p><strong>题解：</strong></p>
+<p>先把 <span class="math inline"><em>X</em> − <em>Y</em></span>
+看成一个新的随机变量。由于</p>
+<p><span class="math display">$$
+\begin{aligned}
+E(X-Y)
+&amp;=
+E(X)-E(Y)\\
+&amp;=
+2-2\\
+&amp;=
+0,
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{|X-Y|\ge 6\}
+&amp;=
+P\{|(X-Y)-E(X-Y)|\ge 6\}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由切比雪夫不等式，</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{|X-Y|\ge 6\}
+&amp;\le
+\frac{D(X-Y)}{6^2}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>又因为 <span
+class="math inline"><em>ρ</em><sub><em>X</em><em>Y</em></sub> = 0.5</span>，所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+\operatorname{Cov}(X,Y)
+&amp;=
+\rho_{XY}\sqrt{D(X)}\sqrt{D(Y)}\\
+&amp;=
+0.5\sqrt{1}\sqrt{4}\\
+&amp;=
+1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+D(X-Y)
+&amp;=
+D(X)+D(Y)-2\operatorname{Cov}(X,Y)\\
+&amp;=
+1+4-2\\
+&amp;=
+3.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{|X-Y|\ge 6\}
+&amp;\le
+\frac{3}{36}\\
+&amp;=
+\frac{1}{12}.
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>

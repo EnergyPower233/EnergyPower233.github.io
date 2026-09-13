@@ -1,0 +1,169 @@
+<script>
+(() => {
+  const init = () => {
+    const shell = document.querySelector('.site-shell');
+    const tocPanel = document.querySelector('.post-toc-sidebar');
+    const tocToggle = document.querySelector('.post-toc-toggle');
+    const compactQuery = window.matchMedia('(max-width: 1023px)');
+    const tocStateKey = 'cl_toc_rail_collapsed';
+
+    if (!shell) return;
+    shell.classList.toggle('has-no-toc', !tocPanel);
+
+    const safeGet = (key) => {
+      try { return localStorage.getItem(key); } catch (_) { return null; }
+    };
+    const safeSet = (key, value) => {
+      try { localStorage.setItem(key, value); } catch (_) {}
+    };
+
+    let tocCollapsed = (() => {
+      const stored = safeGet(tocStateKey);
+      return stored === null ? compactQuery.matches : stored === 'true';
+    })();
+
+    const setTocState = (collapsed, persist = true) => {
+      if (!tocPanel || !tocToggle) return;
+      tocPanel.classList.toggle('is-collapsed', collapsed);
+      shell.classList.toggle('is-toc-collapsed', collapsed);
+      tocToggle.setAttribute('aria-expanded', String(!collapsed));
+      tocToggle.setAttribute('aria-label', `${collapsed ? 'Expand' : 'Collapse'} table of contents`);
+      if (persist) safeSet(tocStateKey, String(collapsed));
+    };
+
+    tocToggle?.addEventListener('click', () => {
+      tocCollapsed = !tocCollapsed;
+      setTocState(tocCollapsed);
+      window.requestAnimationFrame(() => window.dispatchEvent(new Event('tocvisibilitychange')));
+    });
+    setTocState(tocCollapsed, false);
+
+    const setupTocHighlight = () => {
+      if (!tocPanel) return;
+      const tocRoot = tocPanel.querySelector('#TableOfContents');
+      const progressShell = tocPanel.querySelector('.toc-progress-shell');
+      const progressIndicator = tocPanel.querySelector('.toc-progress-indicator');
+      const postContent = document.querySelector('.post-content');
+      const links = Array.from(tocPanel.querySelectorAll('#TableOfContents a[href^="#"]'));
+      const entries = links.map((link) => {
+        try {
+          const heading = document.getElementById(decodeURIComponent(link.hash.slice(1)));
+          return heading ? { heading, link } : null;
+        } catch (_) {
+          return null;
+        }
+      }).filter(Boolean);
+      if (!entries.length || !tocRoot || !progressShell || !progressIndicator) return;
+
+      let activeLink = null;
+      let ticking = false;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+      const documentTop = (element) => element.getBoundingClientRect().top + window.scrollY;
+      const linkCenter = (link) => {
+        const shellRect = progressShell.getBoundingClientRect();
+        const linkRect = link.getBoundingClientRect();
+        return linkRect.top - shellRect.top + linkRect.height / 2;
+      };
+      const activate = (link) => {
+        if (!link || link === activeLink) return;
+        links.forEach((item) => {
+          item.classList.toggle('is-active', item === link);
+          if (item === link) item.setAttribute('aria-current', 'location');
+          else item.removeAttribute('aria-current');
+        });
+        activeLink = link;
+
+        if (!tocPanel.classList.contains('is-collapsed')) {
+          const panelRect = tocPanel.getBoundingClientRect();
+          const linkRect = link.getBoundingClientRect();
+          const headerSpace = 52;
+          let target = tocPanel.scrollTop;
+          if (linkRect.top < panelRect.top + headerSpace) {
+            target -= panelRect.top + headerSpace - linkRect.top;
+          } else if (linkRect.bottom > panelRect.bottom - 12) {
+            target += linkRect.bottom - panelRect.bottom + 12;
+          }
+          if (target !== tocPanel.scrollTop) {
+            tocPanel.scrollTo({ top: target, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+          }
+        }
+      };
+
+      const update = () => {
+        const marker = window.scrollY + Math.min(180, window.innerHeight * 0.28);
+        let currentIndex = 0;
+        for (let index = 0; index < entries.length; index += 1) {
+          if (documentTop(entries[index].heading) <= marker) currentIndex = index;
+          else break;
+        }
+        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+          currentIndex = entries.length - 1;
+        }
+
+        const current = entries[currentIndex];
+        const next = entries[currentIndex + 1];
+        const sectionStart = documentTop(current.heading);
+        const contentEnd = postContent
+          ? postContent.getBoundingClientRect().bottom + window.scrollY
+          : document.documentElement.scrollHeight;
+        const sectionEnd = next ? documentTop(next.heading) : Math.max(sectionStart + 1, contentEnd);
+        const sectionProgress = clamp((marker - sectionStart) / Math.max(1, sectionEnd - sectionStart), 0, 1);
+        const startY = linkCenter(current.link);
+        const endY = next ? linkCenter(next.link) : startY;
+        const indicatorY = startY + (endY - startY) * sectionProgress;
+        const firstTop = documentTop(entries[0].heading);
+        const totalProgress = clamp((marker - firstTop) / Math.max(1, contentEnd - firstTop), 0, 1);
+
+        progressIndicator.style.transform = `translate3d(0, ${indicatorY}px, 0) translateY(-50%)`;
+        progressIndicator.setAttribute('aria-valuenow', String(Math.round(totalProgress * 100)));
+        progressIndicator.style.opacity = '1';
+        activate(current.link);
+        ticking = false;
+      };
+
+      const requestUpdate = () => {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(update);
+      };
+
+      links.forEach((link) => link.addEventListener('click', () => activate(link)));
+      window.addEventListener('scroll', requestUpdate, { passive: true });
+      window.addEventListener('resize', requestUpdate, { passive: true });
+      window.addEventListener('tocvisibilitychange', requestUpdate);
+      window.addEventListener('load', requestUpdate, { once: true });
+      document.fonts?.ready.then(requestUpdate);
+      if ('ResizeObserver' in window) {
+        const observer = new ResizeObserver(requestUpdate);
+        if (postContent) observer.observe(postContent);
+        observer.observe(tocRoot);
+      }
+      update();
+    };
+
+    const setupColumnTree = () => {
+      document.querySelectorAll('.column-index').forEach((tree) => {
+        tree.querySelectorAll('.column-index-branch > summary .column-index-link').forEach((link) => {
+          link.addEventListener('click', (event) => event.stopPropagation());
+        });
+
+        tree.querySelectorAll('[data-column-tree-action]').forEach((button) => {
+          button.addEventListener('click', () => {
+            const expand = button.dataset.columnTreeAction === 'expand';
+            tree.querySelectorAll('details.column-index-branch').forEach((details) => {
+              details.open = expand;
+            });
+          });
+        });
+      });
+    };
+
+    setupTocHighlight();
+    setupColumnTree();
+  };
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>

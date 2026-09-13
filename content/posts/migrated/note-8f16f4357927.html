@@ -1,0 +1,1065 @@
++++
+title = "III. 概率密度"
+date = "2026-07-04T21:25:23.000Z"
+lastmod = "2026-07-11T11:56:35.999Z"
+url = "/2026/07/05/概率论 与 数理统计 Kira and 牢宇/3. 二维随机变量/III. 概率密度/"
+description = "概率论与数理统计学习笔记 · 二维随机变量 · III. 概率密度"
+columns = ["二维随机变量"]
+tags = ["概率论", "数理统计"]
+draft = false
+math = true
+comments = false
+article_status = "permanent"
+applicable_versions = ["all"]
+legacy_import = true
++++
+<h2 id="iii.-概率密度"><span
+class="math inline"><em>I</em><em>I</em><em>I</em>.</span> 概率密度</h2>
+<h3 id="一联合概率密度">一、联合概率密度</h3>
+<h4 id="联合概率密度的定义">联合概率密度的定义</h4>
+<p>设二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的联合分布函数为
+<span
+class="math inline"><em>F</em>(<em>x</em>, <em>y</em>)</span>。若存在非负可积函数
+<span
+class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span>，对任意实数
+<span class="math inline"><em>x</em>, <em>y</em></span>，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x,y)
+&amp;=
+\displaystyle\int_{-\infty}^{x}
+\displaystyle\int_{-\infty}^{y}
+f(u,v)\,dv\,du,
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则称 <span class="math inline">(<em>X</em>, <em>Y</em>)</span>
+为二维连续型随机变量，称 <span
+class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span> 为 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span>
+的联合概率密度，简称概率密度。</p>
+<p>若 <span
+class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span>
+连续，则有</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{\partial^2 F(x,y)}{\partial x\partial y}
+&amp;=
+f(x,y).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>联合概率密度可以看成联合分布函数的二阶混合偏导。</p>
+<blockquote>
+<p>[!question] 题目 【例 3.7】设二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的分布函数为</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x,y)
+&amp;=
+A\left(B+\arctan\frac{x}{2}\right)
+\left(C+\arctan\frac{y}{3}\right).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>求 <span class="math inline">(<em>X</em>, <em>Y</em>)</span>
+的概率密度。</p>
+<p><strong>题解：</strong></p>
+<p>由分布函数边界条件，</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(+\infty,+\infty)
+&amp;=
+A\left(B+\frac{\pi}{2}\right)
+\left(C+\frac{\pi}{2}\right)
+=
+1,\\
+F(x,-\infty)
+&amp;=
+A\left(B+\arctan\frac{x}{2}\right)
+\left(C-\frac{\pi}{2}\right)
+=
+0,\\
+F(-\infty,y)
+&amp;=
+A\left(B-\frac{\pi}{2}\right)
+\left(C+\arctan\frac{y}{3}\right)
+=
+0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>故 <span class="math inline">$B=C=\dfrac{\pi}{2}$</span>，再由 <span
+class="math inline"><em>F</em>(+∞, +∞) = 1</span> 得 <span
+class="math inline">$A=\dfrac{1}{\pi^2}$</span>。</p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x,y)
+&amp;=
+\frac{1}{\pi^2}
+\left(\frac{\pi}{2}+\arctan\frac{x}{2}\right)
+\left(\frac{\pi}{2}+\arctan\frac{y}{3}\right).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>概率密度为</p>
+<p><span class="math display">$$
+\begin{aligned}
+f(x,y)
+&amp;=
+\frac{\partial^2 F(x,y)}{\partial x\partial y}\\
+&amp;=
+\frac{1}{\pi^2}
+\cdot
+\frac{2}{4+x^2}
+\cdot
+\frac{3}{9+y^2}\\
+&amp;=
+\frac{6}{\pi^2(4+x^2)(9+y^2)}.
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>
+<h4 id="联合概率密度的性质">联合概率密度的性质</h4>
+<p>联合概率密度满足非负性：</p>
+<p><span class="math display">$$
+\begin{aligned}
+f(x,y) &amp;\ge 0,\\
+x&amp;\in\mathbb R,\\
+y&amp;\in\mathbb R.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>满足规范性：</p>
+<p><span class="math display">$$
+\begin{aligned}
+\displaystyle\int_{-\infty}^{+\infty}
+\displaystyle\int_{-\infty}^{+\infty}
+f(x,y)\,dx\,dy
+&amp;=1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>若 <span class="math inline"><em>D</em></span> 为平面区域，则</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{(X,Y)\in D\}
+&amp;=
+\displaystyle\iint_D f(x,y)\,dx\,dy.
+\end{aligned}
+\nonumber
+$$</span></p>
+<blockquote>
+<p>PS:
+<strong>非负性与规范性</strong>是判断联合概率密度的<strong>充要条件</strong>；区域积分用于计算二维随机变量落入某个区域内的概率。</p>
+</blockquote>
+<h4 id="常用套路">常用套路</h4>
+<p>求 <span class="math inline">(<em>X</em>, <em>Y</em>)</span>
+取值落在区域 <span class="math inline"><em>D</em></span> 内的概率时，将
+<span class="math inline"><em>X</em>, <em>Y</em></span> 分别改写为 <span
+class="math inline"><em>x</em>, <em>y</em></span>，对联合概率密度作二重积分：</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{(X,Y)\in D\}
+&amp;=
+\displaystyle\iint_D f(x,y)\,dx\,dy.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>实际计算时，核心步骤为：</p>
+<ol type="1">
+<li>先确定区域 <span class="math inline"><em>D</em></span>；</li>
+<li>再根据区域 <span class="math inline"><em>D</em></span>
+写出积分上下限；</li>
+<li>最后对联合概率密度 <span
+class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span>
+作二重积分。</li>
+</ol>
+<p><span class="math display">$$
+\boxed{\begin{aligned}
+\text{求 }(X,Y)\text{ 取值概率}
+&amp;\Longrightarrow
+\text{对联合概率密度作二重积分}.
+\end{aligned}}
+\nonumber
+$$</span></p>
+<blockquote>
+<p>[!question] 题目 设二维连续型随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的概率密度为</p>
+<p><span class="math display">$$
+f(x,y)
+=
+\begin{cases}
+Cxy, &amp; 0\le x\le 1,\ 0\le y\le 1,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>求：</p>
+<p>（1）常数 <span class="math inline"><em>C</em></span>；</p>
+<p>（2）<span
+class="math inline"><em>P</em>{<em>X</em> + <em>Y</em> &lt; 1}</span>；</p>
+<p>（3）分布函数 <span
+class="math inline"><em>F</em>(<em>x</em>, <em>y</em>)</span>。</p>
+<p><strong>题解：</strong></p>
+<p>由规范性可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\int_0^1\int_0^1 Cxy\,dy\,dx
+&amp;=
+1,\\
+C\int_0^1x\,dx\int_0^1y\,dy
+&amp;=
+1,\\
+C\cdot\frac{1}{2}\cdot\frac{1}{2}
+&amp;=
+1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>故 <span class="math inline"><em>C</em> = 4</span>，于是</p>
+<p><span class="math display">$$
+f(x,y)
+=
+\begin{cases}
+4xy, &amp; 0\le x\le 1,\ 0\le y\le 1,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>计算 <span
+class="math inline"><em>P</em>{<em>X</em> + <em>Y</em> &lt; 1}</span>
+时，积分区域为单位正方形内直线 <span
+class="math inline"><em>x</em> + <em>y</em> = 1</span>
+下方的三角形区域，因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X+Y&lt;1\}
+&amp;=
+\int_0^1\int_0^{1-x}4xy\,dy\,dx\\
+&amp;=
+\int_0^1
+4x\cdot\frac{(1-x)^2}{2}\,dx\\
+&amp;=
+2\int_0^1x(1-x)^2\,dx\\
+&amp;=
+2\int_0^1(x-2x^2+x^3)\,dx\\
+&amp;=
+2\left(
+\frac{1}{2}
+-
+\frac{2}{3}
++
+\frac{1}{4}
+\right)\\
+&amp;=
+\frac{1}{6}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>下面求分布函数。由定义，</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x,y)
+&amp;=
+P\{X\le x,\ Y\le y\}\\
+&amp;=
+\int_{-\infty}^{x}
+\int_{-\infty}^{y}
+f(u,v)\,dv\,du.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由于 <span
+class="math inline"><em>f</em>(<em>u</em>, <em>v</em>)</span>
+只在正方形区域 <span
+class="math inline">0 ≤ <em>u</em> ≤ 1, 0 ≤ <em>v</em> ≤ 1</span>
+内非零，因此需要根据点 <span
+class="math inline">(<em>x</em>, <em>y</em>)</span>
+相对于该正方形的位置分类。</p>
+<p>若 <span class="math inline"><em>x</em> &lt; 0</span> 或 <span
+class="math inline"><em>y</em> &lt; 0</span>，积分区域与密度非零区域没有交集，所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x,y)
+&amp;=
+0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>若 <span
+class="math inline">0 ≤ <em>x</em> &lt; 1, 0 ≤ <em>y</em> &lt; 1</span>，积分区域为矩形
+<span
+class="math inline">[0, <em>x</em>] × [0, <em>y</em>]</span>，所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x,y)
+&amp;=
+\int_0^x\int_0^y4uv\,dv\,du\\
+&amp;=
+4\int_0^xu\,du\int_0^yv\,dv\\
+&amp;=
+4\cdot\frac{x^2}{2}\cdot\frac{y^2}{2}\\
+&amp;=
+x^2y^2.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>若 <span
+class="math inline">0 ≤ <em>x</em> &lt; 1, <em>y</em> ≥ 1</span>，纵向已经覆盖完整区间
+<span class="math inline">0 ≤ <em>v</em> ≤ 1</span>，横向只覆盖到 <span
+class="math inline"><em>x</em></span>，所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x,y)
+&amp;=
+\int_0^x\int_0^14uv\,dv\,du\\
+&amp;=
+4\int_0^xu\,du\int_0^1v\,dv\\
+&amp;=
+4\cdot\frac{x^2}{2}\cdot\frac{1}{2}\\
+&amp;=
+x^2.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>若 <span
+class="math inline"><em>x</em> ≥ 1, 0 ≤ <em>y</em> &lt; 1</span>，横向已经覆盖完整区间
+<span class="math inline">0 ≤ <em>u</em> ≤ 1</span>，纵向只覆盖到 <span
+class="math inline"><em>y</em></span>，所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x,y)
+&amp;=
+\int_0^1\int_0^y4uv\,dv\,du\\
+&amp;=
+4\int_0^1u\,du\int_0^yv\,dv\\
+&amp;=
+4\cdot\frac{1}{2}\cdot\frac{y^2}{2}\\
+&amp;=
+y^2.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>若 <span
+class="math inline"><em>x</em> ≥ 1, <em>y</em> ≥ 1</span>，积分区域已经覆盖整个密度非零区域，所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x,y)
+&amp;=
+\int_0^1\int_0^14uv\,dv\,du\\
+&amp;=
+1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>综上，</p>
+<p><span class="math display">$$
+F(x,y)
+=
+\begin{cases}
+0, &amp; x&lt;0\text{ 或 }y&lt;0,\\[6pt]
+x^2y^2, &amp; 0\le x&lt;1,\ 0\le y&lt;1,\\[6pt]
+x^2, &amp; 0\le x&lt;1,\ y\ge 1,\\[6pt]
+y^2, &amp; x\ge 1,\ 0\le y&lt;1,\\[6pt]
+1, &amp; x\ge 1,\ y\ge 1.
+\end{cases}
+\nonumber
+$$</span></p>
+</blockquote>
+<h3 id="二边缘概率密度">二、边缘概率密度</h3>
+<h4 id="边缘概率密度的定义">边缘概率密度的定义</h4>
+<p>设二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的联合概率密度为
+<span
+class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span>，分别称</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)
+&amp;=
+\displaystyle\int_{-\infty}^{+\infty}
+f(x,y)\,dy
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>和</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_Y(y)
+&amp;=
+\displaystyle\int_{-\infty}^{+\infty}
+f(x,y)\,dx
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>为 <span class="math inline">(<em>X</em>, <em>Y</em>)</span> 关于
+<span class="math inline"><em>X</em></span> 和 <span
+class="math inline"><em>Y</em></span> 的边缘概率密度。</p>
+<p><span class="math display">$$
+\boxed{\begin{aligned}
+\text{求 }X\text{ 的边缘密度}
+&amp;\Longrightarrow
+\text{联合概率密度对 }y\text{ 积分},\\
+\text{求 }Y\text{ 的边缘密度}
+&amp;\Longrightarrow
+\text{联合概率密度对 }x\text{ 积分}.
+\end{aligned}}
+\nonumber
+$$</span></p>
+<h4 id="边缘概率密度的理解">边缘概率密度的理解</h4>
+<p>联合概率密度 <span
+class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span>
+描述的是二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span>
+在平面区域中的分布情况。</p>
+<p>求边缘概率密度，本质上是把二维密度压缩成一维密度。</p>
+<p>因此：</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)
+&amp;=
+\text{固定 }x\text{ 后，对所有可能的 }y\text{ 求和},\\
+f_Y(y)
+&amp;=
+\text{固定 }y\text{ 后，对所有可能的 }x\text{ 求和}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>连续型随机变量中，“求和”对应积分，所以有</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)
+&amp;=
+\displaystyle\int f(x,y)\,dy,\\
+f_Y(y)
+&amp;=
+\displaystyle\int f(x,y)\,dx.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="求边缘概率密度的步骤">求边缘概率密度的步骤</h4>
+<p>求 <span class="math inline"><em>X</em></span> 的边缘概率密度时：</p>
+<ol type="1">
+<li>先确定 <span class="math inline"><em>x</em></span> 的取值范围；</li>
+<li>固定一个 <span class="math inline"><em>x</em></span>；</li>
+<li>沿 <span class="math inline"><em>y</em></span>
+轴方向穿过联合密度的正区域；</li>
+<li>根据穿过区域确定 <span class="math inline"><em>y</em></span>
+的积分范围；</li>
+<li>对 <span class="math inline"><em>y</em></span> 积分。</li>
+</ol>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)
+&amp;=
+\displaystyle\int_{\text{对应的 }y\text{ 范围}}
+f(x,y)\,dy.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>求 <span class="math inline"><em>Y</em></span> 的边缘概率密度时：</p>
+<ol type="1">
+<li>先确定 <span class="math inline"><em>y</em></span> 的取值范围；</li>
+<li>固定一个 <span class="math inline"><em>y</em></span>；</li>
+<li>沿 <span class="math inline"><em>x</em></span>
+轴方向穿过联合密度的正区域；</li>
+<li>根据穿过区域确定 <span class="math inline"><em>x</em></span>
+的积分范围；</li>
+<li>对 <span class="math inline"><em>x</em></span> 积分。</li>
+</ol>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_Y(y)
+&amp;=
+\displaystyle\int_{\text{对应的 }x\text{ 范围}}
+f(x,y)\,dx.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>thus</p>
+<p><span class="math display">$$
+\begin{aligned}
+\text{联合概率密度}
+&amp;\Longrightarrow
+\text{边缘概率密度},\\
+\text{二维积分}
+&amp;\Longrightarrow
+\text{一维积分}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p><span class="math display">$$
+\begin{aligned}
+\text{求 }X\text{ 边缘}
+&amp;\Longrightarrow
+\text{对 }y\text{ 积分},\\
+\text{求 }Y\text{ 边缘}
+&amp;\Longrightarrow
+\text{对 }x\text{ 积分}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<blockquote>
+<p>[!question] 题目 【例 3.9】设二维连续型随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的概率密度为</p>
+<p><span class="math display">$$
+f(x,y)
+=
+\begin{cases}
+kxy, &amp; 0\le x\le y\le 1,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>求：</p>
+<p>（1）常数 <span class="math inline"><em>k</em></span>；</p>
+<p>（2）边缘概率密度 <span
+class="math inline"><em>f</em><sub><em>X</em></sub>(<em>x</em>)</span>
+与 <span
+class="math inline"><em>f</em><sub><em>Y</em></sub>(<em>y</em>)</span>。</p>
+<p><strong>题解：</strong></p>
+<p>由规范性可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\int_0^1\int_x^1 kxy\,dy\,dx
+&amp;=
+1,\\
+\frac{k}{2}
+\int_0^1 x(1-x^2)\,dx
+&amp;=
+1,\\
+\frac{k}{8}
+&amp;=
+1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>故 <span class="math inline"><em>k</em> = 8</span>。</p>
+<p>对 <span class="math inline">0 &lt; <em>x</em> &lt; 1</span>，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)
+&amp;=
+\int_x^1 8xy\,dy\\
+&amp;=
+4x(1-x^2).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+f_X(x)
+=
+\begin{cases}
+4x(1-x^2), &amp; 0&lt;x&lt;1,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>对 <span class="math inline">0 &lt; <em>y</em> &lt; 1</span>，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_Y(y)
+&amp;=
+\int_0^y 8xy\,dx\\
+&amp;=
+4y^3.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+f_Y(y)
+=
+\begin{cases}
+4y^3, &amp; 0&lt;y&lt;1,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+</blockquote>
+<hr />
+<blockquote>
+<p>[!question] 题目 【例 3.10】设二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 服从 <span
+class="math inline"><em>G</em></span> 上的均匀分布，其中 <span
+class="math inline"><em>G</em></span> 是由 <span
+class="math inline"><em>x</em> − <em>y</em> = 0</span>、<span
+class="math inline"><em>x</em> + <em>y</em> = 2</span> 与 <span
+class="math inline"><em>y</em> = 0</span>
+围成的三角形区域。求边缘概率密度 <span
+class="math inline"><em>f</em><sub><em>X</em></sub>(<em>x</em>)</span>。</p>
+<p><strong>题解：</strong></p>
+<p>区域 <span class="math inline"><em>G</em></span> 的面积为 <span
+class="math inline">1</span>，所以</p>
+<p><span class="math display">$$
+f(x,y)
+=
+\begin{cases}
+1, &amp; (x,y)\in G,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>由区域 <span class="math inline"><em>G</em></span> 可知，固定 <span
+class="math inline"><em>x</em></span> 时，</p>
+<p><span class="math display">$$
+0&lt;y&lt;
+\begin{cases}
+x, &amp; 0&lt;x&lt;1,\\[4pt]
+2-x, &amp; 1&lt;x&lt;2.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)
+&amp;=
+\int_{-\infty}^{+\infty}f(x,y)\,dy\\
+&amp;=
+\begin{cases}
+\displaystyle\int_0^x 1\,dy, &amp; 0&lt;x&lt;1,\\[8pt]
+\displaystyle\int_0^{2-x}1\,dy, &amp; 1&lt;x&lt;2,\\[8pt]
+0, &amp; \text{其他}
+\end{cases}\\
+&amp;=
+\begin{cases}
+x, &amp; 0&lt;x&lt;1,\\[6pt]
+2-x, &amp; 1&lt;x&lt;2,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>
+<hr />
+<blockquote>
+<p>[!question] 题目 【例 3.14】设二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的概率密度为</p>
+<p><span class="math display">$$
+f(x,y)
+=
+\begin{cases}
+3e^{-(x+3y)}, &amp; x&gt;0,\ y&gt;0,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>分别求 <span class="math inline"><em>X</em></span> 和 <span
+class="math inline"><em>Y</em></span> 的边缘概率密度 <span
+class="math inline"><em>f</em><sub><em>X</em></sub>(<em>x</em>), <em>f</em><sub><em>Y</em></sub>(<em>y</em>)</span>。</p>
+<p><strong>题解：</strong></p>
+<p>对 <span class="math inline"><em>x</em> &gt; 0</span>，</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)
+&amp;=
+\int_0^{+\infty}3e^{-(x+3y)}\,dy\\
+&amp;=
+e^{-x}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+f_X(x)
+=
+\begin{cases}
+e^{-x}, &amp; x&gt;0,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>对 <span class="math inline"><em>y</em> &gt; 0</span>，</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_Y(y)
+&amp;=
+\int_0^{+\infty}3e^{-(x+3y)}\,dx\\
+&amp;=
+3e^{-3y}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+f_Y(y)
+=
+\begin{cases}
+3e^{-3y}, &amp; y&gt;0,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+</blockquote>
+<p>这道题两变量是[[IV.
+随机变量的独立性#随机变量相互独立的定义|独立的]]。 ###
+三、条件概率密度</p>
+<h4 id="条件概率密度的定义">条件概率密度的定义</h4>
+<p>设二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的联合概率密度为
+<span
+class="math inline"><em>f</em>(<em>x</em>, <em>y</em>)</span>。</p>
+<p>称</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_{X\mid Y}(x\mid y)
+&amp;=
+\frac{f(x,y)}{f_Y(y)}
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>为在 <span class="math inline"><em>Y</em> = <em>y</em></span>
+的条件下，<span class="math inline"><em>X</em></span>
+的条件概率密度。</p>
+<p>称</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_{Y\mid X}(y\mid x)
+&amp;=
+\frac{f(x,y)}{f_X(x)}
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>为在 <span class="math inline"><em>X</em> = <em>x</em></span>
+的条件下，<span class="math inline"><em>Y</em></span>
+的条件概率密度。</p>
+<p>因此，条件概率密度可以理解为：</p>
+<p><span class="math display">$$
+\begin{aligned}
+\text{条件概率密度}
+&amp;=
+\frac{\text{联合概率密度}}{\text{对应边缘概率密度}}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="求条件概率密度的基本流程">求条件概率密度的基本流程</h4>
+<p>求条件概率密度时，通常先求边缘概率密度，再作比值：</p>
+<p><span class="math display">$$
+\begin{aligned}
+\text{联合概率密度}
+&amp;\Longrightarrow
+\text{边缘概率密度}\\
+&amp;\Longrightarrow
+\text{条件概率密度}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_{X\mid Y}(x\mid y)
+&amp;=
+\frac{f(x,y)}{f_Y(y)},\\
+f_{Y\mid X}(y\mid x)
+&amp;=
+\frac{f(x,y)}{f_X(x)}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="两点注意">两点注意</h4>
+<p>求 <span
+class="math inline"><em>f</em><sub><em>X</em> ∣ <em>Y</em></sub>(<em>x</em> ∣ <em>y</em>)</span>
+时，分母是 <span
+class="math inline"><em>f</em><sub><em>Y</em></sub>(<em>y</em>)</span>，因此<strong>必须先保证</strong></p>
+<p><span class="math display">$$
+\begin{aligned}
+f_Y(y)&amp;&gt;0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>这一步用于确定 <span class="math inline"><em>y</em></span>
+的可取范围。</p>
+<p>然后把 <span class="math inline"><em>y</em></span>
+看成常数，在联合密度的正区域内确定 <span
+class="math inline"><em>x</em></span> 的可取范围。</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_{X\mid Y}(x\mid y)
+&amp;=
+\begin{cases}
+\dfrac{f(x,y)}{f_Y(y)},
+&amp; (x,y)\in D,\ f_Y(y)&gt;0,\\[8pt]
+0,
+&amp; \text{其他}.
+\end{cases}
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>求 <span
+class="math inline"><em>f</em><sub><em>Y</em> ∣ <em>X</em></sub>(<em>y</em> ∣ <em>x</em>)</span>
+时，分母是 <span
+class="math inline"><em>f</em><sub><em>X</em></sub>(<em>x</em>)</span>，因此必须先保证</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)&amp;&gt;0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>这一步用于确定 <span class="math inline"><em>x</em></span>
+的可取范围。</p>
+<p>然后把 <span class="math inline"><em>x</em></span>
+看成常数，在联合密度的正区域内确定 <span
+class="math inline"><em>y</em></span> 的可取范围。</p>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_{Y\mid X}(y\mid x)
+&amp;=
+\begin{cases}
+\dfrac{f(x,y)}{f_X(x)},
+&amp; (x,y)\in D,\ f_X(x)&gt;0,\\[8pt]
+0,
+&amp; \text{其他}.
+\end{cases}
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+\text{已知 }Y=y\text{，求 }X\text{ 的条件密度}
+&amp;\Longrightarrow
+\frac{f(x,y)}{f_Y(y)},\\
+\text{已知 }X=x\text{，求 }Y\text{ 的条件密度}
+&amp;\Longrightarrow
+\frac{f(x,y)}{f_X(x)}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<blockquote>
+<p>[!note] 对连续型随机变量，条件为 <span
+class="math inline"><em>X</em> = <em>x</em></span> 时，由于 <span
+class="math inline"><em>P</em>{<em>X</em> = <em>x</em>} = 0</span>，应使用条件概率密度。</p>
+<p>若对固定的 <span class="math inline"><em>x</em></span>，有 <span
+class="math inline"><em>f</em><sub><em>X</em></sub>(<em>x</em>) &gt; 0</span>，则</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_{Y|X}(y|x)
+&amp;=
+\frac{f(x,y)}{f_X(x)}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\left\{Y\le \frac{1}{3}\mid X=\frac{1}{2}\right\}
+&amp;=
+\int_{-\infty}^{1/3}
+f_{Y|X}\left(y\mid \frac{1}{2}\right)\,dy\\
+&amp;=
+\int_{-\infty}^{1/3}
+\frac{f\left(\frac{1}{2},y\right)}
+{f_X\left(\frac{1}{2}\right)}
+\,dy.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>若条件是一个事件，例如 <span class="math inline">$X\ge
+\dfrac{1}{2}$</span>，则使用条件概率公式：</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\left\{Y\le \frac{1}{3}\mid X\ge \frac{1}{2}\right\}
+&amp;=
+\frac{
+P\left\{Y\le \frac{1}{3},\ X\ge \frac{1}{2}\right\}
+}{
+P\left\{X\ge \frac{1}{2}\right\}
+}\\
+&amp;=
+\frac{
+P\left\{Y\le \frac{1}{3},\ X\ge \frac{1}{2}\right\}
+}{
+\displaystyle\int_{1/2}^{+\infty}f_X(x)\,dx
+}.
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>
+<blockquote>
+<p>[!question] 题目 【例 3.11】设二维连续型随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的概率密度为</p>
+<p><span class="math display">$$
+f(x,y)
+=
+\begin{cases}
+6, &amp; 0&lt;x^2&lt;y&lt;x&lt;1,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>求：</p>
+<p>（1）条件概率密度 <span
+class="math inline"><em>f</em><sub><em>Y</em>|<em>X</em></sub>(<em>y</em>|<em>x</em>)</span>；</p>
+<p>（2）<span class="math inline">$P\left\{Y\le\dfrac{1}{3}\mid
+X=\dfrac{1}{2}\right\}$</span>；</p>
+<p>（3）<span class="math inline">$P\left\{Y\le\dfrac{1}{3}\mid
+X&gt;\dfrac{1}{2}\right\}$</span>。</p>
+<p><strong>题解：</strong></p>
+<p>先求 <span class="math inline"><em>X</em></span> 的边缘概率密度。对
+<span class="math inline">0 &lt; <em>x</em> &lt; 1</span>，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)
+&amp;=
+\int_{x^2}^{x}6\,dy\\
+&amp;=
+6(x-x^2)\\
+&amp;=
+6x(1-x).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+f_X(x)
+=
+\begin{cases}
+6x(1-x), &amp; 0&lt;x&lt;1,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>在 <span class="math inline">0 &lt; <em>x</em> &lt; 1</span>
+条件下，</p>
+<p><span class="math display">$$
+f_{Y|X}(y|x)
+=
+\frac{f(x,y)}{f_X(x)}
+=
+\begin{cases}
+\dfrac{1}{x(1-x)}, &amp; x^2&lt;y&lt;x,\\[8pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>当 <span class="math inline">$X=\dfrac{1}{2}$</span> 时，<span
+class="math inline">$\dfrac{1}{4}&lt;Y&lt;\dfrac{1}{2}$</span>，且</p>
+<p><span class="math display">$$
+f_{Y|X}\left(y\mid \frac{1}{2}\right)
+=
+4.
+\nonumber
+$$</span></p>
+<p>所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\left\{Y\le\frac{1}{3}\mid X=\frac{1}{2}\right\}
+&amp;=
+\int_{1/4}^{1/3}4\,dy\\
+&amp;=
+\frac{1}{3}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>对于 <span class="math inline">$P\left\{Y\le\dfrac{1}{3}\mid
+X&gt;\dfrac{1}{2}\right\}$</span>，先算分母：</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\left\{X&gt;\frac{1}{2}\right\}
+&amp;=
+\int_{1/2}^{1}6x(1-x)\,dx\\
+&amp;=
+\frac{1}{2}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>再算分子。由 <span
+class="math inline">$x^2&lt;y\le\dfrac{1}{3}$</span> 得 <span
+class="math inline">$x&lt;\dfrac{1}{\sqrt3}$</span>，所以</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\left\{Y\le\frac{1}{3},\ X&gt;\frac{1}{2}\right\}
+&amp;=
+\int_{1/2}^{1/\sqrt3}
+\int_{x^2}^{1/3}6\,dy\,dx\\
+&amp;=
+\int_{1/2}^{1/\sqrt3}6\left(\frac{1}{3}-x^2\right)\,dx\\
+&amp;=
+\frac{4}{3\sqrt3}-\frac{3}{4}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\left\{Y\le\frac{1}{3}\mid X&gt;\frac{1}{2}\right\}
+&amp;=
+\frac{
+\dfrac{4}{3\sqrt3}-\dfrac{3}{4}
+}{
+\dfrac{1}{2}
+}\\
+&amp;=
+\frac{8\sqrt3}{9}-\frac{3}{2}.
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>
+<blockquote>
+<p>[!question] 题目 【例 3.12】已知随机变量 <span
+class="math inline"><em>X</em></span> 的概率密度为</p>
+<p><span class="math display">$$
+f_X(x)
+=
+\begin{cases}
+3x^2, &amp; 0&lt;x&lt;1,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>在给定 <span class="math inline"><em>X</em> = <em>x</em></span>，其中
+<span class="math inline">0 &lt; <em>x</em> &lt; 1</span>
+的条件下，<span class="math inline"><em>Y</em></span>
+的条件概率密度为</p>
+<p><span class="math display">$$
+f_{Y|X}(y|x)
+=
+\begin{cases}
+\dfrac{3y^2}{x^3}, &amp; 0&lt;y&lt;x,\\[8pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>求 <span class="math inline">(<em>X</em>, <em>Y</em>)</span>
+的联合概率密度。</p>
+<p><strong>题解：</strong></p>
+<p>由条件密度公式，</p>
+<p><span class="math display">$$
+\begin{aligned}
+f(x,y)
+&amp;=
+f_{Y|X}(y|x)\,f_X(x).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>在 <span
+class="math inline">0 &lt; <em>y</em> &lt; <em>x</em> &lt; 1</span>
+时，</p>
+<p><span class="math display">$$
+\begin{aligned}
+f(x,y)
+&amp;=
+\frac{3y^2}{x^3}\cdot 3x^2\\
+&amp;=
+\frac{9y^2}{x}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+f(x,y)
+=
+\begin{cases}
+\dfrac{9y^2}{x}, &amp; 0&lt;y&lt;x&lt;1,\\[8pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+</blockquote>

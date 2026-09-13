@@ -1,0 +1,393 @@
++++
+title = "IV. 一维随机变量函数的分布"
+date = "2026-07-04T20:20:51.000Z"
+lastmod = "2026-07-11T11:56:36.096Z"
+url = "/2026/07/05/概率论 与 数理统计 Kira and 牢宇/2. 一维随机变量/IV. 一维随机变量函数的分布/"
+description = "概率论与数理统计学习笔记 · 一维随机变量 · IV. 一维随机变量函数的分布"
+columns = ["一维随机变量"]
+tags = ["概率论", "数理统计"]
+draft = false
+math = true
+comments = false
+article_status = "permanent"
+applicable_versions = ["all"]
+legacy_import = true
++++
+<h2 id="iv.-一维随机变量函数的分布"><span
+class="math inline"><em>I</em><em>V</em>.</span>
+一维随机变量函数的分布</h2>
+<h3 id="一连续型随机变量函数的分布">一、连续型随机变量函数的分布</h3>
+<blockquote>
+<p>[!question] 题目 【例 2.28】设随机变量 <span
+class="math inline"><em>X</em></span> 的概率分布为</p>
+<p><span class="math display">$$
+\begin{array}{c|cccc}
+X &amp; -1 &amp; 0 &amp; 1 &amp; 2\\
+\hline
+P &amp; \dfrac{1}{4} &amp; \dfrac{1}{3} &amp; \dfrac{1}{6} &amp;
+\dfrac{1}{4}
+\end{array}
+\nonumber
+$$</span></p>
+<p>求 <span
+class="math inline"><em>Y</em> = <em>X</em><sup>2</sup></span>
+的概率分布。</p>
+<p><strong>题解：</strong></p>
+<p><span class="math inline"><em>Y</em> = <em>X</em><sup>2</sup></span>
+的可能取值为 <span class="math inline">0, 1, 4</span>。</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{Y=0\}
+&amp;=
+P\{X=0\}
+=
+\frac{1}{3},\\
+P\{Y=1\}
+&amp;=
+P\{X=-1\}+P\{X=1\}\\
+&amp;=
+\frac{1}{4}+\frac{1}{6}
+=
+\frac{5}{12},\\
+P\{Y=4\}
+&amp;=
+P\{X=2\}
+=
+\frac{1}{4}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{array}{c|ccc}
+Y &amp; 0 &amp; 1 &amp; 4\\
+\hline
+P &amp; \dfrac{1}{3} &amp; \dfrac{5}{12} &amp; \dfrac{1}{4}
+\end{array}
+\nonumber
+$$</span></p>
+</blockquote>
+<h3 id="二连续型随机变量函数的分布">二、连续型随机变量函数的分布</h3>
+<p>设随机变量 <span class="math inline"><em>X</em></span> 的概率密度为
+<span
+class="math inline"><em>f</em><sub><em>X</em></sub>(<em>x</em>)</span>，求
+<span class="math inline"><em>Y</em> = <em>g</em>(<em>X</em>)</span>
+的分布。</p>
+<h4 id="分布函数法三大步">（1）分布函数法（三大步）</h4>
+<p>第一步，设 <strong><span class="math inline"><em>Y</em></span>
+的分布函数为 <span
+class="math inline"><em>F</em><sub><em>Y</em></sub>(<em>y</em>)</span></strong>，则</p>
+<p><span
+class="math display"><em>F</em><sub><em>Y</em></sub>(<em>y</em>) = <em>P</em>{<em>Y</em> ≤ <em>y</em>} = <em>P</em>{<em>g</em>(<em>X</em>) ≤ <em>y</em>}.</span></p>
+<p>第二步，求 <span
+class="math inline"><em>Y</em> = <em>g</em>(<em>X</em>)</span> 在 <span
+class="math inline"><em>X</em></span>
+的正概率密度区间上的<strong>值域</strong> <span
+class="math inline">[<em>α</em>, <em>β</em>]</span>，并<strong>讨论</strong>
+<span class="math inline"><em>y</em></span>。</p>
+<p>当 <span class="math inline"><em>y</em> &lt; <em>α</em></span>
+时，</p>
+<p><span
+class="math display"><em>F</em><sub><em>Y</em></sub>(<em>y</em>) = 0.</span></p>
+<p>当 <span
+class="math inline"><em>α</em> ≤ <em>y</em> &lt; <em>β</em></span>
+时，</p>
+<p><span class="math display">$$
+F_Y(y)=
+\displaystyle\int\limits_{g(x)\le y} f_X(x)\,dx. \nonumber
+$$</span></p>
+<p>当 <span class="math inline"><em>y</em> ≥ <em>β</em></span> 时，</p>
+<p><span
+class="math display"><em>F</em><sub><em>Y</em></sub>(<em>y</em>) = 1.</span></p>
+<p>第三步，若 <span class="math inline"><em>Y</em></span>
+为连续型随机变量，则</p>
+<p><span
+class="math display"><em>f</em><sub><em>Y</em></sub>(<em>y</em>) = <em>F</em><sub><em>Y</em></sub><sup>′</sup>(<em>y</em>).</span></p>
+<p>(求导)</p>
+<blockquote>
+<p>[!question] 题目 已知随机变量 <span
+class="math inline"><em>X</em></span> 的概率密度为</p>
+<p><span class="math display">$$
+f_X(x)
+=
+\begin{cases}
+\dfrac{x}{8}, &amp; 0&lt;x&lt;4,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>求 <span class="math inline"><em>Y</em> = 2<em>X</em> + 8</span>
+的概率密度。</p>
+<p><strong>题解：</strong></p>
+<p>由 <span class="math inline">0 &lt; <em>X</em> &lt; 4</span> 可得
+<span class="math inline">8 &lt; <em>Y</em> &lt; 16</span>。</p>
+<p>当 <span class="math inline"><em>y</em> &lt; 8</span> 时，<span
+class="math inline"><em>F</em><sub><em>Y</em></sub>(<em>y</em>) = 0</span>；当
+<span class="math inline"><em>y</em> ≥ 16</span> 时，<span
+class="math inline"><em>F</em><sub><em>Y</em></sub>(<em>y</em>) = 1</span>。</p>
+<p>当 <span class="math inline">8 &lt; <em>y</em> &lt; 16</span>
+时，</p>
+<p><span class="math display">$$
+\begin{aligned}
+F_Y(y)
+&amp;=
+P\{Y\le y\}\\
+&amp;=
+P\{2X+8\le y\}\\
+&amp;=
+P\left\{X\le \frac{y-8}{2}\right\}\\
+&amp;=
+\int_0^{\frac{y-8}{2}}\frac{x}{8}\,dx\\
+&amp;=
+\frac{(y-8)^2}{64}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+f_Y(y)
+=
+\begin{cases}
+\dfrac{y-8}{32}, &amp; 8&lt;y&lt;16,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+</blockquote>
+<blockquote>
+<p>[!question] 题目 【例 2.30】设随机变量 <span
+class="math inline"><em>X</em></span> 的概率密度为</p>
+<p><span class="math display">$$
+f_X(x)
+=
+\frac{1}{2}e^{-|x|},
+\qquad
+-\infty&lt;x&lt;+\infty.
+\nonumber
+$$</span></p>
+<p>求 <span class="math inline"><em>Y</em> = |<em>X</em>|</span>
+的概率密度。</p>
+<p><strong>题解：</strong></p>
+<p>当 <span class="math inline"><em>y</em> &lt; 0</span> 时，<span
+class="math inline"><em>F</em><sub><em>Y</em></sub>(<em>y</em>) = 0</span>。</p>
+<p>当 <span class="math inline"><em>y</em> ≥ 0</span> 时，</p>
+<p><span class="math display">$$
+\begin{aligned}
+F_Y(y)
+&amp;=
+P\{Y\le y\}\\
+&amp;=
+P\{|X|\le y\}\\
+&amp;=
+\int_{-y}^{y}\frac{1}{2}e^{-|x|}\,dx\\
+&amp;=
+2\int_0^y\frac{1}{2}e^{-x}\,dx\\
+&amp;=
+1-e^{-y}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+f_Y(y)
+=
+\begin{cases}
+e^{-y}, &amp; y&gt;0,\\[4pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+</blockquote>
+<h4 id="公式法">（2）公式法</h4>
+<p>设 <span
+class="math inline"><em>y</em> = <em>g</em>(<em>x</em>)</span> 在 <span
+class="math inline"><em>X</em></span> 的正概率密度区间上单调，值域为
+<span class="math inline">[<em>α</em>, <em>β</em>]</span>，反函数为</p>
+<p><span
+class="math display"><em>x</em> = <em>h</em>(<em>y</em>).</span></p>
+<p>则 <span class="math inline"><em>Y</em></span> 的概率密度为</p>
+<p><span class="math display">$$
+f_Y(y)=
+\begin{cases}
+f_X(h(y))\left|h'(y)\right|,&amp; \alpha\le y\le \beta,\\
+0,&amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>若 <span
+class="math inline"><em>y</em> = <em>g</em>(<em>x</em>)</span> 在 <span
+class="math inline"><em>X</em></span>
+的正概率密度区间上<strong>分段严格单调</strong>，则分段使用公式法，然后将概率密度相加。</p>
+<h3 id="二fx">二、<span
+class="math inline"><em>F</em>(<em>X</em>)</span></h3>
+<p>设 <span class="math inline"><em>X</em></span>
+为连续型随机变量，分布函数为 <span
+class="math inline"><em>F</em>(<em>x</em>)</span>。在常见连续且可作变换的情形下，</p>
+<p><span
+class="math display"><em>Y</em> = <em>F</em>(<em>X</em>) ∼ <em>U</em>(0, 1).</span></p>
+<p>证明如下：</p>
+<p>设随机变量 <span class="math inline"><em>X</em></span> 的分布函数
+<span
+class="math inline"><em>F</em><sub><em>X</em></sub>(<em>x</em>)</span>
+严格单增。令</p>
+<p><span class="math display">$$
+\begin{aligned}
+Y
+&amp;=
+F_X(X).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则 <span class="math inline"><em>Y</em></span> 服从区间 <span
+class="math inline">[0, 1]</span> 上的均匀分布。</p>
+<p>当 <span class="math inline"><em>y</em> &lt; 0</span> 时，<span
+class="math inline"><em>F</em><sub><em>Y</em></sub>(<em>y</em>) = 0</span>；当
+<span class="math inline"><em>y</em> &gt; 1</span> 时，<span
+class="math inline"><em>F</em><sub><em>Y</em></sub>(<em>y</em>) = 1</span>。</p>
+<p>当 <span class="math inline">0 ≤ <em>y</em> ≤ 1</span> 时，由 <span
+class="math inline"><em>F</em><sub><em>X</em></sub>(<em>x</em>)</span>
+严格单增可知其反函数也严格单增，因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+F_Y(y)
+&amp;=
+P\{Y\le y\}\\
+&amp;=
+P\{F_X(X)\le y\}\\
+&amp;=
+P\{X\le F_X^{-1}(y)\}\\
+&amp;=
+F_X(F_X^{-1}(y))\\
+&amp;=
+y.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>于是</p>
+<p><span class="math display">$$
+F_Y(y)
+=
+\begin{cases}
+0, &amp; y&lt;0,\\[4pt]
+y, &amp; 0\le y&lt;1,\\[4pt]
+1, &amp; y\ge 1.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>从而</p>
+<p><span class="math display">$$
+f_Y(y)
+=
+\begin{cases}
+1, &amp; 0&lt;y&lt;1,\\[4pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+Y
+&amp;\sim U(0,1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<hr />
+<blockquote>
+<p>[!question] 题目 【例 2.31】设 <span
+class="math inline"><em>X</em> ∼ <em>U</em>(−1, 2)</span>，求 <span
+class="math inline"><em>Y</em> = |<em>X</em>|</span> 的概率密度。</p>
+<p><strong>题解：</strong></p>
+<p>因为 <span
+class="math inline"><em>X</em> ∼ <em>U</em>(−1, 2)</span>，所以 <span
+class="math inline">$f_X(x)=\dfrac{1}{3}$</span>，<span
+class="math inline">−1 &lt; <em>x</em> &lt; 2</span>。</p>
+<p>当 <span class="math inline"><em>y</em> &lt; 0</span> 时，<span
+class="math inline"><em>F</em><sub><em>Y</em></sub>(<em>y</em>) = 0</span>；当
+<span class="math inline"><em>y</em> &gt; 2</span> 时，<span
+class="math inline"><em>F</em><sub><em>Y</em></sub>(<em>y</em>) = 1</span>。</p>
+<p>当 <span class="math inline">0 ≤ <em>y</em> ≤ 1</span> 时，</p>
+<p><span class="math display">$$
+\begin{aligned}
+F_Y(y)
+&amp;=
+P\{|X|\le y\}\\
+&amp;=
+P\{-y\le X\le y\}\\
+&amp;=
+\frac{2y}{3}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>当 <span class="math inline">1 &lt; <em>y</em> ≤ 2</span> 时，</p>
+<p><span class="math display">$$
+\begin{aligned}
+F_Y(y)
+&amp;=
+P\{-1\le X\le y\}\\
+&amp;=
+\frac{y+1}{3}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+f_Y(y)
+=
+\begin{cases}
+\dfrac{2}{3}, &amp; 0&lt;y&lt;1,\\[6pt]
+\dfrac{1}{3}, &amp; 1&lt;y&lt;2,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+</blockquote>
+<hr />
+<blockquote>
+<p>[!question] 题目 【例 2.32】设 <span
+class="math inline"><em>X</em> ∼ <em>N</em>(1, 4)</span>，求 <span
+class="math inline"><em>Y</em> = |<em>X</em> − 1|</span>
+的概率密度。</p>
+<p><strong>题解：</strong></p>
+<p>当 <span class="math inline"><em>y</em> &lt; 0</span> 时，<span
+class="math inline"><em>F</em><sub><em>Y</em></sub>(<em>y</em>) = 0</span>。</p>
+<p>当 <span class="math inline"><em>y</em> ≥ 0</span> 时，</p>
+<p><span class="math display">$$
+\begin{aligned}
+F_Y(y)
+&amp;=
+P\{|X-1|\le y\}\\
+&amp;=
+P\left\{
+\left|\frac{X-1}{2}\right|
+\le
+\frac{y}{2}
+\right\}\\
+&amp;=
+2\Phi\left(\frac{y}{2}\right)-1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_Y(y)
+&amp;=
+F_Y'(y)\\
+&amp;=
+\varphi\left(\frac{y}{2}\right),
+\qquad y&gt;0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>即</p>
+<p><span class="math display">$$
+f_Y(y)
+=
+\begin{cases}
+\varphi\left(\dfrac{y}{2}\right), &amp; y&gt;0,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+</blockquote>

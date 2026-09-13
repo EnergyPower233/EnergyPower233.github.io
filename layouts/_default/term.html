@@ -1,0 +1,152 @@
+{{- define "main" }}
+{{- $current := .Data.Term }}
+<header class="page-header">
+  {{- if eq .Type "columns" }}
+  {{- partial "column_path.html" (dict "Path" $current) }}
+  {{- $currentParts := split $current "/" }}
+  <h1>{{ index $currentParts (sub (len $currentParts) 1) }}</h1>
+  {{- else }}
+  {{- partial "breadcrumbs.html" . }}
+  <h1>{{ .Title }}</h1>
+  {{- end }}
+  {{- if .Description }}
+  <div class="post-description">{{ .Description | markdownify }}</div>
+  {{- end }}
+</header>
+
+{{- if eq .Type "columns" }}
+{{- $prefix := printf "%s/" $current }}
+{{- $currentDepth := len (split $current "/") }}
+{{- $children := slice }}
+{{- $posts := slice }}
+
+{{- range $name, $items := site.Taxonomies.columns }}
+  {{- if and (hasPrefix $name $prefix) (eq (len (split $name "/")) (add $currentDepth 1)) }}
+      {{- $children = $children | append $name }}
+  {{- end }}
+{{- end }}
+
+{{- range site.RegularPages }}
+  {{- $hit := false }}
+  {{- with .Params.columns }}
+    {{- range . }}
+      {{- $column := lower . }}
+      {{- if or (eq $column (lower $current)) (hasPrefix $column (lower $prefix)) }}
+        {{- $hit = true }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+  {{- if $hit }}
+    {{- $posts = $posts | append . }}
+  {{- end }}
+{{- end }}
+
+{{- $posts = sort $posts "Date" "desc" }}
+{{- $children = sort ($children | uniq) }}
+
+{{- if gt (len $children) 0 }}
+<section class="term-children">
+  <div class="term-section-heading">
+    <p class="home-section-label">Next level</p>
+    <h2>Child column structure</h2>
+  </div>
+  <div class="column-index column-index-subtree" aria-label="Child columns under {{ $current }}">
+    <div class="column-index-toolbar">
+      <div>
+        <span class="column-index-toolbar-title">Under {{ index (split $current "/") (sub $currentDepth 1) }}</span>
+        <span class="column-index-toolbar-hint">Expand level by level（逐级展开）</span>
+      </div>
+      <div class="column-index-actions" aria-label="Child column tree controls">
+        <button type="button" data-column-tree-action="expand">Expand all</button>
+        <button type="button" data-column-tree-action="collapse">Collapse all</button>
+      </div>
+    </div>
+    {{- partial "column_tree.html" (dict "Terms" site.Taxonomies.columns.Alphabetical "Parent" $current "Depth" $currentDepth) -}}
+  </div>
+</section>
+{{- end }}
+
+<section>
+  <div class="term-section-heading">
+    <p class="home-section-label">Articles</p>
+    <h2>Posts in this column</h2>
+  </div>
+  {{- if gt (len $posts) 0 }}
+  <div class="term-post-list">
+    {{- range $posts }}
+    {{- with . }}
+    <article class="post-entry">
+      <header class="entry-header"><h2>{{ .Title }}</h2></header>
+      <div class="entry-content"><p>{{ with .Params.summary }}{{ . }}{{ else }}{{ with .Description }}{{ . }}{{ else }}{{ .Title }}{{ end }}{{ end }}</p></div>
+      <footer class="entry-footer">
+        <span>{{ .Date | time.Format "2006-01-02" }}</span>{{ with site.Params.author }} · <span>{{ . }}</span>{{ end }}
+      </footer>
+      <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .RelPermalink }}"></a>
+    </article>
+    {{- end }}
+    {{- end }}
+  </div>
+  {{- else }}
+  <p>No posts are available in this column yet.</p>
+  {{- end }}
+</section>
+
+{{- else if eq .Type "tags" }}
+<section>
+  <h2>Posts with this tag</h2>
+  {{- if gt (len .Pages) 0 }}
+  <div class="term-post-list">
+    {{- range .Pages.ByDate.Reverse }}
+    {{- with . }}
+    <article class="post-entry">
+      <header class="entry-header"><h2>{{ .Title }}</h2></header>
+      <div class="entry-content">
+        <p>{{ with .Params.summary }}{{ . }}{{ else }}{{ with .Description }}{{ . }}{{ else }}{{ .Title }}{{ end }}{{ end }}</p>
+        {{- with .Params.columns }}
+        {{- $deepest := "" }}
+        {{- $deepestDepth := 0 }}
+        {{- range . }}
+          {{- $depth := len (split . "/") }}
+          {{- if gt $depth $deepestDepth }}
+            {{- $deepest = . }}
+            {{- $deepestDepth = $depth }}
+          {{- end }}
+        {{- end }}
+        <p class="entry-columns">
+          Column:
+          {{- with site.GetPage (printf "/columns/%s" $deepest) }}
+          <a href="{{ .RelPermalink }}">{{ $deepest }}</a>
+          {{- else }}
+          <span>{{ $deepest }}</span>
+          {{- end }}
+        </p>
+        {{- end }}
+      </div>
+      <footer class="entry-footer">
+        <span>{{ .Date | time.Format "2006-01-02" }}</span>{{ with site.Params.author }} · <span>{{ . }}</span>{{ end }}
+      </footer>
+      <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .RelPermalink }}"></a>
+    </article>
+    {{- end }}
+    {{- end }}
+  </div>
+  {{- else }}
+  <p>No posts are available for this tag yet.</p>
+  {{- end }}
+</section>
+
+{{- else }}
+{{- range .Pages }}
+{{- with . }}
+<article class="post-entry">
+  <header class="entry-header"><h2>{{ .Title }}</h2></header>
+  <div class="entry-content"><p>{{ with .Params.summary }}{{ . }}{{ else }}{{ with .Description }}{{ . }}{{ else }}{{ .Title }}{{ end }}{{ end }}</p></div>
+  <footer class="entry-footer">
+    <span>{{ .Date | time.Format "2006-01-02" }}</span>{{ with site.Params.author }} · <span>{{ . }}</span>{{ end }}
+  </footer>
+  <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .RelPermalink }}"></a>
+</article>
+{{- end }}
+{{- end }}
+{{- end }}
+{{- end }}
