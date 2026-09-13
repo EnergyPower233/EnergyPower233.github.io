@@ -1,0 +1,90 @@
++++
+title = "IV. 中心极限定理"
+date = "2026-07-04T22:25:27.000Z"
+lastmod = "2026-07-11T11:56:36.203Z"
+url = "/2026/07/05/概率论 与 数理统计 Kira and 牢宇/4. 大数定律与中心极限定理/IV. 中心极限定理/"
+description = "概率论与数理统计学习笔记 · 大数定律与中心极限定理 · IV. 中心极限定理"
+columns = ["大数定律与中心极限定理"]
+tags = ["概率论", "数理统计"]
+draft = false
+math = true
+comments = false
+article_status = "permanent"
+applicable_versions = ["all"]
+legacy_import = true
++++
+<h2 id="iv.-中心极限定理"><span
+class="math inline"><em>I</em><em>V</em>.</span> 中心极限定理</h2>
+<h3 id="列维林德伯格levy-lindeberg中心极限定理">1.
+列维—林德伯格（Levy-Lindeberg）中心极限定理</h3>
+<p>设随机变量 <span
+class="math inline"><em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, ⋯, <em>X</em><sub><em>n</em></sub>, ⋯</span>
+相互独立同分布，且</p>
+<p><span
+class="math display"><em>E</em><em>X</em><sub><em>i</em></sub> = <em>μ</em>,   <em>D</em><em>X</em><sub><em>i</em></sub> = <em>σ</em><sup>2</sup>,   <em>i</em> = 1, 2, ⋯.</span></p>
+<p>则对任意实数 <span class="math inline"><em>x</em></span>，有</p>
+<p><span class="math display">$$
+\lim_{n\to\infty}
+P\left\{
+\frac{\sum_{i=1}^{n}X_i-n\mu}{\sqrt{n}\sigma}
+\le x
+\right\}
+=
+\displaystyle\int_{-\infty}^{x}
+\frac{1}{\sqrt{2\pi}}e^{-\frac{t^2}{2}}\,dt
+=
+\Phi(x).
+\nonumber
+$$</span></p>
+<p>即</p>
+<p><span class="math display">$$
+\sum_{i=1}^{n}X_i
+\nonumber
+$$</span></p>
+<p>近似服从正态分布</p>
+<p><span
+class="math display"><em>N</em>(<em>n</em><em>μ</em>, <em>n</em><em>σ</em><sup>2</sup>).</span></p>
+<h3 id="棣莫弗拉普拉斯demoivre-laplace中心极限定理">2.
+棣莫弗—拉普拉斯（Demoivre-Laplace）中心极限定理</h3>
+<p>设随机变量 <span
+class="math inline"><em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, ⋯, <em>X</em><sub><em>n</em></sub>, ⋯</span>
+相互独立，且均服从 <span
+class="math inline"><em>B</em>(1, <em>p</em>)</span>，则对任意实数 <span
+class="math inline"><em>x</em></span>，有</p>
+<p><span class="math display">$$
+\lim_{n\to\infty}
+P\left\{
+\frac{\sum_{i=1}^{n}X_i-np}{\sqrt{np(1-p)}}
+\le x
+\right\}
+=
+\displaystyle\int_{-\infty}^{x}
+\frac{1}{\sqrt{2\pi}}e^{-\frac{t^2}{2}}\,dt
+=
+\Phi(x).
+\nonumber
+$$</span></p>
+<p>即</p>
+<p><span class="math display">$$
+\sum_{i=1}^{n}X_i
+\nonumber
+$$</span></p>
+<p>近似服从正态分布</p>
+<p><span
+class="math display"><em>N</em>(<em>n</em><em>p</em>, <em>n</em><em>p</em>(1 − <em>p</em>)).</span></p>
+<h3 id="使用方式">使用方式</h3>
+<p>若若干个随机变量独立同分布，求和后整体可近似为正态分布。</p>
+<p>当 <span class="math inline"><em>n</em></span> 较大时：</p>
+<p><span class="math display">$$
+\sum_{i=1}^{n}X_i
+\approx
+N(\text{期望},\text{方差}).
+\nonumber
+$$</span></p>
+<p>做题时先写近似服从的正态分布，再标准化为标准正态分布：</p>
+<p><span class="math display">$$
+\frac{X-\mu}{\sigma}
+\sim
+N(0,1).
+\nonumber
+$$</span></p>

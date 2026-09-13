@@ -1,0 +1,10 @@
+public/
+resources/
+.hugo_build.lock
+node_modules/
+.pnpm-store/
+static/knowledge/
+.verification/
+/data/knowledge.json
+/test-results/
+/playwright-report/

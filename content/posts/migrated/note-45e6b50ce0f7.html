@@ -1,0 +1,417 @@
++++
+title = "III. 六大统计量"
+date = "2026-06-14T08:08:25.000Z"
+lastmod = "2026-07-11T11:56:36.230Z"
+url = "/2026/06/14/概率论 与 数理统计 Kira and 牢宇/6. 统计初步/III. 六大统计量/"
+description = "概率论与数理统计学习笔记 · 统计初步 · III. 六大统计量"
+columns = ["统计初步"]
+tags = ["概率论", "数理统计"]
+draft = false
+math = true
+comments = false
+article_status = "permanent"
+applicable_versions = ["all"]
+legacy_import = true
++++
+<h2 id="iii.-六大统计量"><span
+class="math inline"><em>I</em><em>I</em><em>I</em>.</span>
+六大统计量</h2>
+<h3 id="一单正态总体">一、单正态总体</h3>
+<p>设 <span
+class="math inline"><em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, …, <em>X</em><sub><em>n</em></sub></span>
+为来自总体</p>
+<p><span class="math display">$$
+\begin{aligned}
+X
+&amp;\sim N(\mu,\sigma^2)
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>的简单随机样本，<span class="math inline">$\overline X$</span> 与
+<span class="math inline"><em>S</em><sup>2</sup></span>
+分别为样本均值与样本方差。</p>
+<h4 id="样本均值的标准化统计量">（1）样本均值的标准化统计量</h4>
+<p>由于正态总体的样本均值仍服从正态分布，故</p>
+<p><span class="math display">$$
+\begin{aligned}
+\overline X
+&amp;\sim
+N\left(\mu,\frac{\sigma^2}{n}\right).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>[[I.
+统计基础知识#三、样本均值与样本方差的数字特征|常用统计量的数字特征]]</p>
+<p>因此标准化可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{\overline X-\mu}
+{\sigma/\sqrt n}
+&amp;\sim N(0,1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+\overline X
+&amp;\sim
+N\left(\mu,\frac{\sigma^2}{n}\right).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>其中，<span class="math inline">$\overline X$</span>
+服从正态分布，标准化后服从标准正态分布。</p>
+<h4 id="样本方差对应的卡方统计量">（2）样本方差对应的卡方统计量</h4>
+<p>有</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{(n-1)S^2}{\sigma^2}
+&amp;\sim
+\chi^2(n-1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由于</p>
+<p><span class="math display">$$
+\begin{aligned}
+(n-1)S^2
+&amp;=
+\sum_{i=1}^{n}(X_i-\overline X)^2,
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>所以也可写成</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{1}{\sigma^2}
+\sum_{i=1}^{n}(X_i-\overline X)^2
+&amp;\sim
+\chi^2(n-1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>并且 <span class="math inline">$\overline X$</span> 与 <span
+class="math inline"><em>S</em><sup>2</sup></span> 相互独立。</p>
+<blockquote>
+<p>注: <span class="math inline"><em>S</em><sup>2</sup></span> 是定值,
+<span class="math inline"><em>X</em><sub><em>i</em></sub></span>
+满足方程 <span class="math inline">$S^2=\sum_{i=1}^{n}(X_i-\overline
+X)^2.$</span> 所以确定 <span class="math inline"><em>n</em> − 1</span>
+个 <span class="math inline"><em>X</em><sub><em>i</em></sub></span>
+就可以确定剩下的一个 <span
+class="math inline"><em>X</em><sub><em>i</em><sub><em>n</em></sub></sub></span>.
+因此自由度为 <span class="math inline"><em>n</em> − 1</span> .</p>
+</blockquote>
+<h4 id="样本均值与样本方差构造的-t-统计量">（3）样本均值与样本方差构造的
+<span class="math inline"><em>t</em></span> 统计量</h4>
+<p>因为</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{\overline X-\mu}
+{\sigma/\sqrt n}
+&amp;\sim N(0,1),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>且</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{(n-1)S^2}{\sigma^2}
+&amp;\sim \chi^2(n-1),
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>又因为 <span class="math inline">$\overline X$</span> 与 <span
+class="math inline"><em>S</em><sup>2</sup></span> 相互独立，所以由 <span
+class="math inline"><em>t</em></span> 分布的定义可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{
+\dfrac{\overline X-\mu}
+{\sigma/\sqrt n}
+}{
+\sqrt{
+\dfrac{
+(n-1)S^2/\sigma^2
+}{n-1}
+}
+}
+&amp;\sim t(n-1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>化简得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{\overline X-\mu}
+{S/\sqrt n}
+&amp;\sim t(n-1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h3 id="二双正态总体">二、双正态总体</h3>
+<p>设总体</p>
+<p><span class="math display">$$
+\begin{aligned}
+X &amp;\sim N(\mu_1,\sigma_1^2),\\
+Y &amp;\sim N(\mu_2,\sigma_2^2).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>设 <span
+class="math inline"><em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>, …, <em>X</em><sub><em>n</em><sub>1</sub></sub></span>
+来自总体 <span class="math inline"><em>X</em></span>，<span
+class="math inline"><em>Y</em><sub>1</sub>, <em>Y</em><sub>2</sub>, …, <em>Y</em><sub><em>n</em><sub>2</sub></sub></span>
+来自总体 <span
+class="math inline"><em>Y</em></span>，且两组样本相互独立。</p>
+<p>记两组样本均值分别为 <span class="math inline">$\overline X,\overline
+Y$</span>，样本方差分别为 <span
+class="math inline"><em>S</em><sub>1</sub><sup>2</sup>, <em>S</em><sub>2</sub><sup>2</sup></span>。</p>
+<h4
+id="双正态总体样本均值差的标准化统计量">（4）双正态总体样本均值差的标准化统计量</h4>
+<p>由单正态总体样本均值的结论，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+\overline X
+&amp;\sim
+N\left(\mu_1,\frac{\sigma_1^2}{n_1}\right),\\
+\overline Y
+&amp;\sim
+N\left(\mu_2,\frac{\sigma_2^2}{n_2}\right).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由于两组样本相互独立，所以 <span class="math inline">$\overline
+X$</span> 与 <span class="math inline">$\overline Y$</span>
+相互独立。</p>
+<p>因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+\overline X-\overline Y
+&amp;\sim
+N\left(
+\mu_1-\mu_2,\,
+\frac{\sigma_1^2}{n_1}
++
+\frac{\sigma_2^2}{n_2}
+\right).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>标准化可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{
+\overline X-\overline Y
+-(\mu_1-\mu_2)
+}{
+\sqrt{
+\dfrac{\sigma_1^2}{n_1}
++
+\dfrac{\sigma_2^2}{n_2}
+}
+}
+&amp;\sim
+N(0,1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>[[I. 期望#线性性质]] [[II. 方差#（2）和差的方差]]</p>
+<h4 id="两个样本方差构造的-f-统计量">（5）两个样本方差构造的 <span
+class="math inline"><em>F</em></span> 统计量</h4>
+<p>由单正态总体样本方差的结论，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{(n_1-1)S_1^2}{\sigma_1^2}
+&amp;\sim
+\chi^2(n_1-1),\\
+\frac{(n_2-1)S_2^2}{\sigma_2^2}
+&amp;\sim
+\chi^2(n_2-1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由于两组样本相互独立，所以这两个卡方变量相互独立。</p>
+<p>由 <span class="math inline"><em>F</em></span> 分布的定义可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{
+\dfrac{
+(n_1-1)S_1^2/\sigma_1^2
+}{n_1-1}
+}{
+\dfrac{
+(n_2-1)S_2^2/\sigma_2^2
+}{n_2-1}
+}
+&amp;\sim
+F(n_1-1,n_2-1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>化简得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{S_1^2/\sigma_1^2}
+{S_2^2/\sigma_2^2}
+&amp;\sim
+F(n_1-1,n_2-1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="方差相等时的双总体-t-统计量">（6）方差相等时的双总体 <span
+class="math inline"><em>t</em></span> 统计量</h4>
+<p>当 <span
+class="math inline"><em>σ</em><sub>1</sub><sup>2</sup> = <em>σ</em><sub>2</sub><sup>2</sup> = <em>σ</em><sup>2</sup></span>
+时，由卡方分布的可加性可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{(n_1-1)S_1^2}{\sigma^2}
++
+\frac{(n_2-1)S_2^2}{\sigma^2}
+&amp;\sim
+\chi^2(n_1+n_2-2).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{
+(n_1-1)S_1^2
++
+(n_2-1)S_2^2
+}{\sigma^2}
+&amp;\sim
+\chi^2(n_1+n_2-2).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>另一方面，由样本均值差的正态统计量可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{
+\overline X-\overline Y
+-(\mu_1-\mu_2)
+}{
+\sqrt{
+\dfrac{\sigma^2}{n_1}
++
+\dfrac{\sigma^2}{n_2}
+}
+}
+&amp;\sim
+N(0,1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>![[I. 期望#^9fsvw2]]</p>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{
+\overline X-\overline Y
+-(\mu_1-\mu_2)
+}{
+\sigma
+\sqrt{
+\dfrac{1}{n_1}
++
+\dfrac{1}{n_2}
+}
+}
+&amp;\sim
+N(0,1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>由 <span class="math inline"><em>t</em></span> 分布的定义，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{
+\dfrac{
+\overline X-\overline Y
+-(\mu_1-\mu_2)
+}{
+\sigma
+\sqrt{
+\dfrac{1}{n_1}
++
+\dfrac{1}{n_2}
+}
+}
+}{
+\sqrt{
+\dfrac{
+\left[
+(n_1-1)S_1^2
++
+(n_2-1)S_2^2
+\right]/\sigma^2
+}{
+n_1+n_2-2
+}
+}
+}
+&amp;\sim
+t(n_1+n_2-2).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>令</p>
+<p><span class="math display">$$
+\begin{aligned}
+S_w
+&amp;=
+\sqrt{
+\frac{
+(n_1-1)S_1^2
++
+(n_2-1)S_2^2
+}{
+n_1+n_2-2
+}
+}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则上式化简为</p>
+<p><span class="math display">$$
+\begin{aligned}
+\frac{
+\overline X-\overline Y
+-(\mu_1-\mu_2)
+}{
+S_w
+\sqrt{
+\dfrac{1}{n_1}
++
+\dfrac{1}{n_2}
+}
+}
+&amp;\sim
+t(n_1+n_2-2).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>其中</p>
+<p><span class="math display">$$
+\begin{aligned}
+S_w^2
+&amp;=
+\frac{
+(n_1-1)S_1^2
++
+(n_2-1)S_2^2
+}{
+n_1+n_2-2
+}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p><span
+class="math inline"><em>S</em><sub><em>w</em></sub><sup>2</sup></span>
+称为合并样本方差，<span
+class="math inline"><em>S</em><sub><em>w</em></sub></span>
+称为合并样本标准差。</p>

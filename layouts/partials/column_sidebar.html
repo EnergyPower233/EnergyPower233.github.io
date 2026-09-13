@@ -1,0 +1,44 @@
+{{- $termsPage := site.GetPage "/columns" -}}
+{{- $currentColumn := "" -}}
+{{- if and (eq .Kind "term") (eq .Type "columns") -}}
+  {{- $currentColumn = .Data.Term -}}
+{{- else if and (eq .Kind "page") (.Params.columns) -}}
+  {{- $currentColumn = index .Params.columns 0 -}}
+{{- end -}}
+
+<aside class="column-sidebar reading-rail" aria-label="Column navigation" data-reading-rail="column">
+  <div class="reading-rail-header">
+    <span class="reading-rail-title">Columns</span>
+    <button class="column-sidebar-toggle reading-rail-toggle" type="button" aria-expanded="true" aria-controls="column-tree" aria-label="Collapse column navigation">
+      <span class="reading-rail-toggle-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+  <div class="column-sidebar-body" id="column-tree">
+    {{- if $termsPage }}
+    <ul class="column-flat-data" hidden>
+      {{- range site.Taxonomies.columns.Alphabetical }}
+      {{- $name := .Name -}}
+      {{- $count := 0 -}}
+      {{- $normalizedName := lower $name -}}
+      {{- $prefix := printf "%s/" $normalizedName -}}
+      {{- range site.RegularPages -}}
+        {{- $hit := false -}}
+        {{- range (.Params.columns | default slice) -}}
+          {{- $column := lower . -}}
+          {{- if or (eq $column $normalizedName) (hasPrefix $column $prefix) -}}
+            {{- $hit = true -}}
+          {{- end -}}
+        {{- end -}}
+        {{- if $hit -}}{{- $count = add $count 1 -}}{{- end -}}
+      {{- end -}}
+      {{- with site.GetPage (printf "/columns/%s" $name) }}
+      <li data-path="{{ $name }}" data-url="{{ .RelPermalink }}" data-count="{{ $count }}"></li>
+      {{- end }}
+      {{- end }}
+    </ul>
+    {{- else }}
+    <p class="column-sidebar-empty">No columns yet. Add <code>columns</code> to a post's front matter.</p>
+    {{- end }}
+    <nav class="column-tree-nav" data-current="{{ $currentColumn }}"></nav>
+  </div>
+</aside>

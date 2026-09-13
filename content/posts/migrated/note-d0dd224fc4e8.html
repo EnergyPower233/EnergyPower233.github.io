@@ -1,0 +1,148 @@
++++
+title = "V. 二维均匀分布"
+date = "2026-07-04T21:31:10.000Z"
+lastmod = "2026-07-11T11:56:36.036Z"
+url = "/2026/07/05/概率论 与 数理统计 Kira and 牢宇/3. 二维随机变量/V. 二维均匀分布/"
+description = "概率论与数理统计学习笔记 · 二维随机变量 · V. 二维均匀分布"
+columns = ["二维随机变量"]
+tags = ["概率论", "数理统计"]
+draft = false
+math = true
+comments = false
+article_status = "permanent"
+applicable_versions = ["all"]
+legacy_import = true
++++
+<h2 id="v.-二维均匀分布"><span class="math inline"><em>V</em>.</span>
+二维均匀分布</h2>
+<p>设二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的联合概率密度为</p>
+<p><span class="math display">$$
+f(x,y)=
+\begin{cases}
+\dfrac{1}{S_D},&amp; (x,y)\in D,\\[6pt]
+0,&amp; \text{其他},
+\end{cases}
+\nonumber
+$$</span></p>
+<p>称 <span class="math inline">(<em>X</em>, <em>Y</em>)</span> 服从区域
+<span class="math inline"><em>D</em></span> 上的均匀分布，记作</p>
+<p><span
+class="math display">(<em>X</em>, <em>Y</em>) ∼ <em>U</em>(<em>D</em>).</span></p>
+<p>其中 <span class="math inline"><em>S</em><sub><em>D</em></sub></span>
+表示区域 <span class="math inline"><em>D</em></span> 的面积。</p>
+<p>由规范性可得：</p>
+<p><span
+class="math display">∬<sub><em>D</em></sub><em>c</em> <em>d</em><em>x</em> <em>d</em><em>y</em> = <em>c</em><em>S</em><sub><em>D</em></sub> = 1,</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+c=\frac{1}{S_D}.
+\nonumber
+$$</span></p>
+<p>若 <span
+class="math inline"><em>D</em> = [<em>a</em>, <em>b</em>] × [<em>c</em>, <em>d</em>]</span>，则</p>
+<p><span
+class="math display">(<em>X</em>, <em>Y</em>) ∼ <em>U</em>([<em>a</em>, <em>b</em>] × [<em>c</em>, <em>d</em>]).</span></p>
+<p>此时</p>
+<p><span class="math display">$$
+\begin{align}
+    f(x,y)=
+\frac{1}{(b-a)(d-c)},
+\\ (x,y)\in [a,b]\times[c,d].
+\nonumber
+\end{align}
+$$</span></p>
+<p>并且</p>
+<p><span class="math display">$$
+\begin{align}
+    X\sim U(a,b),
+\\
+Y\sim U(c,d),
+\nonumber
+\end{align}
+$$</span></p>
+<p>且 <span class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> <strong>相互独立</strong>。</p>
+<blockquote>
+<p>[!question] 题目 【例 3.17】设随机变量 <span
+class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> 相互独立，且都在区间 <span
+class="math inline">(0, 1)</span> 上随机取值，求</p>
+<p><span
+class="math display"><em>P</em>{<em>X</em><sup>2</sup> + <em>Y</em><sup>2</sup> ≤ 1}.</span></p>
+<p><strong>题解：</strong></p>
+<p>因为 <span class="math inline"><em>X</em>, <em>Y</em></span>
+相互独立，且 <span
+class="math inline"><em>X</em> ∼ <em>U</em>(0, 1)</span>，<span
+class="math inline"><em>Y</em> ∼ <em>U</em>(0, 1)</span>，所以 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 在单位正方形</p>
+<p><span
+class="math display"><em>D</em> = { (<em>x</em>, <em>y</em>) ∣ 0 &lt; <em>x</em> &lt; 1, 0 &lt; <em>y</em> &lt; 1 }</span></p>
+<p>上均匀分布。</p>
+<p>事件 <span
+class="math inline"><em>X</em><sup>2</sup> + <em>Y</em><sup>2</sup> ≤ 1</span>
+对应单位正方形中的四分之一圆区域，因此</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X^2+Y^2\le 1\}
+&amp;=
+\frac{\pi}{4}.
+\end{aligned}
+\nonumber
+$$</span></p>
+</blockquote>
+<hr />
+<blockquote>
+<p>[!question] 题目 【例 3.18】设随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 在圆域 <span
+class="math inline"><em>x</em><sup>2</sup> + <em>y</em><sup>2</sup> ≤ <em>r</em><sup>2</sup></span>
+上服从均匀分布，问 <span class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> 是否独立？</p>
+<p><strong>题解：</strong></p>
+<p>联合密度为</p>
+<p><span class="math display">$$
+f(x,y)
+=
+\begin{cases}
+\dfrac{1}{\pi r^2}, &amp; x^2+y^2\le r^2,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>对 <span
+class="math inline">−<em>r</em> &lt; <em>x</em> &lt; <em>r</em></span>，</p>
+<p><span class="math display">$$
+\begin{aligned}
+f_X(x)
+&amp;=
+\int_{-\sqrt{r^2-x^2}}^{\sqrt{r^2-x^2}}
+\frac{1}{\pi r^2}\,dy\\
+&amp;=
+\frac{2}{\pi r^2}\sqrt{r^2-x^2}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因此</p>
+<p><span class="math display">$$
+f_X(x)
+=
+\begin{cases}
+\dfrac{2}{\pi r^2}\sqrt{r^2-x^2}, &amp; -r&lt;x&lt;r,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>同理</p>
+<p><span class="math display">$$
+f_Y(y)
+=
+\begin{cases}
+\dfrac{2}{\pi r^2}\sqrt{r^2-y^2}, &amp; -r&lt;y&lt;r,\\[6pt]
+0, &amp; \text{其他}.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>显然 <span
+class="math inline"><em>f</em>(<em>x</em>, <em>y</em>) ≠ <em>f</em><sub><em>X</em></sub>(<em>x</em>)<em>f</em><sub><em>Y</em></sub>(<em>y</em>)</span>，故
+<span class="math inline"><em>X</em>, <em>Y</em></span> 不独立。</p>
+</blockquote>

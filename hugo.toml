@@ -1,0 +1,121 @@
+baseURL = "https://energypower233.github.io/"
+locale = "zh-CN"
+title = "E_Power · 知识档案"
+theme = "PaperMod"
+defaultContentLanguage = "zh"
+hasCJKLanguage = true
+enableRobotsTXT = true
+
+[outputs]
+home = ["HTML", "RSS", "JSON", "Knowledge"]
+
+[outputFormats.Knowledge]
+mediaType = "application/json"
+baseName = "knowledge-index"
+isPlainText = true
+notAlternative = true
+
+[taxonomies]
+tag = "tags"
+column = "columns"
+
+[permalinks]
+  [permalinks.page]
+  posts = "/posts/:contentbasename/"
+
+[params]
+author = "E_Power"
+description = "E_Power 的学习与技术档案：记录数学推导、编程实践与持续探索。"
+mainSections = ["posts"]
+defaultTheme = "auto"
+disableThemeToggle = false
+ShowReadingTime = true
+ShowCodeCopyButtons = true
+ShowToc = true
+ShowBreadCrumbs = true
+ShowPostNavLinks = true
+ShowWordCount = true
+DateFormat = "2006-01-02"
+ShowRssButtonInSectionTermList = false
+
+[params.assets]
+favicon = "/favicon.svg"
+favicon16x16 = "/favicon.svg"
+favicon32x32 = "/favicon.svg"
+apple_touch_icon = "/favicon.svg"
+safari_pinned_tab = "/favicon.svg"
+theme_color = "#111318"
+msapplication_TileColor = "#111318"
+
+# Do not reuse the prototype owner's discussion IDs. See docs/maintenance.md.
+[params.giscus]
+enabled = false
+repo = "EnergyPower233/EnergyPower233.github.io"
+repoId = ""
+category = "General"
+categoryId = ""
+mapping = "pathname"
+strict = "0"
+reactionsEnabled = "1"
+emitMetadata = "0"
+inputPosition = "top"
+lang = "zh-CN"
+loading = "lazy"
+
+[params.homeInfoParams]
+Title = "把探索，归档为知识。"
+Content = "数学推导、编程实践与学习随记。这里是 E_Power 的个人知识档案。"
+
+[params.fuseOpts]
+isCaseSensitive = false
+shouldSort = true
+location = 0
+distance = 1000
+threshold = 0.3
+minMatchCharLength = 2
+keys = ["title", "permalink", "summary", "content"]
+
+[[menu.main]]
+identifier = "posts"
+name = "文章"
+url = "/posts/"
+weight = 10
+
+[[menu.main]]
+identifier = "columns"
+name = "专栏"
+url = "/columns/"
+weight = 20
+
+[[menu.main]]
+identifier = "tags"
+name = "标签"
+url = "/tags/"
+weight = 30
+
+[[menu.main]]
+identifier = "search"
+name = "搜索"
+url = "/search/"
+weight = 40
+
+[[menu.main]]
+identifier = "about"
+name = "关于"
+url = "/about/"
+weight = 50
+
+# Only trusted repository authors may edit content; legacy articles retain HTML/SVG.
+[security]
+allowContent = ['^text/(html|markdown|plain)$']
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['$$', '$$'], ['\\[', '\\]']]
+          inline = [['$', '$'], ['\\(', '\\)']]

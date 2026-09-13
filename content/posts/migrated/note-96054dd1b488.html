@@ -1,0 +1,168 @@
++++
+title = "V. 三种特殊积分"
+date = "2026-06-14T09:40:19.000Z"
+lastmod = "2026-07-11T11:56:36.088Z"
+url = "/2026/06/14/概率论 与 数理统计 Kira and 牢宇/2. 一维随机变量/V. 三种特殊积分/"
+description = "概率论与数理统计学习笔记 · 一维随机变量 · V. 三种特殊积分"
+columns = ["一维随机变量"]
+tags = ["概率论", "数理统计"]
+draft = false
+math = true
+comments = false
+article_status = "permanent"
+applicable_versions = ["all"]
+legacy_import = true
++++
+<h2 id="v.-三种特殊积分"><span class="math inline"><em>V</em>.</span>
+三种特殊积分</h2>
+<h3 id="一伽马gamma函数">一、伽马(Gamma)函数</h3>
+<p>伽马函数定义为</p>
+<p><span class="math display">$$
+\begin{aligned}
+\Gamma(\alpha)
+&amp;=
+\displaystyle\int_0^{+\infty}x^{\alpha-1}e^{-x}\,dx,
+\qquad \alpha&gt;0.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>判断伽马积分时，核心是看 <span class="math inline"><em>x</em></span>
+的幂次。若出现</p>
+<p><span class="math display">$$
+\begin{aligned}
+\displaystyle\int_0^{+\infty}x^n e^{-x}\,dx,
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则它对应</p>
+<p><span class="math display">$$
+\begin{aligned}
+\Gamma(n+1).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>例如</p>
+<p><span class="math display">$$
+\begin{aligned}
+\displaystyle\int_0^{+\infty}x^\alpha e^{-x}\,dx
+&amp;= \Gamma(\alpha+1),\\
+\displaystyle\int_0^{+\infty}\sqrt{x}\,e^{-x}\,dx
+&amp;= \Gamma\left(\frac32\right),\\
+\displaystyle\int_0^{+\infty}x^2e^{-x}\,dx
+&amp;= \Gamma(3).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>伽马函数的性质为</p>
+<p><span class="math display">$$
+\begin{aligned}
+\Gamma(\alpha+1)
+&amp;= \alpha\Gamma(\alpha),\\
+\Gamma(1)
+&amp;= 1,\\
+\Gamma\left(\frac12\right)
+&amp;= \sqrt{\pi}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>对于正整数 <span class="math inline"><em>n</em></span>，有</p>
+<p><span class="math display">$$
+\begin{aligned}
+\Gamma(n+1)
+&amp;= n!.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+\displaystyle\int_0^{+\infty}x^n e^{-x}\,dx
+&amp;= n!.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>特别地，</p>
+<p><span class="math display">$$
+\begin{aligned}
+\Gamma\left(\frac12\right)
+&amp;= \sqrt{\pi},\\
+\Gamma(1)
+&amp;= \displaystyle\int_0^{+\infty}e^{-x}\,dx\\
+&amp;= 1,\\
+\Gamma(n+1)
+&amp;= \displaystyle\int_0^{+\infty}x^ne^{-x}\,dx\\
+&amp;= n!.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>例如</p>
+<p><span class="math display">$$
+\begin{aligned}
+\displaystyle\int_0^{+\infty}\sqrt{x}\,e^{-x}\,dx
+&amp;= \Gamma\left(\frac32\right)\\
+&amp;= \frac12\Gamma\left(\frac12\right)\\
+&amp;= \frac{\sqrt{\pi}}{2}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>又如</p>
+<p><span class="math display">$$
+\begin{aligned}
+\displaystyle\int_0^{+\infty}x^3e^{-x}\,dx
+&amp;= \Gamma(4)\\
+&amp;= 3!\\
+&amp;= 6.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>若积分不是标准的 <span
+class="math inline"><em>e</em><sup>−<em>x</em></sup></span>，需要先凑成伽马积分。</p>
+<p>例如</p>
+<p><span class="math display">$$
+\begin{aligned}
+\displaystyle\int_0^{+\infty}x^3e^{-2x}\,dx
+&amp;=
+\frac{1}{16}\displaystyle\int_0^{+\infty}(2x)^3e^{-2x}\,d(2x)\\
+&amp;=
+\frac{1}{16}\displaystyle\int_0^{+\infty}u^3e^{-u}\,du\\
+&amp;=
+\frac{1}{16}\Gamma(4)\\
+&amp;=
+\frac{1}{16}\cdot 3!\\
+&amp;=
+\frac{3}{8}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>又如</p>
+<p><span class="math display">$$
+\begin{aligned}
+\displaystyle\int_0^{+\infty}xe^{-x^2}\,dx
+&amp;=
+\frac12\displaystyle\int_0^{+\infty}e^{-x^2}\,d(x^2)\\
+&amp;=
+\frac12\displaystyle\int_0^{+\infty}e^{-u}\,du\\
+&amp;=
+\frac12\Gamma(1)\\
+&amp;=
+\frac12.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h3 id="二泊松积分poisson">二、泊松积分（Poisson）</h3>
+<p><span class="math display">$$
+\displaystyle\int_{-\infty}^{+\infty}e^{-x^2}\,dx=\sqrt{\pi}. \nonumber
+$$</span></p>
+<p><span class="math display">$$
+\displaystyle\int_{-\infty}^{+\infty}e^{-\frac{x^2}{2}}\,dx=\sqrt{2\pi}.
+\nonumber
+$$</span></p>
+<h3 id="三指数零到无穷积分">三、指数零到无穷积分</h3>
+<p>当 <span class="math inline"><em>α</em> &gt; 0</span> 时，</p>
+<p><span class="math display">$$
+\displaystyle\int_0^{+\infty}e^{-\alpha x}\,dx
+=
+\left[-\frac1\alpha e^{-\alpha x}\right]_0^{+\infty}
+=
+\frac1\alpha. \nonumber
+$$</span></p>

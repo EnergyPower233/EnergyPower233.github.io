@@ -1,0 +1,161 @@
++++
+title = "2-2 分布函数"
+date = "2026-07-04T20:29:04.000Z"
+lastmod = "2026-07-11T11:56:36.122Z"
+url = "/2026/07/05/概率论 与 数理统计 Kira and 牢宇/2. 一维随机变量/I.分布函数和概率密度/2-2 分布函数/"
+description = "概率论与数理统计学习笔记 · 一维随机变量 · 2-2 分布函数"
+columns = ["一维随机变量", "一维随机变量/I.分布函数和概率密度"]
+tags = ["概率论", "数理统计"]
+draft = false
+math = true
+comments = false
+article_status = "permanent"
+applicable_versions = ["all"]
+legacy_import = true
++++
+<h4 id="分布函数定义">（1）分布函数定义</h4>
+<p>设 <span class="math inline"><em>X</em></span> 为随机变量，对任意实数
+<span class="math inline"><em>x</em></span>，称</p>
+<p><span
+class="math display"><em>F</em>(<em>x</em>) = <em>P</em>{<em>X</em> ≤ <em>x</em>}</span></p>
+<p>为 <span class="math inline"><em>X</em></span> 的分布函数。</p>
+<h4 id="分布函数性质">（2）分布函数性质</h4>
+<h5 id="有界性与极限">① 有界性与极限</h5>
+<p><span class="math display">$$
+\begin{aligned}
+0 &amp;\le F(x)\le 1,\\
+-\infty &amp;&lt; x &lt;+\infty.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>并且</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(-\infty) &amp;= 0,\\
+F(+\infty) &amp;= 1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h5 id="单调不减">② 单调不减</h5>
+<p>当 <span
+class="math inline"><em>x</em><sub>1</sub> &lt; <em>x</em><sub>2</sub></span>
+时，</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x_1) &amp;\le F(x_2).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h5 id="右连续等号跟着大于走">③ 右连续（等号跟着大于走）</h5>
+<p><span class="math display">$$
+\begin{aligned}
+F(x+0) &amp;= F(x).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h5 id="左开右闭区间概率">④ 左开右闭区间概率</h5>
+<p><span class="math display">$$
+\begin{aligned}
+P\{a&lt;X\le b\}
+&amp;= F(b)-F(a).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h5 id="左极限与点概率">⑤ 左极限与点概率</h5>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X&lt;x\}
+&amp;= F(x-0),\\
+P\{X=x\}
+&amp;= F(x)-F(x-0).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h5 id="其他区间概率">⑥ 其他区间概率</h5>
+<p>由定义与左极限可得</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{a\le X\le b\}
+&amp;= P\{X\le b\}-P\{X&lt;a\}\\
+&amp;= F(b)-F(a-0).
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>又有</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{a&lt;X&lt;b\}
+&amp;= P\{X&lt;b\}-P\{X\le a\}\\
+&amp;= F(b-0)-F(a).
+\end{aligned}
+\nonumber
+$$</span></p>
+<h5 id="判定一个函数是否为分布函数">判定一个函数是否为分布函数</h5>
+<p>非负规范、单调不减、右连续，是构成分布函数的<strong>充分必要条件</strong>。更完整地说，一个函数
+<span class="math inline"><em>F</em>(<em>x</em>)</span>
+是某个随机变量的分布函数，当且仅当它满足：</p>
+<p><span class="math display">$$
+\begin{cases}
+0\le F(x)\le 1,\\
+F(-\infty)=0,\quad F(+\infty)=1,\\
+F(x)\text{ 单调不减},\\
+F(x)\text{ 右连续}.
+\end{cases}
+\nonumber
+$$</span></p>
+<h4 id="离散与连续">（3）离散与连续</h4>
+<p>离散型随机变量的分布函数为<strong>右连续</strong>的<strong>阶梯</strong>函数。</p>
+<p>连续型随机变量的分布函数为连续函数。</p>
+<p>若分布函数不是阶梯函数且存在间断点，则对应混合型随机变量。</p>
+<h2 id="概率分布">概率分布</h2>
+<p>概率分布</p>
+<h4 id="概率分布定义">（1）概率分布定义</h4>
+<p>设随机变量 <span class="math inline"><em>X</em></span>
+的取值为有限个或可列个，称 <span class="math inline"><em>X</em></span>
+为离散型随机变量。</p>
+<p>设 <span class="math inline"><em>X</em></span> 的取值为</p>
+<p><span class="math display">$$
+\begin{aligned}
+x_1,x_2,\cdots,x_i,\cdots
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>且</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X=x_i\}
+&amp;= p_i,\quad i=1,2,\cdots,
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则称 <span class="math inline"><em>X</em></span>
+的概率分布或分布律为</p>
+<p><span class="math display">$$
+\begin{array}{c|ccccc}
+X &amp; x_1 &amp; x_2 &amp; \cdots &amp; x_i &amp; \cdots\\
+\hline
+P &amp; p_1 &amp; p_2 &amp; \cdots &amp; p_i &amp; \cdots
+\end{array}
+\nonumber
+$$</span></p>
+<p>其分布函数为</p>
+<p><span class="math display">$$
+\begin{aligned}
+F(x)
+&amp;= P\{X\le x\}\\
+&amp;= \sum_{x_i\le x}p_i.
+\end{aligned}
+\nonumber
+$$</span></p>
+<h4 id="概率分布性质">（2）概率分布性质</h4>
+<p>离散型概率分布满足：</p>
+<p><span class="math display">$$
+\begin{aligned}
+&amp;1. \quad p_i \ge 0,\  i=1,2,\cdots,\\
+&amp;2. \quad \sum_i p_i = 1.
+\end{aligned}
+\nonumber
+$$</span></p>
+<blockquote>
+<p>PS: 上述两条构成概率分布的<strong>充要条件</strong>。</p>
+</blockquote>

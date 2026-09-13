@@ -1,0 +1,56 @@
++++
+title = "II. 方差"
+date = "2026-07-04T22:41:18.000Z"
+lastmod = "2026-07-11T11:56:36.174Z"
+url = "/2026/07/05/概率论 与 数理统计 Kira and 牢宇/5. 数字特征/II. 方差/"
+description = "概率论与数理统计学习笔记 · 数字特征 · II. 方差"
+columns = ["数字特征"]
+tags = ["概率论", "数理统计"]
+draft = false
+math = true
+comments = false
+article_status = "permanent"
+applicable_versions = ["all"]
+legacy_import = true
++++
+<h2 id="ii.-方差"><span class="math inline"><em>I</em><em>I</em>.</span>
+方差</h2>
+<h3 id="定义">定义</h3>
+<p>随机变量 <span class="math inline"><em>X</em></span> 的方差定义为</p>
+<p><span
+class="math display"><em>D</em><em>X</em> = <em>E</em>(<em>X</em> − <em>E</em><em>X</em>)<sup>2</sup>.</span></p>
+<p>常用计算式为</p>
+<p><span
+class="math display"><em>D</em><em>X</em> = <em>E</em><em>X</em><sup>2</sup> − (<em>E</em><em>X</em>)<sup>2</sup>.</span></p>
+<p><span class="math display">$$
+\boxed{\text{方差}=\text{平方的期望}-\text{期望的平方}.
+\nonumber}
+$$</span></p>
+<h3 id="性质">性质</h3>
+<h4 id="常数平移不改变方差">（1）常数平移不改变方差</h4>
+<p><span
+class="math display"><em>D</em>(<em>a</em><em>X</em> + <em>c</em>) = <em>a</em><sup>2</sup><em>D</em><em>X</em>.</span></p>
+<h4 id="和差的方差">（2）和差的方差</h4>
+<p><span
+class="math display"><em>D</em>(<em>X</em> ± <em>Y</em>) = <em>D</em><em>X</em> + <em>D</em><em>Y</em> ± 2Cov (<em>X</em>, <em>Y</em>).</span></p>
+<blockquote>
+<p>Cov(X, Y) 为协方差, 下文会介绍</p>
+</blockquote>
+<p>由此可得</p>
+<p><span
+class="math display"><em>D</em>(<em>X</em> ± <em>Y</em>) = <em>D</em><em>X</em> + <em>D</em><em>Y</em> ⇔ <em>X</em>
+与 <em>Y</em> 不相关.</span></p>
+<p>特别地，若 <span class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> 相互独立，则</p>
+<p><span
+class="math display"><em>D</em>(<em>X</em> ± <em>Y</em>) = <em>D</em><em>X</em> + <em>D</em><em>Y</em>.</span></p>
+<h4 id="乘积的方差">（3）乘积的方差</h4>
+<p>若 <span class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> 相互独立，则</p>
+<p><span
+class="math display"><em>D</em>(<em>X</em><em>Y</em>) = <em>D</em><em>X</em> ⋅ <em>D</em><em>Y</em> + (<em>E</em><em>X</em>)<sup>2</sup><em>D</em><em>Y</em> + (<em>E</em><em>Y</em>)<sup>2</sup><em>D</em><em>X</em>.</span></p>
+<p>线性组合的方差展开时，常数项忽略；组合中有相关项时应写协方差，不相关时协方差为
+<span class="math inline">0</span>，独立一定不相关。</p>
+<blockquote>
+<p>[!note] 常数的方差为0.</p>
+</blockquote>

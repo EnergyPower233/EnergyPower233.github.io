@@ -1,0 +1,66 @@
++++
+title = "II. 依概率收敛"
+date = "2026-07-04T22:18:02.000Z"
+lastmod = "2026-07-11T11:56:36.212Z"
+url = "/2026/07/05/概率论 与 数理统计 Kira and 牢宇/4. 大数定律与中心极限定理/II. 依概率收敛/"
+description = "概率论与数理统计学习笔记 · 大数定律与中心极限定理 · II. 依概率收敛"
+columns = ["大数定律与中心极限定理"]
+tags = ["概率论", "数理统计"]
+draft = false
+math = true
+comments = false
+article_status = "permanent"
+applicable_versions = ["all"]
+legacy_import = true
++++
+<h2 id="ii.-依概率收敛"><span
+class="math inline"><em>I</em><em>I</em>.</span> 依概率收敛</h2>
+<h4 id="依概率收敛的定义">依概率收敛的定义</h4>
+<p>设 <span class="math inline">{<em>X</em><sub><em>n</em></sub>}</span>
+为一随机变量序列，<span class="math inline"><em>a</em></span>
+为常数。若对任意 <span
+class="math inline"><em>ε</em> &gt; 0</span>，有</p>
+<p><span
+class="math display">lim<sub><em>n</em> → ∞</sub><em>P</em>{|<em>X</em><sub><em>n</em></sub> − <em>a</em>| &lt; <em>ε</em>} = 1,</span></p>
+<p>或等价地，</p>
+<p><span
+class="math display">lim<sub><em>n</em> → ∞</sub><em>P</em>{|<em>X</em><sub><em>n</em></sub> − <em>a</em>| ≥ <em>ε</em>} = 0,</span></p>
+<p>则称 <span
+class="math inline">{<em>X</em><sub><em>n</em></sub>}</span>
+依概率收敛于 <span class="math inline"><em>a</em></span>，记作</p>
+<p><span class="math display">$$
+X_n\xrightarrow{P}a.
+\nonumber
+$$</span></p>
+<p>当 <span class="math inline"><em>n</em></span> 比较大时，<span
+class="math inline"><em>X</em><sub><em>n</em></sub></span> 落在 <span
+class="math inline"><em>a</em></span> 附近的概率趋于 <span
+class="math inline">1</span>。</p>
+<blockquote>
+<p>[!important] 等价理解 当 <span class="math inline"><em>n</em></span>
+充分大时，<span
+class="math inline"><em>X</em><sub><em>n</em></sub></span> 偏离 <span
+class="math inline"><em>a</em></span> 超过任意给定小正数 <span
+class="math inline"><em>ε</em></span> 的概率趋于 <span
+class="math inline">0</span>。</p>
+</blockquote>
+<h3 id="依概率收敛的运算性质">依概率收敛的运算性质</h3>
+<ol type="1">
+<li>若 <span class="math inline">$X_n\xrightarrow{P}a$</span>，且函数
+<span class="math inline"><em>g</em>(<em>x</em>)</span> 在 <span
+class="math inline"><em>a</em></span> 处连续，则</li>
+</ol>
+<p><span class="math display">$$
+g(X_n)\xrightarrow{P}g(a).
+\nonumber
+$$</span></p>
+<ol start="2" type="1">
+<li>若 <span class="math inline">$X_n\xrightarrow{P}a$</span>，<span
+class="math inline">$Y_n\xrightarrow{P}b$</span>，且函数 <span
+class="math inline"><em>g</em>(<em>x</em>, <em>y</em>)</span> 在 <span
+class="math inline">(<em>a</em>, <em>b</em>)</span> 处连续，则</li>
+</ol>
+<p><span class="math display">$$
+g(X_n,Y_n)\xrightarrow{P}g(a,b).
+\nonumber
+$$</span></p>

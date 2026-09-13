@@ -1,0 +1,11 @@
+/* Preserve Pandoc/Hexo math that was already converted to HTML. */
+.post-content .math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: .65rem 0;
+  text-align: center;
+}
+.post-content .math.inline { overflow-wrap: normal; }
+.post-content svg { max-width: 100%; height: auto; }
+.post-content mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; max-width: 100%; padding: .25rem 0; }

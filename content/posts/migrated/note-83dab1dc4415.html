@@ -1,0 +1,164 @@
++++
+title = "V. 置信区间与假设检验"
+date = "2026-06-14T07:16:13.000Z"
+lastmod = "2026-07-11T11:56:36.247Z"
+url = "/2026/06/14/概率论 与 数理统计 Kira and 牢宇/6. 统计初步/V. 置信区间与假设检验/"
+description = "概率论与数理统计学习笔记 · 统计初步 · V. 置信区间与假设检验"
+columns = ["统计初步"]
+tags = ["概率论", "数理统计"]
+draft = false
+math = true
+comments = false
+article_status = "permanent"
+applicable_versions = ["all"]
+legacy_import = true
++++
+<h2 id="v.-置信区间与假设检验"><span
+class="math inline"><em>V</em>.</span> 置信区间与假设检验</h2>
+<h3 id="一置信区间">一、置信区间</h3>
+<h4 id="基本概念">基本概念</h4>
+<p>置信区间表示：参数落在区间内部的概率较大。</p>
+<p>显著性水平表示：参数落在区间外部的概率。</p>
+<p>若置信水平为 <span
+class="math inline">1 − <em>α</em></span>，则显著性水平为 <span
+class="math inline"><em>α</em></span>。</p>
+<h4 id="求置信区间的一般步骤">求置信区间的一般步骤</h4>
+<p>第一步，找统计量，要求统计量中只含一个未知参数。</p>
+<p>当 <span class="math inline"><em>σ</em></span> 已知，估计 <span
+class="math inline"><em>μ</em></span> 时，常用统计量</p>
+<p><span class="math display">$$
+\frac{\overline X-\mu}{\sigma/\sqrt n}\sim N(0,1).
+\nonumber
+$$</span></p>
+<p>当 <span class="math inline"><em>σ</em></span> 未知，估计 <span
+class="math inline"><em>μ</em></span> 时，常用统计量</p>
+<p><span class="math display">$$
+\frac{\overline X-\mu}{S/\sqrt n}\sim t(n-1).
+\nonumber
+$$</span></p>
+<p>第二步，找 <span class="math inline"><em>α</em></span> 分位点。</p>
+<p>第三步，由概率不等式解出参数范围，即得到置信区间。</p>
+<h4 id="sigma-已知时mu-的置信区间"><span
+class="math inline"><em>σ</em></span> 已知时，<span
+class="math inline"><em>μ</em></span> 的置信区间</h4>
+<p>若</p>
+<p><span
+class="math display"><em>X</em> ∼ <em>N</em>(<em>μ</em>, <em>σ</em><sup>2</sup>),</span></p>
+<p>且 <span class="math inline"><em>σ</em></span> 已知，则</p>
+<p><span class="math display">$$
+\frac{\overline X-\mu}{\sigma/\sqrt n}\sim N(0,1).
+\nonumber
+$$</span></p>
+<p>由</p>
+<p><span class="math display">$$
+P\left\{
+-u_{\alpha/2}
+&lt;
+\frac{\overline X-\mu}{\sigma/\sqrt n}
+&lt;
+u_{\alpha/2}
+\right\}
+=
+1-\alpha
+\nonumber
+$$</span></p>
+<p>可得 <span class="math inline"><em>μ</em></span> 的 <span
+class="math inline">1 − <em>α</em></span> 置信区间为</p>
+<p><span class="math display">$$
+\left(
+\overline X-u_{\alpha/2}\frac{\sigma}{\sqrt n},
+\quad
+\overline X+u_{\alpha/2}\frac{\sigma}{\sqrt n}
+\right).
+\nonumber
+$$</span></p>
+<h4 id="sigma-未知时mu-的置信区间"><span
+class="math inline"><em>σ</em></span> 未知时，<span
+class="math inline"><em>μ</em></span> 的置信区间</h4>
+<p>若</p>
+<p><span
+class="math display"><em>X</em> ∼ <em>N</em>(<em>μ</em>, <em>σ</em><sup>2</sup>),</span></p>
+<p>且 <span class="math inline"><em>σ</em></span> 未知，则</p>
+<p><span class="math display">$$
+\frac{\overline X-\mu}{S/\sqrt n}\sim t(n-1).
+\nonumber
+$$</span></p>
+<p>由</p>
+<p><span class="math display">$$
+P\left\{
+-t_{\alpha/2}(n-1)
+&lt;
+\frac{\overline X-\mu}{S/\sqrt n}
+&lt;
+t_{\alpha/2}(n-1)
+\right\}
+=
+1-\alpha
+\nonumber
+$$</span></p>
+<p>可得 <span class="math inline"><em>μ</em></span> 的 <span
+class="math inline">1 − <em>α</em></span> 置信区间为</p>
+<p><span class="math display">$$
+\left(
+\overline X-t_{\alpha/2}(n-1)\frac{S}{\sqrt n},
+\quad
+\overline X+t_{\alpha/2}(n-1)\frac{S}{\sqrt n}
+\right).
+\nonumber
+$$</span></p>
+<h3 id="二假设检验">二、假设检验</h3>
+<h4 id="基本概念-1">基本概念</h4>
+<p>假设检验中，显著性水平 <span class="math inline"><em>α</em></span>
+表示观察值落在拒绝域中的概率。</p>
+<p>通常：</p>
+<p><span class="math display">观察值在接受域内 ⇒ 接受
+<em>H</em><sub>0</sub>;</span></p>
+<p><span class="math display">观察值在拒绝域内 ⇒ 拒绝
+<em>H</em><sub>0</sub>.</span></p>
+<p><strong>小区间接受，大区间不一定接受。</strong></p>
+<p><strong>小区间拒绝，大区间不一定拒绝。</strong></p>
+<h4 id="双边检验">双边检验</h4>
+<p>若检验</p>
+<p><span
+class="math display"><em>H</em><sub>0</sub> : <em>μ</em> = <em>μ</em><sub>0</sub>,</span></p>
+<p>且 <span class="math inline"><em>σ</em></span> 未知，则取统计量</p>
+<p><span class="math display">$$
+T=\frac{\overline X-\mu_0}{S/\sqrt n}.
+\nonumber
+$$</span></p>
+<p>在 <span class="math inline"><em>H</em><sub>0</sub></span>
+成立时，</p>
+<p><span
+class="math display"><em>T</em> ∼ <em>t</em>(<em>n</em> − 1).</span></p>
+<p>双边检验的拒绝域为</p>
+<p><span
+class="math display">|<em>T</em>| &gt; <em>t</em><sub><em>α</em>/2</sub>(<em>n</em> − 1).</span></p>
+<p>即</p>
+<p><span
+class="math display"><em>P</em>{|<em>T</em>| &gt; <em>t</em><sub><em>α</em>/2</sub>(<em>n</em> − 1)} = <em>α</em>.</span></p>
+<h4 id="单边检验">单边检验</h4>
+<p>若检验</p>
+<p><span
+class="math display"><em>H</em><sub>0</sub> : <em>μ</em> ≥ <em>μ</em><sub>0</sub>,</span></p>
+<p>则拒绝域通常取左侧：</p>
+<p><span
+class="math display"><em>T</em> &lt; −<em>t</em><sub><em>α</em></sub>(<em>n</em> − 1).</span></p>
+<p>即</p>
+<p><span
+class="math display"><em>P</em>{<em>T</em> &lt; −<em>t</em><sub><em>α</em></sub>(<em>n</em> − 1)} = <em>α</em>.</span></p>
+<p>若检验</p>
+<p><span
+class="math display"><em>H</em><sub>0</sub> : <em>μ</em> ≤ <em>μ</em><sub>0</sub>,</span></p>
+<p>则拒绝域通常取右侧：</p>
+<p><span
+class="math display"><em>T</em> &gt; <em>t</em><sub><em>α</em></sub>(<em>n</em> − 1).</span></p>
+<p>即</p>
+<p><span
+class="math display"><em>P</em>{<em>T</em> &gt; <em>t</em><sub><em>α</em></sub>(<em>n</em> − 1)} = <em>α</em>.</span></p>
+<h4 id="两类错误">两类错误</h4>
+<p><strong>第一类错误：当原假设 <span
+class="math inline"><em>H</em><sub>0</sub></span> 为真时，却拒绝 <span
+class="math inline"><em>H</em><sub>0</sub></span>。也称为弃真错误。</strong></p>
+<p><strong>第二类错误：当原假设 <span
+class="math inline"><em>H</em><sub>0</sub></span> 不为真时，却接受 <span
+class="math inline"><em>H</em><sub>0</sub></span>。也称为取伪错误。</strong></p>

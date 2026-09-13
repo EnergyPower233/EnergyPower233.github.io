@@ -1,0 +1,230 @@
++++
+title = "IV. 随机变量的独立性"
+date = "2026-07-04T21:17:49.000Z"
+lastmod = "2026-07-11T11:56:36.027Z"
+url = "/2026/07/05/概率论 与 数理统计 Kira and 牢宇/3. 二维随机变量/IV. 随机变量的独立性/"
+description = "概率论与数理统计学习笔记 · 二维随机变量 · IV. 随机变量的独立性"
+columns = ["二维随机变量"]
+tags = ["概率论", "数理统计"]
+draft = false
+math = true
+comments = false
+article_status = "permanent"
+applicable_versions = ["all"]
+legacy_import = true
++++
+<h2 id="iv.-随机变量的独立性"><span
+class="math inline"><em>I</em><em>V</em>.</span> 随机变量的独立性</h2>
+<h4 id="随机变量相互独立的定义">随机变量相互独立的定义</h4>
+<p>设二维随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的联合分布函数为
+<span
+class="math inline"><em>F</em>(<em>x</em>, <em>y</em>)</span>，边缘分布函数分别为
+<span
+class="math inline"><em>F</em><sub><em>X</em></sub>(<em>x</em>)</span>
+和 <span
+class="math inline"><em>F</em><sub><em>Y</em></sub>(<em>y</em>)</span>。若对任意实数
+<span class="math inline"><em>x</em>, <em>y</em></span>，有</p>
+<p><span
+class="math display"><em>F</em>(<em>x</em>, <em>y</em>) = <em>F</em><sub><em>X</em></sub>(<em>x</em>)<em>F</em><sub><em>Y</em></sub>(<em>y</em>),</span></p>
+<p>则称随机变量 <span class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> 相互独立。</p>
+<p>即：</p>
+<p><span class="math display"><em>X</em> 与 <em>Y</em>
+相互独立 ⇔ <em>F</em>(<em>x</em>, <em>y</em>) = <em>F</em><sub><em>X</em></sub>(<em>x</em>)<em>F</em><sub><em>Y</em></sub>(<em>y</em>).</span></p>
+<p>对于二维离散型随机变量，有</p>
+<p><span class="math display"><em>X</em> 与 <em>Y</em>
+相互独立 ⇔ <em>p</em><sub><em>i</em><em>j</em></sub> = <em>p</em><sub><em>i</em>⋅</sub><em>p</em><sub>⋅<em>j</em></sub>.</span></p>
+<blockquote>
+<p>[!question] 题目 【例 3.1】设随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 具有分布函数</p>
+<p><span class="math display">$$
+F(x,y)
+=
+\begin{cases}
+1-e^{-x}-e^{-y}+e^{-x-y-\lambda xy}, &amp; x\ge 0,\ y\ge 0,\\[6pt]
+0, &amp; \text{其他},
+\end{cases}
+\qquad \lambda&gt;0.
+\nonumber
+$$</span></p>
+<p>（Ⅰ）求边缘分布函数 <span
+class="math inline"><em>F</em><sub><em>X</em></sub>(<em>x</em>)</span>
+和 <span
+class="math inline"><em>F</em><sub><em>Y</em></sub>(<em>y</em>)</span>。</p>
+<p>（Ⅱ）判断 <span class="math inline"><em>X</em></span> 和 <span
+class="math inline"><em>Y</em></span> 的独立性。</p>
+<p><strong>题解：</strong></p>
+<p><span class="math display">$$
+F_X(x)
+=
+\lim_{y\to+\infty}F(x,y)
+=
+\begin{cases}
+1-e^{-x}, &amp; x\ge 0,\\[4pt]
+0, &amp; x&lt;0.
+\end{cases}
+\nonumber
+$$</span></p>
+<p><span class="math display">$$
+F_Y(y)
+=
+\lim_{x\to+\infty}F(x,y)
+=
+\begin{cases}
+1-e^{-y}, &amp; y\ge 0,\\[4pt]
+0, &amp; y&lt;0.
+\end{cases}
+\nonumber
+$$</span></p>
+<p>对 <span
+class="math inline"><em>x</em> ≥ 0, <em>y</em> ≥ 0</span>，</p>
+<p><span
+class="math display"><em>F</em><sub><em>X</em></sub>(<em>x</em>)<em>F</em><sub><em>Y</em></sub>(<em>y</em>) = 1 − <em>e</em><sup>−<em>x</em></sup> − <em>e</em><sup>−<em>y</em></sup> + <em>e</em><sup>−<em>x</em> − <em>y</em></sup>.</span></p>
+<p>因为 <span class="math inline"><em>λ</em> &gt; 0</span> 时，<span
+class="math inline"><em>e</em><sup>−<em>x</em> − <em>y</em> − <em>λ</em><em>x</em><em>y</em></sup> ≠ <em>e</em><sup>−<em>x</em> − <em>y</em></sup></span>
+一般成立，所以 <span class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> 不独立。</p>
+</blockquote>
+<p>还有依旧还[[II. 概率分布#^tstt2r|这题]]</p>
+<p>对于二维连续型随机变量，有</p>
+<p><span class="math display"><em>X</em> 与 <em>Y</em>
+相互独立 ⇔ <em>f</em>(<em>x</em>, <em>y</em>) = <em>f</em><sub><em>X</em></sub>(<em>x</em>)<em>f</em><sub><em>Y</em></sub>(<em>y</em>).</span></p>
+<blockquote>
+<p>PS: 若 <span class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> 相互独立，<span
+class="math inline"><em>h</em>, <em>g</em></span> 为连续函数，则 <span
+class="math inline"><em>h</em>(<em>X</em>)</span> 与 <span
+class="math inline"><em>g</em>(<em>Y</em>)</span>
+相互独立。即<strong>相互独立的随机变量，其函数仍然相互独立</strong>。
+#### 离散型随机变量独立性的判定</p>
+</blockquote>
+<p>设离散型随机变量 <span
+class="math inline"><em>X</em>, <em>Y</em></span> 的可能取值分别为 <span
+class="math inline"><em>x</em><sub><em>i</em></sub>, <em>y</em><sub><em>j</em></sub></span>，联合分布律为</p>
+<p><span class="math display">$$
+\begin{aligned}
+p_{ij}
+&amp;=
+P\{X=x_i,\ Y=y_j\}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>边缘分布律为</p>
+<p><span class="math display">$$
+\begin{aligned}
+p_{i\cdot}
+&amp;=
+P\{X=x_i\},\\
+p_{\cdot j}
+&amp;=
+P\{Y=y_j\}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>若 <span class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> 相互独立，则对任意 <span
+class="math inline"><em>i</em>, <em>j</em></span>，都有</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X=x_i,\ Y=y_j\}
+&amp;=
+P\{X=x_i\}P\{Y=y_j\}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+p_{ij}
+&amp;=
+p_{i\cdot}p_{\cdot j}.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>若存在某一对 <span
+class="math inline"><em>i</em>, <em>j</em></span>，使得</p>
+<p><span class="math display">$$
+\begin{aligned}
+p_{ij}
+&amp;\ne
+p_{i\cdot}p_{\cdot j},
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>则 <span class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> 不独立。</p>
+<blockquote>
+<p>[!important] 判定要点</p>
+<p>只要找到一组 <span
+class="math inline"><em>x</em><sub><em>i</em></sub>, <em>y</em><sub><em>j</em></sub></span>
+使</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X=x_i,\ Y=y_j\}
+&amp;\ne
+P\{X=x_i\}P\{Y=y_j\},
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>就可以判定 <span class="math inline"><em>X</em>, <em>Y</em></span>
+不独立。</p>
+<p>特别地，如果某一格满足 <span
+class="math inline"><em>p</em><sub><em>i</em><em>j</em></sub> = 0</span>，但对应边缘概率
+<span class="math inline"><em>p</em><sub><em>i</em>⋅</sub> &gt; 0</span>
+且 <span
+class="math inline"><em>p</em><sub>⋅<em>j</em></sub> &gt; 0</span>，则</p>
+<p><span class="math display">$$
+\begin{aligned}
+p_{ij}
+&amp;=
+0,\\
+p_{i\cdot}p_{\cdot j}
+&amp;&gt;
+0,
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>因而 <span class="math inline"><em>X</em>, <em>Y</em></span>
+不独立。</p>
+</blockquote>
+<blockquote>
+<p>[!question] 题目 【例 3.4】已知随机变量 <span
+class="math inline">(<em>X</em>, <em>Y</em>)</span> 的分布律为</p>
+<p><span class="math display">$$
+\begin{array}{c|cc}
+Y\backslash X &amp; 0 &amp; 1\\
+\hline
+0 &amp; 0.15 &amp; 0.15\\
+1 &amp; a &amp; b
+\end{array}
+\nonumber
+$$</span></p>
+<p>且 <span class="math inline"><em>X</em></span> 与 <span
+class="math inline"><em>Y</em></span> 相互独立，求 <span
+class="math inline"><em>a</em></span> 和 <span
+class="math inline"><em>b</em></span> 的值。</p>
+<p><strong>题解：</strong></p>
+<p>由总概率为 <span class="math inline">1</span>，得 <span
+class="math inline"><em>a</em> + <em>b</em> = 0.7</span>。</p>
+<p>又由独立性，</p>
+<p><span class="math display">$$
+\begin{aligned}
+P\{X=0,Y=0\}
+&amp;=
+P\{X=0\}P\{Y=0\},
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>即</p>
+<p><span class="math display">$$
+\begin{aligned}
+0.15
+&amp;=
+(0.15+a)\cdot 0.3.
+\end{aligned}
+\nonumber
+$$</span></p>
+<p>解得 <span class="math inline"><em>a</em> = 0.35</span>，故 <span
+class="math inline"><em>b</em> = 0.35</span>。</p>
+</blockquote>
