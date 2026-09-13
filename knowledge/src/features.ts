@@ -42,7 +42,7 @@ export class KnowledgeFeatures {
       classic.href = app.currentMode === "detail" ? app.catalog.articles[app.catalog.selected].url : siteURL("classic/");
       if (!this.restoring && app.currentMode !== "boot")
         this.routes.save(this.route(app.currentMode), push);
-      if (app.currentMode === "detail") void app.renderingScene.prepareReadingAssembly().catch(() => {});
+      if (app.currentMode === "detail" && !app.prefs.reduced) void app.renderingScene.prepareReadingAssembly().catch(() => {});
     };
     this.routes.onChange = route => this.restore(route);
     this.restore(parseRoute(location.hash));

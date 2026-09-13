@@ -167,7 +167,7 @@ export class KnowledgeApp {
     if (mode !== "boot") this.boot.reset();
     if (mode === "detail") {
       this.view.detail();
-      element("#detail-content").inert = true;
+      element("#detail-content").inert = !this.prefs.reduced;
     }
     this.onStateChange?.(mode === "detail");
   }
@@ -219,10 +219,11 @@ export class KnowledgeApp {
     if (!this.suspendScene()) this.scene.update(ms / 1000, cinema);
     if (this.mode === "detail" && !this.overlayOpen()) {
       const content = element("#detail-content");
-      content.style.opacity = String(this.scene.detailVisibility);
-      content.style.transform = `translateY(${(1 - this.scene.detailVisibility) * 18}px)`;
+      const visibility = this.prefs.reduced ? 1 : this.scene.detailVisibility;
+      content.style.opacity = String(visibility);
+      content.style.transform = `translateY(${(1 - visibility) * 18}px)`;
       const waiting = content.inert;
-      content.inert = this.scene.detailVisibility < 0.95;
+      content.inert = visibility < 0.95;
       if (waiting && !content.inert && !this.overlayOpen()) content.focus({ preventScroll: true });
     }
     if (Math.floor(ms / 1000) !== this.lastFrame) {

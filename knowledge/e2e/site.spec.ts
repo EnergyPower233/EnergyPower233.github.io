@@ -17,7 +17,8 @@ test('classic homepage, Chinese search and original article URL', async ({ page 
 });
 
 test('desktop 3D archive, columns, search, extraction and reader', async ({ page }) => {
-  test.setTimeout(180000);
+  // Hosted runners have no physical GPU; initial shader compilation can take minutes.
+  test.setTimeout(process.env.CI ? 420000 : 180000);
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.addInitScript(() => localStorage.setItem('cl-knowledge:quality', 'false'));

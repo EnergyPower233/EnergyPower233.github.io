@@ -42,6 +42,15 @@ export class ReadingFlow {
   async open(article: Article, anchor = "") {
     const continuing = this.reader.isOpen && this.phase === "reading";
     const signal = this.begin("opening");
+    // Reduced motion is a real non-animated path: do not compile a model or
+    // wait for GPU poses merely to display an accessible HTML document.
+    if (this.app.prefs.reduced) {
+      this.reader.endHandoff();
+      this.reader.show(article, anchor);
+      this.setPhase("reading");
+      this.reader.root.querySelector<HTMLIFrameElement>("iframe")?.focus();
+      return;
+    }
     try { await this.app.renderingScene.prepareReadingAssembly(); }
     catch (error) { console.warn("Reading animation unavailable; continuing with article", error); }
     if (signal.aborted) return;
@@ -72,6 +81,14 @@ export class ReadingFlow {
   async close(notify = false) {
     if (this.phase === "closing") return;
     const signal = this.begin("closing");
+    if (this.app.prefs.reduced) {
+      this.reader.close(false);
+      this.app.renderingScene.resetReadingAssembly();
+      this.setPhase("idle");
+      this.app.root.querySelector<HTMLButtonElement>('[data-action="read"]')?.focus({preventScroll: true});
+      if (notify) this.reader.onClose?.();
+      return;
+    }
     if (this.reader.isOpen) this.reader.beginHandoff();
     const from = this.app.renderingScene.currentReadingSpread;
     if (!await tween(this.app.prefs.reduced ? 0 : READING_MOTION.close * from, signal, progress => {

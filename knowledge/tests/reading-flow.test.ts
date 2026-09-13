@@ -22,6 +22,21 @@ function setup() {
 }
 const article = {url: "/posts/a/", title: "A"} as Article;
 
+test('reduced motion opens HTML immediately without waiting for assembly compilation', async () => {
+  const {flow, reader, scene, app} = setup();
+  scene.prepareReadingAssembly = () => { throw new Error('Reduced mode must not prepare GPU models'); };
+  scene.readingBounds = () => { throw new Error('Reduced mode must not render GPU poses'); };
+  await flow.open(article);
+  assert.equal(reader.shows, 1);
+  assert.equal(reader.isOpen, true);
+  assert.equal(scene.currentReadingSpread, 0);
+  assert.equal(flow.busy, false);
+  await flow.close(true);
+  assert.equal(reader.isOpen, false);
+  assert.equal(reader.closes, 1);
+  assert.equal(app.root.inert, false);
+});
+
 test('surface handoff overlaps the moving page, with no text until arrival or after cancellation', async () => {
   for (const cancel of [false, true]) {
     const frames = new Map<number, FrameRequestCallback>();
@@ -48,6 +63,7 @@ test('surface handoff overlaps the moving page, with no text until arrival or af
 
 test("closing during model loading invalidates the pending open and prevents a late reader", async () => {
   const {flow, reader, scene, release, app} = setup();
+  app.prefs.reduced = false;
   const opening = flow.open(article);
   assert.equal(flow.busy, true);
   await flow.close(true);
@@ -60,6 +76,11 @@ test("closing during model loading invalidates the pending open and prevents a l
 });
 test("reading ends with spread parts and closing reassembles before restoring input", async () => {
   const {flow, reader, scene, release, app} = setup();
+  app.prefs.reduced = false;
+  Object.assign(globalThis, {
+    requestAnimationFrame: (callback: FrameRequestCallback) => setTimeout(() => callback(performance.now() + 10000), 0),
+    cancelAnimationFrame: clearTimeout,
+  });
   release();
   await flow.open(article);
   assert.equal(reader.isOpen, true);
@@ -72,7 +93,8 @@ test("reading ends with spread parts and closing reassembles before restoring in
   assert.equal(reader.closes, 1);
 });
 test("route reset cancels old model requests without writing a close history entry", async () => {
-  const {flow, reader, release} = setup();
+  const {flow, reader, release, app} = setup();
+  app.prefs.reduced = false;
   const old = flow.open(article);
   flow.reset();
   release();
@@ -90,6 +112,7 @@ test('closing moves the 3D page while the reader is still fading, then finishes 
   const advance = (time: number) => {for (const [key, callback] of [...frames.entries()]) {frames.delete(key); callback(time);}};
   const {flow, reader, release, app, scene} = setup();
   release(); await flow.open(article);
+  scene.currentReadingSpread = 1; // Simulate switching motion preference after an animated open.
   app.prefs.reduced = false;
   const start = performance.now();
   const closing = flow.close();
